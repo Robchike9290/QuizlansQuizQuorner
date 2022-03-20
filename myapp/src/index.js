@@ -12,7 +12,7 @@ import {
   signInWithEmailAndPassword
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-
+import firebaseConfig from "../config.js";
 
 
 // Initialize Firebase
@@ -30,7 +30,7 @@ const auth = getAuth(app);
 // }
 
 const db = getFirestore();
-const usersCol = collection(db, 'users');
+// const usersCol = collection(db, 'users');
 // const snapshot = await getDocs(usersCol);
 
 // Detect user login
