@@ -5,7 +5,7 @@ dist/*
 !dist/index.html
 node_modules/
 *.log
-package_lock.json
+package-lock.json
 firebaseNotes.todo
 config.js
 
