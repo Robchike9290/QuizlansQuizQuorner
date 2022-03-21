@@ -5,6 +5,9 @@ dist/*
 !dist/index.html
 node_modules/
 *.log
+package-lock.json
+firebaseNotes.todo
+config.js
 
 # OS generated files
 .DS_Store
