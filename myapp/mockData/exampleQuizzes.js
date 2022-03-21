@@ -238,5 +238,177 @@ let exampleQuizzes =
       reportedTimes: 0,
       createdBy: 'PatrickTheAssistant',
       aggregateScore: 132
+    },
+    {
+      quizId: 3,
+      quizName: 'Science and Nature quiz one',
+      quizQuestions: [
+        {
+          question: "Which of these bones is hardest to break?",
+          correctAnswer: "Femur",
+          incorrectAnswers: ["Cranium",
+          "Humerus",
+          "Tibia"]
+        },
+        {
+          question: "Rhinoplasty is a surgical procedure on what part of the human body?",
+          correctAnswer: "Nose",
+          incorrectAnswers: ["Ears",
+          "Chin",
+          "Neck"]
+        },
+        {
+          question: "To the nearest minute, how long does it take for light to travel from the Sun to the Earth?",
+          correctAnswer: "8 Minutes",
+          incorrectAnswers: ["6 Minutes",
+          "2 Minutes",
+          "12 Minutes"]
+        },
+        {
+          question: "Which chemical element has the lowest boiling point?",
+          correctAnswer: "Helium",
+          incorrectAnswers: ["Hydrogen",
+          "Neon",
+          "Nitrogen"]
+        },
+        {
+          question: "An organic compound is considered an alcohol if it has what functional group?",
+          correctAnswer: "Hydroxyl",
+          incorrectAnswers: ["Carbonyl",
+          "Alkyl",
+          "Aldehyde"]
+        },
+        {
+          question: "Au on the Periodic Table refers to which element?",
+          correctAnswer: "Gold",
+          incorrectAnswers: ["Silver",
+          "Oxygen",
+          "Nickel"]
+        },
+        {
+          question: "All the following metal elements are liquids at or near room temperature EXCEPT:",
+          correctAnswer: "Beryllium",
+          incorrectAnswers: ["Gallium",
+          "Caesium",
+          "Mercury"]
+        },
+        {
+          question: "How many officially recognized dwarf planets in the solar system are named after Polynesian deities?",
+          correctAnswer: "2",
+          incorrectAnswers: ["0",
+          "1",
+          "5"]
+        },
+        {
+          question: "Folic acid is the synthetic form of which vitamin?",
+          correctAnswer: "Vitamin B",
+          incorrectAnswers: ["Vitamin A",
+          "Vitamin C",
+          "Vitamin D"]
+        },
+        {
+          question: "What term is best associated with Sigmund Freud?",
+          correctAnswer: "Psychoanalysis",
+          incorrectAnswers: ["Cognitive-Behavioral Therapy",
+          "Theory of Gravity",
+          "Dialectical Behavior Therapy"]
+        }
+      ],
+      timesTaken: 10,
+      category: 'Science&Nature',
+      quizDescription: 'Science and Nature quiz number 1',
+      quizBanner: 'photo url',
+      quizUpvotes: 9,
+      quizDownvotes: 1,
+      reported: false,
+      reportedTimes: 0,
+      createdBy: 'SteveTheQwizard',
+      aggregateScore: 50
+    },
+    {
+      quizId: 4,
+      quizName: 'Science and Nature quiz two',
+      quizQuestions: [
+        {
+          question: "The human heart has how many chambers?",
+          correctAnswer: "4",
+          incorrectAnswers: ["2",
+          "6",
+          "3"]
+        },
+        {
+          question: "The human right lung has how many lobes?",
+          correctAnswer: "3",
+          incorrectAnswers: ["4",
+          "2",
+          "1"]
+        },
+        {
+          question: "Human cells typically have how many copies of each gene?",
+          correctAnswer: "2",
+          incorrectAnswers: ["1",
+          "4",
+          "3"]
+        },
+        {
+          question: "Who made the discovery of X-rays?",
+          correctAnswer: "Wilhelm Conrad Roentgen",
+          incorrectAnswers: ["Thomas Alva Edison",
+          "James Watt",
+          "Albert Einstein"]
+        },
+        {
+          question: "Botanically speaking, which of these fruits is NOT a berry?",
+          correctAnswer: "Strawberry",
+          incorrectAnswers: ["Blueberry",
+          "Banana",
+          "Concord Grape"]
+        },
+        {
+          question: "An average human can go how many weeks without water.",
+          correctAnswer: "2",
+          incorrectAnswers: ["1",
+          "4",
+          "3"]
+        },
+        {
+          question: "Burning which of these metals will produce a bright white flame?",
+          correctAnswer: "Magnesium",
+          incorrectAnswers: ["Copper",
+          "Lithium",
+          "Lead"]
+        },
+        {
+          question: "Which chemical element was originally known as Alabamine?",
+          correctAnswer: "Astatine",
+          incorrectAnswers: ["Selenium",
+          "Antimony",
+          "Molybdenum"]
+        },
+        {
+          question: "Which of the following men does not have a chemical element named after him?",
+          correctAnswer: "Sir Isaac Newton",
+          incorrectAnswers: ["Albert Einstein",
+          "Niels Bohr",
+          "Enrico Fermi"]
+        },
+        {
+          question: "What is the half-life of Uranium-235?",
+          correctAnswer: "703,800,000 years",
+          incorrectAnswers: ["4,300,400,000 years",
+          "1,260,900,000 years",
+          "Uranium-235 is a stable isotope"]
+        }
+      ],
+      timesTaken: 50,
+      category: 'general',
+      quizDescription: 'Science and Nature quiz number 2',
+      quizBanner: 'photo url',
+      quizUpvotes: 26,
+      quizDownvotes: 8,
+      reported: false,
+      reportedTimes: 0,
+      createdBy: 'SteveTheQwizard',
+      aggregateScore: 375
     }
-  ]
+  ];
