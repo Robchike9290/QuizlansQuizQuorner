@@ -1,21 +1,32 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./app.jsx";
-import "./styles.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './app.jsx';
+import './styles.css';
 // Firebase imports
+<<<<<<< HEAD
 // import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+=======
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+>>>>>>> dev
 import {
   getAuth,
   onAuthStateChanged,
   connectAuthEmulator,
   signInWithEmailAndPassword,
+<<<<<<< HEAD
   signOut, createUserWithEmailAndPassword
 } from "firebase/auth";
 import { auth } from "./firebase.js"
 import { getFirestore } from "firebase/firestore";
 import firebaseConfig from "../config.js";
 
+=======
+} from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import firebaseConfig from '../config.js';
+>>>>>>> dev
 
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
@@ -36,7 +47,7 @@ const db = getFirestore();
 // const snapshot = await getDocs(usersCol);
 
 // Detect user login
-onAuthStateChanged(auth, user => {
+onAuthStateChanged(auth, (user) => {
   if (user !== null) {
     console.log('Logged in!');
   } else {
@@ -44,5 +55,5 @@ onAuthStateChanged(auth, user => {
   }
 });
 
-var mountNode = document.getElementById("app");
-ReactDOM.render(<App name="Jane" />, mountNode);
+var mountNode = document.getElementById('app');
+ReactDOM.render(<App name='Jane' />, mountNode);
