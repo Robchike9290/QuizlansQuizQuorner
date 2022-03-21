@@ -16,85 +16,124 @@ const LandingPage = () => {
       </h2>
     </SecondNesting>
     <div id="intro1">
-      <SecondNesting>
-        <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
-      </SecondNesting>
-      <span>
+      <InlineSpan>
+        <SecondNesting>
+          <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
+        </SecondNesting>
+      </InlineSpan>
+      <InlineSpan>
         <SecondNesting>
           Create a quiz to study for your next midterm exam
         </SecondNesting>
-      </span>
+      </InlineSpan>
     </div>
     <div id="intro2">
-      <span>
+      <InlineSpan>
         <SecondNesting>
           Take a pre-built quiz to sharpen your skills.
         </SecondNesting>
-      </span>
-      <SecondNesting>
-        <img alt="Take quiz page screenshot *INSERT TAKE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
-      </SecondNesting>
+      </InlineSpan>
+      <InlineSpan>
+        <SecondNesting>
+          <img alt="Take quiz page screenshot *INSERT TAKE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
+        </SecondNesting>
+      </InlineSpan>
     </div>
     <div id="rhetoricalIntro3">
-      <SecondNesting>
-        <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE. OR...REPLACE WITH ANOTHER FUNCTION?*"></img>
-      </SecondNesting>
-      <span>
+      <InlineSpan>
+        <SecondNesting>
+          <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE. OR...REPLACE WITH ANOTHER FUNCTION?*"></img>
+        </SecondNesting>
+      </InlineSpan>
+      <InlineSpan>
         <SecondNesting>
           Create a quiz to challenge your friends to see how well they know you.
         </SecondNesting>
-      </span>
+      </InlineSpan>
     </div>
     <div id="testimonials">
-      <span>
+      <InlineSpan>
         <div>
           <img alt="Testimonial stock photo #1" src=".././images/testimonialPhoto1.png"></img>
           <SecondNesting>
             "Steve Quizlan changed my life!"
           </SecondNesting>
         </div>
-      </span>
-      <span>
+      </InlineSpan>
+      <InlineSpan>
         <div>
           <img alt="Testimonial stock photo #2" src=".././images/testimonialPhoto2.png"></img>
           <SecondNesting>
             "I never knew taking quizzes could be so fun!"
           </SecondNesting>
         </div>
-      </span>
-      <span>
+      </InlineSpan>
+      <InlineSpan>
         <div>
           <img alt="Testimonial stock photo #3" src="src/images/testimonialPhoto3.png"></img>
           <SecondNesting>
             "After two weeks my quiz scores went from 55% to 85%.  Thanks, Steve!"
           </SecondNesting>
         </div>
-      </span>
+      </InlineSpan>
     </div>
-    <SecondNesting id="getStartedHeading">
-      <h2>How to Get Started</h2>
-    </SecondNesting>
-    <div id="getStartedInfo">
-      <SecondNesting>
-        <h3>Step One: Sign Up for an Account</h3>
-      </SecondNesting>
-      <SecondNesting>
-        <h3>Step Two: Start Taking Quizzes!</h3>
-      </SecondNesting>
-    </div>
-    <SecondNesting id="signup">
-      <button onClick={handleLogin}>Sign Up Now!</button>
-    </SecondNesting>
+    <StyledH2 id="getStartedHeading">How to Get Started</StyledH2>
+    <StyledH3 id="getStartedInfo1">Step One: Sign Up for an Account</StyledH3>
+    <StyledH3 id="getStartedInfo">Step Two: Start Taking Quizzes!</StyledH3>
+    <StyledButton id="signup" onClick={handleLogin}>Sign Up Now!</StyledButton>
   </FirstNesting>
   );
 };
 
 const FirstNesting = styled.div`
   background-color: var(--yellow);
+  text-color: var(--text-color);
+  margin: var(--standard-margin);
+  border-radius: var(--standard-border-radius);
+  standard-shadow: var(--standard-shadow);
 `
 
 const SecondNesting = styled.div`
   background-color: var(--blue);
+  text-color: var(--text-color);
+  margin: var: var(--standard-margin);
+  border-radius: var(--standard-border-radius);
+  standard-shadow: var(--standard-shadow);
+`
+
+const InlineSpan = styled.span`
+  display: inline-block;
+`
+
+const StyledButton = styled.button`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  margin: var: var(--standard-margin);
+  border-radius: var(--standard-border-radius);
+  standard-shadow: var(--standard-shadow);
+`
+const StyledH1 = styled.h1`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  margin: var: var(--standard-margin);
+  border-radius: var(--standard-border-radius);
+  standard-shadow: var(--standard-shadow);
+`
+
+const StyledH2 = styled.h2`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  margin: var: var(--standard-margin);
+  border-radius: var(--standard-border-radius);
+  standard-shadow: var(--standard-shadow);
+`
+
+const StyledH3 = styled.h3`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  margin: var: var(--standard-margin);
+  border-radius: var(--standard-border-radius);
+  standard-shadow: var(--standard-shadow);
 `
 
 export default LandingPage;
