@@ -9,6 +9,7 @@ package-lock.json
 firebaseNotes.todo
 config.js
 mytasks.todo
+.vscode/settings.json
 
 # OS generated files
 .DS_Store
