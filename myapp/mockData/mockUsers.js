@@ -6,7 +6,7 @@ const mockUserExample =  {
     {
       quizId: 0,
       timesUserHasTaken: 0,
-      userAnswers: []
+      userScores: []
     }
   ],
   friends: []
@@ -19,12 +19,17 @@ const mockUserList = [
     email: "pat@gmail.com",
     quizHistory: [
       {
-        quizId: 0,
-        timesUserHasTaken: 0,
-        userAnswers: [303, 304, 305]
+        quizId: 1,
+        timesUserHasTaken: 2,
+        userScores: [60, 80]
+      },
+      {
+        quizId: 2,
+        timesUserHasTaken: 2,
+        userScores: [70, 80]
       }
     ],
-    friends: []
+    friends: [303, 304, 305]
   },
   {
     userId: 302,
@@ -32,9 +37,39 @@ const mockUserList = [
     email: "tenOutOfTenAllDayLong@hotmail.com",
     quizHistory: [
       {
-        quizId: 0,
-        timesUserHasTaken: 0,
-        userAnswers: []
+        quizId: 1,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 2,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 3,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 4,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 5,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 6,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 7,
+        timesUserHasTaken: 1,
+        userScores: [100]
       }
     ],
     friends: [303, 304, 305]
@@ -45,9 +80,24 @@ const mockUserList = [
     email: "fourPointOhLiz@yahoo.com",
     quizHistory: [
       {
-        quizId: 0,
-        timesUserHasTaken: 0,
-        userAnswers: []
+        quizId: 1,
+        timesUserHasTaken: 3,
+        userScores: [80, 90, 100]
+      },
+      {
+        quizId: 2,
+        timesUserHasTaken: 2,
+        userScores: [90, 100]
+      },
+      {
+        quizId: 3,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 4,
+        timesUserHasTaken: 3,
+        userScores: [80, 90, 100]
       }
     ],
     friends: [301, 305]
@@ -58,9 +108,19 @@ const mockUserList = [
     email: "IForgotWhereILive@outlook.com",
     quizHistory: [
       {
-        quizId: 0,
-        timesUserHasTaken: 0,
-        userAnswers: []
+        quizId: 1,
+        timesUserHasTaken: 1,
+        userScores: [0]
+      },
+      {
+        quizId: 2,
+        timesUserHasTaken: 1,
+        userScores: [0]
+      },
+      {
+        quizId: 3,
+        timesUserHasTaken: 1,
+        userScores: [0]
       }
     ],
     friends: []
@@ -71,9 +131,39 @@ const mockUserList = [
     email: "ImActuallyASupercomputerWearingClothes@gmail.com",
     quizHistory: [
       {
-        quizId: 0,
-        timesUserHasTaken: 0,
-        userAnswers: []
+        quizId: 1,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 2,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 3,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 4,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 5,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 6,
+        timesUserHasTaken: 1,
+        userScores: [100]
+      },
+      {
+        quizId: 7,
+        timesUserHasTaken: 1,
+        userScores: [100]
       }
     ],
     friends: [301, 302, 303]
