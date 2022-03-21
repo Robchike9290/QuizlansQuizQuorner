@@ -11,7 +11,7 @@ const LandingPage = () => {
     </div>
     <div id="rhetoricalIntro1">
       <span>
-        <img alt="Create quiz page screenshot">*INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*</img>
+        <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
       </span>
       <span>
         <p>
@@ -26,12 +26,12 @@ const LandingPage = () => {
         </p>
       </span>
       <span>
-        <img alt="Take quiz page screenshot">*INSERT TAKE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*</img>
+        <img alt="Take quiz page screenshot *INSERT TAKE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
       </span>
     </div>
     <div id="rhetoricalIntro3">
       <span>
-        <img alt="Create quiz page screenshot">*INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE. OR...REPLACE WITH ANOTHER FUNCTION?*</img>
+        <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE. OR...REPLACE WITH ANOTHER FUNCTION?*"></img>
         <p>
           Create a quiz to challenge your friends to see how well they know you.
         </p>
