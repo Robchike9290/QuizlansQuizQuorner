@@ -1,4 +1,17 @@
-h1 {
-  color: white;
-  background-color: black;
+:root {
+  --text-color: #black;
+  --yellow: #fffad8;
+  --blue: #cae3f7;
+  --purple: #cdd0f4;
+  --standard-margin: 10px;
+  --standard-border-radius: 20%;
+}
+
+[data-theme='dark'] {
+  --text-color: #white;
+  --yellow: #e2b628;
+  --blue: #5b96c2;
+  --purple: #b47ead;
+  --standard-margin: 10px;
+  --standard-border-radius: 20%;
 }

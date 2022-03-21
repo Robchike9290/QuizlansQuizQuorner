@@ -11,6 +11,7 @@ const db = getFirestore(app);
 const usersCol = collection(db, 'users');
 const snapshot = await getDocts(usersCol);
 
+
 // Detect user login
 onAuthStateChanged(auth, user => {
   if (user !== null) {
