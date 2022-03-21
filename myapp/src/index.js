@@ -3,22 +3,24 @@ import ReactDOM from "react-dom";
 import App from "./app.jsx";
 import "./styles.css";
 // Firebase imports
-import { initializeApp } from "firebase/app";
+// import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {
   getAuth,
   onAuthStateChanged,
   connectAuthEmulator,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut, createUserWithEmailAndPassword
 } from "firebase/auth";
+import { auth } from "./firebase.js"
 import { getFirestore } from "firebase/firestore";
 import firebaseConfig from "../config.js";
 
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
-const auth = getAuth(app);
+// const auth = getAuth(app);
 // connectAuthEmulator(auth, "http://localhost:8080")
 
 // const loginEmailPassword = async () => {

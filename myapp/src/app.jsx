@@ -7,11 +7,13 @@ import CreateQuiz from './components/CreateQuiz.jsx'
 import LandingPage from './components/LandingPage.jsx'
 import TakeQuiz from './components/TakeQuiz.jsx'
 import User from './components/User.jsx'
+import UserAuthentication from '../src/components/UserAuthentication.jsx'
 
 class App extends React.Component {
   render() {
     const { name } = this.props;
     return (
+
       <Router>
         <div>
           <div>NavBar</div>
