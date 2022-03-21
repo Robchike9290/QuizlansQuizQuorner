@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const LandingPage = () => {
+
+  const handleLogin = () => {
+    console.log('login button clicked!');
+  }
+
   return (
   <div>
     <div id="headline">
@@ -71,7 +77,7 @@ const LandingPage = () => {
       <h3>Step Two: Start Taking Quizzes!</h3>
     </div>
     <div id="signup">
-      <button>Sign Up Now!</button>
+      <button onClick={handleLogin}>Sign Up Now!</button>
     </div>
   </div>
   );
