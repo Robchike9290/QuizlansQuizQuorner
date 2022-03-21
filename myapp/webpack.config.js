@@ -35,23 +35,12 @@ const config = {
       },
     ],
   },
-<<<<<<< HEAD
-  // devServer: {
-  //   'static': {
-  //     directory: './dist'
-  //   }
-  // },
-  plugins: [
-    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)
-  ]
-=======
   devServer: {
     static: {
       directory: './dist',
     },
   },
   plugins: [new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)],
->>>>>>> 43c73484ffff7239ea82794d334f7398a4589a18
 };
 
 module.exports = config;
