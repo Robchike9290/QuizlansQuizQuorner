@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import QuizFeed from './subcomponents/QuizFeed.jsx'
-import FriendsList from './subcomponents/FriendsList.jsx'
-import PopularQuizzes from './subcomponents/PopularQuizzes.jsx'
+import QuizFeed from './homeComponents/QuizFeed.jsx'
+import FriendsList from './homeComponents/FriendsList.jsx'
+import PopularQuizzes from './homeComponents/PopularQuizzes.jsx'
+import UserBox from './homeComponents/UserBox.jsx'
 //import subcomponents
 // import hiKatie from Jenny:D
 // import ily <3 from all of my heart;
@@ -21,9 +22,13 @@ const HomeLayout = styled.div`
 const Home = () => {
   return (
     <HomeLayout>
-      <FriendsList />
+      <div>
+        <UserBox />
+        <FriendsList />
+      </div>
       <QuizFeed />
       <PopularQuizzes />
+      {/*<FilterByCategory {if we have time} />*/}
     </HomeLayout>
   );
 };
