@@ -5,9 +5,9 @@ const LandingPage = () => {
   return (
   <div>
     <div id="headline">
-      <p>
+      <h2>
         The #1 place for all of your quiz needs.  Choose between pre-built quiz or a custom quiz.  Choose to go solo or challenge your friends.  Definitely the best way to improve your happy hour trivia odds.
-      </p>
+      </h2>
     </div>
     <div id="rhetoricalIntro1">
       <span>
@@ -62,6 +62,16 @@ const LandingPage = () => {
           </p>
         </div>
       </span>
+    </div>
+    <div id="getStartedHeading">
+      <h2>How to Get Started</h2>
+    </div>
+    <div id="getStartedInfo">
+      <h3>Step One: Sign Up for an Account</h3>
+      <h3>Step Two: Start Taking Quizzes!</h3>
+    </div>
+    <div id="signup">
+      <button>Sign Up Now!</button>
     </div>
   </div>
   );
