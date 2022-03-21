@@ -8,6 +8,7 @@ node_modules/
 package-lock.json
 firebaseNotes.todo
 config.js
+mytasks.todo
 
 # OS generated files
 .DS_Store

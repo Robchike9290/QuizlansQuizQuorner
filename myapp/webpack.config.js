@@ -41,11 +41,11 @@ const config = {
       }
     ]
   },
-  devServer: {
-    'static': {
-      directory: './dist'
-    }
-  },
+  // devServer: {
+  //   'static': {
+  //     directory: './dist'
+  //   }
+  // },
   plugins: [
     new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)
   ]
