@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const LandingPage = () => {
-
-  const handleLogin = () => {
-    console.log('login button clicked!');
-  }
-
   return (
   <FirstNesting>
     <SecondNesting id="headline">
@@ -80,7 +75,9 @@ const LandingPage = () => {
     <StyledH2 id="getStartedHeading">How to Get Started</StyledH2>
     <StyledH3 id="getStartedInfo1">Step One: Sign Up for an Account</StyledH3>
     <StyledH3 id="getStartedInfo">Step Two: Start Taking Quizzes!</StyledH3>
-    <StyledButton id="signup" onClick={handleLogin}>Sign Up Now!</StyledButton>
+    <Link to="/login">
+      <StyledButton id="signup">Sign Up Now!</StyledButton>
+    </Link>
   </FirstNesting>
   );
 };
