@@ -410,5 +410,263 @@ let exampleQuizzes =
       reportedTimes: 0,
       createdBy: 'SteveTheQwizard',
       aggregateScore: 375
+    },
+    {
+      quizId: 5,
+      quizName: 'Animal quiz one',
+      quizQuestions: [
+        {
+          question: "What was the name of the Ethiopian Wolf before they knew it was related to wolves?",
+          correctAnswer: "Simien Jackel",
+          incorrectAnswers: ["Ethiopian Coyote",
+          "Amharic Fox",
+          "Canis Simiensis"]
+        },
+        {
+          question: "A carnivorous animal eats flesh, what does a nucivorous animal eat?",
+          correctAnswer: "Nuts",
+          incorrectAnswers: ["Nothing",
+          "Fruit",
+          "Seaweed"]
+        },
+        {
+          question: "What is the fastest land animal?",
+          correctAnswer: "Cheetah",
+          incorrectAnswers: ["Lion",
+          "Thomson&rsquo;s Gazelle",
+          "Pronghorn Antelope"]
+        },
+        {
+          question: "What is the scientific name for modern day humans?",
+          correctAnswer: "Homo Sapiens",
+          incorrectAnswers: ["Homo Ergaster",
+          "Homo Erectus",
+          "Homo Neanderthalensis"]
+        },
+        {
+          question: "The Kākāpō is a large, flightless, nocturnal parrot native to which country?",
+          correctAnswer: "New Zealand",
+          incorrectAnswers: ["South Africa",
+          "Australia",
+          "Madagascar"]
+        },
+        {
+          question: "Hippocampus is the Latin name for which marine creature?",
+          correctAnswer: "Seahorse",
+          incorrectAnswers: ["Dolphin",
+          "Whale",
+          "Octopus"]
+        },
+        {
+          question: "Cashmere is the wool from which kind of animal?",
+          correctAnswer: "Goat",
+          incorrectAnswers: ["Sheep",
+          "Camel",
+          "Llama"]
+        },
+        {
+          question: "What scientific suborder does the family Hyaenidae belong to?",
+          correctAnswer: "Feliformia",
+          incorrectAnswers: ["Haplorhini",
+          "Caniformia",
+          "Ciconiiformes"]
+        },
+        {
+          question: "What is the scientific name of the cheetah?",
+          correctAnswer: "Acinonyx jubatus",
+          incorrectAnswers: ["Panthera onca",
+          "Lynx rufus",
+          "Felis catus"]
+        },
+        {
+          question: "What is the scientific name of the Budgerigar?",
+          correctAnswer: "Melopsittacus undulatus",
+          incorrectAnswers: ["Nymphicus hollandicus",
+          "Pyrrhura molinae",
+          "Ara macao"]
+        }
+      ],
+      timesTaken: 19,
+      category: 'Animals',
+      quizDescription: 'Animal quiz number 1',
+      quizBanner: 'photo url',
+      quizUpvotes: 12,
+      quizDownvotes: 4,
+      reported: false,
+      reportedTimes: 0,
+      createdBy: 'LizTheQuizWiz',
+      aggregateScore: 130
+    },
+    {
+      quizId: 6,
+      quizName: 'Animal quiz number two',
+      quizQuestions: [
+        {
+          question: "Which of these animals is NOT a lizard?",
+          correctAnswer: "Tuatara",
+          incorrectAnswers: ["Komodo Dragon",
+          "Gila Monster",
+          "Green Iguana"]
+        },
+        {
+          question: "Unlike on most salamanders, this part of a newt is flat?",
+          correctAnswer: "Tail",
+          incorrectAnswers: ["Head",
+          "Teeth",
+          "Feet"]
+        },
+        {
+          question: "What is the name of the family that the domestic cat is a member of?",
+          correctAnswer: "Felidae",
+          incorrectAnswers: ["Felinae",
+          "Felis",
+          "Cat"]
+        },
+        {
+          question: "What dog bread is one of the oldest breeds of dog and has flourished since before 400 BCE.",
+          correctAnswer: "Pugs",
+          incorrectAnswers: ["Bulldogs",
+          "Boxers",
+          "Chihuahua"]
+        },
+        {
+          question: "What is the name of the copper-rich protein that creates the blue blood in the Antarctic octopus?",
+          correctAnswer: "Hemocyanin",
+          incorrectAnswers: ["Cytochrome",
+          "Iron",
+          "Methionine"]
+        },
+        {
+          question: "The dish Fugu, is made from what family of fish?",
+          correctAnswer: "Pufferfish",
+          incorrectAnswers: ["Bass",
+          "Salmon",
+          "Mackerel"]
+        },
+        {
+          question: "What is the collective noun for a group of crows?",
+          correctAnswer: "Murder",
+          incorrectAnswers: ["Pack",
+          "Gaggle",
+          "Herd"]
+        },
+        {
+          question: "What is the scientific name of the Common Chimpanzee?",
+          correctAnswer: "Pan troglodytes",
+          incorrectAnswers: ["Gorilla gorilla",
+          "Pan paniscus",
+          "Panthera leo"]
+        },
+        {
+          question: "Which of these is a colony of polyps and not a jellyfish?",
+          correctAnswer: "Portuguese Man-of-War",
+          incorrectAnswers: ["Sea Wasp",
+          "Irukandji",
+          "Sea Nettle"]
+        },
+        {
+          question: "What colour is the female blackbird?",
+          correctAnswer: "Brown",
+          incorrectAnswers: ["Black",
+          "White",
+          "Yellow"]
+        }
+      ],
+      timesTaken: 3,
+      category: 'Animals',
+      quizDescription: 'Animal quiz number 2',
+      quizBanner: 'photo url',
+      quizUpvotes: 0,
+      quizDownvotes: 3,
+      reported: true,
+      reportedTimes: 3,
+      createdBy: 'ZeroOutOfTen',
+      aggregateScore: 15
+    },
+    {
+      quizId: 7,
+      quizName: 'Animal Quiz Number 3',
+      quizQuestions: [
+        {
+          question: "To which biological phylum do all mammals, birds and reptiles belong?",
+          correctAnswer: "Chordata",
+          incorrectAnswers: ["Echinodermata",
+          "Annelida",
+          "Placazoa]
+        },
+        {
+          question: "What bird is born with claws on its wing digits?",
+          correctAnswer: "Hoatzin",
+          incorrectAnswers: ["Cormorant",
+          "Cassowary",
+          "Secretary bird"]
+        },
+        {
+          question: "What is the collective noun for rats?",
+          correctAnswer: "Mischief",
+          incorrectAnswers: ["Pack",
+          "Race",
+          "Drift"]
+        },
+        {
+          question: "What is the collective noun for bears?",
+          correctAnswer: "Sloth",
+          incorrectAnswers: ["Drove",
+          "Tribe",
+          "Husk"]
+        },
+        {
+          question: "What is the name for a male bee that comes from an unfertilized egg?",
+          correctAnswer: "Drone",
+          incorrectAnswers: ["Soldier",
+          "Worker",
+          "Male"]
+        },
+        {
+          question: "How many teeth does an adult rabbit have?",
+          correctAnswer: "28",
+          incorrectAnswers: ["30",
+          "26",
+          "24"]
+        },
+        {
+          question: "What is the common term for bovine spongiform encephalopathy (BSE)?",
+          correctAnswer: "Mad Cow disease",
+          incorrectAnswers: ["Weils disease",
+          "Milk fever",
+          "Foot-and-mouth disease"]
+        },
+        {
+          question: "What is the worlds longest venomous snake?",
+          correctAnswer: "King Cobra",
+          incorrectAnswers: ["Green Anaconda",
+          "Inland Taipan",
+          "Yellow Bellied Sea Snake"]
+        },
+        {
+          question: "To which biological phylum do all mammals, birds and reptiles belong?",
+          correctAnswer: "Chordata",
+          incorrectAnswers: ["Echinodermata",
+          "Annelida",
+          "Placazoa"]
+        },
+        {
+          question: "Decapods are an order of ten-footed crustaceans.  Which of these are NOT decapods?",
+          correctAnswer: "Krill",
+          incorrectAnswers: ["Lobsters",
+          "Shrimp",
+          "Crabs"]
+        }
+      ],
+      timesTaken: 17,
+      category: 'Animals',
+      quizDescription: 'Animal quiz number 3',
+      quizBanner: 'photo url',
+      quizUpvotes: 16,
+      quizDownvotes: 0,
+      reported: false,
+      reportedTimes: 0,
+      createdBy: 'KenJennings',
+      aggregateScore: 136
     }
   ];
