@@ -9,78 +9,92 @@ const LandingPage = () => {
   }
 
   return (
-  <div>
-    <div id="headline">
+  <FirstNesting>
+    <SecondNesting id="headline">
       <h2>
         The #1 place for all of your quiz needs.  Choose between pre-built quiz or a custom quiz.  Choose to go solo or challenge your friends.  Definitely the best way to improve your happy hour trivia odds.
       </h2>
-    </div>
-    <div id="rhetoricalIntro1">
-      <span>
+    </SecondNesting>
+    <div id="intro1">
+      <SecondNesting>
         <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
-      </span>
+      </SecondNesting>
       <span>
-        <p>
+        <SecondNesting>
           Create a quiz to study for your next midterm exam
-        </p>
+        </SecondNesting>
       </span>
     </div>
-    <div id="rhetoricalIntro2">
+    <div id="intro2">
       <span>
-        <p>
+        <SecondNesting>
           Take a pre-built quiz to sharpen your skills.
-        </p>
+        </SecondNesting>
       </span>
-      <span>
+      <SecondNesting>
         <img alt="Take quiz page screenshot *INSERT TAKE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
-      </span>
+      </SecondNesting>
     </div>
     <div id="rhetoricalIntro3">
-      <span>
+      <SecondNesting>
         <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE. OR...REPLACE WITH ANOTHER FUNCTION?*"></img>
-        <p>
+      </SecondNesting>
+      <span>
+        <SecondNesting>
           Create a quiz to challenge your friends to see how well they know you.
-        </p>
+        </SecondNesting>
       </span>
     </div>
     <div id="testimonials">
       <span>
         <div>
-          <img alt="Testimonial stock photo #1"></img>
-          <p>
+          <img alt="Testimonial stock photo #1" src=".././images/testimonialPhoto1.png"></img>
+          <SecondNesting>
             "Steve Quizlan changed my life!"
-          </p>
+          </SecondNesting>
         </div>
       </span>
       <span>
         <div>
-          <img alt="Testimonial stock photo #2"></img>
-          <p>
+          <img alt="Testimonial stock photo #2" src=".././images/testimonialPhoto2.png"></img>
+          <SecondNesting>
             "I never knew taking quizzes could be so fun!"
-          </p>
+          </SecondNesting>
         </div>
       </span>
       <span>
         <div>
-          <img alt="Testimonial stock photo #3"></img>
-          <p>
+          <img alt="Testimonial stock photo #3" src="src/images/testimonialPhoto3.png"></img>
+          <SecondNesting>
             "After two weeks my quiz scores went from 55% to 85%.  Thanks, Steve!"
-          </p>
+          </SecondNesting>
         </div>
       </span>
     </div>
-    <div id="getStartedHeading">
+    <SecondNesting id="getStartedHeading">
       <h2>How to Get Started</h2>
-    </div>
+    </SecondNesting>
     <div id="getStartedInfo">
-      <h3>Step One: Sign Up for an Account</h3>
-      <h3>Step Two: Start Taking Quizzes!</h3>
+      <SecondNesting>
+        <h3>Step One: Sign Up for an Account</h3>
+      </SecondNesting>
+      <SecondNesting>
+        <h3>Step Two: Start Taking Quizzes!</h3>
+      </SecondNesting>
     </div>
-    <div id="signup">
+    <SecondNesting id="signup">
       <button onClick={handleLogin}>Sign Up Now!</button>
-    </div>
-  </div>
+    </SecondNesting>
+  </FirstNesting>
   );
 };
+
+const FirstNesting = styled.div`
+  background-color: var(--yellow);
+`
+
+const SecondNesting = styled.div`
+  background-color: var(--blue);
+`
 
 export default LandingPage;
