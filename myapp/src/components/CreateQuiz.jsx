@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 
-const CreateQuiz =( ) => {
-  return (
-    <div>Helloooo</div>
-  )
-}
+const CreateQuiz = () => {
+  return <div>5</div>;
+};
 
-export default CreateQuiz
+export default CreateQuiz;

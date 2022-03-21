@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./app.jsx";
-import "./styles.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './app.jsx';
+import './styles.css';
 // Firebase imports
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
 import {
   getAuth,
   onAuthStateChanged,
@@ -185,7 +185,7 @@ const retrieveDoc = getDoc(doc(db, "quiz", "quizData"))
 
 
 // Detect user login
-onAuthStateChanged(auth, user => {
+onAuthStateChanged(auth, (user) => {
   if (user !== null) {
     console.log('Logged in!');
   } else {
@@ -193,5 +193,5 @@ onAuthStateChanged(auth, user => {
   }
 });
 
-var mountNode = document.getElementById("app");
-ReactDOM.render(<App name="Jane" />, mountNode);
+var mountNode = document.getElementById('app');
+ReactDOM.render(<App name='Jane' />, mountNode);
