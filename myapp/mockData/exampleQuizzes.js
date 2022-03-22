@@ -6,51 +6,6 @@ const exampleQuizTemplate = {
       question: "",
       correctAnswer: "",
       incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
     }
   ],
   timesTaken: 12,
@@ -671,6 +626,10 @@ let exampleQuizzes =
     }
   ];
 
+<<<<<<< HEAD
   module.exports ={
     exampleQuizzes: exampleQuizzes
   }
+=======
+  export default exampleQuizzes;
+>>>>>>> d5447371c83acd60a47c33e740dc0ebadcc0c23e
