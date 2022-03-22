@@ -85,8 +85,19 @@ const removeQuiz = (quizId) => {
   console.log('removeQuiz db method');
 }
 
-const getQuizzes = () => {
+//what are we searching by? user/category. one has to be null
+const getQuizzes = (createdBy, category) => {
+  if (createdBy) {
+    Quiz.find({ "createdBy": createdBy})
+  }
+  if (category) {
+    Quiz.find({ "category": category})
+  }
+  console.log('getQuizzes db method');
+}
 
+const getQuiz = (quizId) => {
+  Quiz.find({ "quizId": quizId})
   console.log('getQuizzes db method');
 }
 
@@ -110,9 +121,9 @@ const removeFriend = (userId, friendID) => {
   console.log('removeFriend db method');
 }
 
-const search = () => {
-  console.log('search db method');
-}
+// const search = () => {
+//   console.log('search db method');
+// }
 
 
 module.exports = {
@@ -121,11 +132,11 @@ module.exports = {
   reportQuiz: reportQuiz,
   removeQuiz: removeQuiz,
   getQuizzes: getQuizzes,
+  getQuiz: getQuiz,
   addQuiz: addQuiz,
   getUser: getUser,
   addFriend: addFriend,
-  removeFriend: removeFriend,
-  search: search
+  removeFriend: removeFriend
 };
 
 // TODO:
