@@ -10,6 +10,7 @@ import User from './components/User.jsx';
 import Login from './components/Login.jsx';
 import { app, auth } from "./index.js";
 import axios from "axios";
+import logo from "./images/QuestionMarkQarl - NoTitle.png";
 import styled from 'styled-components';
 
 const App = () => {
@@ -56,6 +57,9 @@ const App = () => {
       {docData ? <div></div> : null}
       <div>
         <NavBar>
+          <NavBarLogo alt="Page logo" src={logo}>
+          </NavBarLogo>
+          <NavBarTitle>Quizlan's Quiz Quorner</NavBarTitle>
           <NavBarHeading>
             <Link to='/'>Landing Page</Link>
           </NavBarHeading>
@@ -110,6 +114,23 @@ const App = () => {
 
 export default hot(App);
 
+const NavBarTitle = styled.span`{
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
+  font-family: arial;
+}`
+
+const NavBarLogo = styled.img`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
+`
+
 const NavBarHeading = styled.span`
   background-color: var(--blue);
   text-color: var(--text-color);
@@ -126,7 +147,7 @@ const NavBarForm = styled.form`
   padding: var(--standard-padding);
 `
 
-const NavBar = styled.div`
+const NavBar = styled.span`
   background-color: var(--yellow);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
