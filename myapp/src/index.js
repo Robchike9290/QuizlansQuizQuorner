@@ -13,11 +13,12 @@ import {
 } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import firebaseConfig from '../config.js';
+import { auth } from '../config.js';
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
-const auth = getAuth(app);
+// const auth = getAuth(app);
 // connectAuthEmulator(auth, "http://localhost:8080")
 
 // const loginEmailPassword = async () => {
