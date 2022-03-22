@@ -103,8 +103,8 @@ const removeFriend = (userId, friendID) => {
   return User.updateOne({ "userId": userId}, {$pull: {friends: friendID}})
 }
 
-const newQuizHistory = (userId, userScores) => {
-  return User.updateOne({ "userId": userId}, {$push: {userScores: userScores}})
+const newQuizHistory = (userId, quizHistory) => {
+  return User.updateOne({ "userId": userId}, {$push: {quizHistory: quizHistory}})
 }
 
 const takenQuizAgain = (userId) => {
