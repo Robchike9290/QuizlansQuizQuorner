@@ -1,3 +1,25 @@
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const usersCol = collection(db, 'users');
+const snapshot = await getDocts(usersCol);
+
+
+// Detect user login
+onAuthStateChanged(auth, user => {
+  if (user !== null) {
+    console.log('Logged in!');
+  } else {
+    console.log('User not found.');
+  }
+});
 // import {
 //   getFirestore,
 //   collection,
@@ -45,18 +67,7 @@
 
 
 
-// for (let i = 0; i < exampleQuizzes.length; i++) {
-//   const quiz = exampleQuizzes[i];
-//   // const quizName = quiz.quizName.split(" ").join("");
-//   // function camelize(str) {
-//   //   return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
-//   //     return index === 0 ? word.toLowerCase() : word.toUpperCase();
-//   //   }).replace(/\s+/g, '');
-//   // }
-//   // const quizName = camelize(quiz.quizName);
-//   const id = String(quiz.quizId);
-//   setDoc(doc(db, "quiz", id), quiz);
-// }
+
 
 // setDoc(doc(db, "quiz", "testDoc3"), {"quizUpvotes": "0"})
 

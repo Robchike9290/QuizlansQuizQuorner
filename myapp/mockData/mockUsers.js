@@ -20,11 +20,13 @@ const mockUserList = [
     quizHistory: [
       {
         quizId: 1,
+        quizName: "General One",
         timesUserHasTaken: 2,
         userScores: [60, 80]
       },
       {
         quizId: 2,
+        quizName: "General Two",
         timesUserHasTaken: 2,
         userScores: [70, 80]
       }
@@ -38,36 +40,43 @@ const mockUserList = [
     quizHistory: [
       {
         quizId: 1,
+        quizName: "General One",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 2,
+        quizName: "General Two",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 3,
+        quizName: "Science and Nature quiz one",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 4,
+        quizName: "Science and Nature quiz two",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 5,
+        quizName: "Animal quiz one",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 6,
+        quizName: "Animal quiz number two",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 7,
+        quizName: "Animal Quiz Number 3",
         timesUserHasTaken: 1,
         userScores: [100]
       }
@@ -81,21 +90,25 @@ const mockUserList = [
     quizHistory: [
       {
         quizId: 1,
+        quizName: "General One",
         timesUserHasTaken: 3,
         userScores: [80, 90, 100]
       },
       {
         quizId: 2,
+        quizName: "General Two",
         timesUserHasTaken: 2,
         userScores: [90, 100]
       },
       {
         quizId: 3,
+        quizName: "Science and Nature quiz one",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 4,
+        quizName: "Science and Nature quiz two",
         timesUserHasTaken: 3,
         userScores: [80, 90, 100]
       }
@@ -109,16 +122,19 @@ const mockUserList = [
     quizHistory: [
       {
         quizId: 1,
+        quizName: "General One",
         timesUserHasTaken: 1,
         userScores: [0]
       },
       {
         quizId: 2,
+        quizName: "General Two",
         timesUserHasTaken: 1,
         userScores: [0]
       },
       {
         quizId: 3,
+        quizName: "Science and Nature quiz one",
         timesUserHasTaken: 1,
         userScores: [0]
       }
@@ -132,36 +148,43 @@ const mockUserList = [
     quizHistory: [
       {
         quizId: 1,
+        quizName: "General One",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 2,
+        quizName: "General Two",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 3,
+        quizName: "Science and Nature quiz one",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 4,
+        quizName: "Science and Nature quiz two",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 5,
+        quizName: "Animal quiz one",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 6,
+        quizName: "Animal quiz number two",
         timesUserHasTaken: 1,
         userScores: [100]
       },
       {
         quizId: 7,
+        quizName: "Animal Quiz Number 3",
         timesUserHasTaken: 1,
         userScores: [100]
       }

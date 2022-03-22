@@ -23,8 +23,13 @@ app.use((req, res, next) => {
 
 app.get('/quizzes', (req, res) => {
   console.log('Hello from the server!')
+<<<<<<< HEAD
   getQuizzes()
     .then((results) => {
+=======
+  getQuizzes(req.body.createdBy, req.body.category)
+    // .then((results) => {
+>>>>>>> dev
       res.status(200).send('Server response!');
     })
     .catch((err) => {
@@ -33,7 +38,7 @@ app.get('/quizzes', (req, res) => {
 })
 
 app.post('/upvote', (req, res) => {
-  upVote()
+  upVote(req.body.quizId)
     .then((results) => {
       res.status(201).send("upvoted!");
     })
@@ -43,7 +48,7 @@ app.post('/upvote', (req, res) => {
 })
 
 app.post('/downvote', (req, res) => {
-  downVote()
+  downVote(req.body.quizId)
     .then((results) => {
       res.status(201).send("downvoted!");
     })
@@ -53,7 +58,7 @@ app.post('/downvote', (req, res) => {
 })
 
 app.post('/reportQuiz', (req, res) => {
-  reportQuiz()
+  reportQuiz(req.body.quizId)
     .then((results) => {
       res.status(201).send("reported!");
     })
@@ -63,7 +68,7 @@ app.post('/reportQuiz', (req, res) => {
 })
 
 app.post('/removeQuiz', (req, res) => {
-  removeQuiz()
+  removeQuiz(req.body.quizId)
     .then((results) => {
       res.status(201).send("removed!");
     })
@@ -73,7 +78,7 @@ app.post('/removeQuiz', (req, res) => {
 })
 
 app.post('/addQuiz', (req, res) => {
-  addQuiz()
+  addQuiz(req.body.newQuiz)
     .then((results) => {
       res.status(201).send("quiz added!");
     })
@@ -83,7 +88,7 @@ app.post('/addQuiz', (req, res) => {
 })
 
 app.get('/user', (req, res) => {
-  getUser()
+  getUser(req.body.userId)
     .then((results) => {
       res.status(200).send(results);
     })
@@ -93,7 +98,7 @@ app.get('/user', (req, res) => {
 })
 
 app.post('/addFriend', (req, res) => {
-  addFriend()
+  addFriend(req.body.userId, req.body.friendID)
     .then((results) => {
       res.status(201).send("Friend added!");
     })
@@ -103,7 +108,7 @@ app.post('/addFriend', (req, res) => {
 })
 
 app.post('/removeFriend', (req, res) => {
-  removeFriend()
+  removeFriend(req.body.userId, req.body.friendID)
     .then((results) => {
       res.status(201).send("Friend removed!");
     })
