@@ -179,8 +179,6 @@
 // const docRef = db.collection("quiz").doc(quizName);
 // const increment = firebase.firestore.FieldValue.increment(1);
 
-// docRef.update({ quizUpvotes: increment });
-
 // getDoc(doc(db, "quiz", "testDoc3"))
 //   .then((response) => {
 //     console.log(response.data().quizUpvotes);
@@ -189,3 +187,40 @@
 //   .catch((err) => {
 //     console.error(err);
 //   })
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { getFirestore } from "firebase/firestore";
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+// const auth = getAuth(app);
+// const db = getFirestore(app);
+// const usersCol = collection(db, 'users');
+// const snapshot = await getDocts(usersCol);
+
+// // Detect user login
+// onAuthStateChanged(auth, user => {
+//   if (user !== null) {
+//     console.log('Logged in!');
+//   } else {
+//     console.log('User not found.');
+//   }
+// });
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+// const auth = getAuth(app);
+// const db = getFirestore(app);
+// const usersCol = collection(db, 'users');
+// const snapshot = await getDocts(usersCol);
+
+// // Detect user login
+// onAuthStateChanged(auth, user => {
+//   if (user !== null) {
+//     console.log('Logged in!');
+//   } else {
+//     console.log('User not found.');
+//   }
+// });

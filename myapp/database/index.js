@@ -110,9 +110,9 @@ const removeFriend = (userId, friendID) => {
   console.log('removeFriend db method');
 }
 
-const search = () => {
-  console.log('search db method');
-}
+// const search = () => {
+//   console.log('search db method');
+// }
 
 
 module.exports = {
@@ -124,8 +124,7 @@ module.exports = {
   addQuiz: addQuiz,
   getUser: getUser,
   addFriend: addFriend,
-  removeFriend: removeFriend,
-  search: search
+  removeFriend: removeFriend
 };
 
 // TODO:
