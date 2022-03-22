@@ -14,7 +14,7 @@ const LandingPage = () => {
     <div id="intro1">
       <InlineDuo>
         <LeftElement>
-          <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
+          <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*" src={testimonialPhoto1}></img>
         </LeftElement>
       </InlineDuo>
       <InlineDuo>
@@ -31,14 +31,14 @@ const LandingPage = () => {
       </InlineDuo>
       <InlineDuo>
         <RightElement>
-          <img alt="Take quiz page screenshot *INSERT TAKE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
+          <img alt="Take quiz page screenshot *INSERT TAKE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*" src={testimonialPhoto1}></img>
         </RightElement>
       </InlineDuo>
     </div>
     <div id="rhetoricalIntro3">
       <InlineDuo>
         <LeftElement>
-          <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE. OR...REPLACE WITH ANOTHER FUNCTION?*"></img>
+          <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE. OR...REPLACE WITH ANOTHER FUNCTION?*" src={testimonialPhoto1}></img>
         </LeftElement>
       </InlineDuo>
       <InlineDuo>
