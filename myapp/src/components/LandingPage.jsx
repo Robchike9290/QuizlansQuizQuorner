@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import testimonialPhoto1 from '../images/testimonialPhoto1.png';
+import testimonialPhoto2 from '../images/testimonialPhoto2.png';
+import testimonialPhoto3 from '../images/testimonialPhoto3.png';
 
 const LandingPage = () => {
   return (
@@ -12,44 +15,44 @@ const LandingPage = () => {
     </SecondNesting>
     <div id="intro1">
       <InlineSpan>
-        <SecondNesting>
+        <LeftElement>
           <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
-        </SecondNesting>
+        </LeftElement>
       </InlineSpan>
       <InlineSpan>
-        <SecondNesting>
+        <RightElement>
           Create a quiz to study for your next midterm exam
-        </SecondNesting>
+        </RightElement>
       </InlineSpan>
     </div>
     <div id="intro2">
       <InlineSpan>
-        <SecondNesting>
+        <LeftElement>
           Take a pre-built quiz to sharpen your skills.
-        </SecondNesting>
+        </LeftElement>
       </InlineSpan>
       <InlineSpan>
-        <SecondNesting>
+        <RightElement>
           <img alt="Take quiz page screenshot *INSERT TAKE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
-        </SecondNesting>
+        </RightElement>
       </InlineSpan>
     </div>
     <div id="rhetoricalIntro3">
       <InlineSpan>
-        <SecondNesting>
+        <LeftElement>
           <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE. OR...REPLACE WITH ANOTHER FUNCTION?*"></img>
-        </SecondNesting>
+        </LeftElement>
       </InlineSpan>
       <InlineSpan>
-        <SecondNesting>
+        <RightElement>>
           Create a quiz to challenge your friends to see how well they know you.
-        </SecondNesting>
+        </RightElement>
       </InlineSpan>
     </div>
     <div id="testimonials">
       <InlineSpan>
         <div>
-          <img alt="Testimonial stock photo #1" src=".././images/testimonialPhoto1.png"></img>
+          <img alt="Testimonial stock photo #1" src={testimonialPhoto1}></img>
           <SecondNesting>
             "Steve Quizlan changed my life!"
           </SecondNesting>
@@ -57,7 +60,7 @@ const LandingPage = () => {
       </InlineSpan>
       <InlineSpan>
         <div>
-          <img alt="Testimonial stock photo #2" src=".././images/testimonialPhoto2.png"></img>
+          <img alt="Testimonial stock photo #2" src={testimonialPhoto2}></img>
           <SecondNesting>
             "I never knew taking quizzes could be so fun!"
           </SecondNesting>
@@ -65,7 +68,7 @@ const LandingPage = () => {
       </InlineSpan>
       <InlineSpan>
         <div>
-          <img alt="Testimonial stock photo #3" src="src/images/testimonialPhoto3.png"></img>
+          <img alt="Testimonial stock photo #3" src={testimonialPhoto3}></img>
           <SecondNesting>
             "After two weeks my quiz scores went from 55% to 85%.  Thanks, Steve!"
           </SecondNesting>
@@ -83,11 +86,16 @@ const LandingPage = () => {
 };
 
 const FirstNesting = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
   background-color: var(--yellow);
   text-color: var(--text-color);
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
-  standard-shadow: var(--standard-shadow);
+  box-shadow: var(--standard-shadow);
+  width: 70%;
 `
 
 const SecondNesting = styled.div`
@@ -95,11 +103,34 @@ const SecondNesting = styled.div`
   text-color: var(--text-color);
   margin: var: var(--standard-margin);
   border-radius: var(--standard-border-radius);
-  standard-shadow: var(--standard-shadow);
+  box-shadow: var(--standard-shadow);
+  text-align: center;
+`
+
+const LeftElement = styled.div`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  margin: var: var(--standard-margin);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  text-align: left;
+  justify-content: flex-start;
+`
+
+const RightElement = styled.div`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  margin: var: var(--standard-margin);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  text-align: right;
+  justify-content: flex-end;
 `
 
 const InlineSpan = styled.span`
   display: inline-block;
+  width: 33%;
+  justinfy-content: space-between;
 `
 
 const StyledButton = styled.button`
@@ -107,14 +138,14 @@ const StyledButton = styled.button`
   text-color: var(--text-color);
   margin: var: var(--standard-margin);
   border-radius: var(--standard-border-radius);
-  standard-shadow: var(--standard-shadow);
+  box-shadow: var(--standard-shadow);
 `
 const StyledH1 = styled.h1`
   background-color: var(--blue);
   text-color: var(--text-color);
   margin: var: var(--standard-margin);
   border-radius: var(--standard-border-radius);
-  standard-shadow: var(--standard-shadow);
+  box-shadow: var(--standard-shadow);
 `
 
 const StyledH2 = styled.h2`
@@ -122,7 +153,7 @@ const StyledH2 = styled.h2`
   text-color: var(--text-color);
   margin: var: var(--standard-margin);
   border-radius: var(--standard-border-radius);
-  standard-shadow: var(--standard-shadow);
+  box-shadow: var(--standard-shadow);
 `
 
 const StyledH3 = styled.h3`
@@ -130,7 +161,7 @@ const StyledH3 = styled.h3`
   text-color: var(--text-color);
   margin: var: var(--standard-margin);
   border-radius: var(--standard-border-radius);
-  standard-shadow: var(--standard-shadow);
+  box-shadow: var(--standard-shadow);
 `
 
 export default LandingPage;
