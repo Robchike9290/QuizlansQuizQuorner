@@ -20,27 +20,25 @@ const Contents = styled.div`
 const IMG = styled.img`
   height: 100%;
   width: 100%;
-  border-radius: 50%
-`
+  border-radius: 50%;
+`;
 
 const Avatar = styled.div`
-  width: 100px
-`
+  width: 100px;
+`;
 
 const UserBox = () => {
-  const [userData, setUserData] = useState(mockUserList[0])
+  const [userData, setUserData] = useState(mockUserList[0]);
 
   return (
     <Container>
       <Contents>
-      <Avatar>
-        <IMG src="https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg"/>
-      </Avatar>
+        <Avatar>
+          <IMG src='https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg' />
+        </Avatar>
         {userData.userName}
       </Contents>
-      <Contents>
-        {userData.email}
-      </Contents>
+      <Contents>{userData.email}</Contents>
     </Container>
   );
 };
