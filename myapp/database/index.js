@@ -8,7 +8,7 @@ mongoose.connect('mongodb://localhost/quizQuorner')
   });
 
 const quizSchema = mongoose.Schema({
-  quizId: { type: Number, required: true, index: { unique: true }}, // our end - auto increment??
+  quizId: Number, // our end - auto increment??
   quizName: { type: String, required: true }, // user - user genenrated
   quizQuestions: [
     {
@@ -31,7 +31,7 @@ const quizSchema = mongoose.Schema({
 
 
 const userSchema = mongoose.Schema({
-  userId: { type: Number, required: true, index: { unique: true }}, // our end - auto increment??
+  userId: Number, // our end - auto increment??
   userName: { type: String, required: true, index: { unique: true }}, // user - based on userName
   email: { type: String, required: true, index: { unique: true }}, // user - based on email
   quizHistory: [
@@ -103,6 +103,22 @@ const removeFriend = (userId, friendID) => {
   return User.updateOne({ "userId": userId}, {$pull: {friends: friendID}})
 }
 
+const newQuizHistory = (userId, userScores) => {
+  return User.updateOne({ "userId": userId}, {$push: {userScores: userScores}})
+}
+
+const takenQuizAgain = (userId) => {
+  return User.updateOne({ "userId": userId}, {$inc: {"quizHistory.timesUserHasTaken": 1}})
+}
+
+const newQuizScore = (userId, userScore) => {
+  return User.updateOne({ "userId": userId}, {$push: {"quizHistory.userScores": userScore}})
+}
+
+const getAllQuizzes = () => {
+  return Quiz.find({})
+}
+
 module.exports = {
   upVote: upVote,
   downVote: downVote,
@@ -112,8 +128,13 @@ module.exports = {
   getQuiz: getQuiz,
   addQuiz: addQuiz,
   getUser: getUser,
+  addUser: addUser,
   addFriend: addFriend,
-  removeFriend: removeFriend
+  removeFriend: removeFriend,
+  newQuizHistory: newQuizHistory,
+  takenQuizAgain: takenQuizAgain,
+  newQuizScore: newQuizScore,
+  getAllQuizzes: getAllQuizzes
 };
 
 // TODO:
