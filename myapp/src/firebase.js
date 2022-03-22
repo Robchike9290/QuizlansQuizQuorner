@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // import {
 //   getFirestore,
 //   collection,
@@ -246,7 +245,6 @@
     //   .catch((err) => {
     //     console.error(err);
     //   })
-=======
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -285,4 +283,3 @@ onAuthStateChanged(auth, user => {
 //     console.log('User not found.');
 //   }
 // });
->>>>>>> dev
