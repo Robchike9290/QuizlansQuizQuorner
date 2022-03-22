@@ -11,6 +11,8 @@ import Login from './components/Login.jsx';
 import { app, auth } from './index.js';
 import axios from 'axios';
 
+const url = 'http://52.90.8.77:4444/';
+
 const App = () => {
   const [docData, setDocData] = useState(null);
 
@@ -19,23 +21,25 @@ const App = () => {
   }, []);
 
   const getData = () => {
-    axios.get('http://localhost:4444/quizzes')
+    axios
+      .get(`${url}/quizzes`)
       .then((response) => {
         console.log('Here are your quizzes: ', response.data);
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const report = () => {
-    axios.post('http://localhost:4444/reportQuiz')
+    axios
+      .post(`${url}/reportQuiz`)
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const upvote = () => {
@@ -49,73 +53,71 @@ const App = () => {
       });
   };
 
-<<<<<<< HEAD
-  const downvote = () => {};
-
-  const addQuiz = () => {};
-
-  const search = () => {};
-=======
   const downvote = () => {
-    axios.post('http://localhost:4444/downvote')
+    axios
+      .post('http://localhost:4444/downvote')
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const addQuiz = () => {
-    axios.post('http://localhost:4444/addQuiz')
+    axios
+      .post('http://localhost:4444/addQuiz')
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const removeQuiz = () => {
-    axios.post('http://localhost:4444/removeQuiz')
+    axios
+      .post('http://localhost:4444/removeQuiz')
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const getUser = () => {
-    axios.get('http://localhost:4444/user')
+    axios
+      .get('http://localhost:4444/user')
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const addFriend = () => {
-    axios.post('http://localhost:4444/addFriend')
+    axios
+      .post('http://localhost:4444/addFriend')
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const removeFriend = () => {
-    axios.post('http://localhost:4444/removeFriend')
+    axios
+      .post('http://localhost:4444/removeFriend')
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
->>>>>>> dev
 
   return (
     <Router>
