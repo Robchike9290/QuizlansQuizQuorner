@@ -1,19 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import {
   getAuth,
   onAuthStateChanged,
   connectAuthEmulator,
   signInWithEmailAndPassword,
-  signOut, createUserWithEmailAndPassword
-} from "firebase/auth";
-import { auth } from "../../config.js"
-import { getFirestore } from "firebase/firestore";
-import firebaseConfig from "../../config.js";
+  signOut,
+  createUserWithEmailAndPassword,
+} from 'firebase/auth';
+import { auth } from '../index.js';
+import { getFirestore } from 'firebase/firestore';
+import firebaseConfig from '../../config.js';
 
 const Login = () => {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
   const [currentUser, setCurrentUser] = useState({});
 
   onAuthStateChanged(auth, (loggedInUser) => {
@@ -21,7 +22,6 @@ const Login = () => {
   });
 
   const createEmailHandler = (event) => {
-
     setRegisterEmail(event.target.value);
   };
 
@@ -29,25 +29,32 @@ const Login = () => {
     setRegisterPassword(event.target.value);
   };
 
-
   const registerUser = () => {
-    const user = createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
-    .then((user) => {
-      console.log(user);
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
+    const user = createUserWithEmailAndPassword(
+      auth,
+      registerEmail,
+      registerPassword
+    )
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   const LoginUser = () => {
-    const user = signInWithEmailAndPassword(auth, registerEmail, registerPassword)
-    .then((user) => {
-      console.log(user);
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
+    const user = signInWithEmailAndPassword(
+      auth,
+      registerEmail,
+      registerPassword
+    )
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   // const logOut = () => {
@@ -59,9 +66,6 @@ const Login = () => {
   //     console.log(error.message);
   //   });
   // };
-
-
-
 
   return (
     <div>
@@ -79,7 +83,7 @@ const Login = () => {
         </span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Login;

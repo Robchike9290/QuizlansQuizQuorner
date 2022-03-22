@@ -10,11 +10,14 @@ import User from './components/User.jsx';
 import Login from './components/Login.jsx';
 import { app, auth } from './index.js';
 import axios from 'axios';
+import logo from './images/QuestionMarkQarl - NoTitle.png';
+import styled from 'styled-components';
 
 const url = 'http://52.90.8.77:4444/';
 
 const App = () => {
   const [docData, setDocData] = useState(null);
+  const isOnLandingPage = window.location.pathname == '/landingpage';
 
   useEffect(() => {
     getData();
@@ -86,6 +89,11 @@ const App = () => {
       });
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log('search button clicked');
+  };
+
   const getUser = () => {
     axios
       .get('http://localhost:4444/user')
@@ -124,29 +132,46 @@ const App = () => {
       {/*<Button onClick={upvote}>Upvote</Button>*/}
       {docData ? <div></div> : null}
       <div>
-
-        <ul>
-          <li>
-            <Link to='/'>Landing Page</Link>
-          </li>
-          <li>
-            <Link to='/home'>Home</Link>
-          </li>
-          <li>
-            <Link to='/user'>User</Link>
-          </li>
-          <li>
-            <Link to='/createquiz'>Create Quiz</Link>
-          </li>
-          <li>
-            <Link to='/takequiz'>Take Quiz</Link>
-          </li>
-          <li>
+        <NavBar>
+          <NavBarLogo alt='Page logo' src={logo}></NavBarLogo>
+          <NavBarTitle>Quizlan's Quiz Quorner</NavBarTitle>
+          {!isOnLandingPage && (
+            <NavBarHeading>
+              <Link to='/landingpage'>Landing Page</Link>
+            </NavBarHeading>
+          )}
+          {!isOnLandingPage && (
+            <NavBarHeading>
+              <Link to='/home'>Home</Link>
+            </NavBarHeading>
+          )}
+          {!isOnLandingPage && (
+            <NavBarHeading>
+              <Link to='/user'>User</Link>
+            </NavBarHeading>
+          )}
+          {isOnLandingPage && (
+            <NavBarHeading>
+              <Link to='/createquiz'>Create Quiz</Link>
+            </NavBarHeading>
+          )}
+          {!isOnLandingPage && (
+            <NavBarHeading>
+              <Link to='/takequiz'>Take Quiz</Link>
+            </NavBarHeading>
+          )}
+          <NavBarHeading>
             <Link to='/login'>Login</Link>
-          </li>
-        </ul>
+          </NavBarHeading>
+          {!isOnLandingPage && (
+            <NavBarForm>
+              <input></input>
+              <button onClick={handleSearch}>Search For a Quiz!</button>
+            </NavBarForm>
+          )}
+        </NavBar>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/landingpage'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
@@ -173,3 +198,49 @@ const App = () => {
 };
 
 export default hot(App);
+
+const NavBarTitle = styled.span`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
+  font-family: arial;
+  font-size: 48px;
+`;
+
+const NavBarLogo = styled.img`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
+`;
+
+const NavBarHeading = styled.span`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
+  font-family: arial;
+  font-size: 24px;
+`;
+
+const NavBarForm = styled.form`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
+`;
+
+const NavBar = styled.span`
+  background-color: var(--yellow);
+  text-color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
