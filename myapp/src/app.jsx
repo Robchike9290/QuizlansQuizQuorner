@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import Button from '@material-ui/core/Button';
 import Home from './components/Home.jsx';
@@ -8,10 +8,52 @@ import LandingPage from './components/LandingPage.jsx';
 import TakeQuiz from './components/TakeQuiz.jsx';
 import User from './components/User.jsx';
 import Login from './components/Login.jsx';
+import { app, auth } from "./index.js";
+import axios from "axios";
+
 
 const App = () => {
+  const [docData, setDocData] = useState(null);
+
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+
+  };
+
+  const report = () => {
+
+  };
+
+  const upvote = () => {
+    axios.post('http://localhost:4444/upvote')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  };
+
+  const downvote = () => {
+
+  };
+
+  const addQuiz = () => {
+
+  };
+
+  const search = () => {
+
+  };
+
   return (
     <Router>
+      <Button onClick={upvote}>Upvote</Button>
+      {docData ? <div></div> : null}
       <div>
         <ul>
           <li>
@@ -53,10 +95,10 @@ const App = () => {
             <Login />
           </Route>
         </Switch>
-        {/*<h1>
-          Hello {name}
-        </h1>
-        <Button variant="contained">this is a material UI button</Button>*/}
+        {docData ? <h1>
+          Hello {docData.quizName}
+        </h1> : null}
+        <Button variant="contained">this is a material UI button</Button>
       </div>
     </Router>
   );
