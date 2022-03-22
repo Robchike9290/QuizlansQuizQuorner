@@ -3,30 +3,20 @@ import ReactDOM from 'react-dom';
 import App from './app.jsx';
 import './styles.css';
 // Firebase imports
-<<<<<<< HEAD
 // import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-=======
-import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
->>>>>>> dev
 import {
   getAuth,
   onAuthStateChanged,
   connectAuthEmulator,
   signInWithEmailAndPassword,
-<<<<<<< HEAD
   signOut, createUserWithEmailAndPassword
 } from "firebase/auth";
-import { auth } from "./firebase.js"
+import { auth } from "../config.js"
 import { getFirestore } from "firebase/firestore";
 import firebaseConfig from "../config.js";
 
-=======
-} from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import firebaseConfig from '../config.js';
->>>>>>> dev
+
 
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
