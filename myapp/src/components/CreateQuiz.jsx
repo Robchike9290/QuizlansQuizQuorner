@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import AddQuestionModal from './createComponents/AddQuestionModal.jsx';
 
 const CreateQuiz = () => {
-  return <div>5</div>;
+  return (
+    <div>
+      <AddQuestionModal />
+    </div>
+  );
 };
 
 export default CreateQuiz;
