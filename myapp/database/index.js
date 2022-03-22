@@ -36,7 +36,7 @@ const userSchema = mongoose.Schema({
   email: { type: String, required: true, index: { unique: true }}, // user - based on email
   quizHistory: [
     {
-      quizId: { type: Number, required: true, index: { unique: true }}, // based on quizId after completion
+      quizId: { type: Number, required: true }, // based on quizId after completion
       quizName: { type: String, required: true }, // based on quizName after completion
       timesUserHasTaken: { type: Number, required: true }, // increment after completion
       userScores: [{ type: Number, required: true }] // add score to array after completion
@@ -102,8 +102,13 @@ const getQuiz = (quizId) => {
 }
 
 const addQuiz = (newQuiz) => {
-  Quiz.insertOne(newQuiz)
+  Quiz.create(newQuiz)
   console.log('addQuiz db method');
+}
+
+const addUser = (newUser) => {
+  User.create(newUser)
+  console.log('addUser db method');
 }
 
 const getUser = (userId) => {

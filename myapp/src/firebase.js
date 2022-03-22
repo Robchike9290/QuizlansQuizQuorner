@@ -67,18 +67,7 @@ onAuthStateChanged(auth, user => {
 
 
 
-// for (let i = 0; i < exampleQuizzes.length; i++) {
-//   const quiz = exampleQuizzes[i];
-//   // const quizName = quiz.quizName.split(" ").join("");
-//   // function camelize(str) {
-//   //   return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
-//   //     return index === 0 ? word.toLowerCase() : word.toUpperCase();
-//   //   }).replace(/\s+/g, '');
-//   // }
-//   // const quizName = camelize(quiz.quizName);
-//   const id = String(quiz.quizId);
-//   setDoc(doc(db, "quiz", id), quiz);
-// }
+
 
 // setDoc(doc(db, "quiz", "testDoc3"), {"quizUpvotes": "0"})
 
