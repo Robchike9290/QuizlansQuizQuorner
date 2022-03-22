@@ -21,7 +21,7 @@ const App = () => {
   }, []);
 
   const getData = () => {
-    axios.get('http://localhost:4444/quizzes')
+    axios.get('http://52.90.8.77:4444/quizzes')
       .then((response) => {
         console.log('Here are your quizzes: ', response.data);
       })
@@ -31,7 +31,7 @@ const App = () => {
   };
 
   const report = () => {
-    axios.post('http://localhost:4444/reportQuiz')
+    axios.post('http://52.90.8.77:4444/reportQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -41,7 +41,7 @@ const App = () => {
   };
 
   const upvote = () => {
-    axios.post('http://localhost:4444/upvote')
+    axios.post('http://52.90.8.77:4444/upvote')
       .then((response) => {
         console.log(response.data);
       })
@@ -51,7 +51,7 @@ const App = () => {
   };
 
   const downvote = () => {
-    axios.post('http://localhost:4444/downvote')
+    axios.post('http://52.90.8.77:4444/downvote')
       .then((response) => {
         console.log(response.data);
       })
@@ -61,7 +61,7 @@ const App = () => {
   };
 
   const addQuiz = () => {
-    axios.post('http://localhost:4444/addQuiz')
+    axios.post('http://52.90.8.77:4444/addQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -71,7 +71,7 @@ const App = () => {
   };
 
   const removeQuiz = () => {
-    axios.post('http://localhost:4444/removeQuiz')
+    axios.post('http://52.90.8.77:4444/removeQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -81,7 +81,7 @@ const App = () => {
   };
 
   const getUser = () => {
-    axios.get('http://localhost:4444/user')
+    axios.get('http://52.90.8.77:4444/user')
       .then((response) => {
         console.log(response.data);
       })
@@ -91,7 +91,7 @@ const App = () => {
   };
 
   const addFriend = () => {
-    axios.post('http://localhost:4444/addFriend')
+    axios.post('http://52.90.8.77:4444/addFriend')
       .then((response) => {
         console.log(response.data);
       })
@@ -101,7 +101,7 @@ const App = () => {
   };
 
   const removeFriend = () => {
-    axios.post('http://localhost:4444/removeFriend')
+    axios.post('http://52.90.8.77:4444/removeFriend')
       .then((response) => {
         console.log(response.data);
       })
