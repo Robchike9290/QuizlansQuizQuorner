@@ -14,66 +14,66 @@ const LandingPage = () => {
       </h2>
     </SecondNesting>
     <div id="intro1">
-      <InlineSpan>
+      <InlineDuo>
         <LeftElement>
           <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
         </LeftElement>
-      </InlineSpan>
-      <InlineSpan>
+      </InlineDuo>
+      <InlineDuo>
         <RightElement>
           Create a quiz to study for your next midterm exam
         </RightElement>
-      </InlineSpan>
+      </InlineDuo>
     </div>
     <div id="intro2">
-      <InlineSpan>
+      <InlineDuo>
         <LeftElement>
           Take a pre-built quiz to sharpen your skills.
         </LeftElement>
-      </InlineSpan>
-      <InlineSpan>
+      </InlineDuo>
+      <InlineDuo>
         <RightElement>
           <img alt="Take quiz page screenshot *INSERT TAKE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*"></img>
         </RightElement>
-      </InlineSpan>
+      </InlineDuo>
     </div>
     <div id="rhetoricalIntro3">
-      <InlineSpan>
+      <InlineDuo>
         <LeftElement>
           <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE. OR...REPLACE WITH ANOTHER FUNCTION?*"></img>
         </LeftElement>
-      </InlineSpan>
-      <InlineSpan>
+      </InlineDuo>
+      <InlineDuo>
         <RightElement>>
           Create a quiz to challenge your friends to see how well they know you.
         </RightElement>
-      </InlineSpan>
+      </InlineDuo>
     </div>
     <div id="testimonials">
-      <InlineSpan>
-        <div>
+      <InlineTrio>
+        <center>
           <img alt="Testimonial stock photo #1" src={testimonialPhoto1}></img>
-          <SecondNesting>
-            "Steve Quizlan changed my life!"
-          </SecondNesting>
-        </div>
-      </InlineSpan>
-      <InlineSpan>
-        <div>
+        </center>
+        <SecondNesting>
+          "Steve Quizlan changed my life!"
+        </SecondNesting>
+      </InlineTrio>
+      <InlineTrio>
+        <center>
           <img alt="Testimonial stock photo #2" src={testimonialPhoto2}></img>
-          <SecondNesting>
-            "I never knew taking quizzes could be so fun!"
-          </SecondNesting>
-        </div>
-      </InlineSpan>
-      <InlineSpan>
-        <div>
+        </center>
+        <SecondNesting>
+          "I never knew taking quizzes could be so fun!"
+        </SecondNesting>
+      </InlineTrio>
+      <InlineTrio>
+        <center>
           <img alt="Testimonial stock photo #3" src={testimonialPhoto3}></img>
-          <SecondNesting>
-            "After two weeks my quiz scores went from 55% to 85%.  Thanks, Steve!"
-          </SecondNesting>
-        </div>
-      </InlineSpan>
+        </center>
+        <SecondNesting>
+          "After two weeks my quiz scores went from 55% to 85%.  Thanks, Steve!"
+        </SecondNesting>
+      </InlineTrio>
     </div>
     <StyledH2 id="getStartedHeading">How to Get Started</StyledH2>
     <StyledH3 id="getStartedInfo1">Step One: Sign Up for an Account</StyledH3>
@@ -86,16 +86,12 @@ const LandingPage = () => {
 };
 
 const FirstNesting = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: wrap;
   background-color: var(--yellow);
   text-color: var(--text-color);
-  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
-  width: 70%;
+  width: 90%;
+  margin: auto;
 `
 
 const SecondNesting = styled.div`
@@ -114,7 +110,8 @@ const LeftElement = styled.div`
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   text-align: left;
-  justify-content: flex-start;
+  float: left;
+  width: 50%
 `
 
 const RightElement = styled.div`
@@ -124,13 +121,19 @@ const RightElement = styled.div`
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   text-align: right;
-  justify-content: flex-end;
+  float: right;
+  width: 50%;
 `
 
-const InlineSpan = styled.span`
+const InlineDuo = styled.span`
+  display: inline-block;
+  width: 50%;
+`
+
+const InlineTrio = styled.span`
   display: inline-block;
   width: 33%;
-  justinfy-content: space-between;
+  margin: auto;
 `
 
 const StyledButton = styled.button`
@@ -154,6 +157,7 @@ const StyledH2 = styled.h2`
   margin: var: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  text-align: center;
 `
 
 const StyledH3 = styled.h3`
@@ -162,6 +166,7 @@ const StyledH3 = styled.h3`
   margin: var: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  text-align: center;
 `
 
 export default LandingPage;
