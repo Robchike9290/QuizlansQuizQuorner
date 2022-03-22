@@ -27,14 +27,27 @@ const RecentQuizzes = () => {
       })
   }
 
+
+
+
+
+
+
   //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
   //useEffect(()=> {
   //  getRecentQuizzes()
   //}, [])
 
+  //
+
   return (
     <Container>
       Recent Quizzes
+      <div>
+        {recentQuizzes.map((quiz, key) => (
+          <recentQuiz quiz={quiz} />
+        ))}
+      </div>
     </Container>
   );
 };
