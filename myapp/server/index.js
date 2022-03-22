@@ -23,13 +23,8 @@ app.use((req, res, next) => {
 
 app.get('/quizzes', (req, res) => {
   console.log('Hello from the server!')
-<<<<<<< HEAD
-  getQuizzes()
-    .then((results) => {
-=======
   getQuizzes(req.body.createdBy, req.body.category)
     // .then((results) => {
->>>>>>> dev
       res.status(200).send('Server response!');
     })
     .catch((err) => {
