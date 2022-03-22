@@ -592,7 +592,7 @@ let exampleQuizzes =
           correctAnswer: "Chordata",
           incorrectAnswers: ["Echinodermata",
           "Annelida",
-          "Placazoa]
+          "Placazoa"]
         },
         {
           question: "What bird is born with claws on its wing digits?",
@@ -670,3 +670,7 @@ let exampleQuizzes =
       aggregateScore: 136
     }
   ];
+
+  module.exports ={
+    exampleQuizzes: exampleQuizzes
+  }
