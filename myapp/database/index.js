@@ -36,7 +36,7 @@ const userSchema = mongoose.Schema({
   email: { type: String, required: true, index: { unique: true }}, // user - based on email
   quizHistory: [
     {
-      quizId: { type: Number, required: true, index: { unique: true }}, // based on quizId after completion
+      quizId: { type: Number, required: true }, // based on quizId after completion
       quizName: { type: String, required: true }, // based on quizName after completion
       timesUserHasTaken: { type: Number, required: true }, // increment after completion
       userScores: [{ type: Number, required: true }] // add score to array after completion
@@ -85,14 +85,30 @@ const removeQuiz = (quizId) => {
   console.log('removeQuiz db method');
 }
 
-const getQuizzes = () => {
+//what are we searching by? user/category. one has to be null
+const getQuizzes = (createdBy, category) => {
+  if (createdBy) {
+    Quiz.find({ "createdBy": createdBy})
+  }
+  if (category) {
+    Quiz.find({ "category": category})
+  }
+  console.log('getQuizzes db method');
+}
 
+const getQuiz = (quizId) => {
+  Quiz.find({ "quizId": quizId})
   console.log('getQuizzes db method');
 }
 
 const addQuiz = (newQuiz) => {
-  Quiz.insertOne(newQuiz)
+  Quiz.create(newQuiz)
   console.log('addQuiz db method');
+}
+
+const addUser = (newUser) => {
+  User.create(newUser)
+  console.log('addUser db method');
 }
 
 const getUser = (userId) => {
@@ -121,6 +137,7 @@ module.exports = {
   reportQuiz: reportQuiz,
   removeQuiz: removeQuiz,
   getQuizzes: getQuizzes,
+  getQuiz: getQuiz,
   addQuiz: addQuiz,
   getUser: getUser,
   addFriend: addFriend,
