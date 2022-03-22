@@ -31,7 +31,7 @@ const App = () => {
   };
 
   const report = () => {
-    axios.get('http://localhost:4444/reportQuiz')
+    axios.post('http://localhost:4444/reportQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -51,7 +51,7 @@ const App = () => {
   };
 
   const downvote = () => {
-    axios.get('http://localhost:4444/downvote')
+    axios.post('http://localhost:4444/downvote')
       .then((response) => {
         console.log(response.data);
       })
@@ -61,7 +61,7 @@ const App = () => {
   };
 
   const addQuiz = () => {
-    axios.get('http://localhost:4444/addQuiz')
+    axios.post('http://localhost:4444/addQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -71,7 +71,7 @@ const App = () => {
   };
 
   const removeQuiz = () => {
-    axios.get('http://localhost:4444/removeQuiz')
+    axios.post('http://localhost:4444/removeQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -91,7 +91,7 @@ const App = () => {
   };
 
   const addFriend = () => {
-    axios.get('http://localhost:4444/addFriend')
+    axios.post('http://localhost:4444/addFriend')
       .then((response) => {
         console.log(response.data);
       })
@@ -101,7 +101,7 @@ const App = () => {
   };
 
   const removeFriend = () => {
-    axios.get('http://localhost:4444/removeFriend')
+    axios.post('http://localhost:4444/removeFriend')
       .then((response) => {
         console.log(response.data);
       })

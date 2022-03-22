@@ -24,12 +24,12 @@ app.use((req, res, next) => {
 app.get('/quizzes', (req, res) => {
   console.log('Hello from the server!')
   getQuizzes()
-    .then((results) => {
-      res.status(200).send(results);
-    })
-    .catch((err) => {
-      console.error(err);
-    })
+    // .then((results) => {
+      res.status(200).send('Server response!');
+    // })
+    // .catch((err) => {
+    //   console.error(err);
+    // })
 })
 
 app.post('/upvote', (req, res) => {
