@@ -124,6 +124,7 @@ const App = () => {
       {/*<Button onClick={upvote}>Upvote</Button>*/}
       {docData ? <div></div> : null}
       <div>
+
         <ul>
           <li>
             <Link to='/'>Landing Page</Link>
