@@ -15,6 +15,7 @@ import styled from 'styled-components';
 
 const App = () => {
   const [docData, setDocData] = useState(null);
+  const isOnLandingPage = (window.location.pathname == '/landingpage')
 
 
   useEffect(() => {
@@ -47,44 +48,45 @@ const App = () => {
 
   };
 
-  const search = () => {
-
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log('search button clicked');
   };
 
   return (
     <Router>
-      <Button onClick={upvote}>Upvote</Button>
-      {docData ? <div></div> : null}
+      {/* <Button onClick={upvote}>Upvote</Button>
+      {docData ? <div></div> : null} */}
       <div>
         <NavBar>
           <NavBarLogo alt="Page logo" src={logo}>
           </NavBarLogo>
           <NavBarTitle>Quizlan's Quiz Quorner</NavBarTitle>
-          <NavBarHeading>
-            <Link to='/'>Landing Page</Link>
-          </NavBarHeading>
-          <NavBarHeading>
+          {!isOnLandingPage && <NavBarHeading>
+            <Link to='/landingpage'>Landing Page</Link>
+          </NavBarHeading>}
+          {!isOnLandingPage && <NavBarHeading>
             <Link to='/home'>Home</Link>
-          </NavBarHeading>
-          <NavBarHeading>
+          </NavBarHeading>}
+          {!isOnLandingPage && <NavBarHeading>
             <Link to='/user'>User</Link>
-          </NavBarHeading>
-          <NavBarHeading>
+          </NavBarHeading>}
+          {isOnLandingPage && <NavBarHeading>
             <Link to='/createquiz'>Create Quiz</Link>
-          </NavBarHeading>
-          <NavBarHeading>
+          </NavBarHeading>}
+          {!isOnLandingPage && <NavBarHeading>
             <Link to='/takequiz'>Take Quiz</Link>
-          </NavBarHeading>
+          </NavBarHeading>}
           <NavBarHeading>
             <Link to='/login'>Login</Link>
           </NavBarHeading>
-          <NavBarForm>
+          {!isOnLandingPage && <NavBarForm>
             <input></input>
-            <button>Search For a Quiz!</button>
-          </NavBarForm>
+            <button onClick={handleSearch}>Search For a Quiz!</button>
+          </NavBarForm>}
         </NavBar>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/landingpage'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
@@ -103,10 +105,10 @@ const App = () => {
             <Login />
           </Route>
         </Switch>
-        {docData ? <h1>
+        {/* {docData ? <h1>
           Hello {docData.quizName}
         </h1> : null}
-        <Button variant="contained">this is a material UI button</Button>
+        <Button variant="contained">this is a material UI button</Button> */}
       </div>
     </Router>
   );
@@ -121,6 +123,7 @@ const NavBarTitle = styled.span`{
   box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
   font-family: arial;
+  font-size: 48px;
 }`
 
 const NavBarLogo = styled.img`
@@ -137,6 +140,8 @@ const NavBarHeading = styled.span`
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
+  font-family: arial;
+  font-size: 24px;
 `
 
 const NavBarForm = styled.form`
@@ -154,4 +159,5 @@ const NavBar = styled.span`
   box-shadow: var(--standard-shadow);
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `
