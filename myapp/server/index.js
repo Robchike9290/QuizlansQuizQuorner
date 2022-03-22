@@ -8,8 +8,7 @@ const {
   addQuiz,
   getUser,
   addFriend,
-  removeFriend,
-  search
+  removeFriend
 } = require('../database/index.js');
 const app = express();
 const axios = require('axios');
@@ -24,48 +23,93 @@ app.use((req, res, next) => {
 
 app.get('/quizzes', (req, res) => {
   console.log('Hello from the server!')
-  res.status(200).send('Test from server!')
-})
-
-app.get('/getQuiz', (req, res) => {
-
+  getQuizzes()
+    // .then((results) => {
+      res.status(200).send('Server response!');
+    // })
+    // .catch((err) => {
+    //   console.error(err);
+    // })
 })
 
 app.post('/upvote', (req, res) => {
-  // upVote();
-  res.status(200).send("upvoted!");
+  upVote()
+    .then((results) => {
+      res.status(201).send("upvoted!");
+    })
+    .catch((err) => {
+      console.error(err);
+    })
 })
 
-app.patch('/downvote', (req, res) => {
-
+app.post('/downvote', (req, res) => {
+  downVote()
+    .then((results) => {
+      res.status(201).send("downvoted!");
+    })
+    .catch((err) => {
+      console.error(err);
+    })
 })
 
-app.patch('/reportQuiz', (req, res) => {
-
+app.post('/reportQuiz', (req, res) => {
+  reportQuiz()
+    .then((results) => {
+      res.status(201).send("reported!");
+    })
+    .catch((err) => {
+      console.error(err);
+    })
 })
 
-app.delete('/removeQuiz', (req, res) => {
-
+app.post('/removeQuiz', (req, res) => {
+  removeQuiz()
+    .then((results) => {
+      res.status(201).send("removed!");
+    })
+    .catch((err) => {
+      console.error(err);
+    })
 })
 
 app.post('/addQuiz', (req, res) => {
-
+  addQuiz()
+    .then((results) => {
+      res.status(201).send("quiz added!");
+    })
+    .catch((err) => {
+      console.error(err);
+    })
 })
 
-app.get('/getUser', (req, res) => {
-
+app.get('/user', (req, res) => {
+  getUser()
+    .then((results) => {
+      res.status(200).send(results);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
 })
 
-app.patch('/addFriend', (req, res) => {
-
+app.post('/addFriend', (req, res) => {
+  addFriend()
+    .then((results) => {
+      res.status(201).send("Friend added!");
+    })
+    .catch((err) => {
+      console.error(err);
+    })
 })
 
-app.patch('/removeFriend', (req, res) => {
-
-})
-
-app.get('/search', (req, res) => {
-  // just use getQuizzes with params??
+app.post('/removeFriend', (req, res) => {
+  removeFriend()
+    .then((results) => {
+      res.status(201).send("Friend removed!");
+    })
+    .catch((err) => {
+      console.error(err);
+    })
 })
 
 const PORT = 4444;
