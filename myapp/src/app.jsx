@@ -21,11 +21,23 @@ const App = () => {
   }, []);
 
   const getData = () => {
-
+    axios.get('http://localhost:4444/quizzes')
+      .then((response) => {
+        console.log('Here are your quizzes: ', response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   };
 
   const report = () => {
-
+    axios.get('http://localhost:4444/reportQuiz')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   };
 
   const upvote = () => {
@@ -39,15 +51,63 @@ const App = () => {
   };
 
   const downvote = () => {
-
+    axios.get('http://localhost:4444/downvote')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   };
 
   const addQuiz = () => {
-
+    axios.get('http://localhost:4444/addQuiz')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   };
 
-  const search = () => {
+  const removeQuiz = () => {
+    axios.get('http://localhost:4444/removeQuiz')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  };
 
+  const getUser = () => {
+    axios.get('http://localhost:4444/user')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  };
+
+  const addFriend = () => {
+    axios.get('http://localhost:4444/addFriend')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  };
+
+  const removeFriend = () => {
+    axios.get('http://localhost:4444/removeFriend')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   };
 
   return (
