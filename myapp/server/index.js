@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 app.get('/quizzes', (req, res) => {
   console.log('Hello from the server!')
   getQuizzes(req.body.createdBy, req.body.category)
-    // .then((results) => {
+    .then((results) => {
       res.status(200).send('Server response!');
     })
     .catch((err) => {
