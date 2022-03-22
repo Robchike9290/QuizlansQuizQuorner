@@ -42,13 +42,21 @@ const AddQuestionModal = ({ toggleModal, setToggleModal }) => {
         </button>
         <input type='text' placeholder='Question'></input>
         <br></br>
+        <label></label>
         <input type='text' placeholder='Answer'></input>
+        <input type='checkbox'></input>
+
         <br></br>
         <input type='text' placeholder='Answer'></input>
+        <input type='checkbox'></input>
+
         <br></br>
         <input type='text' placeholder='Answer'></input>
+        <input type='checkbox'></input>
+
         <br></br>
         <input type='text' placeholder='Answer'></input>
+        <input type='checkbox'></input>
         <button>Add Question</button>
       </Form>
     </Modal>
