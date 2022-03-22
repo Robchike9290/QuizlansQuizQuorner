@@ -54,7 +54,7 @@ const upVote = function (quizId) {
 };
 
 const downVote = (quizId) => {
-  return Quiz.updateOne({ "quizId": quizId}, {$inc: {quizUpvotes: -1} }, {upsert: true});
+  return Quiz.updateOne({ "quizId": quizId}, {$inc: {quizDownvotes: 1} }, {upsert: true});
 }
 
 const reportQuiz = (quizId) => {
@@ -79,6 +79,10 @@ const getQuizzes = (createdBy, category) => {
   }
 }
 
+const getAllQuizzes = () => {
+  return Quiz.find({})
+}
+
 const getQuiz = (quizId) => {
   return Quiz.find({ "quizId": quizId})
 }
@@ -101,6 +105,14 @@ const addFriend = (userId, friendID) => {
 
 const removeFriend = (userId, friendID) => {
   return User.updateOne({ "userId": userId}, {$pull: {friends: friendID}})
+}
+
+const takenQuizAgain = (userId) => {
+  return User.updateOne({ "userId": userId}, {$inc: {quizHistory.timesUserHasTaken: 1}})
+}
+
+const newQuizScore = (userId, userScore) => {
+  return User.updateOne({ "userId": userId}, {$push: {quizHistory.userScores: userScore}})
 }
 
 module.exports = {
