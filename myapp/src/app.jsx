@@ -10,7 +10,7 @@ import User from './components/User.jsx';
 import Login from './components/Login.jsx';
 import { app, auth } from "./index.js";
 import axios from "axios";
-
+import styled from 'styled-components';
 
 const App = () => {
   const [docData, setDocData] = useState(null);
@@ -55,7 +55,7 @@ const App = () => {
       <Button onClick={upvote}>Upvote</Button>
       {docData ? <div></div> : null}
       <div>
-        <ul>
+        <NavBar>
           <li>
             <Link to='/'>Landing Page</Link>
           </li>
@@ -74,7 +74,11 @@ const App = () => {
           <li>
             <Link to='/login'>Login</Link>
           </li>
-        </ul>
+          <form>
+            <input></input>
+            <button>Search For a Quiz!</button>
+          </form>
+        </NavBar>
         <Switch>
           <Route exact path='/'>
             <LandingPage />
@@ -105,3 +109,6 @@ const App = () => {
 };
 
 export default hot(App);
+
+const NavBar = styled.ul`
+`
