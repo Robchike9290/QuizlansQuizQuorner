@@ -56,28 +56,28 @@ const App = () => {
       {docData ? <div></div> : null}
       <div>
         <NavBar>
-          <li>
+          <NavBarHeading>
             <Link to='/'>Landing Page</Link>
-          </li>
-          <li>
+          </NavBarHeading>
+          <NavBarHeading>
             <Link to='/home'>Home</Link>
-          </li>
-          <li>
+          </NavBarHeading>
+          <NavBarHeading>
             <Link to='/user'>User</Link>
-          </li>
-          <li>
+          </NavBarHeading>
+          <NavBarHeading>
             <Link to='/createquiz'>Create Quiz</Link>
-          </li>
-          <li>
+          </NavBarHeading>
+          <NavBarHeading>
             <Link to='/takequiz'>Take Quiz</Link>
-          </li>
-          <li>
+          </NavBarHeading>
+          <NavBarHeading>
             <Link to='/login'>Login</Link>
-          </li>
-          <form>
+          </NavBarHeading>
+          <NavBarForm>
             <input></input>
             <button>Search For a Quiz!</button>
-          </form>
+          </NavBarForm>
         </NavBar>
         <Switch>
           <Route exact path='/'>
@@ -110,5 +110,27 @@ const App = () => {
 
 export default hot(App);
 
-const NavBar = styled.ul`
+const NavBarHeading = styled.span`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
+`
+
+const NavBarForm = styled.form`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
+`
+
+const NavBar = styled.div`
+  background-color: var(--yellow);
+  text-color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  display: flex;
+  justify-content: space-between;
 `
