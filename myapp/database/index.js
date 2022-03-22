@@ -49,87 +49,59 @@ const Quiz = mongoose.model('Quiz', quizSchema);
 
 const User = mongoose.model('User', userSchema);
 
-// upvote
-// downvote
-// reportQuiz
-// removeQuiz
-// getQuizzes
-// addQuiz
-// user
-// addFriend
-// removeFriend
-// search?
-
 const upVote = function (quizId) {
-  Quiz.updateOne({ "quizId": quizId}, {$inc: {quizUpvotes: 1} }, {upsert: true});
-  console.log('upvote db method');
+  return Quiz.updateOne({ "quizId": quizId}, {$inc: {quizUpvotes: 1} }, {upsert: true})
 };
 
 const downVote = (quizId) => {
-  Quiz.updateOne({ "quizId": quizId}, {$inc: {quizUpvotes: -1} }, {upsert: true});
-  console.log('downvote db method');
+  return Quiz.updateOne({ "quizId": quizId}, {$inc: {quizUpvotes: -1} }, {upsert: true});
 }
 
 const reportQuiz = (quizId) => {
-  Quiz.updateOne({ "quizId": quizId}, {$set: {reported: true}}, {upsert: true});
-  console.log('reportQuiz db method');
+  return Quiz.updateOne({ "quizId": quizId}, {$set: {reported: true}}, {upsert: true});
 }
 
 const reportCount = (quizId) => {
-  Quiz.updateOne({ "quizId": quizId}, {$inc: {reportedTimes: 1} }, {upsert: true});
-  console.log('reportCount db method');
+  return Quiz.updateOne({ "quizId": quizId}, {$inc: {reportedTimes: 1} }, {upsert: true});
 }
 
 const removeQuiz = (quizId) => {
-  Quiz.deleteOne({ "quizId": quizId })
-  console.log('removeQuiz db method');
+  return Quiz.deleteOne({ "quizId": quizId })
 }
 
 //what are we searching by? user/category. one has to be null
 const getQuizzes = (createdBy, category) => {
   if (createdBy) {
-    Quiz.find({ "createdBy": createdBy})
+    return Quiz.find({ "createdBy": createdBy})
   }
   if (category) {
-    Quiz.find({ "category": category})
+    return Quiz.find({ "category": category})
   }
-  console.log('getQuizzes db method');
 }
 
 const getQuiz = (quizId) => {
-  Quiz.find({ "quizId": quizId})
-  console.log('getQuizzes db method');
+  return Quiz.find({ "quizId": quizId})
 }
 
 const addQuiz = (newQuiz) => {
-  Quiz.create(newQuiz)
-  console.log('addQuiz db method');
+  return Quiz.create(newQuiz)
 }
 
 const addUser = (newUser) => {
-  User.create(newUser)
-  console.log('addUser db method');
+  return User.create(newUser)
 }
 
 const getUser = (userId) => {
-  User.find({ "userId": userId})
-  console.log('user db method');
+  return User.find({ "userId": userId})
 }
 
 const addFriend = (userId, friendID) => {
-  User.updateOne({ "userId": userId}, {$push: {friends: friendID}})
-  console.log('addFriend db method');
+  return User.updateOne({ "userId": userId}, {$push: {friends: friendID}})
 }
 
 const removeFriend = (userId, friendID) => {
-  User.updateOne({ "userId": userId}, {$pull: {friends: friendID}})
-  console.log('removeFriend db method');
+  return User.updateOne({ "userId": userId}, {$pull: {friends: friendID}})
 }
-
-// const search = () => {
-//   console.log('search db method');
-// }
-
 
 module.exports = {
   upVote: upVote,
