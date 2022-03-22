@@ -626,4 +626,10 @@ let exampleQuizzes =
     }
   ];
 
+<<<<<<< HEAD
   export default exampleQuizzes;
+=======
+  module.exports ={
+    exampleQuizzes: exampleQuizzes
+  }
+>>>>>>> dev

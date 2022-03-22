@@ -169,3 +169,5 @@ const mockUserList = [
     friends: [301, 302, 303]
   }
 ]
+
+module.exports = { mockUserList }
