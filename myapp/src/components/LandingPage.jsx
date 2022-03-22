@@ -77,7 +77,9 @@ const LandingPage = () => {
     <StyledH3 id="getStartedInfo1">Step One: Sign Up for an Account</StyledH3>
     <StyledH3 id="getStartedInfo">Step Two: Start Taking Quizzes!</StyledH3>
     <Link to="/login">
-      <StyledButton id="signup">Sign Up Now!</StyledButton>
+      <center>
+         <StyledButton id="signup">Sign Up Now!</StyledButton>
+      </center>
     </Link>
   </FirstNesting>
   );
@@ -92,21 +94,13 @@ const FirstNesting = styled.div`
   margin: auto;
 `
 
-const SecondNesting = styled.div`
-  background-color: var(--blue);
-  text-color: var(--text-color);
-  margin: var(--standard-margin);
-  border-radius: var(--standard-border-radius);
-  box-shadow: var(--standard-shadow);
-  text-align: center;
-`
-
 const LeftElement = styled.div`
   background-color: var(--blue);
   text-color: var(--text-color);
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
   margin-left: 2%;
   text-align: left;
   float: left;
@@ -119,6 +113,7 @@ const RightElement = styled.div`
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
   margin-right: 2%;
   text-align: right;
   float: right;
@@ -142,7 +137,8 @@ const StyledButton = styled.button`
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
-  font-size: 18px;
+  width: 25%;
+  font-size: 24px;
 `
 const StyledH1 = styled.h1`
   background-color: var(--blue);
@@ -150,7 +146,9 @@ const StyledH1 = styled.h1`
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
   text-align: center;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
@@ -162,6 +160,7 @@ const StyledH2 = styled.h2`
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -174,22 +173,24 @@ const StyledH3 = styled.h3`
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   width: 20%;
 `
 
-  const Testimonial = styled.span`
+  const Testimonial = styled.div`
   background-color: var(--blue);
   text-color: var(--text-color);
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  width: 20%;
+  width: 50%;
 `
 
 export default LandingPage;
