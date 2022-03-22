@@ -8,11 +8,9 @@ import testimonialPhoto3 from '../images/testimonialPhoto3.png';
 const LandingPage = () => {
   return (
   <FirstNesting>
-    <SecondNesting id="headline">
-      <h2>
-        The #1 place for all of your quiz needs.  Choose between pre-built quiz or a custom quiz.  Choose to go solo or challenge your friends.  Definitely the best way to improve your happy hour trivia odds.
-      </h2>
-    </SecondNesting>
+    <StyledH1 id="headline">
+      The #1 place for all of your quiz needs.  Choose between pre-built quiz or a custom quiz.  Choose to go solo or challenge your friends.  Definitely the best way to improve your happy hour trivia odds.
+    </StyledH1>
     <div id="intro1">
       <InlineDuo>
         <LeftElement>
@@ -54,25 +52,25 @@ const LandingPage = () => {
         <center>
           <img alt="Testimonial stock photo #1" src={testimonialPhoto1}></img>
         </center>
-        <SecondNesting>
+        <Testimonial>
           "Steve Quizlan changed my life!"
-        </SecondNesting>
+        </Testimonial>
       </InlineTrio>
       <InlineTrio>
         <center>
           <img alt="Testimonial stock photo #2" src={testimonialPhoto2}></img>
         </center>
-        <SecondNesting>
+        <Testimonial>
           "I never knew taking quizzes could be so fun!"
-        </SecondNesting>
+        </Testimonial>
       </InlineTrio>
       <InlineTrio>
         <center>
           <img alt="Testimonial stock photo #3" src={testimonialPhoto3}></img>
         </center>
-        <SecondNesting>
+        <Testimonial>
           "After two weeks my quiz scores went from 55% to 85%.  Thanks, Steve!"
-        </SecondNesting>
+        </Testimonial>
       </InlineTrio>
     </div>
     <StyledH2 id="getStartedHeading">How to Get Started</StyledH2>
@@ -97,7 +95,7 @@ const FirstNesting = styled.div`
 const SecondNesting = styled.div`
   background-color: var(--blue);
   text-color: var(--text-color);
-  margin: var: var(--standard-margin);
+  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   text-align: center;
@@ -106,9 +104,10 @@ const SecondNesting = styled.div`
 const LeftElement = styled.div`
   background-color: var(--blue);
   text-color: var(--text-color);
-  margin: var: var(--standard-margin);
+  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  margin-left: 2%;
   text-align: left;
   float: left;
   width: 50%
@@ -117,9 +116,10 @@ const LeftElement = styled.div`
 const RightElement = styled.div`
   background-color: var(--blue);
   text-color: var(--text-color);
-  margin: var: var(--standard-margin);
+  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  margin-right: 2%;
   text-align: right;
   float: right;
   width: 50%;
@@ -139,34 +139,57 @@ const InlineTrio = styled.span`
 const StyledButton = styled.button`
   background-color: var(--blue);
   text-color: var(--text-color);
-  margin: var: var(--standard-margin);
+  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  font-size: 18px;
 `
 const StyledH1 = styled.h1`
   background-color: var(--blue);
   text-color: var(--text-color);
-  margin: var: var(--standard-margin);
+  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 `
 
 const StyledH2 = styled.h2`
   background-color: var(--blue);
   text-color: var(--text-color);
-  margin: var: var(--standard-margin);
+  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
 `
 
 const StyledH3 = styled.h3`
   background-color: var(--blue);
   text-color: var(--text-color);
-  margin: var: var(--standard-margin);
+  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+`
+
+  const Testimonial = styled.span`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  margin: var(--standard-margin);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
 `
 
 export default LandingPage;
