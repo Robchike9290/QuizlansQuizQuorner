@@ -6,51 +6,6 @@ const exampleQuizTemplate = {
       question: "",
       correctAnswer: "",
       incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
-    },
-    {
-      question: "",
-      correctAnswer: "",
-      incorrectAnswers: []
     }
   ],
   timesTaken: 12,
