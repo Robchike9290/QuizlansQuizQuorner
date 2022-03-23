@@ -12,22 +12,25 @@ const Container = styled.div`
   height: 300px;
   //need to look up how to adjust height of box based on content rather than px
   text-align: center;
-  margin: var(--standard-margin)
+  margin: var(--standard-margin);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
 `;
 //display list withou bullets (later: ask jemmy)
 
 const FriendsList = () => {
-  const [friendsList, setFriendsList] = useState(mockUserList)
+  const [friendsList, setFriendsList] = useState(mockUserList);
 
   const getFriends = () => {
-    axios.get('/FillMeIn')
-      .then((response)=> {
-        setFriendsList(response.data)
+    axios
+      .get('/FillMeIn')
+      .then((response) => {
+        setFriendsList(response.data);
       })
-      .catch((error)=> {
-        console.error(error)
-      })
-  }
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
   //useEffect(()=> {
@@ -36,15 +39,13 @@ const FriendsList = () => {
 
   return (
     <Container>
-      <h3>
-      Friends List
-      </h3>
+      <h3>Friends List</h3>
       <div>
-      {friendsList.map((user, idx) => {
-        return <FriendsListItem userName={user.userName}/>
-      })}
+        {friendsList.map((user, idx) => {
+          return <FriendsListItem userName={user.userName} />;
+        })}
       </div>
-      </Container>
+    </Container>
   );
 };
 

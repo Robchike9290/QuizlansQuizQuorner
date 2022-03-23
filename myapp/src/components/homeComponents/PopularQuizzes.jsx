@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PopularQuizItem from './homeSubComponents/PopularQuizItem.jsx';
-import axios from 'axios'
-import {exampleQuizzes} from './../../../mockData/exampleQuizzes.js'
+import axios from 'axios';
+import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 //import sample data
 
 const Container = styled.div`
@@ -13,21 +13,23 @@ const Container = styled.div`
   margin: var(--standard-margin);
   display: flex;
   flex-direction: column;
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
 `;
 
 const PopularQuizzes = () => {
-
-  const [popularQuizList, setPopularQuizList] = useState(exampleQuizzes)
+  const [popularQuizList, setPopularQuizList] = useState(exampleQuizzes);
 
   const getPopularQuizzes = () => {
-    axios.get('/FillMeIn')
-      .then((response)=> {
-        setPopularQuizList(response.data)
+    axios
+      .get('/FillMeIn')
+      .then((response) => {
+        setPopularQuizList(response.data);
       })
-      .catch((error)=> {
-        console.error(error)
-      })
-  }
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
   //useEffect(()=> {
@@ -36,16 +38,16 @@ const PopularQuizzes = () => {
 
   return (
     <Container>
-    <h3>Popular Quizzes</h3>
-    {popularQuizList.length > 0 &&
-      popularQuizList.sort((a, b) => {
-        return b.quizUpvotes - a.quizUpvotes;
-      })
-      .map((listItem, index) => (
-        <PopularQuizItem quizName={listItem.quizName} key={index} />
-      ))
-    }
-  </Container>
+      <h3>Popular Quizzes</h3>
+      {popularQuizList.length > 0 &&
+        popularQuizList
+          .sort((a, b) => {
+            return b.quizUpvotes - a.quizUpvotes;
+          })
+          .map((listItem, index) => (
+            <PopularQuizItem quizName={listItem.quizName} key={index} />
+          ))}
+    </Container>
   );
 };
 
