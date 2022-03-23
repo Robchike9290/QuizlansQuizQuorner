@@ -10,9 +10,7 @@ import {
   signInWithEmailAndPassword
 } from "firebase/auth";
 import firebaseConfig from "../config.js";
-
 import exampleQuizzes from "../mockData/exampleQuizzes.js";
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
