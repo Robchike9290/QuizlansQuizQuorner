@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import Button from '@material-ui/core/Button';
@@ -19,6 +19,9 @@ const App = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [currentUser, setCurrentUser] = useState({});
+  const [currentSearch, setCurrentSearch] = useState('');
+
+  const stringifiedUser = JSON.stringify(currentUser);
 
 
   useEffect(() => {
@@ -85,7 +88,11 @@ const App = () => {
       })
   };
 
-  const handleSearch = (e) => {
+  const handleSearchChange = (e) => {
+    setCurrentSearch(e.target.value);
+  }
+
+  const handleSearchSubmit = (e) => {
     e.preventDefault();
     console.log('search button clicked');
   }
@@ -128,32 +135,32 @@ const App = () => {
         <NavBar>
           <NavBarLogo alt="Page logo" src={logo}>
           </NavBarLogo>
-          <NavBarTitle>Quizlan's Quiz Quorner</NavBarTitle>
-          {!isOnLandingPage && <NavBarHeading>
-            <Link to='/landingpage'>Landing Page</Link>
+          <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
+          {stringifiedUser === '{ALWAYSFALSE}' && <NavBarHeading>
+            <Link to='/'></Link>
           </NavBarHeading>}
-          {!isOnLandingPage && <NavBarHeading>
+          {stringifiedUser !== '{}' && <NavBarHeading>
             <Link to='/home'>Home</Link>
           </NavBarHeading>}
-          {!isOnLandingPage && <NavBarHeading>
+          {stringifiedUser !== '{}' && <NavBarHeading>
             <Link to='/user'>User</Link>
           </NavBarHeading>}
-          {isOnLandingPage && <NavBarHeading>
+          {stringifiedUser !== '{}' && <NavBarHeading>
             <Link to='/createquiz'>Create Quiz</Link>
           </NavBarHeading>}
-          {!isOnLandingPage && <NavBarHeading>
+          {stringifiedUser !== '{}' && <NavBarHeading>
             <Link to='/takequiz'>Take Quiz</Link>
           </NavBarHeading>}
-          <NavBarHeading>
+          {stringifiedUser === '{}' && <NavBarHeading>
             <Link to='/login'>Login</Link>
-          </NavBarHeading>
-          {!isOnLandingPage && <NavBarForm>
-            <input></input>
-            <button onClick={handleSearch}>Search For a Quiz!</button>
+          </NavBarHeading>}
+          {stringifiedUser !== '{}' && <NavBarForm>
+            <input onChange={handleSearchChange}></input>
+            <button onClick={handleSearchSubmit}>Search For a Quiz!</button>
           </NavBarForm>}
         </NavBar>
         <Switch>
-          <Route exact path='/landingpage'>
+          <Route exact path='/'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
@@ -192,7 +199,7 @@ const NavBarTitle = styled.span`{
   padding: var(--standard-padding);
   font-family: arial;
   font-size: 48px;
-}`
+}`;
 
 const NavBarLogo = styled.img`
   background-color: var(--blue);
@@ -200,7 +207,7 @@ const NavBarLogo = styled.img`
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
-`
+`;
 
 const NavBarHeading = styled.span`
   background-color: var(--blue);
@@ -210,7 +217,7 @@ const NavBarHeading = styled.span`
   padding: var(--standard-padding);
   font-family: arial;
   font-size: 24px;
-`
+`;
 
 const NavBarForm = styled.form`
   background-color: var(--blue);
@@ -218,7 +225,7 @@ const NavBarForm = styled.form`
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
-`
+`;
 
 const NavBar = styled.span`
   background-color: var(--yellow);
@@ -228,4 +235,4 @@ const NavBar = styled.span`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;
