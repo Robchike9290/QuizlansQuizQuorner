@@ -9,9 +9,9 @@ import LandingPage from './components/LandingPage.jsx';
 import TakeQuiz from './components/TakeQuiz.jsx';
 import User from './components/User.jsx';
 import Login from './components/Login.jsx';
-import { app, auth } from "./index.js";
-import axios from "axios";
-import logo from "./images/QuestionMarkQarl - NoTitle.png";
+import { app, auth } from './index.js';
+import axios from 'axios';
+import logo from './images/QuestionMarkQarl - NoTitle.png';
 import styled from 'styled-components';
 
 const exampleQuizzes = require('.././mockData/exampleQuizzes.js')
@@ -58,7 +58,7 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const report = () => {
@@ -68,7 +68,7 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const upvote = () => {
@@ -78,7 +78,7 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const downvote = () => {
@@ -88,17 +88,22 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const addQuiz = () => {
+<<<<<<< HEAD
+    axios
+      .post('http://localhost:4444/addQuiz')
+=======
     axios.post('http://52.90.8.77:4444/addQuiz')
+>>>>>>> dev
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const removeQuiz = () => {
@@ -108,7 +113,7 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const getUser = () => {
@@ -118,7 +123,7 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const addFriend = () => {
@@ -128,7 +133,7 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const removeFriend = () => {
@@ -138,13 +143,13 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   return (
     <Router>
-      {/* <Button onClick={upvote}>Upvote</Button>
-      {docData ? <div></div> : null} */}
+      {/*<Button onClick={upvote}>Upvote</Button>*/}
+      {docData ? <div></div> : null}
       <div>
         <NavBar>
           <NavBarLogo alt="Page logo" src={logo}>
@@ -194,10 +199,8 @@ const App = () => {
             <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} />
           </Route>
         </Switch>
-        {/* {docData ? <h1>
-          Hello {docData.quizName}
-        </h1> : null}
-        <Button variant="contained">this is a material UI button</Button> */}
+        {docData ? <h1>Hello {docData.quizName}</h1> : null}
+        {/*<Button variant="contained">this is a material UI button</Button>*/}
       </div>
     </Router>
   );
@@ -205,7 +208,7 @@ const App = () => {
 
 export default hot(App);
 
-const NavBarTitle = styled.span`{
+const NavBarTitle = styled.span`
   background-color: var(--blue);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
@@ -213,7 +216,11 @@ const NavBarTitle = styled.span`{
   padding: var(--standard-padding);
   font-family: arial;
   font-size: 48px;
+<<<<<<< HEAD
+`;
+=======
 }`;
+>>>>>>> dev
 
 const NavBarLogo = styled.img`
   background-color: var(--blue);
@@ -249,4 +256,8 @@ const NavBar = styled.span`
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD
 `;
+=======
+`;
+>>>>>>> dev
