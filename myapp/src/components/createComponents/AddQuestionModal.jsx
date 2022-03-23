@@ -53,7 +53,13 @@ const SubmitButton = styled.button`
   grid-row: 3 / span 1;
 `;
 
-const AddQuestionModal = ({ toggleModal, setToggleModal, quizToPost }) => {
+const AddQuestionModal = ({
+  toggleModal,
+  setToggleModal,
+  quizToPost,
+  newQuizQuestions,
+  setNewQuizQuestions,
+}) => {
   const [newQuestion, setNewQuestion] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [answer1, setAnswer1] = useState('');
@@ -74,14 +80,16 @@ const AddQuestionModal = ({ toggleModal, setToggleModal, quizToPost }) => {
         incorrectAnswers.splice(i, 1);
       }
     }
-
-    quizToPost.quizQuestions.push({
+    let questionObj = {
       question: newQuestion,
       correctAnswer: correctAnswer,
       incorrectAnswers: incorrectAnswers,
-    });
+    };
 
-    console.log('QUIIIIIIIIIIZ OBJECT BBBBBBB', quizToPost);
+    setNewQuizQuestions((newQuizQuestions) => [
+      ...newQuizQuestions,
+      questionObj,
+    ]);
 
     setTimeout(() => {
       setNewQuestion('');
