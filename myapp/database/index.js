@@ -8,7 +8,6 @@ mongoose.connect('mongodb://localhost/quizQuorner')
   });
 
 const quizSchema = mongoose.Schema({
-  quizId: Number, // our end - auto increment??
   quizName: { type: String, required: true }, // user - user genenrated
   quizQuestions: [
     {
@@ -31,7 +30,6 @@ const quizSchema = mongoose.Schema({
 
 
 const userSchema = mongoose.Schema({
-  userId: Number, // our end - auto increment??
   userName: { type: String, required: true, index: { unique: true }}, // user - based on userName
   email: { type: String, required: true, index: { unique: true }}, // user - based on email
   quizHistory: [
@@ -50,23 +48,23 @@ const Quiz = mongoose.model('Quiz', quizSchema);
 const User = mongoose.model('User', userSchema);
 
 const upVote = function (quizId) {
-  return Quiz.updateOne({ "quizId": quizId}, {$inc: {quizUpvotes: 1} }, {upsert: true})
+  return Quiz.updateOne({ "_id": quizId}, {$inc: {quizUpvotes: 1} }, {upsert: true})
 };
 
 const downVote = (quizId) => {
-  return Quiz.updateOne({ "quizId": quizId}, {$inc: {quizUpvotes: -1} }, {upsert: true});
+  return Quiz.updateOne({ "_id": quizId}, {$inc: {quizUpvotes: -1} }, {upsert: true});
 }
 
 const reportQuiz = (quizId) => {
-  return Quiz.updateOne({ "quizId": quizId}, {$set: {reported: true}}, {upsert: true});
+  return Quiz.updateOne({ "_id": quizId}, {$set: {reported: true}}, {upsert: true});
 }
 
 const reportCount = (quizId) => {
-  return Quiz.updateOne({ "quizId": quizId}, {$inc: {reportedTimes: 1} }, {upsert: true});
+  return Quiz.updateOne({ "_id": quizId}, {$inc: {reportedTimes: 1} }, {upsert: true});
 }
 
 const removeQuiz = (quizId) => {
-  return Quiz.deleteOne({ "quizId": quizId })
+  return Quiz.deleteOne({ "_id": quizId })
 }
 
 //what are we searching by? user/category. one has to be null
@@ -107,13 +105,13 @@ const newQuizHistory = (userId, quizHistory) => {
   return User.updateOne({ "userId": userId}, {$push: {quizHistory: quizHistory}})
 }
 
-const takenQuizAgain = (userId) => {
-  return User.updateOne({ "userId": userId}, {$inc: {"quizHistory.timesUserHasTaken": 1}})
-}
+// const takenQuizAgain = (userId) => {
+//   return User.updateOne({ "userId": userId}, {$inc: {"quizHistory.timesUserHasTaken": 1}})
+// }
 
-const newQuizScore = (userId, userScore) => {
-  return User.updateOne({ "userId": userId}, {$push: {"quizHistory.userScores": userScore}})
-}
+// const newQuizScore = (userId, userScore) => {
+//   return User.updateOne({ "userId": userId}, {$push: {"quizHistory.userScores": userScore}})
+// }
 
 const getAllQuizzes = () => {
   return Quiz.find({})
@@ -132,8 +130,8 @@ module.exports = {
   addFriend: addFriend,
   removeFriend: removeFriend,
   newQuizHistory: newQuizHistory,
-  takenQuizAgain: takenQuizAgain,
-  newQuizScore: newQuizScore,
+  // takenQuizAgain: takenQuizAgain,
+  // newQuizScore: newQuizScore,
   getAllQuizzes: getAllQuizzes
 };
 

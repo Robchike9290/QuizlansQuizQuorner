@@ -11,8 +11,8 @@ const {
   addFriend,
   removeFriend,
   newQuizHistory,
-  takenQuizAgain,
-  newQuizScore,
+  // takenQuizAgain,
+  // newQuizScore,
   getAllQuizzes
 } = require('../database/index.js');
 const app = express();
@@ -151,9 +151,8 @@ app.post('/addUser', (req, res) => { // works
 
 app.post('/newQuizHistory', (req, res) => { // works
   const newHistory = {
-      quizId: req.body.quizId,
-      timesUserHasTaken: 1,
-      userScores: [req.body.score]
+      _id: req.body.quizId,
+      userScores: req.body.score
   }
 
   const user = req.body.email;
@@ -167,21 +166,21 @@ app.post('/newQuizHistory', (req, res) => { // works
     })
 })
 
-app.post('/updateQuizHistory', (req, res) => {
-  takenQuizAgain(req.body.email)
-    .then((results) => {
-      newQuizScore(req.body.email, req.body.score)
-        .then((results) => {
-          res.status(201).send("Quiz history updated!");
-        })
-        .catch((err) => {
-          console.error(err);
-        })
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-})
+// app.post('/updateQuizHistory', (req, res) => {
+//   takenQuizAgain(req.body.email)
+//     .then((results) => {
+//       newQuizScore(req.body.email, req.body.score)
+//         .then((results) => {
+//           res.status(201).send("Quiz history updated!");
+//         })
+//         .catch((err) => {
+//           console.error(err);
+//         })
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     })
+// })
 
 app.get('/getAllQuizzes', (req, res) => { // works
   getAllQuizzes()
