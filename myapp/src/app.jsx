@@ -13,6 +13,7 @@ import { app, auth } from './index.js';
 import axios from 'axios';
 import logo from './images/QuestionMarkQarl - NoTitle.png';
 import styled from 'styled-components';
+import { signOut } from 'firebase/auth';
 
 const exampleQuizzes = require('.././mockData/exampleQuizzes.js')
 
@@ -28,22 +29,8 @@ const App = () => {
   const stringifiedUser = JSON.stringify(currentUser);
 
   useEffect(() => {
-    // UNCOMMENT THIS ONCE THE ROUTE FETCHING ALL QUIZ DATA IS RUNNING PROPERLY.
     getData();
-    createDropDownData();
   }, []);
-
-  const createDropDownData = () => {
-    const quizIds = [];
-    for (let key in exampleQuizzes) {
-      for (let i = 0; i < exampleQuizzes[key].length; i++) {
-        let quiz = exampleQuizzes[key][i];
-        let newDropDownItem = {label: quiz.quizId, value: quiz.quizId};
-        quizIds.push(newDropDownItem);
-        setAllQuizzes(quizIds);
-      }
-    }
-  }
 
   const handleSearchSubmit = (opt) => {
     console.log('you\'ve selected:', opt.label);
@@ -55,11 +42,27 @@ const App = () => {
     axios.get('http://52.90.8.77:4444/getAllQuizzes')
       .then((response) => {
         console.log('Here are your quizzes: ', response.data);
-        {/* SET THE ALLQUIZZES STATE HERE ONCE THE ROUTE IS BUILT OUT */}
+        const quizIds = [];
+        for (let i = 0; i < response.data.length; i++) {
+          let quiz = response.data[i];
+          let newDropDownItem = {label: quiz.quizName, value: quiz.quizName};
+          quizIds.push(newDropDownItem);
+        }
+        setAllQuizzes(quizIds);
       })
       .catch((err) => {
         console.error(err);
       });
+  };
+
+  const logOut = () => {
+    const signedOut = signOut(auth)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
   };
 
   const report = () => {
@@ -152,7 +155,7 @@ const App = () => {
           </NavBarLogo>
           <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
           {stringifiedUser === '{ALWAYSFALSE}' && <NavBarHeading>
-            <Link to='/'></Link>
+            <Link to='/landingpage'></Link>
           </NavBarHeading>}
           {stringifiedUser !== '{}' && <NavBarHeading>
             <Link to='/home'>Home</Link>
@@ -164,19 +167,21 @@ const App = () => {
             <Link to='/createquiz'>Create Quiz</Link>
           </NavBarHeading>}
           {stringifiedUser !== '{}' && <NavBarHeading>
-            <Link to='/takequiz'>Take Quiz</Link>
+            <Link to={{pathname: '/takequiz', state: { quizSelected: selectedQuiz }}}>Take Quiz</Link>
           </NavBarHeading>}
           {stringifiedUser === '{}' && <NavBarHeading>
-            <Link to='/login'>Login</Link>
+            <Link to='/login'>Log In</Link>
+          </NavBarHeading>}
+          {stringifiedUser !== '{}' && <NavBarHeading>
+            <Link to='/landingpage' onClick={logOut}>Log Out</Link>
           </NavBarHeading>}
           {stringifiedUser !== '{}' && <NavBarForm>
-            {/* CHANGE THIS TO THE GET ALL QUIZZES ROUTE ONCE IT IS BUILT OUT */}
             <Select options={allQuizzes} onChange={handleSearchSubmit}>
             Search for a Quiz to Take!</Select>
           </NavBarForm>}
         </NavBar>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/landingpage'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
@@ -186,7 +191,7 @@ const App = () => {
             <User />
           </Route>
           <Route exact path='/takequiz'>
-            <TakeQuiz />
+            <TakeQuiz selectedQuiz={selectedQuiz}/>
           </Route>
           <Route exact path='/createquiz'>
             <CreateQuiz />
