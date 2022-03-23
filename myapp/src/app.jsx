@@ -1,5 +1,6 @@
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
 import { hot } from 'react-hot-loader/root';
 import Button from '@material-ui/core/Button';
 import Home from './components/Home.jsx';
@@ -8,34 +9,56 @@ import LandingPage from './components/LandingPage.jsx';
 import TakeQuiz from './components/TakeQuiz.jsx';
 import User from './components/User.jsx';
 import Login from './components/Login.jsx';
-import { app, auth } from "./index.js";
-import axios from "axios";
-import logo from "./images/QuestionMarkQarl - NoTitle.png";
+import { app, auth } from './index.js';
+import axios from 'axios';
+import logo from './images/QuestionMarkQarl - NoTitle.png';
 import styled from 'styled-components';
+
+const exampleQuizzes = require('.././mockData/exampleQuizzes.js')
 
 const App = () => {
   const [docData, setDocData] = useState(null);
-  const isOnLandingPage = (window.location.pathname == '/landingpage')
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [currentUser, setCurrentUser] = useState({});
   const [currentSearch, setCurrentSearch] = useState('');
+  const [allQuizzes, setAllQuizzes] = useState([]);
+  const [selectedQuiz, setSelectedQuiz] = useState(0);
 
   const stringifiedUser = JSON.stringify(currentUser);
 
-
   useEffect(() => {
-    getData();
+    // UNCOMMENT THIS ONCE THE ROUTE FETCHING ALL QUIZ DATA IS RUNNING PROPERLY.
+    // getData();
+    createDropDownData();
   }, []);
+
+  const createDropDownData = () => {
+    const quizIds = [];
+    for (let key in exampleQuizzes) {
+      for (let i = 0; i < exampleQuizzes[key].length; i++) {
+        let quiz = exampleQuizzes[key][i];
+        let newDropDownItem = {label: quiz.quizId, value: quiz.quizId}
+        quizIds.push(newDropDownItem);
+        setAllQuizzes(quizIds);
+      }
+    }
+  }
+
+  const handleSearchSubmit = (opt) => {
+    console.log('you\'ve selected:', opt.label);
+    window.location.href = 'http://localhost:8080/#/createquiz';
+  }
 
   const getData = () => {
     axios.get('http://52.90.8.77:4444/getAllQuizzes')
       .then((response) => {
         console.log('Here are your quizzes: ', response.data);
+        {/* SET THE ALLQUIZZES STATE HERE ONCE THE ROUTE IS BUILT OUT */}
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const report = () => {
@@ -45,7 +68,7 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const upvote = () => {
@@ -55,7 +78,7 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const downvote = () => {
@@ -65,17 +88,22 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const addQuiz = () => {
+<<<<<<< HEAD
+    axios
+      .post('http://localhost:4444/addQuiz')
+=======
     axios.post('http://52.90.8.77:4444/addQuiz')
+>>>>>>> dev
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const removeQuiz = () => {
@@ -85,17 +113,8 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
-
-  const handleSearchChange = (e) => {
-    setCurrentSearch(e.target.value);
-  }
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    console.log('search button clicked');
-  }
 
   const getUser = () => {
     axios.get('http://52.90.8.77:4444/user')
@@ -104,7 +123,7 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const addFriend = () => {
@@ -114,7 +133,7 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   const removeFriend = () => {
@@ -124,13 +143,13 @@ const App = () => {
       })
       .catch((err) => {
         console.error(err);
-      })
+      });
   };
 
   return (
     <Router>
-      {/* <Button onClick={upvote}>Upvote</Button>
-      {docData ? <div></div> : null} */}
+      {/*<Button onClick={upvote}>Upvote</Button>*/}
+      {docData ? <div></div> : null}
       <div>
         <NavBar>
           <NavBarLogo alt="Page logo" src={logo}>
@@ -155,8 +174,9 @@ const App = () => {
             <Link to='/login'>Login</Link>
           </NavBarHeading>}
           {stringifiedUser !== '{}' && <NavBarForm>
-            <input onChange={handleSearchChange}></input>
-            <button onClick={handleSearchSubmit}>Search For a Quiz!</button>
+            {/* CHANGE THIS TO THE GET ALL QUIZZES ROUTE ONCE IT IS BUILT OUT */}
+            <Select options={allQuizzes} onChange={handleSearchSubmit}>
+            Search for a Quiz to Take!</Select>
           </NavBarForm>}
         </NavBar>
         <Switch>
@@ -179,10 +199,8 @@ const App = () => {
             <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} />
           </Route>
         </Switch>
-        {/* {docData ? <h1>
-          Hello {docData.quizName}
-        </h1> : null}
-        <Button variant="contained">this is a material UI button</Button> */}
+        {docData ? <h1>Hello {docData.quizName}</h1> : null}
+        {/*<Button variant="contained">this is a material UI button</Button>*/}
       </div>
     </Router>
   );
@@ -190,7 +208,7 @@ const App = () => {
 
 export default hot(App);
 
-const NavBarTitle = styled.span`{
+const NavBarTitle = styled.span`
   background-color: var(--blue);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
@@ -198,7 +216,11 @@ const NavBarTitle = styled.span`{
   padding: var(--standard-padding);
   font-family: arial;
   font-size: 48px;
+<<<<<<< HEAD
+`;
+=======
 }`;
+>>>>>>> dev
 
 const NavBarLogo = styled.img`
   background-color: var(--blue);
@@ -234,4 +256,8 @@ const NavBar = styled.span`
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD
 `;
+=======
+`;
+>>>>>>> dev
