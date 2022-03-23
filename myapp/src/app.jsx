@@ -29,7 +29,7 @@ const App = () => {
 
   useEffect(() => {
     // UNCOMMENT THIS ONCE THE ROUTE FETCHING ALL QUIZ DATA IS RUNNING PROPERLY.
-    // getData();
+    getData();
     createDropDownData();
   }, []);
 
@@ -92,12 +92,7 @@ const App = () => {
   };
 
   const addQuiz = () => {
-<<<<<<< HEAD
-    axios
-      .post('http://localhost:4444/addQuiz')
-=======
     axios.post('http://52.90.8.77:4444/addQuiz')
->>>>>>> dev
       .then((response) => {
         console.log(response.data);
       })
@@ -216,11 +211,7 @@ const NavBarTitle = styled.span`
   padding: var(--standard-padding);
   font-family: arial;
   font-size: 48px;
-<<<<<<< HEAD
 `;
-=======
-}`;
->>>>>>> dev
 
 const NavBarLogo = styled.img`
   background-color: var(--blue);
@@ -256,8 +247,4 @@ const NavBar = styled.span`
   display: flex;
   justify-content: space-between;
   align-items: center;
-<<<<<<< HEAD
 `;
-=======
-`;
->>>>>>> dev

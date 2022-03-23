@@ -42,10 +42,17 @@ const Footer = styled.div`
 const Start = ({ quiz, pageStatus }) => {
 
  if (!quiz) {
+  // get all quiz data from db
+  // use that quiz data to populate the feed
   return (
     <Container>
     <Header>Start</Header>
-    <Body>select a quiz</Body>
+    <Body>
+      <h2>select a quiz</h2>
+      <div>
+        map over quiz data and render a feed of quizzes here for the user to select
+      </div>
+    </Body>
     <Footer>
       <span>
       <button>Return to homepage</button>
@@ -55,8 +62,23 @@ const Start = ({ quiz, pageStatus }) => {
     </Container>
   )
  } else if (quiz) {
+  // get selected quiz data from db
+  //render the page that gives user the option to return home or start quiz
   return (
-  <div>Quiz is defined</div>
+  <div>
+    <p>* banner image here *</p>
+    <h1>Quiz Name</h1>
+    <p>Quiz author</p>
+    <p>Quiz category</p>
+    <br/>
+    <br/>
+    <Footer>
+      <span>
+      <button>Back</button>
+      <button>Play!</button>
+      </span>
+    </Footer>
+  </div>
   )
  }
 };

@@ -13,11 +13,11 @@ const BaseLayout = styled.div`
 
 const TakeQuiz = () => {
   const [pageStatus, setPageStatus] = useState('start'); //start, quiz, results
-  const [quiz, setQuiz] = useState(undefined); //will change when a user selects a quiz to play
+  const [quiz, setQuiz] = useState('yes'); //will change when a user selects a quiz to play
 
   useEffect(() => {
 
-  }, [quiz])
+  }, [])
 
   const changeStatus = () => {
     if (pageStatus === 'start') {
