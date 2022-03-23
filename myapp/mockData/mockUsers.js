@@ -5,8 +5,7 @@ const mockUserExample =  {
   quizHistory: [
     {
       quizId: 0,
-      timesUserHasTaken: 0,
-      userScores: []
+      userScores: 0
     }
   ],
   friends: []
@@ -21,14 +20,22 @@ const mockUserList = [
       {
         quizId: 1,
         quizName: "General One",
-        timesUserHasTaken: 2,
-        userScores: [60, 80]
+        userScores: 60
+      },
+      {
+        quizId: 1,
+        quizName: "General One",
+        userScores: 80
       },
       {
         quizId: 2,
         quizName: "General Two",
-        timesUserHasTaken: 2,
-        userScores: [70, 80]
+        userScores: 70
+      },
+      {
+        quizId: 2,
+        quizName: "General Two",
+        userScores: 80
       }
     ],
     friends: [303, 304, 305]
@@ -41,44 +48,37 @@ const mockUserList = [
       {
         quizId: 1,
         quizName: "General One",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 2,
         quizName: "General Two",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 3,
         quizName: "Science and Nature quiz one",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 4,
         quizName: "Science and Nature quiz two",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 5,
         quizName: "Animal quiz one",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 6,
         quizName: "Animal quiz number two",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 7,
         quizName: "Animal Quiz Number 3",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       }
     ],
     friends: [303, 304, 305]
@@ -91,26 +91,47 @@ const mockUserList = [
       {
         quizId: 1,
         quizName: "General One",
-        timesUserHasTaken: 3,
-        userScores: [80, 90, 100]
+        userScores: 80
+      },
+      {
+        quizId: 1,
+        quizName: "General One",
+        userScores: 90
+      },
+      {
+        quizId: 1,
+        quizName: "General One",
+        userScores: 100
       },
       {
         quizId: 2,
         quizName: "General Two",
-        timesUserHasTaken: 2,
-        userScores: [90, 100]
+        userScores: 90
+      },
+      {
+        quizId: 2,
+        quizName: "General Two",
+        userScores: 100
       },
       {
         quizId: 3,
         quizName: "Science and Nature quiz one",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 4,
         quizName: "Science and Nature quiz two",
-        timesUserHasTaken: 3,
-        userScores: [80, 90, 100]
+        userScores: 80
+      },
+      {
+        quizId: 4,
+        quizName: "Science and Nature quiz two",
+        userScores: 90
+      },
+      {
+        quizId: 4,
+        quizName: "Science and Nature quiz two",
+        userScores: 100
       }
     ],
     friends: [301, 305]
@@ -123,20 +144,17 @@ const mockUserList = [
       {
         quizId: 1,
         quizName: "General One",
-        timesUserHasTaken: 1,
-        userScores: [0]
+        userScores: 0
       },
       {
         quizId: 2,
         quizName: "General Two",
-        timesUserHasTaken: 1,
-        userScores: [0]
+        userScores: 0
       },
       {
         quizId: 3,
         quizName: "Science and Nature quiz one",
-        timesUserHasTaken: 1,
-        userScores: [0]
+        userScores: 0
       }
     ],
     friends: []
@@ -149,44 +167,37 @@ const mockUserList = [
       {
         quizId: 1,
         quizName: "General One",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 2,
         quizName: "General Two",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 3,
         quizName: "Science and Nature quiz one",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 4,
         quizName: "Science and Nature quiz two",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 5,
         quizName: "Animal quiz one",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 6,
         quizName: "Animal quiz number two",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       },
       {
         quizId: 7,
         quizName: "Animal Quiz Number 3",
-        timesUserHasTaken: 1,
-        userScores: [100]
+        userScores: 100
       }
     ],
     friends: [301, 302, 303]

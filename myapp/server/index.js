@@ -102,7 +102,7 @@ app.post('/addQuiz', (req, res) => {
 })
 
 app.get('/user', (req, res) => {
-  getUser(req.body.userId)
+  getUser(req.body.email)
     .then((results) => {
       res.status(200).send(results);
     })
@@ -112,7 +112,7 @@ app.get('/user', (req, res) => {
 })
 
 app.post('/addFriend', (req, res) => {
-  addFriend(req.body.userId, req.body.friendID)
+  addFriend(req.body.email, req.body.friendEmail)
     .then((results) => {
       res.status(201).send("Friend added!");
     })
@@ -122,7 +122,7 @@ app.post('/addFriend', (req, res) => {
 })
 
 app.post('/removeFriend', (req, res) => {
-  removeFriend(req.body.userId, req.body.friendID)
+  removeFriend(req.body.email, req.body.friendEmail)
     .then((results) => {
       res.status(201).send("Friend removed!");
     })
@@ -150,12 +150,11 @@ app.post('/addUser', (req, res) => {
 
 app.post('/newQuizHistory', (req, res) => {
   const newHistory = {
-      quizId: req.body.quizId,
-      timesUserHasTaken: 1,
-      userScores: [req.body.score]
+      _id: req.body.quizId,
+      userScores: req.body.score
   }
 
-  const user = req.body.userId;
+  const user = req.body.email;
 
   newQuizHistory(user, newHistory)
     .then((results) => {

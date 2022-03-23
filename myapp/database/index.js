@@ -8,7 +8,6 @@ mongoose.connect('mongodb://localhost/quizQuorner')
   });
 
 const quizSchema = mongoose.Schema({
-  quizId: Number, // our end - auto increment??
   quizName: { type: String, required: true }, // user - user genenrated
   quizQuestions: [
     {
@@ -38,11 +37,10 @@ const userSchema = mongoose.Schema({
     {
       quizId: { type: Number, required: true }, // based on quizId after completion
       quizName: { type: String, required: true }, // based on quizName after completion
-      timesUserHasTaken: { type: Number, required: true }, // increment after completion
-      userScores: [{ type: Number, required: true }] // add score to array after completion
+      userScores: Number
     }
   ],
-  friends: [{ type: Number, required: true, index: { unique: true }}] // add or remove userId to array as user adds or removes friend
+  friends: [String] // add or remove userId to array as user adds or removes friend
 })
 
 const Quiz = mongoose.model('Quiz', quizSchema);
@@ -77,10 +75,6 @@ const getQuizzes = (createdBy, category) => {
   if (category) {
     return Quiz.find({ "category": category})
   }
-}
-
-const getAllQuizzes = () => {
-  return Quiz.find()
 }
 
 const getQuiz = (quizId) => {
