@@ -22,18 +22,18 @@ const path = require('path');
 app.use(express.static(__dirname + './../dist/bundle.js'));
 app.use(express.json());
 
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../dist/index.html'), function (err) {
-    if (err) {
-      res.status(500).send(err);
-    }
-  });
-});
+// app.get('*', function (req, res) {
+//   res.sendFile(path.join(__dirname, '../dist/index.html'), function (err) {
+//     if (err) {
+//       res.status(500).send(err);
+//     }
+//   });
+// });
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+//   next();
+// });
 
 app.get('/quizzes', (req, res) => { // works
   console.log('Hello from the server!')
