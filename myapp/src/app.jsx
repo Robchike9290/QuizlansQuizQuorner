@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import Button from '@material-ui/core/Button';
