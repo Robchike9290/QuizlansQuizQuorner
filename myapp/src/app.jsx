@@ -122,7 +122,6 @@ const App = () => {
       {/* <Button onClick={upvote}>Upvote</Button>
       {docData ? <div></div> : null} */}
       <div>
-<<<<<<< HEAD
         <NavBar>
           <NavBarLogo alt="Page logo" src={logo}>
           </NavBarLogo>
@@ -131,14 +130,6 @@ const App = () => {
             <Link to='/landingpage'>Landing Page</Link>
           </NavBarHeading>}
           {!isOnLandingPage && <NavBarHeading>
-=======
-
-        <ul>
-          <li>
-            <Link to='/'>Landing Page</Link>
-          </li>
-          <li>
->>>>>>> 7a46112989dc3d02404152f06174f0e2190957d0
             <Link to='/home'>Home</Link>
           </NavBarHeading>}
           {!isOnLandingPage && <NavBarHeading>

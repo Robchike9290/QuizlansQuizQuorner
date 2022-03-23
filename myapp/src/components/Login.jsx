@@ -7,9 +7,9 @@ import {
   signInWithEmailAndPassword,
   signOut, createUserWithEmailAndPassword
 } from "firebase/auth";
-import { auth } from "../../config.js"
+import { auth } from "../index.js"
 import { getFirestore } from "firebase/firestore";
-import firebaseConfig from "../../config.js";
+import firebaseConfig from "../index.js";
 
 const Login = () => {
   const [registerEmail, setRegisterEmail] = useState("");
