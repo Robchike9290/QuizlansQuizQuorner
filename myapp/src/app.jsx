@@ -16,6 +16,9 @@ import styled from 'styled-components';
 const App = () => {
   const [docData, setDocData] = useState(null);
   const isOnLandingPage = (window.location.pathname == '/landingpage')
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
 
 
   useEffect(() => {
@@ -166,7 +169,7 @@ const App = () => {
             <CreateQuiz />
           </Route>
           <Route exact path='/login'>
-            <Login />
+            <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} />
           </Route>
         </Switch>
         {/* {docData ? <h1>
