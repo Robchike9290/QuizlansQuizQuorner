@@ -56,7 +56,7 @@ const Start = ({ quiz, pageStatus }) => {
   )
  } else if (quiz) {
   return (
-  <div>Quiz is defined: {quiz}</div>
+  <div>Quiz is defined</div>
   )
  }
 };

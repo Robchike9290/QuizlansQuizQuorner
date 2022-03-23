@@ -17,7 +17,7 @@ const TakeQuiz = () => {
 
   useEffect(() => {
 
-  }, [])
+  }, [quiz])
 
   const changeStatus = () => {
     if (pageStatus === 'start') {
