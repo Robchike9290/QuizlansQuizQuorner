@@ -11,7 +11,7 @@ import User from './components/User.jsx';
 import Login from './components/Login.jsx';
 import { app, auth } from './index.js';
 import axios from 'axios';
-import logo from './images/QuestionMarkQarl - NoTitle.png';
+import logo from './images/QuestionMark.png';
 import styled from 'styled-components';
 
 const exampleQuizzes = require('.././mockData/exampleQuizzes.js');
