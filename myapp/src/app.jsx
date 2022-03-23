@@ -13,7 +13,7 @@ import axios from 'axios';
 import logo from './images/QuestionMarkQarl - NoTitle.png';
 import styled from 'styled-components';
 
-const url = 'http://52.90.8.77:4444/';
+const url = 'http://52.90.8.77:4444';
 
 const App = () => {
   const [docData, setDocData] = useState(null);
@@ -25,7 +25,7 @@ const App = () => {
 
   const getData = () => {
     axios
-      .get(`${url}/quizzes`)
+      .get(`${url}`)
       .then((response) => {
         console.log('Here are your quizzes: ', response.data);
       })
@@ -150,7 +150,7 @@ const App = () => {
               <Link to='/user'>User</Link>
             </NavBarHeading>
           )}
-          {isOnLandingPage && (
+          {!isOnLandingPage && (
             <NavBarHeading>
               <Link to='/createquiz'>Create Quiz</Link>
             </NavBarHeading>

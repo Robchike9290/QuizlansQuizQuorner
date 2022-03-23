@@ -45,6 +45,14 @@ const CreateQuiz = () => {
   const [newQuizDescription, setNewQuizDescription] = useState('');
   const [newQuizBanner, setNewQuizBanner] = useState('');
   const [newQuizCategory, setNewQuizCategory] = useState('');
+  const quizToPost = {
+    quizName: `${newQuizTitle}`, // user - user genenrated
+    quizQuestions: [],
+    category: `${newQuizCategory}`, // user - select from list
+    quizDescription: `${newQuizDescription}`, // user - user generated
+    quizBanner: `${newQuizBanner}`,
+    createdBy: {}, // user - based on userName
+  };
 
   const handleCategorySelect = (event) => {
     setNewQuizBanner(event.target.value);
@@ -99,6 +107,7 @@ const CreateQuiz = () => {
         <AddQuestionModal
           setToggleModal={setToggleModal}
           toggleModal={toggleModal}
+          quizToPost={quizToPost}
         />
       )}
     </NewQuiz>
