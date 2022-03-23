@@ -7,8 +7,13 @@ const {
   getQuizzes,
   addQuiz,
   getUser,
+  addUser,
   addFriend,
   removeFriend,
+  newQuizHistory,
+  takenQuizAgain,
+  newQuizScore,
+  getAllQuizzes,
 } = require('../database/index.js');
 const app = express();
 const axios = require('axios');
@@ -32,13 +37,13 @@ app.use((req, res, next) => {
 
 app.get('/quizzes', (req, res) => {
   console.log('Hello from the server!');
-  getQuizzes(req.body.createdBy, req.body.category);
-  // .then((results) => {
-  res.status(200).send('Server response!');
-  // })
-  // .catch((err) => {
-  //   console.error(err);
-  // })
+  getQuizzes(req.body.createdBy, req.body.category)
+    .then((results) => {
+      res.status(200).send('Server response!');
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 app.post('/upvote', (req, res) => {
@@ -82,7 +87,22 @@ app.post('/removeQuiz', (req, res) => {
 });
 
 app.post('/addQuiz', (req, res) => {
-  addQuiz(req.body.newQuiz)
+  const newQuiz = {
+    quizName: req.body.quizName,
+    quizQuestions: req.body.quizQuestions,
+    timesTaken: 0,
+    category: req.body.category,
+    quizDescription: req.body.quizDescription,
+    quizBanner: req.body.quizBanner || '',
+    quizUpvotes: 0,
+    quizDownvotes: 0,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: req.body.createdBy,
+    aggregateScore: 0,
+  };
+
+  addQuiz(newQuiz)
     .then((results) => {
       res.status(201).send('quiz added!');
     })
@@ -115,6 +135,67 @@ app.post('/removeFriend', (req, res) => {
   removeFriend(req.body.userId, req.body.friendID)
     .then((results) => {
       res.status(201).send('Friend removed!');
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
+
+app.post('/addUser', (req, res) => {
+  const newUser = {
+    userName: req.body.userName,
+    email: req.body.email,
+    quizHistory: [],
+    friends: [],
+  };
+
+  addUser(newUser)
+    .then((results) => {
+      res.status(201).send('User added!');
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
+
+app.post('/newQuizHistory', (req, res) => {
+  const newHistory = {
+    quizId: req.body.quizId,
+    timesUserHasTaken: 1,
+    userScores: [req.body.score],
+  };
+
+  const user = req.body.userId;
+
+  newQuizHistory(user, newHistory)
+    .then((results) => {
+      res.status(201).send('Added to quiz history!');
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
+
+app.post('/updateQuizHistory', (req, res) => {
+  takenQuizAgain(req.body.userId)
+    .then((results) => {
+      newQuizScore(req.body.userId, req.body.score)
+        .then((results) => {
+          res.status(201).send('Quiz history updated!');
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
+
+app.get('/getAllQuizzes', (req, res) => {
+  getAllQuizzes()
+    .then((results) => {
+      res.status(200).send(results);
     })
     .catch((err) => {
       console.error(err);
