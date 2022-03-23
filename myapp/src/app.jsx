@@ -47,7 +47,7 @@ const App = () => {
 
   const handleSearchSubmit = (opt) => {
     console.log('you\'ve selected:', opt.label);
-    window.location.href = 'http://localhost:8080/#/createquiz';
+    window.location.href = 'http://localhost:8080/#/takequiz';
   }
 
   const getData = () => {
