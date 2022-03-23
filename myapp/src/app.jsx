@@ -162,7 +162,6 @@ const App = () => {
             <Link to='/login'>Login</Link>
           </NavBarHeading>}
           {stringifiedUser !== '{}' && <NavBarForm>
-            {/* CHANGE THIS TO THE GET ALL QUIZZES ROUTE ONCE IT IS BUILT OUT */}
             <Select options={allQuizzes} onChange={handleSearchSubmit}>
             Search for a Quiz to Take!</Select>
           </NavBarForm>}
@@ -177,9 +176,8 @@ const App = () => {
           <Route exact path='/user'>
             <User />
           </Route>
-          {/* <Route exact path='/takequiz' component={TakeQuiz} render={props => <TakeQuiz {...props} />}/> */}
           <Route exact path='/takequiz'>
-            <TakeQuiz />
+            <TakeQuiz selectedQuiz={selectedQuiz}/>
           </Route>
           <Route exact path='/createquiz'>
             <CreateQuiz />

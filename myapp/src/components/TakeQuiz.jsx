@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import QuizBody from './takeQuizComponents/QuizBody.jsx';
 import Start from './takeQuizComponents/Start.jsx';
@@ -12,14 +11,12 @@ const BaseLayout = styled.div`
   height: 600px;
 `;
 
-const TakeQuiz = () => {
-  // const location = useLocation();
-  // const { quizSelected } = location.state;
+const TakeQuiz = (props) => {
   const [pageStatus, setPageStatus] = useState('start'); //start, quiz, results
   const [quiz, setQuiz] = useState(undefined); //will change when a user selects a quiz to play
 
   useEffect(() => {
-
+    console.log(props.selectedQuiz);
   }, [])
 
   const changeStatus = () => {
