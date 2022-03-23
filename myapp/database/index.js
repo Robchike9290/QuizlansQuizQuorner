@@ -36,7 +36,6 @@ const userSchema = mongoose.Schema({
     {
       quizId: { type: Number, required: true }, // based on quizId after completion
       quizName: { type: String, required: true }, // based on quizName after completion
-      timesUserHasTaken: { type: Number, required: true }, // increment after completion
       userScores: Number // add score to array after completion
     }
   ],
