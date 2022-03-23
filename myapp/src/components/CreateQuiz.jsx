@@ -186,7 +186,7 @@ const CreateQuiz = () => {
         ></Description>
       </TextInputs>
       <Gallery>
-        <h3>Select a Banner img</h3>
+        <h3>Select a Banner</h3>
         {bannerOptions?.map((image, index) => {
           return (
             <IMG
