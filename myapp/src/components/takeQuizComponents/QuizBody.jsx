@@ -43,7 +43,6 @@ const QuizBody = () => {
   return (
     <Container>
       <QuizQuestion />
-
     </Container>
   );
 };
