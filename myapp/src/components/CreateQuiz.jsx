@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AddQuestionModal from './createComponents/AddQuestionModal.jsx';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const NewQuiz = styled.div`
   margin: var(--standard-margin);
@@ -17,11 +18,19 @@ const Gallery = styled.div`
   box-sizing: border-box;
   padding: 15px;
   gap: 15px;
-  grid-row: 2 / span 1;
+  grid-row-start: 2;
   grid-column: 2 / span 1;
 `;
 
 const QuizName = styled.input``;
+
+const EachQuestion = styled.div`
+  background-color: var(--purple);
+  border: 5px solid var(--purple)
+  border-radius: var(--stadard-border-radius);
+  margin: var(--standard-margin);
+  padding: var(--standard-padding);
+`;
 
 const TextInputs = styled.div`
   grid-row: 1 / span 1;
@@ -37,12 +46,18 @@ const IMG = styled.img`
   height: 100%;
   object-fit: cover;
   border: 5px solid var(--purple);
+  border-radius: var(--standard-border-radius);
 `;
 
 const CreatedQuestions = styled.div`
   height: 10%;
   grid-column: 2 / span 1;
   margin: var(--standard-margin);
+  display: grid;
+  grid-auto-rows: 200px;
+  grid-template-columns: repeat(2, 1fr);
+  box-sizing: border-box;
+  gap: 15px;
 `;
 
 const AddQButton = styled.button`
@@ -70,7 +85,7 @@ const CreateQuiz = () => {
     axios
       .post('http://52.90.8.77:4444/addQuiz', quizObj)
       .then((response) => {
-        //console.log(response.data);
+        console.log(response.data);
         resetInputs();
       })
       .catch((err) => {
@@ -89,6 +104,7 @@ const CreateQuiz = () => {
     });
     //post request
     //reset inputs
+
     addQuiz(quizToPost);
   };
 
@@ -109,7 +125,7 @@ const CreateQuiz = () => {
   };
 
   const handleCategorySelect = (event) => {
-    setNewQuizBanner(event.target.value);
+    setNewQuizCategory(event.target.value);
   };
 
   const bannerOptions = [
@@ -128,13 +144,13 @@ const CreateQuiz = () => {
         {newQuizQuestions?.length > 0 &&
           newQuizQuestions.map((question, index) => {
             return (
-              <div>
+              <EachQuestion>
                 <div>{question.question}</div>
-                <div>{question.correctAnswer}</div>
+                <div>{question.correctAnswer} - Correct Answer</div>
                 <div>{question.incorrectAnswers[0]}</div>
                 <div>{question.incorrectAnswers[1]}</div>
                 <div>{question.incorrectAnswers[2]}</div>
-              </div>
+              </EachQuestion>
             );
           })}
       </CreatedQuestions>
@@ -150,10 +166,13 @@ const CreateQuiz = () => {
         <br></br>
         <label>Select a Category:</label>
         <select onChange={handleCategorySelect}>
-          <option value='Category1'>Category1</option>
-          <option value='Category2'>Category2</option>
-          <option value='Category3'>Category3</option>
-          <option value='Category4'>Category4</option>
+          <option value='Animals'>Animals</option>
+          <option value='Pop Culture'>Pop Culture</option>
+          <option value='History'>History</option>
+          <option value='Literature'>Literature</option>
+          <option value='Just for Fun'>Just for Fun</option>
+          <option value='Science'>Science</option>
+          <option value='TV and Movies'>TV and Movies</option>
         </select>
         <br></br>
         <label>Quiz Description:</label>
