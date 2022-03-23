@@ -95,15 +95,13 @@ const CreateQuiz = () => {
 
   const handleQuizSubmission = () => {
     setQuizToPost({
-      quizName: newQuizTitle, // user - user genenrated
+      quizName: newQuizTitle,
       quizQuestions: newQuizQuestions,
-      category: newQuizCategory, // user - select from list
-      quizDescription: newQuizDescription, // user - user generated
+      category: newQuizCategory,
+      quizDescription: newQuizDescription,
       quizBanner: newQuizBanner,
-      createdBy: 'stand-in-user', // user - based on userName
+      createdBy: 'stand-in-user',
     });
-    //post request
-    //reset inputs
 
     addQuiz(quizToPost);
   };
@@ -206,7 +204,7 @@ const CreateQuiz = () => {
       >
         Add Question
       </AddQButton>
-      <button onClick={handleQuizSubmission}>Submit Quiz</button>
+      <button onClick={() => {setTimeout(() => {handleQuizSubmission()}, 2000)}}>Submit Quiz</button>
       {toggleModal && (
         <AddQuestionModal
           setToggleModal={setToggleModal}
