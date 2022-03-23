@@ -28,22 +28,8 @@ const App = () => {
   const stringifiedUser = JSON.stringify(currentUser);
 
   useEffect(() => {
-    // UNCOMMENT THIS ONCE THE ROUTE FETCHING ALL QUIZ DATA IS RUNNING PROPERLY.
     getData();
-    createDropDownData();
   }, []);
-
-  const createDropDownData = () => {
-    const quizIds = [];
-    for (let key in exampleQuizzes) {
-      for (let i = 0; i < exampleQuizzes[key].length; i++) {
-        let quiz = exampleQuizzes[key][i];
-        let newDropDownItem = {label: quiz.quizId, value: quiz.quizId};
-        quizIds.push(newDropDownItem);
-        setAllQuizzes(quizIds);
-      }
-    }
-  }
 
   const handleSearchSubmit = (opt) => {
     console.log('you\'ve selected:', opt.label);
@@ -55,7 +41,13 @@ const App = () => {
     axios.get('http://52.90.8.77:4444/getAllQuizzes')
       .then((response) => {
         console.log('Here are your quizzes: ', response.data);
-        {/* SET THE ALLQUIZZES STATE HERE ONCE THE ROUTE IS BUILT OUT */}
+        const quizIds = [];
+        for (let i = 0; i < response.data.length; i++) {
+          let quiz = response.data[i];
+          let newDropDownItem = {label: quiz.quizName, value: quiz.quizName};
+          quizIds.push(newDropDownItem);
+        }
+        setAllQuizzes(quizIds);
       })
       .catch((err) => {
         console.error(err);
@@ -152,7 +144,7 @@ const App = () => {
           </NavBarLogo>
           <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
           {stringifiedUser === '{ALWAYSFALSE}' && <NavBarHeading>
-            <Link to='/'></Link>
+            <Link to='/landingpage'></Link>
           </NavBarHeading>}
           {stringifiedUser !== '{}' && <NavBarHeading>
             <Link to='/home'>Home</Link>
@@ -164,7 +156,7 @@ const App = () => {
             <Link to='/createquiz'>Create Quiz</Link>
           </NavBarHeading>}
           {stringifiedUser !== '{}' && <NavBarHeading>
-            <Link to='/takequiz' state={{ from: "selectedQuiz" }}>Take Quiz</Link>
+            <Link to={{pathname: '/takequiz', state: { quizSelected: selectedQuiz }}}>Take Quiz</Link>
           </NavBarHeading>}
           {stringifiedUser === '{}' && <NavBarHeading>
             <Link to='/login'>Login</Link>
@@ -176,7 +168,7 @@ const App = () => {
           </NavBarForm>}
         </NavBar>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/landingpage'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
@@ -185,6 +177,7 @@ const App = () => {
           <Route exact path='/user'>
             <User />
           </Route>
+          {/* <Route exact path='/takequiz' component={TakeQuiz} render={props => <TakeQuiz {...props} />}/> */}
           <Route exact path='/takequiz'>
             <TakeQuiz />
           </Route>

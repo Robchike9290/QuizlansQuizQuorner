@@ -13,8 +13,8 @@ const BaseLayout = styled.div`
 `;
 
 const TakeQuiz = () => {
-  const location = useLocation();
-  const { from } = location.state;
+  // const location = useLocation();
+  // const { quizSelected } = location.state;
   const [pageStatus, setPageStatus] = useState('start'); //start, quiz, results
   const [quiz, setQuiz] = useState(undefined); //will change when a user selects a quiz to play
 
