@@ -26,7 +26,7 @@ const App = () => {
   }, []);
 
   const getData = () => {
-    axios.get('http://52.90.8.77:4444/quizzes')
+    axios.get('http://52.90.8.77:4444/getAllQuizzes')
       .then((response) => {
         console.log('Here are your quizzes: ', response.data);
       })

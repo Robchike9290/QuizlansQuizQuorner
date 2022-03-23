@@ -26,7 +26,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/quizzes', (req, res) => {
+app.get('/quizzes', (req, res) => { // works
   console.log('Hello from the server!')
   getQuizzes(req.body.createdBy, req.body.category)
     .then((results) => {
@@ -37,7 +37,7 @@ app.get('/quizzes', (req, res) => {
     })
 })
 
-app.post('/upvote', (req, res) => {
+app.post('/upvote', (req, res) => { // works
   upVote(req.body.quizId)
     .then((results) => {
       res.status(201).send("upvoted!");
@@ -47,7 +47,7 @@ app.post('/upvote', (req, res) => {
     })
 })
 
-app.post('/downvote', (req, res) => {
+app.post('/downvote', (req, res) => { // works
   downVote(req.body.quizId)
     .then((results) => {
       res.status(201).send("downvoted!");
@@ -57,7 +57,7 @@ app.post('/downvote', (req, res) => {
     })
 })
 
-app.post('/reportQuiz', (req, res) => {
+app.post('/reportQuiz', (req, res) => { // works
   reportQuiz(req.body.quizId)
     .then((results) => {
       res.status(201).send("reported!");
@@ -67,7 +67,7 @@ app.post('/reportQuiz', (req, res) => {
     })
 })
 
-app.post('/removeQuiz', (req, res) => {
+app.post('/removeQuiz', (req, res) => { // works
   removeQuiz(req.body.quizId)
     .then((results) => {
       res.status(201).send("removed!");
@@ -77,7 +77,7 @@ app.post('/removeQuiz', (req, res) => {
     })
 })
 
-app.post('/addQuiz', (req, res) => {
+app.post('/addQuiz', (req, res) => { // works
   const newQuiz = {
     quizName: req.body.quizName,
     quizQuestions: req.body.quizQuestions,
@@ -102,8 +102,8 @@ app.post('/addQuiz', (req, res) => {
     })
 })
 
-app.get('/user', (req, res) => {
-  getUser(req.body.userId)
+app.get('/user', (req, res) => { // works
+  getUser(req.body.email)
     .then((results) => {
       res.status(200).send(results);
     })
@@ -112,8 +112,8 @@ app.get('/user', (req, res) => {
     })
 })
 
-app.post('/addFriend', (req, res) => {
-  addFriend(req.body.userId, req.body.friendID)
+app.post('/addFriend', (req, res) => { // works
+  addFriend(req.body.email, req.body.friendEmail)
     .then((results) => {
       res.status(201).send("Friend added!");
     })
@@ -122,8 +122,8 @@ app.post('/addFriend', (req, res) => {
     })
 })
 
-app.post('/removeFriend', (req, res) => {
-  removeFriend(req.body.userId, req.body.friendID)
+app.post('/removeFriend', (req, res) => { // works
+  removeFriend(req.body.email, req.body.friendEmail)
     .then((results) => {
       res.status(201).send("Friend removed!");
     })
@@ -132,7 +132,7 @@ app.post('/removeFriend', (req, res) => {
     })
 })
 
-app.post('/addUser', (req, res) => {
+app.post('/addUser', (req, res) => { // works
   const newUser =  {
     userName: req.body.userName,
     email: req.body.email,
@@ -149,14 +149,14 @@ app.post('/addUser', (req, res) => {
     })
 })
 
-app.post('/newQuizHistory', (req, res) => {
+app.post('/newQuizHistory', (req, res) => { // works
   const newHistory = {
       quizId: req.body.quizId,
       timesUserHasTaken: 1,
       userScores: [req.body.score]
   }
 
-  const user = req.body.userId;
+  const user = req.body.email;
 
   newQuizHistory(user, newHistory)
     .then((results) => {
@@ -168,9 +168,9 @@ app.post('/newQuizHistory', (req, res) => {
 })
 
 app.post('/updateQuizHistory', (req, res) => {
-  takenQuizAgain(req.body.userId)
+  takenQuizAgain(req.body.email)
     .then((results) => {
-      newQuizScore(req.body.userId, req.body.score)
+      newQuizScore(req.body.email, req.body.score)
         .then((results) => {
           res.status(201).send("Quiz history updated!");
         })
@@ -183,7 +183,7 @@ app.post('/updateQuizHistory', (req, res) => {
     })
 })
 
-app.get('/getAllQuizzes', (req, res) => {
+app.get('/getAllQuizzes', (req, res) => { // works
   getAllQuizzes()
     .then((results) => {
       res.status(200).send(results);
