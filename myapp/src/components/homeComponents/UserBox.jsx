@@ -8,13 +8,15 @@ const Container = styled.div`
   height: 100px;
   text-align: center;
   margin: var(--standard-margin);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  box-shadow: var(--standard-shadow);
 `;
 
 const Contents = styled.div`
-  text-align: right;
+  grid-column-start: 2
   margin: var(--standard-margin);
+  word-wrap: break-all
 `;
 
 const IMG = styled.img`
@@ -25,6 +27,7 @@ const IMG = styled.img`
 
 const Avatar = styled.div`
   width: 100px;
+  grid-column: 1 / span 1;
 `;
 
 const UserBox = () => {
@@ -32,13 +35,14 @@ const UserBox = () => {
 
   return (
     <Container>
+      <Avatar>
+        <IMG src='https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg' />
+      </Avatar>
       <Contents>
-        <Avatar>
-          <IMG src='https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg' />
-        </Avatar>
-        {userData.userName}
+        <br></br>
+        <div>{userData.userName}</div>
+        <div>{userData.email}</div>
       </Contents>
-      <Contents>{userData.email}</Contents>
     </Container>
   );
 };
