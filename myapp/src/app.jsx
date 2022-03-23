@@ -23,6 +23,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
+  const [selectedQuiz, setSelectedQuiz] = useState(0);
 
   const stringifiedUser = JSON.stringify(currentUser);
 
@@ -42,6 +43,11 @@ const App = () => {
         setAllQuizzes(quizIds);
       }
     }
+  }
+
+  const handleSearchSubmit = (opt) => {
+    console.log('you\'ve selected:', opt.label);
+    window.location.href = 'http://localhost:8080/#/createquiz';
   }
 
   const getData = () => {
@@ -104,11 +110,6 @@ const App = () => {
         console.error(err);
       })
   };
-
-  const handleSearchSubmit = (opt) => {
-    console.log('you\'ve selected:', opt.label);
-    window.location.href = 'http://localhost:8080/#/createquiz';
-  }
 
   const getUser = () => {
     axios.get('http://52.90.8.77:4444/user')
