@@ -14,9 +14,10 @@ import axios from "axios";
 import logo from "./images/QuestionMarkQarl - NoTitle.png";
 import styled from 'styled-components';
 
+const exampleQuizzes = require('.././mockData/exampleQuizzes.js')
+
 const App = () => {
   const [docData, setDocData] = useState(null);
-  const isOnLandingPage = (window.location.pathname == '/landingpage')
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [currentUser, setCurrentUser] = useState({});
@@ -32,13 +33,28 @@ const App = () => {
   ]
 
   useEffect(() => {
-    getData();
+    // UNCOMMENT THIS ONCE THE ROUTE FETCHING ALL QUIZ DATA IS RUNNING PROPERLY.
+    // getData();
+    createDropDownData();
   }, []);
+
+  const createDropDownData = () => {
+    const quizIds = [];
+    for (let key in exampleQuizzes) {
+      for (let i = 0; i < exampleQuizzes[key].length; i++) {
+        let quiz = exampleQuizzes[key][i];
+        let newDropDownItem = {label: quiz.quizId, value: quiz.quizId}
+        quizIds.push(newDropDownItem);
+        setAllQuizzes(quizIds);
+      }
+    }
+  }
 
   const getData = () => {
     axios.get('http://52.90.8.77:4444/quizzes')
       .then((response) => {
         console.log('Here are your quizzes: ', response.data);
+        {/* SET THE ALLQUIZZES STATE HERE ONCE THE ROUTE IS BUILT OUT */}
       })
       .catch((err) => {
         console.error(err);
@@ -95,13 +111,9 @@ const App = () => {
       })
   };
 
-  const handleSearchChange = (e) => {
-    setCurrentSearch(e.target.value);
-  }
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    console.log('search button clicked');
+  const handleSearchSubmit = (opt) => {
+    console.log('you\'ve selected:', opt.label);
+    window.location.href = 'http://localhost:8080/#/createquiz';
   }
 
   const getUser = () => {
@@ -162,9 +174,9 @@ const App = () => {
             <Link to='/login'>Login</Link>
           </NavBarHeading>}
           {stringifiedUser !== '{}' && <NavBarForm>
-            {/* <input onChange={handleSearchChange}></input>
-            <button onClick={handleSearchSubmit}>Search For a Quiz!</button> */}
-            <Select options={testOptions}></Select>
+            {/* CHANGE THIS TO THE GET ALL QUIZZES ROUTE ONCE IT IS BUILT OUT */}
+            <Select options={allQuizzes} onChange={handleSearchSubmit}>
+            Search for a Quiz to Take!</Select>
           </NavBarForm>}
         </NavBar>
         <Switch>
