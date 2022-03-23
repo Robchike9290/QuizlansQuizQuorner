@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios'
-import {exampleQuizzes} from './../../../mockData/exampleQuizzes.js'
+import axios from 'axios';
+import {exampleQuizzes} from './../../../mockData/exampleQuizzes.js';
+import UserGeneratedQuiz from './UserGeneratedQuiz.jsx';
+import FriendsList from './FriendsList.jsx';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
@@ -16,6 +18,7 @@ const Container = styled.div`
 const UserQuizzes = () => {
 
   const [UserQuizzes, setUserQuizzes] = useState(exampleQuizzes)
+  const [showQuizzes, setShowQuizzes] = useState(4);
 
   const getUserQuizzes = () => {
     axios.get('/FillMeIn')
@@ -32,9 +35,13 @@ const UserQuizzes = () => {
   //  getRecentQuizzes()
   //}, [])
 
+ // replace createdby with the presently logged in user
   return (
     <Container>
       User Quizzes
+      {UserQuizzes.filter(userQuiz => userQuiz.createdBy === 'LizTheQuizWiz').slice(0, showQuizzes).map((userQuiz) => {
+        return <UserGeneratedQuiz userQuiz={userQuiz} key={userQuiz.quizID}/>
+      })}
     </Container>
   );
 };

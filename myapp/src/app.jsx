@@ -183,6 +183,7 @@ const App = () => {
 
 export default hot(App);
 
+
 const NavBarTitle = styled.span`{
   background-color: var(--blue);
   text-color: var(--text-color);

@@ -18,12 +18,20 @@ const auth = getAuth(app);
 
 // Detect user login
 onAuthStateChanged(auth, (user) => {
+  const [currentUser, setCurrentUser] = useState('');
+
   if (user !== null) {
+    //console.log('💄💄💄👌🏽', user.email);
     console.log('Logged in!');
+    //setCurrentUser(user.email);
+    console.log(currentUser);
   } else {
     console.log('User not found...');
   }
+
 });
+
+
 
 var mountNode = document.getElementById('app');
 ReactDOM.render(<App name='Jane' />, mountNode);
