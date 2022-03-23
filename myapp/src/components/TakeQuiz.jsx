@@ -11,12 +11,12 @@ const BaseLayout = styled.div`
   height: 600px;
 `;
 
-const TakeQuiz = () => {
+const TakeQuiz = (props) => {
   const [pageStatus, setPageStatus] = useState('start'); //start, quiz, results
   const [quiz, setQuiz] = useState(undefined); //will change when a user selects a quiz to play
 
   useEffect(() => {
-
+    console.log(props.selectedQuiz);
   }, [])
 
   const changeStatus = () => {
