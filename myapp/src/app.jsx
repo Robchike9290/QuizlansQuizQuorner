@@ -16,6 +16,9 @@ import styled from 'styled-components';
 const App = () => {
   const [docData, setDocData] = useState(null);
   const isOnLandingPage = (window.location.pathname == '/landingpage')
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
 
 
   useEffect(() => {
@@ -23,7 +26,7 @@ const App = () => {
   }, []);
 
   const getData = () => {
-    axios.get('http://localhost:4444/quizzes')
+    axios.get('http://52.90.8.77:4444/quizzes')
       .then((response) => {
         console.log('Here are your quizzes: ', response.data);
       })
@@ -33,7 +36,7 @@ const App = () => {
   };
 
   const report = () => {
-    axios.post('http://localhost:4444/reportQuiz')
+    axios.post('http://52.90.8.77:4444/reportQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -43,7 +46,7 @@ const App = () => {
   };
 
   const upvote = () => {
-    axios.post('http://localhost:4444/upvote')
+    axios.post('http://52.90.8.77:4444/upvote')
       .then((response) => {
         console.log(response.data);
       })
@@ -53,7 +56,7 @@ const App = () => {
   };
 
   const downvote = () => {
-    axios.post('http://localhost:4444/downvote')
+    axios.post('http://52.90.8.77:4444/downvote')
       .then((response) => {
         console.log(response.data);
       })
@@ -63,7 +66,7 @@ const App = () => {
   };
 
   const addQuiz = () => {
-    axios.post('http://localhost:4444/addQuiz')
+    axios.post('http://52.90.8.77:4444/addQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -73,7 +76,7 @@ const App = () => {
   };
 
   const removeQuiz = () => {
-    axios.post('http://localhost:4444/removeQuiz')
+    axios.post('http://52.90.8.77:4444/removeQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -88,7 +91,7 @@ const App = () => {
   }
 
   const getUser = () => {
-    axios.get('http://localhost:4444/user')
+    axios.get('http://52.90.8.77:4444/user')
       .then((response) => {
         console.log(response.data);
       })
@@ -98,7 +101,7 @@ const App = () => {
   };
 
   const addFriend = () => {
-    axios.post('http://localhost:4444/addFriend')
+    axios.post('http://52.90.8.77:4444/addFriend')
       .then((response) => {
         console.log(response.data);
       })
@@ -108,7 +111,7 @@ const App = () => {
   };
 
   const removeFriend = () => {
-    axios.post('http://localhost:4444/removeFriend')
+    axios.post('http://52.90.8.77:4444/removeFriend')
       .then((response) => {
         console.log(response.data);
       })
@@ -122,7 +125,6 @@ const App = () => {
       {/* <Button onClick={upvote}>Upvote</Button>
       {docData ? <div></div> : null} */}
       <div>
-<<<<<<< HEAD
         <NavBar>
           <NavBarLogo alt="Page logo" src={logo}>
           </NavBarLogo>
@@ -131,14 +133,6 @@ const App = () => {
             <Link to='/landingpage'>Landing Page</Link>
           </NavBarHeading>}
           {!isOnLandingPage && <NavBarHeading>
-=======
-
-        <ul>
-          <li>
-            <Link to='/'>Landing Page</Link>
-          </li>
-          <li>
->>>>>>> 7a46112989dc3d02404152f06174f0e2190957d0
             <Link to='/home'>Home</Link>
           </NavBarHeading>}
           {!isOnLandingPage && <NavBarHeading>
@@ -175,7 +169,7 @@ const App = () => {
             <CreateQuiz />
           </Route>
           <Route exact path='/login'>
-            <Login />
+            <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} />
           </Route>
         </Switch>
         {/* {docData ? <h1>
