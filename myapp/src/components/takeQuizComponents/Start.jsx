@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {exampleQuizzes} from './../../../mockData/exampleQuizzes.js'
+import axios from 'axios';
+import QuizFeedItem from './takeQuizSubcomponents/QuizFeedItem.jsx'
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
@@ -39,43 +41,45 @@ const Footer = styled.div`
   margin-top: 30px; //necessary until I fix the quiz body extending into the footer
 `;
 
-const Start = ({ quiz, pageStatus }) => {
+const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStatusBackward, chooseQuiz, chosenQuiz }) => {
 
- if (!quiz) {
+ if (!quizSelected) {
   // get all quiz data from db
   // use that quiz data to populate the feed
   return (
     <Container>
     <Header>Start</Header>
     <Body>
-      <h2>select a quiz</h2>
+      <h2>Select a quiz to start playing!</h2>
       <div>
-        map over quiz data and render a feed of quizzes here for the user to select
+      {allQuizzes.map((quiz, idx) => {
+          return <QuizFeedItem quiz={quiz} changeStatusForward={changeStatusForward} chooseQuiz={chooseQuiz} key={idx}/>
+        })}
       </div>
+      <div>{console.log('QUIZZES, DO THEY EXIST?', allQuizzes)}</div>
     </Body>
     <Footer>
       <span>
-      <button>Return to homepage</button>
-      <button>Next</button>
+      <button onClick={chosenQuiz}>Next</button>
       </span>
     </Footer>
     </Container>
   )
- } else if (quiz) {
+ } else if (quizSelected) {
   // get selected quiz data from db
   //render the page that gives user the option to return home or start quiz
   return (
   <div>
-    <p>* banner image here *</p>
-    <h1>Quiz Name</h1>
-    <p>Quiz author</p>
-    <p>Quiz category</p>
     <br/>
     <br/>
+    <p>You've selected:</p>
+    <h1>{quiz}</h1>
+    {/* <p>Quiz author</p>
+    <p>Quiz category</p> */}
     <Footer>
       <span>
-      <button>Back</button>
-      <button>Play!</button>
+      <button onClick={changeStatusBackward}>Back</button>
+      <button onClick={changeStatusForward}>Play!</button>
       </span>
     </Footer>
   </div>
