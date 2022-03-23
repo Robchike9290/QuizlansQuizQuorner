@@ -23,7 +23,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
-  const [selectedQuiz, setSelectedQuiz] = useState(0);
+  const [selectedQuiz, setSelectedQuiz] = useState(undefined);
 
   const stringifiedUser = JSON.stringify(currentUser);
 
@@ -38,7 +38,11 @@ const App = () => {
     for (let key in exampleQuizzes) {
       for (let i = 0; i < exampleQuizzes[key].length; i++) {
         let quiz = exampleQuizzes[key][i];
+<<<<<<< HEAD
         let newDropDownItem = { label: quiz.quizId, value: quiz.quizId };
+=======
+        let newDropDownItem = {label: quiz.quizId, value: quiz.quizId};
+>>>>>>> dev
         quizIds.push(newDropDownItem);
         setAllQuizzes(quizIds);
       }
@@ -46,6 +50,7 @@ const App = () => {
   };
 
   const handleSearchSubmit = (opt) => {
+<<<<<<< HEAD
     console.log("you've selected:", opt.label);
     window.location.href = 'http://localhost:8080/#/createquiz';
   };
@@ -53,6 +58,15 @@ const App = () => {
   const getData = () => {
     axios
       .get('http://52.90.8.77:4444/quizzes')
+=======
+    console.log('you\'ve selected:', opt.label);
+    window.location.href = 'http://localhost:8080/#/takequiz';
+    setSelectedQuiz(opt.label);
+  }
+
+  const getData = () => {
+    axios.get('http://52.90.8.77:4444/getAllQuizzes')
+>>>>>>> dev
       .then((response) => {
         console.log('Here are your quizzes: ', response.data);
         {
@@ -98,8 +112,12 @@ const App = () => {
   };
 
   const addQuiz = () => {
+<<<<<<< HEAD
     axios
       .post('http://52.90.8.77:4444/addQuiz')
+=======
+    axios.post('http://52.90.8.77:4444/addQuiz')
+>>>>>>> dev
       .then((response) => {
         console.log(response.data);
       })
