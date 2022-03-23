@@ -80,7 +80,7 @@ const getQuizzes = (createdBy, category) => {
 }
 
 const getAllQuizzes = () => {
-  return Quiz.find({})
+  return Quiz.find()
 }
 
 const getQuiz = (quizId) => {
