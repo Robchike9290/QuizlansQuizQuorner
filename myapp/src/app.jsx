@@ -13,6 +13,7 @@ import { app, auth } from './index.js';
 import axios from 'axios';
 import logo from './images/QuestionMarkQarl - NoTitle.png';
 import styled from 'styled-components';
+import { signOut } from 'firebase/auth';
 
 const exampleQuizzes = require('.././mockData/exampleQuizzes.js')
 
@@ -52,6 +53,16 @@ const App = () => {
       .catch((err) => {
         console.error(err);
       });
+  };
+
+  const logOut = () => {
+    const signedOut = signOut(auth)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
   };
 
   const report = () => {
@@ -159,7 +170,10 @@ const App = () => {
             <Link to={{pathname: '/takequiz', state: { quizSelected: selectedQuiz }}}>Take Quiz</Link>
           </NavBarHeading>}
           {stringifiedUser === '{}' && <NavBarHeading>
-            <Link to='/login'>Login</Link>
+            <Link to='/login'>Log In</Link>
+          </NavBarHeading>}
+          {stringifiedUser !== '{}' && <NavBarHeading>
+            <Link to='/landingpage' onClick={logOut}>Log Out</Link>
           </NavBarHeading>}
           {stringifiedUser !== '{}' && <NavBarForm>
             <Select options={allQuizzes} onChange={handleSearchSubmit}>
