@@ -9,12 +9,16 @@ import {
 } from "firebase/auth";
 import { auth } from "../index.js"
 import { getFirestore } from "firebase/firestore";
+<<<<<<< HEAD
 import firebaseConfig from "../index.js";
+=======
+// import firebaseConfig from "../index.js";
+>>>>>>> e3a61e5d8f181e45e7fd107981ebdd54dfca776b
 
-const Login = () => {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [currentUser, setCurrentUser] = useState({});
+const Login = ( { registerEmail, setRegisterEmail, registerPassword, setRegisterPassword, currentUser, setCurrentUser } ) => {
+  // const [registerEmail, setRegisterEmail] = useState("");
+  // const [registerPassword, setRegisterPassword] = useState("");
+  // const [currentUser, setCurrentUser] = useState({});
 
   onAuthStateChanged(auth, (loggedInUser) => {
     setCurrentUser(loggedInUser);
@@ -68,9 +72,9 @@ const Login = () => {
       username/email/TBD
       <div>
         email
-        <input onChange={createEmailHandler} />
+        <input type="email" required={true} onChange={createEmailHandler} />
         password
-        <input onChange={createPasswordHandler} />
+        <input type="password" required={true} onChange={createPasswordHandler} />
       </div>
       <div>
         <span>
