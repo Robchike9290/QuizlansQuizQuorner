@@ -23,7 +23,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
-  const [selectedQuiz, setSelectedQuiz] = useState(0);
+  const [selectedQuiz, setSelectedQuiz] = useState(undefined);
 
   const stringifiedUser = JSON.stringify(currentUser);
 
@@ -38,7 +38,7 @@ const App = () => {
     for (let key in exampleQuizzes) {
       for (let i = 0; i < exampleQuizzes[key].length; i++) {
         let quiz = exampleQuizzes[key][i];
-        let newDropDownItem = {label: quiz.quizId, value: quiz.quizId}
+        let newDropDownItem = {label: quiz.quizId, value: quiz.quizId};
         quizIds.push(newDropDownItem);
         setAllQuizzes(quizIds);
       }
@@ -47,7 +47,8 @@ const App = () => {
 
   const handleSearchSubmit = (opt) => {
     console.log('you\'ve selected:', opt.label);
-    window.location.href = 'http://localhost:8080/#/createquiz';
+    window.location.href = 'http://localhost:8080/#/takequiz';
+    setSelectedQuiz(opt.label);
   }
 
   const getData = () => {
