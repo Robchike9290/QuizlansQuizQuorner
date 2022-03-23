@@ -18,6 +18,7 @@ const TakeQuiz = () => {
   const [quiz, setQuiz] = useState(null); //will change to quiz id (ex: 623b4f3193deed525907e16b) when a user selects a quiz to play
   const [allQuizzes, setAllQuizzes] = useState(exampleQuizzes);
   const [quizSelected, setQuizSelected] = useState(false);
+  // const [score, setScore] = useState(0);
 
   const getQuizzes = () => {
     axios.get('http://52.90.8.77:4444/getAllQuizzes')
@@ -86,7 +87,7 @@ const TakeQuiz = () => {
   return (
   <BaseLayout>
   {pageStatus === 'start' ? <Start allQuizzes={allQuizzes} quiz={quiz} quizSelected={quizSelected} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} chooseQuiz={chooseQuiz} chosenQuiz={chosenQuiz}/> :
-  pageStatus === 'quiz' ? <Quiz quiz={quiz} allQuizzes={allQuizzes} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward}/> :
+  pageStatus === 'quiz' ? <Quiz quiz={quiz} allQuizzes={allQuizzes} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} /> :
   pageStatus === 'results' ? <Results changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward}/> : null }
 
   </BaseLayout>);

@@ -54,7 +54,9 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
   const [counter, setCounter] = useState(0);
   const [score, setScore] = useState(0);
 
-  // const [buttonStatus, setButtonStatus] = useState();
+  useEffect(() => {
+    getQuiz();
+  }, [])
 
   const getQuiz = () => {
     for (let i = 0; i < allQuizzes.length; i++) {
@@ -77,11 +79,9 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
     setScore(score + 1);
   }
 
-  useEffect(() => {
-    getQuiz();
-  }, [])
+  console.log('selectedQuiz --', selectedQuiz)
 
-//<FloatRight>score:</FloatRight>
+  console.log('selectedQuiz.quizQuestions --', selectedQuiz.quizQuestions)
   return (
     <Container>
     <Header>{selectedQuiz ? (
@@ -108,11 +108,7 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
         </FloatLeft>
         <button onClick={changeStatusBackward}>Exit quiz</button>
         <FloatRight>
-          {counter === selectedQuiz.quizQuestions.length - 1 ?
-           <button onClick={changeStatusForward}>Finish Quiz</button> :
-           <button onClick={nextQuestion}>Next</button>
-          }
-
+        <button onClick={nextQuestion}>Next</button>
         </FloatRight>
       </span>
     </Footer>
@@ -121,3 +117,8 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
 };
 
 export default Quiz;
+
+    // {(counter === selectedQuiz.quizQuestions.length - 1) ?
+          //  <button onClick={changeStatusForward}>Finish Quiz</button> :
+          //  <button onClick={nextQuestion}>Next</button>
+          // } : null }
