@@ -167,7 +167,7 @@ const App = () => {
             <Home />
           </Route>
           <Route exact path='/user'>
-            <User />
+            <User currentUser={currentUser}/>
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz />

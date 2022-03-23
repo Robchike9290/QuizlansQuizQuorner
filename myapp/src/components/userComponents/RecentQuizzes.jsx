@@ -14,15 +14,19 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const RecentQuizzes = () => {
+// nothing will show unless the currently logged in user (Nic's firebase)
+// has quizzes, currently using mockdata.
+
+const RecentQuizzes = (props) => {
 
   const [recentQuizzes, setRecentQuizzes] = useState(exampleQuizzes);
   const [showNumber, setShowNumber] = useState(4);
 
 
   const getRecentQuizzes = () => {
-    axios.get('/FillMeIn')
+    axios.get('/quizzes')
       .then((response)=> {
+        console.log('💋💋💋💋💋', response.data)
         setRecentQuizzes(response.data)
       })
       .catch((error)=> {
@@ -49,7 +53,7 @@ const RecentQuizzes = () => {
       Recent Quizzes
       <div>
         {recentQuizzes.filter(recentQuiz =>
-          recentQuiz.createdBy === 'PatrickTheAssistant' && recentQuiz.timesTaken > 2)
+          recentQuiz.createdBy === props.currentUser.email && recentQuiz.timesTaken > 2)
          .slice(0, 3).map((eachQuiz, key) => (
           <RecentQuiz eachQuiz={eachQuiz} key={key}/>
         ))}

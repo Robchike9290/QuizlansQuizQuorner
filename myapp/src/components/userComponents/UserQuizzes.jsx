@@ -15,14 +15,15 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const UserQuizzes = () => {
+const UserQuizzes = (props) => {
 
-  const [UserQuizzes, setUserQuizzes] = useState(exampleQuizzes)
+  const [userQuizzes, setUserQuizzes] = useState(exampleQuizzes)
   const [showQuizzes, setShowQuizzes] = useState(4);
 
   const getUserQuizzes = () => {
-    axios.get('/FillMeIn')
+    axios.get('/quizzes')
       .then((response)=> {
+        console.log('👅👅👅👅👅', response.data);
         setUserQuizzes(response.data)
       })
       .catch((error)=> {
@@ -30,17 +31,37 @@ const UserQuizzes = () => {
       })
   }
 
-  //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
-  //useEffect(()=> {
-  //  getRecentQuizzes()
-  //}, [])
+  // var config = {
+  //   method: 'get',
+  //   url: '52.90.8.77:4444/user',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   data : data
+  // };
 
- // replace createdby with the presently logged in user
+  // axios(config)
+  // .then(function (response) {
+  //   console.log('👄👄👄👄', JSON.stringify(response.data));
+  // })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
+
+
+  console.log('👅👅👅👅👅', userQuizzes);
+  console.log('💄💄💄💄💄👁👁', props.currentUser);
+  //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
+  useEffect(()=> {
+    getUserQuizzes()
+  }, [])
+
+
   return (
     <Container>
       User Quizzes
-      {UserQuizzes.filter(userQuiz => userQuiz.createdBy === 'LizTheQuizWiz').slice(0, showQuizzes).map((userQuiz) => {
-        return <UserGeneratedQuiz userQuiz={userQuiz} key={userQuiz.quizID}/>
+      {userQuizzes.filter(userQuiz => userQuiz.createdBy === props.currentUser.email).slice(0, showQuizzes).map((userQuiz) => {
+        return <UserGeneratedQuiz userQuiz={userQuiz} userQuizzes={userQuizzes} key={userQuiz.quizID}/>
       })}
     </Container>
   );
