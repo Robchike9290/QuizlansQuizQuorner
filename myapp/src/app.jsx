@@ -164,7 +164,7 @@ const App = () => {
             <Link to='/createquiz'>Create Quiz</Link>
           </NavBarHeading>}
           {stringifiedUser !== '{}' && <NavBarHeading>
-            <Link to='/takequiz'>Take Quiz</Link>
+            <Link to='/takequiz' state={{ from: "selectedQuiz" }}>Take Quiz</Link>
           </NavBarHeading>}
           {stringifiedUser === '{}' && <NavBarHeading>
             <Link to='/login'>Login</Link>
