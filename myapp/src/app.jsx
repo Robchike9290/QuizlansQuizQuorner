@@ -1,5 +1,6 @@
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
 import { hot } from 'react-hot-loader/root';
 import Button from '@material-ui/core/Button';
 import Home from './components/Home.jsx';
@@ -20,9 +21,15 @@ const App = () => {
   const [registerPassword, setRegisterPassword] = useState("");
   const [currentUser, setCurrentUser] = useState({});
   const [currentSearch, setCurrentSearch] = useState('');
+  const [allQuizzes, setAllQuizzes] = useState([]);
 
   const stringifiedUser = JSON.stringify(currentUser);
-
+  const testOptions = [
+    {label: 1, value: 1},
+    {label: 2, value: 2},
+    {label: 3, value: 3},
+    {label: 4, value: 4}
+  ]
 
   useEffect(() => {
     getData();
@@ -155,8 +162,9 @@ const App = () => {
             <Link to='/login'>Login</Link>
           </NavBarHeading>}
           {stringifiedUser !== '{}' && <NavBarForm>
-            <input onChange={handleSearchChange}></input>
-            <button onClick={handleSearchSubmit}>Search For a Quiz!</button>
+            {/* <input onChange={handleSearchChange}></input>
+            <button onClick={handleSearchSubmit}>Search For a Quiz!</button> */}
+            <Select options={testOptions}></Select>
           </NavBarForm>}
         </NavBar>
         <Switch>
