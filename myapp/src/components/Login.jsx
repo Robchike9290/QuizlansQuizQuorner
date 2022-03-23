@@ -9,11 +9,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../index.js"
 import { getFirestore } from "firebase/firestore";
-<<<<<<< HEAD
-import firebaseConfig from "../index.js";
-=======
 // import firebaseConfig from "../index.js";
->>>>>>> e3a61e5d8f181e45e7fd107981ebdd54dfca776b
 
 const Login = ( { registerEmail, setRegisterEmail, registerPassword, setRegisterPassword, currentUser, setCurrentUser } ) => {
   // const [registerEmail, setRegisterEmail] = useState("");
