@@ -254,8 +254,6 @@ export default hot(App);
 const NavBarTitle = styled.span`
   background-color: var(--blue);
   text-color: var(--text-color);
-  border-radius: var(--standard-border-radius);
-  box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
   font-family: arial;
   font-size: 48px;
@@ -264,16 +262,12 @@ const NavBarTitle = styled.span`
 const NavBarLogo = styled.img`
   background-color: var(--blue);
   text-color: var(--text-color);
-  border-radius: var(--standard-border-radius);
-  box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
 `;
 
 const NavBarHeading = styled.span`
   background-color: var(--blue);
   text-color: var(--text-color);
-  border-radius: var(--standard-border-radius);
-  box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
   font-family: arial;
   font-size: 24px;
@@ -282,13 +276,11 @@ const NavBarHeading = styled.span`
 const NavBarForm = styled.form`
   background-color: var(--blue);
   text-color: var(--text-color);
-  border-radius: var(--standard-border-radius);
-  box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
 `;
 
 const NavBar = styled.span`
-  background-color: var(--yellow);
+  background-color: var(--blue);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
