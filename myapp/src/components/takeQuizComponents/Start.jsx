@@ -66,7 +66,6 @@ const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStat
           return <QuizFeedItem quiz={quiz} changeStatusForward={changeStatusForward} chooseQuiz={chooseQuiz} key={idx}/>
         })}
       </div>
-      <div>{console.log('QUIZZES, DO THEY EXIST?', allQuizzes)}</div>
     </Body>
     <Footer>
       <span>

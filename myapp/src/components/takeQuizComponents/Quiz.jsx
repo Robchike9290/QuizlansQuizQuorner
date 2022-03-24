@@ -49,10 +49,9 @@ const FloatLeft = styled.div`
   float: left;
 `;
 
-const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) => {
+const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, score, keepScore }) => {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [counter, setCounter] = useState(0);
-  const [score, setScore] = useState(0);
 
   const getQuiz = () => {
     for (let i = 0; i < allQuizzes.length; i++) {
@@ -64,7 +63,6 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
   }
 
   useEffect(() => {
-    console.log('inside useEffect right now')
     getQuiz();
   }, [])
 
@@ -76,16 +74,12 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
     setCounter(counter + 1);
   }
 
-  const keepScore = () => {
-    setScore(score + 1);
-  }
-
   return (
     <Container>
     <Header>{selectedQuiz ? (
     <span>
     <FloatLeft>{selectedQuiz.quizName}</FloatLeft>
-    <FloatRight>{score}/{selectedQuiz.quizQuestions.length}</FloatRight>
+    <FloatRight>{score} / {selectedQuiz.quizQuestions.length}</FloatRight>
     </span>
     ) : null}</Header>
     <Body>

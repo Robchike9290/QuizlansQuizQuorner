@@ -18,16 +18,16 @@ const TakeQuiz = (props) => {
   const [quiz, setQuiz] = useState(null); //will change to quiz id (ex: 623b4f3193deed525907e16b) when a user selects a quiz to play
   const [allQuizzes, setAllQuizzes] = useState(exampleQuizzes);
   const [quizSelected, setQuizSelected] = useState(false);
-  // const [score, setScore] = useState(0);
+  const [score, setScore] = useState(0);
 
   const getQuizzes = () => {
     axios.get('http://52.90.8.77:4444/getAllQuizzes')
     .then((response) => {
-      console.log('ALL QUIZZES GOTTEN: ', response.data);
+      console.log('Got all quizzes from database -> ', response.data);
       setAllQuizzes(response.data)
     })
     .then(() => {
-        console.log("allQuizzes:", allQuizzes)
+        console.log("allQuizzes ->", allQuizzes)
     })
     .catch((err) => {
       console.error(err);
@@ -36,10 +36,15 @@ const TakeQuiz = (props) => {
 
   useEffect(() => {
     getQuizzes()
+
+
+    if (props.selectedQuiz) {
+      setQuiz(props.selectedQuiz)
+      chosenQuiz();
+    }
   }, [])
 
   const changeStatusForward = () => {
-    console.log('pageStatus BEFORE', pageStatus)
     if (pageStatus === 'start') {
       setPageStatus('quiz');
     } else if (pageStatus === 'quiz') {
@@ -47,11 +52,9 @@ const TakeQuiz = (props) => {
     } else if (pageStatus === 'results') {
       setPageStatus('start') //display options to start new quiz
     }
-    console.log('pageStatus AFTER---------', pageStatus)
   }
 
   const changeStatusBackward = () => {
-    console.log('pageStatus is currently:', pageStatus)
     if (pageStatus === 'start') {
       //redirect to homepage
       setQuizSelected(null);
@@ -66,14 +69,15 @@ const TakeQuiz = (props) => {
 
   const chooseQuiz = (quizName) => { //change to quizId later
     // setQuiz(quizId);
-    console.log('event info', quizName)
     setQuiz(quizName);
   }
 
   const chosenQuiz = () => {
-    console.log('CHOSEN QUIZ before', quizSelected)
     setQuizSelected(!quizSelected);
-    console.log('CHOSEN QUIZ after', quizSelected)
+  }
+
+  const keepScore = () => {
+    setScore(score + 1)
   }
 
   const imFeelingLucky = () => {
@@ -96,8 +100,8 @@ const TakeQuiz = (props) => {
   return (
   <BaseLayout>
   {pageStatus === 'start' ? <Start allQuizzes={allQuizzes} quiz={quiz} quizSelected={quizSelected} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} chooseQuiz={chooseQuiz} chosenQuiz={chosenQuiz} imFeelingLucky={imFeelingLucky}/> :
-  pageStatus === 'quiz' ? <Quiz quiz={quiz} allQuizzes={allQuizzes} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} /> :
-  pageStatus === 'results' ? <Results changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward}/> : null }
+  pageStatus === 'quiz' ? <Quiz quiz={quiz} allQuizzes={allQuizzes} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} score={score} keepScore={keepScore}/> :
+  pageStatus === 'results' ? <Results changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} score={score} quiz={quiz} allQuizzes={allQuizzes}/> : null }
 
   </BaseLayout>);
 };
