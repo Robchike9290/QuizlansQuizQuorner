@@ -10,30 +10,12 @@ const Container = styled.div`
   
 `;
 
-const QuizFeed = () => {
-  const [quizList, setQuizList] = useState(exampleQuizzes);
-
-  const getQuizzes = () => {
-    axios
-      .get('/FillMeIn')
-      .then((response) => {
-        setQuizList(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
-  //useEffect(()=> {
-  //  getPopularQuizzes()
-  //}, [])
-
+const QuizFeed = ({ fullQuizList }) => {
   return (
     <Container>
       <h4>QuizFeed</h4>
-      {quizList.length > 0 &&
-        quizList.map((listItem, index) => {
+      {fullQuizList?.length > 0 &&
+        fullQuizList.map((listItem, index) => {
           return (
             <QuizFeedItem
               quizName={listItem.quizName}
