@@ -4,9 +4,11 @@ import styled from 'styled-components';
 const Container = styled.div`
   text-align: left;
   margin: var(--standard-margin);
+  font-size: var(--standard-text-size);
+  font-weight: var(--standard-text-weight);
 `;
 
-const PopularQuizItem = ({ quizName }) => {
+const PopularQuizItem = ({ quizName, selectedQuiz, setSelectedQuiz }) => {
   return (
     <Container>
       {quizName}
