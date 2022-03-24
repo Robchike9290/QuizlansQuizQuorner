@@ -15,8 +15,6 @@ import logo from './images/QuestionMark.png';
 import styled from 'styled-components';
 import { signOut } from 'firebase/auth';
 
-const exampleQuizzes = require('.././mockData/exampleQuizzes.js');
-
 const App = () => {
   const [docData, setDocData] = useState(null);
   const [registerEmail, setRegisterEmail] = useState('');
@@ -61,6 +59,7 @@ const App = () => {
   const logOut = () => {
     const signedOut = signOut(auth)
       .then((data) => {
+        setCurrentUser({});
         console.log(data);
       })
       .catch((error) => {
@@ -166,7 +165,7 @@ const App = () => {
           <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
           {stringifiedUser === '{ALWAYSFALSE}' && (
             <NavBarHeading>
-              <Link to='/landingpage'></Link>
+              <Link to='/'></Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
@@ -203,7 +202,7 @@ const App = () => {
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/landingpage' onClick={logOut}>
+              <Link to='/' onClick={logOut}>
                 Log Out
               </Link>
             </NavBarHeading>
@@ -217,7 +216,7 @@ const App = () => {
           )}
         </NavBar>
         <Switch>
-          <Route exact path='/landingpage'>
+          <Route exact path='/'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
@@ -294,6 +293,6 @@ const NavBar = styled.span`
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 `;
