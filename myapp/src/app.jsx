@@ -57,6 +57,7 @@ const App = () => {
   const logOut = () => {
     const signedOut = signOut(auth)
       .then((data) => {
+        setCurrentUser({});
         console.log(data);
       })
       .catch((error) => {
