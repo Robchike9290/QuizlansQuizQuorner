@@ -8,7 +8,7 @@ import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
   background-color: var(--blue);
-  //height: 500px;
+  height: 500px;
   text-align: center;
   margin: var(--standard-margin);
   display: flex;
@@ -17,11 +17,7 @@ const Container = styled.div`
   padding: var(--standard-padding);
 `;
 
-const ListTitle = styled.div`
-  margin: 10px;
-`;
-
-const PopularQuizzes = ({ selectedQuiz, setSelectedQuiz }) => {
+const PopularQuizzes = () => {
   const [popularQuizList, setPopularQuizList] = useState(exampleQuizzes);
 
   const getPopularQuizzes = () => {
@@ -42,7 +38,7 @@ const PopularQuizzes = ({ selectedQuiz, setSelectedQuiz }) => {
 
   return (
     <Container>
-      <ListTitle>Popular Quizzes</ListTitle>
+      <h3>Popular Quizzes</h3>
       {popularQuizList.length > 0 &&
         popularQuizList
           .sort((a, b) => {
