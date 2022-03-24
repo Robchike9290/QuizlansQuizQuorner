@@ -15,8 +15,6 @@ import logo from './images/QuestionMark.png';
 import styled from 'styled-components';
 import { signOut } from 'firebase/auth';
 
-const exampleQuizzes = require('.././mockData/exampleQuizzes.js');
-
 const App = () => {
   const [docData, setDocData] = useState(null);
   const [registerEmail, setRegisterEmail] = useState('');

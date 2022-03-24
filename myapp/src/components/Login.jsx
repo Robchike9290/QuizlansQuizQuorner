@@ -44,6 +44,7 @@ const Login = ({
     )
       .then((user) => {
         console.log(user);
+        document.location.href = 'http://localhost:8080/#/home';
       })
       .catch((error) => {
         console.log(error.message);
@@ -58,6 +59,7 @@ const Login = ({
     )
       .then((user) => {
         console.log(user);
+        document.location.href = 'http://localhost:8080/#/home';
       })
       .catch((error) => {
         console.log(error.message);
