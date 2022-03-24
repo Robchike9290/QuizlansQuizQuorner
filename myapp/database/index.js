@@ -67,12 +67,15 @@ const removeQuiz = (quizId) => {
 }
 
 //what are we searching by? user/category. one has to be null
-const getQuizzes = (createdBy, category) => {
+const getQuizzes = (createdBy, category, reported) => {
   if (createdBy) {
     return Quiz.find({ "createdBy": createdBy})
   }
   if (category) {
     return Quiz.find({ "category": category})
+  }
+  if (reported) {
+    return Quiz.find({ "reported": reported})
   }
 }
 

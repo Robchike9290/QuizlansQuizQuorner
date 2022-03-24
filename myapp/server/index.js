@@ -1,4 +1,8 @@
 const express = require('express');
+const cors = require('cors');
+const app = express();
+const axios = require('axios');
+const path = require('path');
 const {
   upVote,
   downVote,
@@ -15,12 +19,10 @@ const {
   // newQuizScore,
   getAllQuizzes
 } = require('../database/index.js');
-const app = express();
-const axios = require('axios');
-const path = require('path');
 
 app.use(express.static(__dirname + './../dist/bundle.js'));
 app.use(express.json());
+app.use(cors());
 
 // app.get('*', function (req, res) {
 //   res.sendFile(path.join(__dirname, '../dist/index.html'), function (err) {
@@ -30,14 +32,14 @@ app.use(express.json());
 //   });
 // });
 
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-//   next();
-// });
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+  next();
+});
 
 app.get('/quizzes', (req, res) => { // works
   console.log('Hello from the server!')
-  getQuizzes(req.body.createdBy, req.body.category)
+  getQuizzes(req.body.createdBy, req.body.category, req.body.reported)
     .then((results) => {
       res.status(200).send('Server response!');
     })
@@ -118,6 +120,7 @@ app.post('/addQuiz', (req, res) => { // works
     })
     .catch((err) => {
       console.error(err);
+      res.status(400).send(err);
     });
 });
 
