@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { hot } from 'react-hot-loader/root';
@@ -32,7 +32,7 @@ const App = () => {
 
   const handleSearchSubmit = (opt) => {
     console.log("you've selected:", opt.label);
-    window.location.href = 'http://localhost:8080/takequiz';
+    window.location.href = 'http://localhost:8080/#/takequiz';
     setSelectedQuiz(opt.label);
   };
 
@@ -163,7 +163,7 @@ const App = () => {
           <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
           {stringifiedUser === '{ALWAYSFALSE}' && (
             <NavBarHeading>
-              <Link to='/landingpage'></Link>
+              <Link to='/'></Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
@@ -200,7 +200,7 @@ const App = () => {
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/landingpage' onClick={logOut}>
+              <Link to='/' onClick={logOut}>
                 Log Out
               </Link>
             </NavBarHeading>
@@ -214,7 +214,7 @@ const App = () => {
           )}
         </NavBar>
         <Switch>
-          <Route exact path='/landingpage'>
+          <Route exact path='/'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
