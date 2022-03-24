@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
+import axios from 'axios';
 import {
   getAuth,
   onAuthStateChanged,
@@ -19,7 +20,11 @@ const Login = ({
   setRegisterPassword,
   currentUser,
   setCurrentUser,
+  userName,
+  setUserName
 }) => {
+
+
   // const [registerEmail, setRegisterEmail] = useState("");
   // const [registerPassword, setRegisterPassword] = useState("");
   // const [currentUser, setCurrentUser] = useState({});
@@ -36,7 +41,19 @@ const Login = ({
     setRegisterPassword(event.target.value);
   };
 
+  const createUserHandler = (event) => {
+    setUserName(event.target.value);
+  }
+
   const registerUser = () => {
+    axios.post('http://52.90.8.77:4444/addUser', {userName: userName, email: registerEmail})
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
     const user = createUserWithEmailAndPassword(
       auth,
       registerEmail,
@@ -78,6 +95,8 @@ const Login = ({
     <div>
       username/email/TBD
       <div>
+        user
+        <input type='text' required={true} onChange={createUserHandler}/>
         email
         <input type='email' required={true} onChange={createEmailHandler} />
         password
@@ -86,11 +105,13 @@ const Login = ({
           required={true}
           onChange={createPasswordHandler}
         />
+
+
       </div>
       <div>
         <span>
           <button onClick={registerUser}>Create Account</button>
-          <button onClick={LoginUser}>Login</button>
+          <button onClick={LoginUser} >Login</button>
         </span>
       </div>
     </div>

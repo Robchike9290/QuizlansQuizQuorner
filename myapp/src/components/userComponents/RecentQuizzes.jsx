@@ -20,7 +20,7 @@ const Container = styled.div`
 const RecentQuizzes = (props) => {
 
   const [recentQuizzes, setRecentQuizzes] = useState(exampleQuizzes);
-  const [showNumber, setShowNumber] = useState(4);
+  const [showNumber, setShowNumber] = useState(6);
 
 
   const getRecentQuizzes = () => {
@@ -53,14 +53,14 @@ const RecentQuizzes = (props) => {
       Recent Quizzes
       <div>
         {recentQuizzes.filter(recentQuiz =>
-          recentQuiz.createdBy === props.currentUser.email && recentQuiz.timesTaken > 2)
-         .slice(0, 3).map((eachQuiz, key) => (
+          recentQuiz.createdBy === 'PatrickTheAssistant' && recentQuiz.timesTaken > 0)
+         .slice(0, showNumber).map((eachQuiz, key) => (
           <RecentQuiz eachQuiz={eachQuiz} key={key}/>
         ))}
       </div>
     </Container>
   );
 };
-//
+// props.currentUser.email
 
 export default RecentQuizzes;
