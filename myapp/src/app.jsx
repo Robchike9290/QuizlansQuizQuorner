@@ -234,18 +234,7 @@ const App = () => {
             <CreateQuiz />
           </Route>
           <Route exact path='/login'>
-<<<<<<< HEAD
             <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} setUserName={setUserName} userName={userName}/>
-=======
-            <Login
-              registerEmail={registerEmail}
-              setRegisterEmail={setRegisterEmail}
-              registerPassword={registerPassword}
-              setRegisterPassword={setRegisterPassword}
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            />
->>>>>>> dev
           </Route>
         </Switch>
         {docData ? <h1>Hello {docData.quizName}</h1> : null}
