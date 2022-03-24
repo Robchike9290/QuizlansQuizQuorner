@@ -292,6 +292,6 @@ const NavBar = styled.span`
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 `;
