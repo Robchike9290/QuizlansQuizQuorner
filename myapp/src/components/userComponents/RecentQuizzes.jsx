@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios'
-import {exampleQuizzes} from './../../../mockData/exampleQuizzes.js'
+import axios from 'axios';
+import {exampleQuizzes} from './../../../mockData/exampleQuizzes.js';
+import RecentQuiz from './RecentQuiz.jsx';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
@@ -13,13 +14,19 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const RecentQuizzes = () => {
+// nothing will show unless the currently logged in user (Nic's firebase)
+// has quizzes, currently using mockdata.
 
-  const [recentQuizzes, setRecentQuizzes] = useState(exampleQuizzes)
+const RecentQuizzes = (props) => {
+
+  const [recentQuizzes, setRecentQuizzes] = useState(exampleQuizzes);
+  const [showNumber, setShowNumber] = useState(6);
+
 
   const getRecentQuizzes = () => {
-    axios.get('/FillMeIn')
+    axios.get('/quizzes')
       .then((response)=> {
+        console.log('💋💋💋💋💋', response.data)
         setRecentQuizzes(response.data)
       })
       .catch((error)=> {
@@ -40,16 +47,20 @@ const RecentQuizzes = () => {
 
   //
 
+
   return (
     <Container>
       Recent Quizzes
       <div>
-        {recentQuizzes.map((quiz, key) => (
-          <recentQuiz quiz={quiz} />
+        {recentQuizzes.filter(recentQuiz =>
+          recentQuiz.createdBy === 'PatrickTheAssistant' && recentQuiz.timesTaken > 0)
+         .slice(0, showNumber).map((eachQuiz, key) => (
+          <RecentQuiz eachQuiz={eachQuiz} key={key}/>
         ))}
       </div>
     </Container>
   );
 };
+// props.currentUser.email
 
 export default RecentQuizzes;

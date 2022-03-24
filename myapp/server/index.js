@@ -68,6 +68,16 @@ app.post('/downvote', (req, res) => { // works
     });
 });
 
+app.get('/reportedQuizzes', (req, res) => {
+  getQuizzes(req.body.reported)
+  .then((results) => {
+    res.status(200).send('Reported items retrieved');
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+});
+
 app.post('/reportQuiz', (req, res) => { // works
   reportQuiz(req.body.quizId)
     .then((results) => {
