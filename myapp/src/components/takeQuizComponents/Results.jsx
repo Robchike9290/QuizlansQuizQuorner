@@ -50,12 +50,12 @@ const FloatLeft = styled.div`
   float: left;
 `;
 
-const Results = () => {
+const Results = ({ score, changeStatusForward, changeStatusBackward }) => {
 
   return (
     <Container>
-    <Header>Results</Header>
-    <Body>SCORE</Body>
+    <Header>Quiz Results</Header>
+    <Body> / 10</Body>
     <Footer>
       <span>
         <FloatLeft>
