@@ -24,6 +24,7 @@ const App = () => {
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
+  const [userName, setUserName] = useState('');
   const [fullQuizList, setFullQuizList] = useState([]);
 
   const stringifiedUser = JSON.stringify(currentUser);
@@ -224,7 +225,7 @@ const App = () => {
             <Home fullQuizList={fullQuizList} />
           </Route>
           <Route exact path='/user'>
-            <User />
+            <User currentUser={currentUser} userName={userName}/>
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} />
@@ -233,14 +234,7 @@ const App = () => {
             <CreateQuiz />
           </Route>
           <Route exact path='/login'>
-            <Login
-              registerEmail={registerEmail}
-              setRegisterEmail={setRegisterEmail}
-              registerPassword={registerPassword}
-              setRegisterPassword={setRegisterPassword}
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            />
+            <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} setUserName={setUserName} userName={userName}/>
           </Route>
         </Switch>
         {docData ? <h1>Hello {docData.quizName}</h1> : null}
