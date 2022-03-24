@@ -204,4 +204,4 @@ const mockUserList = [
   }
 ]
 
-module.exports = { mockUserList }
+module.exports = { mockUserList };

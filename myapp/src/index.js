@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import App from './app.jsx';
 import './styles.css';
@@ -17,13 +17,21 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Detect user login
-onAuthStateChanged(auth, (user) => {
-  if (user !== null) {
-    console.log('Logged in!');
-  } else {
-    console.log('User not found...');
-  }
-});
+// onAuthStateChanged(auth, (user) => {
+//   const [currentUser, setCurrentUser] = useState('');
+
+//   if (user !== null) {
+//     //console.log('💄💄💄👌🏽', user.email);
+//     console.log('Logged in!');
+//     //setCurrentUser(user.email);
+//    // console.log(currentUser);
+//   } else {
+//     console.log('User not found...');
+//   }
+
+// });
+
+
 
 var mountNode = document.getElementById('app');
 ReactDOM.render(<App name='Jane' />, mountNode);

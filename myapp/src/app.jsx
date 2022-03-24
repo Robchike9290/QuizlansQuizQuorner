@@ -15,8 +15,6 @@ import logo from './images/QuestionMark.png';
 import styled from 'styled-components';
 import { signOut } from 'firebase/auth';
 
-const exampleQuizzes = require('.././mockData/exampleQuizzes.js');
-
 const App = () => {
   const [docData, setDocData] = useState(null);
   const [registerEmail, setRegisterEmail] = useState('');
@@ -25,6 +23,7 @@ const App = () => {
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
+  const [userName, setUserName] = useState('');
   const [fullQuizList, setFullQuizList] = useState([]);
 
   const stringifiedUser = JSON.stringify(currentUser);
@@ -61,6 +60,7 @@ const App = () => {
   const logOut = () => {
     const signedOut = signOut(auth)
       .then((data) => {
+        setCurrentUser({});
         console.log(data);
       })
       .catch((error) => {
@@ -166,7 +166,7 @@ const App = () => {
           <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
           {stringifiedUser === '{ALWAYSFALSE}' && (
             <NavBarHeading>
-              <Link to='/landingpage'></Link>
+              <Link to='/'></Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
@@ -203,7 +203,7 @@ const App = () => {
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/landingpage' onClick={logOut}>
+              <Link to='/' onClick={logOut}>
                 Log Out
               </Link>
             </NavBarHeading>
@@ -217,14 +217,14 @@ const App = () => {
           )}
         </NavBar>
         <Switch>
-          <Route exact path='/landingpage'>
+          <Route exact path='/'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
             <Home fullQuizList={fullQuizList} />
           </Route>
           <Route exact path='/user'>
-            <User />
+            <User currentUser={currentUser} userName={userName}/>
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} />
@@ -233,14 +233,7 @@ const App = () => {
             <CreateQuiz />
           </Route>
           <Route exact path='/login'>
-            <Login
-              registerEmail={registerEmail}
-              setRegisterEmail={setRegisterEmail}
-              registerPassword={registerPassword}
-              setRegisterPassword={setRegisterPassword}
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            />
+            <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} setUserName={setUserName} userName={userName}/>
           </Route>
         </Switch>
         {docData ? <h1>Hello {docData.quizName}</h1> : null}
@@ -294,6 +287,6 @@ const NavBar = styled.span`
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 `;
