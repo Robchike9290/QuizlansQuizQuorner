@@ -77,6 +77,7 @@ const CreatedQuestions = styled.div`
   gap: 15px;
   overflow: scroll;
   height: 250px;
+  background-color: var(--blue);
 `;
 
 const AddQButton = styled.button`
@@ -248,7 +249,7 @@ const CreateQuiz = () => {
       >
         Add Question
       </AddQButton>
-      <button onClick={() => {setTimeout(() => {handleQuizSubmission()}, 2000)}}>Submit Quiz</button>
+      <button onClick={handleQuizSubmission}>Submit Quiz</button>
       {toggleModal && (
         <AddQuestionModal
           setToggleModal={setToggleModal}
