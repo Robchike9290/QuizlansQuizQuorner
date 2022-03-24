@@ -49,19 +49,72 @@ const FloatLeft = styled.div`
   float: left;
 `;
 
-const Quiz = () => {
+const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) => {
+  const [selectedQuiz, setSelectedQuiz] = useState(null);
+  const [counter, setCounter] = useState(0);
+  const [score, setScore] = useState(0);
+
+  const getQuiz = () => {
+    console.log('WE ARE HERE')
+    for (let i = 0; i < allQuizzes.length; i++) {
+      if (allQuizzes[i].quizName === quiz) {
+        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i])
+        setSelectedQuiz(allQuizzes[i]);
+      }
+    }
+  }
+
+  useEffect(() => {
+    console.log('inside useEffect right now')
+    getQuiz();
+
+  }, [])
+
+  const previousQuestion = () => {
+    setCounter(counter - 1);
+  }
+
+  const nextQuestion = () => {
+    setCounter(counter + 1);
+  }
+
+  const keepScore = () => {
+    setScore(score + 1);
+  }
+
+  // console.log('selectedQuiz.quizQuestions --', selectedQuiz.quizQuestions)
 
   return (
     <Container>
-    <Header><span><FloatLeft>Quiz Name</FloatLeft><FloatRight>score:</FloatRight></span></Header>
-    <Body>Quiz body</Body>
+    <Header>{selectedQuiz ? (
+    <span>
+    <FloatLeft>{selectedQuiz.quizName}</FloatLeft>
+    <FloatRight>{score}/{selectedQuiz.quizQuestions.length}</FloatRight>
+    </span>
+    ) : null}</Header>
+    <Body>
+      {selectedQuiz ? <div>{counter + 1}. {selectedQuiz.quizQuestions[counter].question}</div> : null}
+     {selectedQuiz ?
+     (<span>
+      <button>{selectedQuiz.quizQuestions[counter].incorrectAnswers[0]}</button>
+      <button>{selectedQuiz.quizQuestions[counter].incorrectAnswers[1]}</button>
+      <button onClick={keepScore}>{selectedQuiz.quizQuestions[counter].correctAnswer}</button>
+      <button>{selectedQuiz.quizQuestions[counter].incorrectAnswers[2]}</button>
+      </span>)
+      : null}
+    </Body>
     <Footer>
       <span>
         <FloatLeft>
-          <button>Return to homepage</button>
+          <button onClick={previousQuestion}>Previous</button>
         </FloatLeft>
+          <button onClick={changeStatusBackward}>Exit quiz</button>
         <FloatRight>
-          <button>Next</button>
+          <button onClick={nextQuestion}>Next</button>
+          {/* {(counter === selectedQuiz.quizQuestions.length - 1) ?
+           <button onClick={changeStatusForward}>Finish Quiz</button> :
+           <button onClick={nextQuestion}>Next</button>
+          } */}
         </FloatRight>
       </span>
     </Footer>
@@ -70,3 +123,4 @@ const Quiz = () => {
 };
 
 export default Quiz;
+
