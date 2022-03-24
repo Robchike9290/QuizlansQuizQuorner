@@ -11,15 +11,16 @@ import User from './components/User.jsx';
 import Login from './components/Login.jsx';
 import { app, auth } from './index.js';
 import axios from 'axios';
-import logo from './images/QuestionMarkQarl - NoTitle.png';
+import logo from './images/QuestionMark.png';
 import styled from 'styled-components';
+import { signOut } from 'firebase/auth';
 
-const exampleQuizzes = require('.././mockData/exampleQuizzes.js')
+const exampleQuizzes = require('.././mockData/exampleQuizzes.js');
 
 const App = () => {
   const [docData, setDocData] = useState(null);
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
   const [currentUser, setCurrentUser] = useState({});
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
@@ -28,42 +29,46 @@ const App = () => {
   const stringifiedUser = JSON.stringify(currentUser);
 
   useEffect(() => {
-    // UNCOMMENT THIS ONCE THE ROUTE FETCHING ALL QUIZ DATA IS RUNNING PROPERLY.
     getData();
-    createDropDownData();
   }, []);
 
-  const createDropDownData = () => {
-    const quizIds = [];
-    for (let key in exampleQuizzes) {
-      for (let i = 0; i < exampleQuizzes[key].length; i++) {
-        let quiz = exampleQuizzes[key][i];
-        let newDropDownItem = {label: quiz.quizId, value: quiz.quizId};
-        quizIds.push(newDropDownItem);
-        setAllQuizzes(quizIds);
-      }
-    }
-  }
-
   const handleSearchSubmit = (opt) => {
-    console.log('you\'ve selected:', opt.label);
+    console.log("you've selected:", opt.label);
     window.location.href = 'http://localhost:8080/#/takequiz';
     setSelectedQuiz(opt.label);
-  }
+  };
 
   const getData = () => {
-    axios.get('http://52.90.8.77:4444/getAllQuizzes')
+    axios
+      .get('http://52.90.8.77:4444/getAllQuizzes')
       .then((response) => {
         console.log('Here are your quizzes: ', response.data);
-        {/* SET THE ALLQUIZZES STATE HERE ONCE THE ROUTE IS BUILT OUT */}
+        const quizIds = [];
+        for (let i = 0; i < response.data.length; i++) {
+          let quiz = response.data[i];
+          let newDropDownItem = { label: quiz.quizName, value: quiz.quizName };
+          quizIds.push(newDropDownItem);
+        }
+        setAllQuizzes(quizIds);
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
+  const logOut = () => {
+    const signedOut = signOut(auth)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   const report = () => {
-    axios.post('http://52.90.8.77:4444/reportQuiz')
+    axios
+      .post('http://52.90.8.77:4444/reportQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -73,7 +78,8 @@ const App = () => {
   };
 
   const upvote = () => {
-    axios.post('http://52.90.8.77:4444/upvote')
+    axios
+      .post('http://52.90.8.77:4444/upvote')
       .then((response) => {
         console.log(response.data);
       })
@@ -83,7 +89,8 @@ const App = () => {
   };
 
   const downvote = () => {
-    axios.post('http://52.90.8.77:4444/downvote')
+    axios
+      .post('http://52.90.8.77:4444/downvote')
       .then((response) => {
         console.log(response.data);
       })
@@ -93,7 +100,8 @@ const App = () => {
   };
 
   const addQuiz = () => {
-    axios.post('http://52.90.8.77:4444/addQuiz')
+    axios
+      .post('http://52.90.8.77:4444/addQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -103,7 +111,8 @@ const App = () => {
   };
 
   const removeQuiz = () => {
-    axios.post('http://52.90.8.77:4444/removeQuiz')
+    axios
+      .post('http://52.90.8.77:4444/removeQuiz')
       .then((response) => {
         console.log(response.data);
       })
@@ -113,7 +122,8 @@ const App = () => {
   };
 
   const getUser = () => {
-    axios.get('http://52.90.8.77:4444/user')
+    axios
+      .get('http://52.90.8.77:4444/user')
       .then((response) => {
         console.log(response.data);
       })
@@ -123,7 +133,8 @@ const App = () => {
   };
 
   const addFriend = () => {
-    axios.post('http://52.90.8.77:4444/addFriend')
+    axios
+      .post('http://52.90.8.77:4444/addFriend')
       .then((response) => {
         console.log(response.data);
       })
@@ -133,7 +144,8 @@ const App = () => {
   };
 
   const removeFriend = () => {
-    axios.post('http://52.90.8.77:4444/removeFriend')
+    axios
+      .post('http://52.90.8.77:4444/removeFriend')
       .then((response) => {
         console.log(response.data);
       })
@@ -148,35 +160,62 @@ const App = () => {
       {docData ? <div></div> : null}
       <div>
         <NavBar>
-          <NavBarLogo alt="Page logo" src={logo}>
-          </NavBarLogo>
+          <NavBarLogo alt='Page logo' src={logo}></NavBarLogo>
           <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
-          {stringifiedUser === '{ALWAYSFALSE}' && <NavBarHeading>
-            <Link to='/'></Link>
-          </NavBarHeading>}
-          {stringifiedUser !== '{}' && <NavBarHeading>
-            <Link to='/home'>Home</Link>
-          </NavBarHeading>}
-          {stringifiedUser !== '{}' && <NavBarHeading>
-            <Link to='/user'>User</Link>
-          </NavBarHeading>}
-          {stringifiedUser !== '{}' && <NavBarHeading>
-            <Link to='/createquiz'>Create Quiz</Link>
-          </NavBarHeading>}
-          {stringifiedUser !== '{}' && <NavBarHeading>
-            <Link to='/takequiz'>Take Quiz</Link>
-          </NavBarHeading>}
-          {stringifiedUser === '{}' && <NavBarHeading>
-            <Link to='/login'>Login</Link>
-          </NavBarHeading>}
-          {stringifiedUser !== '{}' && <NavBarForm>
-            {/* CHANGE THIS TO THE GET ALL QUIZZES ROUTE ONCE IT IS BUILT OUT */}
-            <Select options={allQuizzes} onChange={handleSearchSubmit}>
-            Search for a Quiz to Take!</Select>
-          </NavBarForm>}
+          {stringifiedUser === '{ALWAYSFALSE}' && (
+            <NavBarHeading>
+              <Link to='/landingpage'></Link>
+            </NavBarHeading>
+          )}
+          {stringifiedUser !== '{}' && (
+            <NavBarHeading>
+              <Link to='/home'>Home</Link>
+            </NavBarHeading>
+          )}
+          {stringifiedUser !== '{}' && (
+            <NavBarHeading>
+              <Link to='/user'>User</Link>
+            </NavBarHeading>
+          )}
+          {stringifiedUser !== '{}' && (
+            <NavBarHeading>
+              <Link to='/createquiz'>Create Quiz</Link>
+            </NavBarHeading>
+          )}
+          {stringifiedUser !== '{}' && (
+            <NavBarHeading>
+              <Link
+                to={{
+                  pathname: '/takequiz',
+                  state: { quizSelected: selectedQuiz },
+                }}
+              >
+                Take Quiz
+              </Link>
+            </NavBarHeading>
+          )}
+          {stringifiedUser === '{}' && (
+            <NavBarHeading>
+              <Link to='/login'>Log In</Link>
+            </NavBarHeading>
+          )}
+          {stringifiedUser !== '{}' && (
+            <NavBarHeading>
+              <Link to='/landingpage' onClick={logOut}>
+                Log Out
+              </Link>
+            </NavBarHeading>
+          )}
+          {stringifiedUser !== '{}' && (
+            <NavBarForm>
+              <Select options={allQuizzes} onChange={handleSearchSubmit}>
+                Search for a Quiz to Take!
+              </Select>
+            </NavBarForm>
+          )}
         </NavBar>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/landingpage'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
@@ -186,13 +225,20 @@ const App = () => {
             <User />
           </Route>
           <Route exact path='/takequiz'>
-            <TakeQuiz />
+            <TakeQuiz selectedQuiz={selectedQuiz} />
           </Route>
           <Route exact path='/createquiz'>
             <CreateQuiz />
           </Route>
           <Route exact path='/login'>
-            <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+            <Login
+              registerEmail={registerEmail}
+              setRegisterEmail={setRegisterEmail}
+              registerPassword={registerPassword}
+              setRegisterPassword={setRegisterPassword}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
           </Route>
         </Switch>
         {docData ? <h1>Hello {docData.quizName}</h1> : null}

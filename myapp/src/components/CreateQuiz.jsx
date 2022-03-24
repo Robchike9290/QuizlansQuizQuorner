@@ -2,13 +2,29 @@ import React, { useState, useEffect } from 'react';
 import AddQuestionModal from './createComponents/AddQuestionModal.jsx';
 import styled from 'styled-components';
 import axios from 'axios';
+import catBanner from './../banners/catbanner.png';
+import forestBanner from './../banners/forestbanner.png';
+import historyBanner from './../banners/historybanner.png';
+import mapBanner from './../banners/mapbanner.png';
+import scienceBanner from './../banners/sciencebanner.png';
+import soccerBanner from './../banners/soccerbanner.png';
+import splatBanner from './../banners/splatbanner.png';
 
 const NewQuiz = styled.div`
   margin: var(--standard-margin);
   padding: var(--standard-padding);
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 20% 50% 30%;
   grid-template-columns: 30% 70%;
+  background-color: var(--yellow);
+`;
+
+const ChosenIMG = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 5px solid green;
+  border-radius: var(--standard-border-radius);
 `;
 
 const Gallery = styled.div`
@@ -20,13 +36,14 @@ const Gallery = styled.div`
   gap: 15px;
   grid-row-start: 2;
   grid-column: 2 / span 1;
+  overflow: scroll;
 `;
 
 const QuizName = styled.input``;
 
 const EachQuestion = styled.div`
   background-color: var(--purple);
-  border: 5px solid var(--purple)
+  border: 5px solid var(--purple);
   border-radius: var(--stadard-border-radius);
   margin: var(--standard-margin);
   padding: var(--standard-padding);
@@ -54,10 +71,12 @@ const CreatedQuestions = styled.div`
   grid-column: 2 / span 1;
   margin: var(--standard-margin);
   display: grid;
-  grid-auto-rows: 200px;
+  grid-template-rows: repeat(10, 200px);
   grid-template-columns: repeat(2, 1fr);
   box-sizing: border-box;
   gap: 15px;
+  overflow: scroll;
+  height: 250px;
 `;
 
 const AddQButton = styled.button`
@@ -129,10 +148,24 @@ const CreateQuiz = () => {
   };
 
   const bannerOptions = [
-    'https://image.shutterstock.com/image-photo/banner-cat-web-header-template-260nw-1030847524.jpg',
-    'https://thumbs.dreamstime.com/b/adorable-white-cats-banner-adorable-white-cats-banner-cartoon-style-171756834.jpg',
-    'https://image.shutterstock.com/image-photo/closeup-portrait-group-cats-different-260nw-601071197.jpg',
+    catBanner,
+    forestBanner,
+    historyBanner,
+    mapBanner,
+    scienceBanner,
+    soccerBanner,
+    splatBanner,
   ];
+
+  //const bannerOptions = [
+  //  './../banners/catbanner.jpeg',
+  //  './../banners/forestbanner.jpeg',
+  //  './../banners/historybanner.jpeg',
+  //  './../banners/mapbanner.jpeg',
+  //  './../banners/sciencebanner.jpeg',
+  //  './../banners/soccerbanner.jpeg',
+  //  './../banners/splatbanner.jpeg',
+  //];
   useEffect(() => {
     console.log(quizToPost);
   }, [quizToPost]);
@@ -188,6 +221,17 @@ const CreateQuiz = () => {
       <Gallery>
         <h3>Select a Banner img</h3>
         {bannerOptions?.map((image, index) => {
+          if (image === newQuizBanner) {
+            return (
+              <ChosenIMG
+                onClick={() => {
+                  setNewQuizBanner(image);
+                }}
+                key={index}
+                src={image}
+              ></ChosenIMG>
+            );
+          }
           return (
             <IMG
               onClick={() => {

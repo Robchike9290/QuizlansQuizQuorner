@@ -13,7 +13,7 @@ const BaseLayout = styled.div`
   height: 600px;
 `;
 
-const TakeQuiz = () => {
+const TakeQuiz = (props) => {
   const [pageStatus, setPageStatus] = useState('start'); //start, quiz, results
   const [quiz, setQuiz] = useState(null); //will change to quiz id (ex: 623b4f3193deed525907e16b) when a user selects a quiz to play
   const [allQuizzes, setAllQuizzes] = useState(exampleQuizzes);
