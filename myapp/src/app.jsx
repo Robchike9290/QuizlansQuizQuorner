@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { hot } from 'react-hot-loader/root';
@@ -32,7 +32,7 @@ const App = () => {
 
   const handleSearchSubmit = (opt) => {
     console.log("you've selected:", opt.label);
-    window.location.href = 'http://localhost:8080/#/takequiz';
+    window.location.href = 'http://localhost:8080/takequiz';
     setSelectedQuiz(opt.label);
   };
 
