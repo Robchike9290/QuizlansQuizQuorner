@@ -2,13 +2,6 @@ import React, { useState, useEffect } from 'react';
 import AddQuestionModal from './createComponents/AddQuestionModal.jsx';
 import styled from 'styled-components';
 import axios from 'axios';
-import catBanner from './../banners/catbanner.png';
-import forestBanner from './../banners/forestbanner.png';
-import historyBanner from './../banners/historybanner.png';
-import mapBanner from './../banners/mapbanner.png';
-import scienceBanner from './../banners/sciencebanner.png';
-import soccerBanner from './../banners/soccerbanner.png';
-import splatBanner from './../banners/splatbanner.png';
 
 const NewQuiz = styled.div`
   margin: var(--standard-margin);
@@ -37,6 +30,9 @@ const Gallery = styled.div`
   grid-row-start: 2;
   grid-column: 2 / span 1;
   overflow: scroll;
+  background-color: var(--blue);
+  border-radius: var(--standard-border-radius);
+  box-shadow: inset 0 0 7px #000000;
 `;
 
 const QuizName = styled.input``;
@@ -44,9 +40,11 @@ const QuizName = styled.input``;
 const EachQuestion = styled.div`
   background-color: var(--purple);
   border: 5px solid var(--purple);
-  border-radius: var(--stadard-border-radius);
   margin: var(--standard-margin);
   padding: var(--standard-padding);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  z-index: 0;
 `;
 
 const TextInputs = styled.div`
@@ -62,8 +60,9 @@ const IMG = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: 5px solid var(--purple);
+  border: 5px solid transparent;
   border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
 `;
 
 const CreatedQuestions = styled.div`
@@ -77,12 +76,24 @@ const CreatedQuestions = styled.div`
   gap: 15px;
   overflow: scroll;
   height: 250px;
+  box-shadow: inset 0 0 7px #000000;
   background-color: var(--blue);
+  padding: var(--standard-padding);
+  border-radius: var(--standard-border-radius);
 `;
 
 const AddQButton = styled.button`
   height: 100px;
   width: 200px;
+  background-color: var(--purple);
+  border-radius: var(--standard-border-radius);
+`;
+
+const SubmitBtn = styled.button`
+  height: 100px;
+  width: 200px;
+  background-color: var(--purple);
+  border-radius: var(--standard-border-radius);
 `;
 
 const CreateQuiz = () => {
@@ -92,20 +103,12 @@ const CreateQuiz = () => {
   const [newQuizBanner, setNewQuizBanner] = useState('');
   const [newQuizCategory, setNewQuizCategory] = useState('');
   const [newQuizQuestions, setNewQuizQuestions] = useState([]);
-  const [quizToPost, setQuizToPost] = useState({
-    quizName: '',
-    quizQuestions: [],
-    category: '',
-    quizDescription: '',
-    quizBanner: '',
-    createdBy: 'stand-in-user',
-  });
 
   const addQuiz = (quizObj) => {
     axios
       .post('http://52.90.8.77:4444/addQuiz', quizObj)
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
         resetInputs();
       })
       .catch((err) => {
@@ -113,16 +116,15 @@ const CreateQuiz = () => {
       });
   };
 
+  const quizToPost = {
+    quizName: newQuizTitle,
+    quizQuestions: newQuizQuestions,
+    category: newQuizCategory,
+    quizDescription: newQuizDescription,
+    quizBanner: newQuizBanner,
+    createdBy: 'stand-in-user',
+  };
   const handleQuizSubmission = () => {
-    setQuizToPost({
-      quizName: newQuizTitle,
-      quizQuestions: newQuizQuestions,
-      category: newQuizCategory,
-      quizDescription: newQuizDescription,
-      quizBanner: newQuizBanner,
-      createdBy: 'stand-in-user',
-    });
-
     addQuiz(quizToPost);
   };
 
@@ -132,14 +134,6 @@ const CreateQuiz = () => {
     setNewQuizBanner('');
     setNewQuizCategory('');
     setNewQuizQuestions([]);
-    setQuizToPost({
-      quizName: '',
-      quizQuestions: [],
-      category: '',
-      quizDescription: '',
-      quizBanner: '',
-      createdBy: 'stand-in-user',
-    });
   };
 
   const handleCategorySelect = (event) => {
@@ -147,36 +141,25 @@ const CreateQuiz = () => {
   };
 
   const bannerOptions = [
-    catBanner,
-    forestBanner,
-    historyBanner,
-    mapBanner,
-    scienceBanner,
-    soccerBanner,
-    splatBanner,
+    'https://i.imgur.com/Xwv08Qv.jpg',
+    'https://i.imgur.com/4wZslIx.png',
+    'https://i.imgur.com/vW2wWam.jpg',
+    'https://i.imgur.com/YEeyJKU.jpg',
+    'https://i.imgur.com/kYHSNyT.jpg',
+    'https://i.imgur.com/542Jxv9.jpg',
+    'https://i.imgur.com/ASQMn4Y.jpg',
+    'https://i.imgur.com/8o0Mo3R.jpg',
+    'https://i.imgur.com/FSIPzwE.jpg',
   ];
-
-  //const bannerOptions = [
-  //  './../banners/catbanner.jpeg',
-  //  './../banners/forestbanner.jpeg',
-  //  './../banners/historybanner.jpeg',
-  //  './../banners/mapbanner.jpeg',
-  //  './../banners/sciencebanner.jpeg',
-  //  './../banners/soccerbanner.jpeg',
-  //  './../banners/splatbanner.jpeg',
-  //];
-  useEffect(() => {
-    console.log(quizToPost);
-  }, [quizToPost]);
 
   return (
     <NewQuiz>
       <CreatedQuestions>
-        <h3>Questions In Quiz</h3>
+        <h3>Questions in Quiz</h3>
         {newQuizQuestions?.length > 0 &&
           newQuizQuestions.map((question, index) => {
             return (
-              <EachQuestion>
+              <EachQuestion key={index}>
                 <div>{question.question}</div>
                 <div>{question.correctAnswer} - Correct Answer</div>
                 <div>{question.incorrectAnswers[0]}</div>
@@ -218,7 +201,7 @@ const CreateQuiz = () => {
         ></Description>
       </TextInputs>
       <Gallery>
-        <h3>Select a Banner img</h3>
+        <h3>Select a Banner Image</h3>
         {bannerOptions?.map((image, index) => {
           if (image === newQuizBanner) {
             return (
@@ -249,7 +232,7 @@ const CreateQuiz = () => {
       >
         Add Question
       </AddQButton>
-      <button onClick={handleQuizSubmission}>Submit Quiz</button>
+      <SubmitBtn onClick={handleQuizSubmission}>Submit Quiz</SubmitBtn>
       {toggleModal && (
         <AddQuestionModal
           setToggleModal={setToggleModal}
