@@ -81,15 +81,15 @@ const Login = ({
       });
   };
 
-  // const logOut = () => {
-  //   const signedOut = signOut(auth)
-  //   .then((data) => {
-  //     console.log(data);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error.message);
-  //   });
-  // };
+  const logOut = () => {
+    const signedOut = signOut(auth)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+  };
 
   return (
     <div>

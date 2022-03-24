@@ -7,8 +7,17 @@ const NewQuiz = styled.div`
   margin: var(--standard-margin);
   padding: var(--standard-padding);
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 20% 50% 30%;
   grid-template-columns: 30% 70%;
+  background-color: var(--yellow);
+`;
+
+const ChosenIMG = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 5px solid green;
+  border-radius: var(--standard-border-radius);
 `;
 
 const Gallery = styled.div`
@@ -20,16 +29,22 @@ const Gallery = styled.div`
   gap: 15px;
   grid-row-start: 2;
   grid-column: 2 / span 1;
+  overflow: scroll;
+  background-color: var(--blue);
+  border-radius: var(--standard-border-radius);
+  box-shadow: inset 0 0 7px #000000;
 `;
 
 const QuizName = styled.input``;
 
 const EachQuestion = styled.div`
   background-color: var(--purple);
-  border: 5px solid var(--purple)
-  border-radius: var(--stadard-border-radius);
+  border: 5px solid var(--purple);
   margin: var(--standard-margin);
   padding: var(--standard-padding);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  z-index: 0;
 `;
 
 const TextInputs = styled.div`
@@ -45,8 +60,9 @@ const IMG = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: 5px solid var(--purple);
+  border: 5px solid transparent;
   border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
 `;
 
 const CreatedQuestions = styled.div`
@@ -54,15 +70,30 @@ const CreatedQuestions = styled.div`
   grid-column: 2 / span 1;
   margin: var(--standard-margin);
   display: grid;
-  grid-auto-rows: 200px;
+  grid-template-rows: repeat(10, 200px);
   grid-template-columns: repeat(2, 1fr);
   box-sizing: border-box;
   gap: 15px;
+  overflow: scroll;
+  height: 250px;
+  box-shadow: inset 0 0 7px #000000;
+  background-color: var(--blue);
+  padding: var(--standard-padding);
+  border-radius: var(--standard-border-radius);
 `;
 
 const AddQButton = styled.button`
   height: 100px;
   width: 200px;
+  background-color: var(--purple);
+  border-radius: var(--standard-border-radius);
+`;
+
+const SubmitBtn = styled.button`
+  height: 100px;
+  width: 200px;
+  background-color: var(--purple);
+  border-radius: var(--standard-border-radius);
 `;
 
 const CreateQuiz = () => {
@@ -72,20 +103,12 @@ const CreateQuiz = () => {
   const [newQuizBanner, setNewQuizBanner] = useState('');
   const [newQuizCategory, setNewQuizCategory] = useState('');
   const [newQuizQuestions, setNewQuizQuestions] = useState([]);
-  const [quizToPost, setQuizToPost] = useState({
-    quizName: '',
-    quizQuestions: [],
-    category: '',
-    quizDescription: '',
-    quizBanner: '',
-    createdBy: 'stand-in-user',
-  });
 
   const addQuiz = (quizObj) => {
     axios
       .post('http://52.90.8.77:4444/addQuiz', quizObj)
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
         resetInputs();
       })
       .catch((err) => {
@@ -93,18 +116,15 @@ const CreateQuiz = () => {
       });
   };
 
+  const quizToPost = {
+    quizName: newQuizTitle,
+    quizQuestions: newQuizQuestions,
+    category: newQuizCategory,
+    quizDescription: newQuizDescription,
+    quizBanner: newQuizBanner,
+    createdBy: 'stand-in-user',
+  };
   const handleQuizSubmission = () => {
-    setQuizToPost({
-      quizName: newQuizTitle, // user - user genenrated
-      quizQuestions: newQuizQuestions,
-      category: newQuizCategory, // user - select from list
-      quizDescription: newQuizDescription, // user - user generated
-      quizBanner: newQuizBanner,
-      createdBy: 'stand-in-user', // user - based on userName
-    });
-    //post request
-    //reset inputs
-
     addQuiz(quizToPost);
   };
 
@@ -114,14 +134,6 @@ const CreateQuiz = () => {
     setNewQuizBanner('');
     setNewQuizCategory('');
     setNewQuizQuestions([]);
-    setQuizToPost({
-      quizName: '',
-      quizQuestions: [],
-      category: '',
-      quizDescription: '',
-      quizBanner: '',
-      createdBy: 'stand-in-user',
-    });
   };
 
   const handleCategorySelect = (event) => {
@@ -129,22 +141,25 @@ const CreateQuiz = () => {
   };
 
   const bannerOptions = [
-    'https://image.shutterstock.com/image-photo/banner-cat-web-header-template-260nw-1030847524.jpg',
-    'https://thumbs.dreamstime.com/b/adorable-white-cats-banner-adorable-white-cats-banner-cartoon-style-171756834.jpg',
-    'https://image.shutterstock.com/image-photo/closeup-portrait-group-cats-different-260nw-601071197.jpg',
+    'https://i.imgur.com/Xwv08Qv.jpg',
+    'https://i.imgur.com/4wZslIx.png',
+    'https://i.imgur.com/vW2wWam.jpg',
+    'https://i.imgur.com/YEeyJKU.jpg',
+    'https://i.imgur.com/kYHSNyT.jpg',
+    'https://i.imgur.com/542Jxv9.jpg',
+    'https://i.imgur.com/ASQMn4Y.jpg',
+    'https://i.imgur.com/8o0Mo3R.jpg',
+    'https://i.imgur.com/FSIPzwE.jpg',
   ];
-  useEffect(() => {
-    console.log(quizToPost);
-  }, [quizToPost]);
 
   return (
     <NewQuiz>
       <CreatedQuestions>
-        <h3>Questions In Quiz</h3>
+        <h3>Questions in Quiz</h3>
         {newQuizQuestions?.length > 0 &&
           newQuizQuestions.map((question, index) => {
             return (
-              <EachQuestion>
+              <EachQuestion key={index}>
                 <div>{question.question}</div>
                 <div>{question.correctAnswer} - Correct Answer</div>
                 <div>{question.incorrectAnswers[0]}</div>
@@ -186,8 +201,19 @@ const CreateQuiz = () => {
         ></Description>
       </TextInputs>
       <Gallery>
-        <h3>Select a Banner img</h3>
+        <h3>Select a Banner Image</h3>
         {bannerOptions?.map((image, index) => {
+          if (image === newQuizBanner) {
+            return (
+              <ChosenIMG
+                onClick={() => {
+                  setNewQuizBanner(image);
+                }}
+                key={index}
+                src={image}
+              ></ChosenIMG>
+            );
+          }
           return (
             <IMG
               onClick={() => {
@@ -206,7 +232,7 @@ const CreateQuiz = () => {
       >
         Add Question
       </AddQButton>
-      <button onClick={handleQuizSubmission}>Submit Quiz</button>
+      <SubmitBtn onClick={handleQuizSubmission}>Submit Quiz</SubmitBtn>
       {toggleModal && (
         <AddQuestionModal
           setToggleModal={setToggleModal}
