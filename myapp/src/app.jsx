@@ -14,6 +14,8 @@ import axios from 'axios';
 import logo from './images/QuestionMark.png';
 import styled from 'styled-components';
 import { signOut } from 'firebase/auth';
+import {onAuthStateChanged} from 'firebase/auth';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 const App = () => {
   const [docData, setDocData] = useState(null);
@@ -24,13 +26,35 @@ const App = () => {
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
   const [userName, setUserName] = useState('');
+  // const [userEmail, setUserEmail] = useState('');
   const [fullQuizList, setFullQuizList] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [friends, setFriends] = useState([]);
 
   const stringifiedUser = JSON.stringify(currentUser);
+  //console.log('👄👄👄👄👄', currentUser);
+  // onAuthStateChanged(auth, (loggedInUser) => {
+  //   setCurrentUser(loggedInUser);
+  // });
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DON'T REFRESH!!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+
 
   useEffect(() => {
     getData();
-  }, []);
+    // getUser();
+    // console.log('app use effect username:', userName);
+    // console.log('app use effect email:', userEmail);
+  }, [currentUser]);
+
+
+  function populateStorage() {
+    localStorage.setItem('userName', userName);
+    localStorage.setItem('email', registerEmail);
+    // super.setState(userName);
+    // super.setState(registerEmail);
+  }
 
   const handleSearchSubmit = (opt) => {
     console.log("you've selected:", opt.label);
@@ -123,11 +147,14 @@ const App = () => {
       });
   };
 
-  const getUser = () => {
-    axios
-      .get('http://52.90.8.77:4444/user')
+  const getUser = (userEmail) => {
+    const email = userEmail;
+    axios.get(`http://52.90.8.77:4444/user/${email}`)
       .then((response) => {
-        console.log(response.data);
+        // setUserName(response.data.userName);
+        // setUserEmail(response.data.email);
+        setFriends(response.data[0].friends)
+        console.log('USER DATA:', response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -224,7 +251,7 @@ const App = () => {
             <Home fullQuizList={fullQuizList} />
           </Route>
           <Route exact path='/user'>
-            <User currentUser={currentUser} userName={userName}/>
+            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} />
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} />
@@ -233,7 +260,7 @@ const App = () => {
             <CreateQuiz />
           </Route>
           <Route exact path='/login'>
-            <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} setUserName={setUserName} userName={userName}/>
+            <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} setUserName={setUserName} userName={userName} setIsAdmin={setIsAdmin} isAdmin={isAdmin} />
           </Route>
         </Switch>
         {docData ? <h1>Hello {docData.quizName}</h1> : null}

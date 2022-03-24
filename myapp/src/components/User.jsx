@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import FriendsList from './homeComponents/FriendsList.jsx'
+import FriendsList from './userComponents/FriendsList.jsx';
 import QuizFeed from './homeComponents/QuizFeed.jsx'
 import RecentQuizzes from './userComponents/RecentQuizzes.jsx'
 import UserQuizzes from './userComponents/UserQuizzes.jsx'
-import ReportedQuizzes from './userComponents/RecentQuizzes.jsx';
+import ReportedQuizzes from './userComponents/ReportedQuizzes.jsx';
 
 const HomeLayout = styled.div`
   display: grid;
@@ -12,15 +12,23 @@ const HomeLayout = styled.div`
 `;
 
 const User = (props) => {
-  const [isAdmin, setIsAdmin] = useState(false);
+
+
+  useEffect(() => {
+    props.getUser(props.registerEmail);
+
+    console.log(props.userName)
+    console.log(props.registerEmail)
+  }, [])
+
   //console.log('🧠🧠🧠🧠', props.currentUser.email)
   return (<HomeLayout>
-  <FriendsList currentUser={props.currentUser}/>
+  <FriendsList currentUser={props.currentUser} userName={props.userName} registerEmail={props.registerEmail} getUser={props.getUser} friends={props.friends} />
   <div>
-  {/* <RecentQuizzes currentUser={props.currentUser}/> */}
-  <UserQuizzes currentUser={props.currentUser} userName={props.userName}/>
-  <ReportedQuizzes />
-   </div>
+  <RecentQuizzes currentUser={props.currentUser} registerEmail={props.registerEmail} />
+  { props.isAdmin === false ? <UserQuizzes currentUser={props.currentUser} userName={props.userName} registerEmail={props.registerEmail} /> : <ReportedQuizzes currentUser={props.currentUser} userName={props.userName} registerEmail={props.registerEmail} />
+}
+  </div>
   </HomeLayout>)
 };
 

@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import mockUsers from '../../../mockData/mockUsers.js';
 
 const EachFriend = (props) => {
-  const friendID = props.friendID;
+  const friendID = props.friend;
+  //console.log('👅👅👅friend', props.friend);
 
   return(
     <div>
-      {mockUsers.friendID}
+      {props.friend}
+      {/* {mockUsers.friend} */}
     </div>
   )
 }

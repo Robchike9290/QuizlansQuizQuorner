@@ -26,7 +26,7 @@ const RecentQuizzes = (props) => {
   const getRecentQuizzes = () => {
     axios.get('/quizzes')
       .then((response)=> {
-        console.log('💋💋💋💋💋', response.data)
+        //console.log('💋💋💋💋💋', response.data)
         setRecentQuizzes(response.data)
       })
       .catch((error)=> {

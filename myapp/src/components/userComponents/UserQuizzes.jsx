@@ -14,6 +14,8 @@ const Container = styled.div`
   margin: var(--standard-margin);
   display: flex;
   flex-direction: column;
+  vh: 400 px;
+  overflow: scroll;
 `;
 
 const UserQuizzes = (props) => {
@@ -22,26 +24,35 @@ const UserQuizzes = (props) => {
   const [showQuizzes, setShowQuizzes] = useState(4);
 
   const getUserQuizzes = () => {
-    var data = {
-      createdBy: 'Nic'
-    };
+    // var data = {
+    //   createdBy: 'stand-in-user'
+    // };
 
-    var config = {
-      method: 'get',
-      url: 'http://52.90.8.77:4444/quizzes',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data : data
-    };
+    // var config = {
+    //   method: 'get',
+    //   url: 'http://52.90.8.77:4444/quizzes',
+    //   data : data
+    // };
 
-    axios(config)
-    .then(function (response) {
-      console.log('user quizzes', JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log('user quiz error', error);
-    });
+  //   axios.get('http://52.90.8.77:4444/quizzes', { createdBy: props.userName })
+  //   .then(function (response) {
+  //     console.log('user quizzes', response.data);
+  //     setUserQuizzes(response.data);
+  //   })
+  //   .catch(function (error) {
+  //     console.log('user quiz error', error);
+  //   });
+    console.log(props.userName)
+    const username = props.userName;
+    const categoryName = null;
+    const isReported = null;
+    axios.get(`http://52.90.8.77:4444/quizzes/${username}&${categoryName}&${isReported}`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   // var config = {
@@ -72,8 +83,8 @@ const UserQuizzes = (props) => {
 
 
 
-  console.log('👅👅👅👅👅', userQuizzes);
-  console.log('💄💄💄💄💄👁👁', props.currentUser);
+  //console.log('👅👅👅👅👅', userQuizzes);
+ //console.log('💄💄💄💄💄👁👁', props.currentUser);
   //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
   useEffect(()=> {
     getUserQuizzes()
@@ -83,7 +94,7 @@ const UserQuizzes = (props) => {
   return (
     <Container>
       User Quizzes
-      {userQuizzes.filter(userQuiz => userQuiz.createdBy === props.currentUser.email).slice(0, showQuizzes).map((userQuiz) => {
+      {userQuizzes.map((userQuiz) => {
         return <UserGeneratedQuiz userQuiz={userQuiz} userQuizzes={userQuizzes} key={userQuiz.quizID}/>
         // <ReportedQuizzes/>
       })}
