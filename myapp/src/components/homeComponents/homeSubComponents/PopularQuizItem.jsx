@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   text-align: left;
-  margin: var(--standard-margin)
+  margin: var(--standard-margin);
 `;
 
-const PopularQuizItem = ({quizName}) => {
+const PopularQuizItem = ({ quizName }) => {
   return (
     <Container>
       {quizName}

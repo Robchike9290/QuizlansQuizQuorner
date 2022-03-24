@@ -23,6 +23,7 @@ const App = () => {
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
+  const [fullQuizList, setFullQuizList] = useState([]);
 
   const stringifiedUser = JSON.stringify(currentUser);
 
@@ -48,6 +49,7 @@ const App = () => {
           quizIds.push(newDropDownItem);
         }
         setAllQuizzes(quizIds);
+        setFullQuizList(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -218,7 +220,7 @@ const App = () => {
             <LandingPage />
           </Route>
           <Route exact path='/home'>
-            <Home />
+            <Home fullQuizList={fullQuizList} />
           </Route>
           <Route exact path='/user'>
             <User />
