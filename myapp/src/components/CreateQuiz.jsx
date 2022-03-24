@@ -9,7 +9,7 @@ const NewQuiz = styled.div`
   display: grid;
   grid-template-rows: 20% 50% 30%;
   grid-template-columns: 30% 70%;
-  background-color: var(--yellow);
+  background-color: var(--background-color);
 `;
 
 const ChosenIMG = styled.img`
@@ -38,8 +38,8 @@ const Gallery = styled.div`
 const QuizName = styled.input``;
 
 const EachQuestion = styled.div`
-  background-color: var(--purple);
-  border: 5px solid var(--purple);
+  background-color: var(--accent-color);
+  border: 5px solid var(--accent-color);
   margin: var(--standard-margin);
   padding: var(--standard-padding);
   border-radius: var(--standard-border-radius);
@@ -85,14 +85,14 @@ const CreatedQuestions = styled.div`
 const AddQButton = styled.button`
   height: 100px;
   width: 200px;
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   border-radius: var(--standard-border-radius);
 `;
 
 const SubmitBtn = styled.button`
   height: 100px;
   width: 200px;
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   border-radius: var(--standard-border-radius);
 `;
 

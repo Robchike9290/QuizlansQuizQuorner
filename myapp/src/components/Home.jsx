@@ -11,7 +11,9 @@ import UserBox from './homeComponents/UserBox.jsx';
 //I can explain this after my tapout!! But it should be work-on-able now
 const HomeLayout = styled.div`
   display: grid;
-  grid-template-columns: 25% 55% 20%;
+  grid-template-columns: 30% 50% 20%;
+  font-size: var(--major-heading-size);
+  font-weight: var(--major-heading-weight);
 `;
 
 //elements to add (aka add to subcomponents folder and then plug into HomeLayout Div):

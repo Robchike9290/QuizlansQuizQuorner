@@ -14,7 +14,7 @@ const Modal = styled.div`
 `;
 
 const Form = styled.div`
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   width: 40%;
   height: 50%;
   display: grid;

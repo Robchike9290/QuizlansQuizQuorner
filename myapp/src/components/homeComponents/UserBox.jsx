@@ -5,7 +5,7 @@ import { mockUserList } from '../../../mockData/mockUsers.js';
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
   background-color: var(--blue);
-  height: 100px;
+  //height: 100px;
   text-align: center;
   margin: var(--standard-margin);
   display: grid;
@@ -16,18 +16,24 @@ const Container = styled.div`
 const Contents = styled.div`
   grid-column-start: 2
   margin: var(--standard-margin);
-  word-wrap: break-all
+  word-wrap: break-all;
+  font-size: var(--minor-heading-size);
+  font-weight: var(--minor-heading-weight);
 `;
 
 const IMG = styled.img`
   height: 100%;
   width: 100%;
+
   border-radius: 50%;
 `;
 
 const Avatar = styled.div`
   width: 100px;
+  height: 100px;
+  position: relative;
   grid-column: 1 / span 1;
+  margin: auto;
 `;
 
 const UserBox = () => {
