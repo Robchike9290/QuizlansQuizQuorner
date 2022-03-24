@@ -45,6 +45,7 @@ const EachQuestion = styled.div`
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   z-index: 0;
+  overflow: scroll;
 `;
 
 const TextInputs = styled.div`
@@ -69,17 +70,25 @@ const CreatedQuestions = styled.div`
   height: 10%;
   grid-column: 2 / span 1;
   margin: var(--standard-margin);
-  display: grid;
-  grid-template-rows: repeat(10, 200px);
-  grid-template-columns: repeat(2, 1fr);
-  box-sizing: border-box;
-  gap: 15px;
-  overflow: scroll;
+  //box-sizing: border-box;
   height: 250px;
   box-shadow: inset 0 0 7px #000000;
   background-color: var(--blue);
   padding: var(--standard-padding);
   border-radius: var(--standard-border-radius);
+  over-flow: scroll;
+`;
+
+const FakeDiv = styled.div`
+  height: 99%;
+  background-color: var(--blue);
+  display: grid;
+  grid-template-rows: repeat(10, 200px);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  overflow: scroll;
+  margin: auto;
+  padding: 0px;
 `;
 
 const AddQButton = styled.button`
@@ -87,6 +96,7 @@ const AddQButton = styled.button`
   width: 200px;
   background-color: var(--accent-color);
   border-radius: var(--standard-border-radius);
+  margin: var(--standard-margin);
 `;
 
 const SubmitBtn = styled.button`
@@ -94,6 +104,9 @@ const SubmitBtn = styled.button`
   width: 200px;
   background-color: var(--accent-color);
   border-radius: var(--standard-border-radius);
+  position: relative;
+  bottom: 90%;
+  margin: var(--standard-margin);
 `;
 
 const CreateQuiz = () => {
@@ -155,19 +168,24 @@ const CreateQuiz = () => {
   return (
     <NewQuiz>
       <CreatedQuestions>
-        <h3>Questions in Quiz</h3>
-        {newQuizQuestions?.length > 0 &&
-          newQuizQuestions.map((question, index) => {
-            return (
-              <EachQuestion key={index}>
-                <div>{question.question}</div>
-                <div>{question.correctAnswer} - Correct Answer</div>
-                <div>{question.incorrectAnswers[0]}</div>
-                <div>{question.incorrectAnswers[1]}</div>
-                <div>{question.incorrectAnswers[2]}</div>
-              </EachQuestion>
-            );
-          })}
+        <FakeDiv>
+          <EachQuestion>
+            This is where you'll find all of the questions you've already
+            created!
+          </EachQuestion>
+          {newQuizQuestions?.length > 0 &&
+            newQuizQuestions.map((question, index) => {
+              return (
+                <EachQuestion key={index}>
+                  <div>{question.question}</div>
+                  <div>{question.correctAnswer} - Correct Answer</div>
+                  <div>{question.incorrectAnswers[0]}</div>
+                  <div>{question.incorrectAnswers[1]}</div>
+                  <div>{question.incorrectAnswers[2]}</div>
+                </EachQuestion>
+              );
+            })}
+        </FakeDiv>
       </CreatedQuestions>
       <TextInputs>
         <label>Quiz Name:</label>

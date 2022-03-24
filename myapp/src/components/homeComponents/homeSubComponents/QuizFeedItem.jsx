@@ -24,14 +24,9 @@ const Banner = styled.div`
 
 const TextData = styled.div`
   grid-row: 2 / span 1;
-`;
-
-const Description = styled.div`
-  background-color: var(--accent-color);
-  width: 50%;
-  box-shadow: var(--standard-shadow);
-  border-radius: var(--standard-border-radius);
-  margin: auto;
+  display: grid;
+  grid-template-rows: 80px 200px 80px;
+  grid-template-columns: 30% 40% 30%;
 `;
 
 const QuizFeedItem = ({
@@ -44,6 +39,8 @@ const QuizFeedItem = ({
   upvotes,
   downvotes,
   score,
+  selectedQuiz,
+  setSelectedQuiz,
 }) => {
   //QuizFeed ->
   // map over quizzes and sort by recently made (what other sorting criteria?)
@@ -76,14 +73,16 @@ const QuizFeedItem = ({
         <img src={`${banner}`} />
       </Banner>
       <TextData>
-        <div>Name: {quizName}</div>
-        <div>Category: {category}</div>
-        <div>Created By: {createdBy}</div>
-        <div>{timesTaken} people have taken this quiz</div>
+        <Name onClick={() => handleQuizSelect(event)}>{quizName}</Name>
+        <Category>{category}</Category>
+        <Author>Author: {createdBy}</Author>
+        <TimesTaken>{timesTaken} people have taken this quiz</TimesTaken>
         <Description>{description}</Description>
-        <div>{upvotes} upvotes</div>
-        <div>{downvotes} downvotes</div>
-        <div>{score % timesTaken}% average score</div>
+        <Votes>
+          <div>{upvotes} upvotes</div>
+          <div>{downvotes} downvotes</div>
+        </Votes>
+        <Score>{score % timesTaken}% average score</Score>
         {/* UPVOTE <FontAwesomeIcon icon="fa-solid fa-caret-up" name="upvote" onClick={()=>handleRating(event.target.name}/> */}
         {/* DOWNVOTE <FontAwesomeIcon icon="fa-solid fa-caret-down" name="downvote" onClick={()=>handleRating(event.target.name}/>/> */}
         {/* REPORT <FontAwesomeIcon icon="fa-solid fa-flag" /> */}
@@ -93,3 +92,47 @@ const QuizFeedItem = ({
 };
 
 export default QuizFeedItem;
+
+const Name = styled.div`
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 1;
+  font-size: var(--minor-heading-size);
+  font-weight: var(--minor-heading-weight);
+  //word-wrap: break-word;
+  &:hover {
+    color: var(--background-color);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`;
+const Category = styled.div`
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+  //word-wrap: break-word;
+`;
+const Author = styled.div`
+  grid-row: 1 / span 1;
+  grid-column: 3 / span 1;
+  word-break: break-all;
+`;
+const TimesTaken = styled.div`
+  grid-row: 3 / span 1;
+  grid-column: 2 . span 1;
+`;
+const Votes = styled.div`
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 1;
+`;
+const Score = styled.div`
+  grid-row: 2 / span 1;
+  grid-column: 3 / span 1;
+`;
+const Description = styled.div`
+  background-color: var(--accent-color);
+  width: 50%;
+  box-shadow: var(--standard-shadow);
+  border-radius: var(--standard-border-radius);
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 1;
+  margin: auto;
+`;

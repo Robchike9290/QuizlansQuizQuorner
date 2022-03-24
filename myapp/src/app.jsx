@@ -36,7 +36,7 @@ const App = () => {
 
   const switchTheme = () => {
     setIsDarkMode(!isDarkMode);
-    if (isDarkMode) {
+    if (!isDarkMode) {
       document.documentElement.setAttribute('data-theme', 'dark');
     } else {
       document.documentElement.setAttribute('data-theme', 'light');
@@ -233,7 +233,11 @@ const App = () => {
             <LandingPage />
           </Route>
           <Route exact path='/home'>
-            <Home fullQuizList={fullQuizList} />
+            <Home
+              fullQuizList={fullQuizList}
+              selectedQuiz={selectedQuiz}
+              setSelectedQuiz={setSelectedQuiz}
+            />
           </Route>
           <Route exact path='/user'>
             <User currentUser={currentUser} userName={userName} />

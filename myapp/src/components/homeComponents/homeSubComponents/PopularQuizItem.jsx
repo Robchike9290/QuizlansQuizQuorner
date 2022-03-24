@@ -8,7 +8,7 @@ const Container = styled.div`
   font-weight: var(--standard-text-weight);
 `;
 
-const PopularQuizItem = ({ quizName }) => {
+const PopularQuizItem = ({ quizName, selectedQuiz, setSelectedQuiz }) => {
   return (
     <Container>
       {quizName}

@@ -21,15 +21,22 @@ const HomeLayout = styled.div`
 //right sidebar (friend's list)
 //left sidebar (popular quizzes)
 
-const Home = ({ fullQuizList }) => {
+const Home = ({ fullQuizList, selectedQuiz, setSelectedQuiz }) => {
   return (
     <HomeLayout>
       <div>
         <UserBox />
         <FriendsList />
       </div>
-      <QuizFeed fullQuizList={fullQuizList} />
-      <PopularQuizzes />
+      <QuizFeed
+        fullQuizList={fullQuizList}
+        selectedQuiz={selectedQuiz}
+        setSelectedQuiz={setSelectedQuiz}
+      />
+      <PopularQuizzes
+        selectedQuiz={selectedQuiz}
+        setSelectedQuiz={setSelectedQuiz}
+      />
       {/*<FilterByCategory {if we have time} />*/}
     </HomeLayout>
   );

@@ -21,7 +21,7 @@ const ListTitle = styled.div`
   margin: 10px;
 `;
 
-const PopularQuizzes = () => {
+const PopularQuizzes = ({ selectedQuiz, setSelectedQuiz }) => {
   const [popularQuizList, setPopularQuizList] = useState(exampleQuizzes);
 
   const getPopularQuizzes = () => {
