@@ -38,8 +38,10 @@ app.use((req, res, next) => {
 });
 
 app.get('/quizzes', (req, res) => { // works
-  console.log('Hello from the server!')
-  getQuizzes(req.body.createdBy, req.body.category, req.body.reported)
+  //changes
+  getQuizzes(req.params.createdBy, req.params.category, req.params.reported)
+  //end of changes
+  // getQuizzes(req.body.createdBy, req.body.category, req.body.reported)
     .then((results) => {
       res.status(200).send(results);
     })
@@ -158,6 +160,7 @@ app.post('/addUser', (req, res) => {
   const newUser =  {
     userName: req.body.userName,
     email: req.body.email,
+    admin: req.body.admin,
     quizHistory: [],
     friends: [],
   };

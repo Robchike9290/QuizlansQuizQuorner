@@ -34,8 +34,8 @@ const userSchema = mongoose.Schema({
   email: { type: String, required: true, index: { unique: true }}, // user - based on email
   quizHistory: [
     {
-      quizId: { type: Number, required: true }, // based on quizId after completion
-      quizName: { type: String, required: true }, // based on quizName after completion
+      quizId: Number, // based on quizId after completion
+      quizName: String, // based on quizName after completion
       userScores: Number // add score to array after completion
     }
   ],
@@ -51,7 +51,7 @@ const upVote = function (quizId) {
 };
 
 const downVote = (quizId) => {
-  return Quiz.updateOne({ "_id": quizId}, {$inc: {quizUpvotes: -1} }, {upsert: true});
+  return Quiz.updateOne({ "_id": quizId}, {$inc: {quizDownvotes: 1} }, {upsert: true});
 }
 
 const reportQuiz = (quizId) => {
