@@ -55,7 +55,6 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
   const [score, setScore] = useState(0);
 
   const getQuiz = () => {
-    console.log('WE ARE HERE')
     for (let i = 0; i < allQuizzes.length; i++) {
       if (allQuizzes[i].quizName === quiz) {
         console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i])
@@ -67,7 +66,6 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
   useEffect(() => {
     console.log('inside useEffect right now')
     getQuiz();
-
   }, [])
 
   const previousQuestion = () => {
@@ -81,8 +79,6 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
   const keepScore = () => {
     setScore(score + 1);
   }
-
-  // console.log('selectedQuiz.quizQuestions --', selectedQuiz.quizQuestions)
 
   return (
     <Container>
@@ -106,15 +102,19 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
     <Footer>
       <span>
         <FloatLeft>
-          <button onClick={previousQuestion}>Previous</button>
+        {selectedQuiz ? ((counter !== 0) ?
+            <button onClick={previousQuestion}>Previous</button> :
+            null
+          ) : null}
         </FloatLeft>
-          <button onClick={changeStatusBackward}>Exit quiz</button>
+          <button>Report</button>
+          <button onClick={changeStatusBackward}>Exit</button>
         <FloatRight>
-          <button onClick={nextQuestion}>Next</button>
-          {/* {(counter === selectedQuiz.quizQuestions.length - 1) ?
-           <button onClick={changeStatusForward}>Finish Quiz</button> :
-           <button onClick={nextQuestion}>Next</button>
-          } */}
+        {/* <button onClick={nextQuestion}>Next</button> */}
+          {selectedQuiz ? ((counter !== selectedQuiz.quizQuestions.length - 1) ?
+            <button onClick={nextQuestion}>Next</button> :
+            <button onClick={changeStatusForward}>Finish Quiz</button>
+          ) : null}
         </FloatRight>
       </span>
     </Footer>

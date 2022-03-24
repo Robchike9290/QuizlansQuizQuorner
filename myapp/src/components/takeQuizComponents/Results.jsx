@@ -59,10 +59,10 @@ const Results = ({ score, changeStatusForward, changeStatusBackward }) => {
     <Footer>
       <span>
         <FloatLeft>
-          <button>Retake quiz</button>
+          <button onClick={changeStatusForward}>Retake quiz</button>
         </FloatLeft>
         <FloatRight>
-          <button>Exit</button>
+          <button onClick={() => console.log('exit?')}>Exit</button>
         </FloatRight>
       </span>
     </Footer>

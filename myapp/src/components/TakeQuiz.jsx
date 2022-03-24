@@ -41,14 +41,13 @@ const TakeQuiz = (props) => {
   const changeStatusForward = () => {
     console.log('pageStatus BEFORE', pageStatus)
     if (pageStatus === 'start') {
-      console.log('INSIDE START BLOCK----------')
       setPageStatus('quiz');
-      console.log('pageStatus AFTER---------', pageStatus)
     } else if (pageStatus === 'quiz') {
       setPageStatus('results');
     } else if (pageStatus === 'results') {
       setPageStatus('start') //display options to start new quiz
     }
+    console.log('pageStatus AFTER---------', pageStatus)
   }
 
   const changeStatusBackward = () => {
@@ -77,6 +76,16 @@ const TakeQuiz = (props) => {
     console.log('CHOSEN QUIZ after', quizSelected)
   }
 
+  const imFeelingLucky = () => {
+    // setQuiz to random quiz from allQuizzes
+    // invoke chosenQuiz
+    const min = 0;
+    const max = allQuizzes.length - 1;
+    const randomQuiz = allQuizzes[Math.floor(Math.random() * (max - min) + min)];
+    const randomQuizName = randomQuiz.quizName;
+    setQuiz(randomQuizName);
+    chosenQuiz();
+  }
   //TODO
   //CONDITIONAL RENDERING (either Header, StartPage and Footer or QuizBody)
   //if isPlaying === false (defualt)
@@ -86,7 +95,7 @@ const TakeQuiz = (props) => {
 
   return (
   <BaseLayout>
-  {pageStatus === 'start' ? <Start allQuizzes={allQuizzes} quiz={quiz} quizSelected={quizSelected} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} chooseQuiz={chooseQuiz} chosenQuiz={chosenQuiz}/> :
+  {pageStatus === 'start' ? <Start allQuizzes={allQuizzes} quiz={quiz} quizSelected={quizSelected} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} chooseQuiz={chooseQuiz} chosenQuiz={chosenQuiz} imFeelingLucky={imFeelingLucky}/> :
   pageStatus === 'quiz' ? <Quiz quiz={quiz} allQuizzes={allQuizzes} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} /> :
   pageStatus === 'results' ? <Results changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward}/> : null }
 
