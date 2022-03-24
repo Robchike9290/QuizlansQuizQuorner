@@ -35,20 +35,20 @@ const TakeQuiz = () => {
   };
 
   useEffect(() => {
-    getQuizzes();
+    getQuizzes()
   }, [])
 
   const changeStatusForward = () => {
     console.log('pageStatus BEFORE', pageStatus)
     if (pageStatus === 'start') {
+      console.log('INSIDE START BLOCK----------')
       setPageStatus('quiz');
+      console.log('pageStatus AFTER---------', pageStatus)
     } else if (pageStatus === 'quiz') {
       setPageStatus('results');
     } else if (pageStatus === 'results') {
       setPageStatus('start') //display options to start new quiz
     }
-    console.log('pageStatus AFTER', pageStatus)
-
   }
 
   const changeStatusBackward = () => {

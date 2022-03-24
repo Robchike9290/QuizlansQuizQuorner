@@ -54,11 +54,8 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
   const [counter, setCounter] = useState(0);
   const [score, setScore] = useState(0);
 
-  useEffect(() => {
-    getQuiz();
-  }, [])
-
   const getQuiz = () => {
+    console.log('WE ARE HERE')
     for (let i = 0; i < allQuizzes.length; i++) {
       if (allQuizzes[i].quizName === quiz) {
         console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i])
@@ -66,6 +63,12 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
       }
     }
   }
+
+  useEffect(() => {
+    console.log('inside useEffect right now')
+    getQuiz();
+
+  }, [])
 
   const previousQuestion = () => {
     setCounter(counter - 1);
@@ -79,9 +82,8 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
     setScore(score + 1);
   }
 
-  console.log('selectedQuiz --', selectedQuiz)
+  // console.log('selectedQuiz.quizQuestions --', selectedQuiz.quizQuestions)
 
-  console.log('selectedQuiz.quizQuestions --', selectedQuiz.quizQuestions)
   return (
     <Container>
     <Header>{selectedQuiz ? (
@@ -106,9 +108,13 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
         <FloatLeft>
           <button onClick={previousQuestion}>Previous</button>
         </FloatLeft>
-        <button onClick={changeStatusBackward}>Exit quiz</button>
+          <button onClick={changeStatusBackward}>Exit quiz</button>
         <FloatRight>
-        <button onClick={nextQuestion}>Next</button>
+          <button onClick={nextQuestion}>Next</button>
+          {/* {(counter === selectedQuiz.quizQuestions.length - 1) ?
+           <button onClick={changeStatusForward}>Finish Quiz</button> :
+           <button onClick={nextQuestion}>Next</button>
+          } */}
         </FloatRight>
       </span>
     </Footer>
@@ -118,7 +124,3 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
 
 export default Quiz;
 
-    // {(counter === selectedQuiz.quizQuestions.length - 1) ?
-          //  <button onClick={changeStatusForward}>Finish Quiz</button> :
-          //  <button onClick={nextQuestion}>Next</button>
-          // } : null }
