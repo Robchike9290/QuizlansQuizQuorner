@@ -95,7 +95,7 @@ const LandingPage = () => {
 };
 
 const FirstNesting = styled.div`
-  background-color: var(--background-color);
+  background-color: var(--yellow);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
