@@ -13,38 +13,38 @@ const LandingPage = () => {
     </StyledH1>
     <div id="intro1">
       <InlineDuo>
-        <LeftElement>
+        <LeftPhoto>
           <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*" src={testimonialPhoto1}></img>
-        </LeftElement>
+        </LeftPhoto>
       </InlineDuo>
       <InlineDuo>
-        <RightElement>
+        <RightText>
           Create a quiz to study for your next midterm exam
-        </RightElement>
+        </RightText>
       </InlineDuo>
     </div>
     <div id="intro2">
       <InlineDuo>
-        <LeftElement>
+        <LeftText>
           Take a pre-built quiz to sharpen your skills.
-        </LeftElement>
+        </LeftText>
       </InlineDuo>
       <InlineDuo>
-        <RightElement>
+        <RightPhoto>
           <img alt="Take quiz page screenshot *INSERT TAKE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE*" src={testimonialPhoto1}></img>
-        </RightElement>
+        </RightPhoto>
       </InlineDuo>
     </div>
     <div id="rhetoricalIntro3">
       <InlineDuo>
-        <LeftElement>
+        <LeftPhoto>
           <img alt="Create quiz page screenshot *INSERT CREATE QUIZ PAGE SCREENSHOT HERE ONCE COMPLETE AND LOADABLE. OR...REPLACE WITH ANOTHER FUNCTION?*" src={testimonialPhoto1}></img>
-        </LeftElement>
+        </LeftPhoto>
       </InlineDuo>
       <InlineDuo>
-        <RightElement>>
+        <RightText>
           Create a quiz to challenge your friends to see how well they know you.
-        </RightElement>
+        </RightText>
       </InlineDuo>
     </div>
     <div id="testimonials">
@@ -94,34 +94,55 @@ const FirstNesting = styled.div`
   margin: auto;
 `
 
-const LeftElement = styled.div`
+const LeftText = styled.div`
   background-color: var(--blue);
   text-color: var(--text-color);
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
-  margin-left: 2%;
+  margin-left: 30%;
   text-align: left;
   float: left;
-  width: 50%
 `
 
-const RightElement = styled.div`
+const LeftPhoto = styled.div`
   background-color: var(--blue);
   text-color: var(--text-color);
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
-  margin-right: 2%;
+  margin-left: 30%;
+  float: left;
+`
+
+const RightText = styled.div`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  margin: var(--standard-margin);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
+  margin-right: 30%;
   text-align: right;
   float: right;
-  width: 50%;
+`
+
+const RightPhoto = styled.div`
+  background-color: var(--blue);
+  text-color: var(--text-color);
+  margin: var(--standard-margin);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
+  margin-right: 30%;
+  float: right;
 `
 
 const InlineDuo = styled.span`
   display: inline-block;
+  vertical-align: middle;
   width: 50%;
 `
 
@@ -129,14 +150,16 @@ const InlineTrio = styled.span`
   display: inline-block;
   width: 33%;
   margin: auto;
+  margin-top: 50px;
 `
 
 const StyledButton = styled.button`
   background-color: var(--blue);
   text-color: var(--text-color);
-  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
+  border-width: 0;
   box-shadow: var(--standard-shadow);
+  margin-bottom: 20px;
   width: 25%;
   font-size: 24px;
 `
@@ -157,11 +180,11 @@ const StyledH1 = styled.h1`
 const StyledH2 = styled.h2`
   background-color: var(--blue);
   text-color: var(--text-color);
-  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
   text-align: center;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 30%;
@@ -170,11 +193,11 @@ const StyledH2 = styled.h2`
 const StyledH3 = styled.h3`
   background-color: var(--blue);
   text-color: var(--text-color);
-  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
   text-align: center;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 20%;
