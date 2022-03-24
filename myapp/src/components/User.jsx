@@ -11,6 +11,8 @@ const HomeLayout = styled.div`
   grid-template-columns: 20% 60% 20%;
 `;
 
+
+
 const User = (props) => {
   const [isAdmin, setIsAdmin] = useState(false);
   //console.log('🧠🧠🧠🧠', props.currentUser.email)
@@ -23,6 +25,7 @@ const User = (props) => {
    </div>
   </HomeLayout>)
 };
+
 
 export default User;
 

@@ -34,9 +34,9 @@ const ReportedQuizzes = () => {
     console.log('Reported👀👀👀👀: ', reportedQuizzesList);
   })
 
-   useEffect(()=> {
-     ReportedQuizzes()
-  }, [])
+  //  useEffect(()=> {
+  //    ReportedQuizzes()
+  // }, [])
 
 
   return (
