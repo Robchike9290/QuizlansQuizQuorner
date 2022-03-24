@@ -286,5 +286,4 @@ const NavBar = styled.span`
 
 const linkStyle = {
   'text-decoration': 'none',
-  'color': '--var(--text-color)'
 };
