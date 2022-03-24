@@ -33,10 +33,6 @@ const App = () => {
     getData();
   }, []);
 
-  useEffect(() => {
-    console.log(stringifiedUser);
-  }, []);
-
   const handleSearchSubmit = (opt) => {
     console.log("you've selected:", opt.label);
     window.location.href = 'http://localhost:8080/#/takequiz';
