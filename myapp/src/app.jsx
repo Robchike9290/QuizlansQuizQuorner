@@ -166,27 +166,28 @@ const App = () => {
           <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
           {stringifiedUser === '{ALWAYSFALSE}' && (
             <NavBarHeading>
-              <Link to='/'></Link>
+              <Link style={linkStyle} to='/'></Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/home'>Home</Link>
+              <Link style={linkStyle} to='/home'>Home</Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/user'>User</Link>
+              <Link style={linkStyle} to='/user'>User</Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/createquiz'>Create Quiz</Link>
+              <Link style={linkStyle} to='/createquiz'>Create Quiz</Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
               <Link
+                style={linkStyle}
                 to={{
                   pathname: '/takequiz',
                   state: { quizSelected: selectedQuiz },
@@ -198,12 +199,12 @@ const App = () => {
           )}
           {stringifiedUser === '{}' && (
             <NavBarHeading>
-              <Link to='/login'>Log In</Link>
+              <Link style={linkStyle} to='/login'>Log In</Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/' onClick={logOut}>
+              <Link style={linkStyle} to='/' onClick={logOut}>
                 Log Out
               </Link>
             </NavBarHeading>
@@ -247,7 +248,7 @@ export default hot(App);
 
 const NavBarTitle = styled.span`
   background-color: var(--blue);
-  text-color: var(--text-color);
+  color: var(--text-color);
   padding: var(--standard-padding);
   font-family: arial;
   font-size: 48px;
@@ -255,13 +256,13 @@ const NavBarTitle = styled.span`
 
 const NavBarLogo = styled.img`
   background-color: var(--blue);
-  text-color: var(--text-color);
+  color: var(--text-color);
   padding: var(--standard-padding);
 `;
 
 const NavBarHeading = styled.span`
   background-color: var(--blue);
-  text-color: var(--text-color);
+  color: var(--text-color);
   padding: var(--standard-padding);
   font-family: arial;
   font-size: 24px;
@@ -269,16 +270,21 @@ const NavBarHeading = styled.span`
 
 const NavBarForm = styled.form`
   background-color: var(--blue);
-  text-color: var(--text-color);
+  color: var(--text-color);
   padding: var(--standard-padding);
 `;
 
 const NavBar = styled.span`
   background-color: var(--blue);
-  text-color: var(--text-color);
+  color: var(--text-color);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 `;
+
+const linkStyle = {
+  'text-decoration': 'none',
+  'color': '--var(--text-color)'
+};
