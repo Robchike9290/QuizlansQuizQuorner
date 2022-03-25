@@ -13,39 +13,76 @@ const Container = styled.div`
   margin: var(--standard-margin);
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 // nothing will show unless the currently logged in user (Nic's firebase)
 // has quizzes, currently using mockdata.
 
-const ReportedQuizzes = () => {
+const ReportedQuizzes = (props) => {
 
-  const reportedQuizzesMock = () => {
-    return exampleQuizzes.filter(exampleQuiz => {
-      exampleQuiz.reported === true;
-    });
-  };
+  // const reportedQuizzesMock = () => {
+  //   return exampleQuizzes.filter(exampleQuiz => {
+  //     exampleQuiz.reported === true;
+  //   });
+  // };
 
-  const [reportedQuizzesList, setReportedQuizzes] = useState(reportedQuizzesMock);
+  useEffect(()=> {
+    getReportedQuizzes()
 
-  // axios.get('/reportedQuizzes')
-  // .then((results) => {
-  //   setReportedQuizzes(results);
-  //   console.log('Reported👀👀👀👀: ', reportedQuizzesList);
-  // })
-
-   useEffect(()=> {
   }, [])
 
+  const [reportedQuizzesList, setReportedQuizzesList] = useState([]);
+
+  const deleteQuiz = (quizId) => {
+
+    //const [isDeleted, setIsDeleted] = useState(false);
+
+    axios.post(`http://52.90.8.77:4444/removeQuiz`, {quizId: quizId})
+    .then((results) => {
+    // document.getElementByID(quizId).style.visiblity='hidden'
+      console.log('success')
+      getReportedQuizzes()
+
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+
+
+  const getReportedQuizzes = () => {
+    const createdBy = null;
+    const category = null;
+    const isReported = true;
+
+    axios.get(`http://52.90.8.77:4444/quizzes/${createdBy}&${category}&${isReported}`)
+    //console.log()
+    .then((results) => {
+      setReportedQuizzesList(results.data);
+      console.log('ReportedQuizzes👀👀👀👀:', results);
+      console.log('reportedQuizzesList', reportedQuizzesList);
+    })
+    .catch((error) => {
+      console.log(error);
+      console.log('Caught👀👀👀👀: ', error);
+    });
+  };
+  //console.log(`🔥🔥🔥🔥🔥🔥`);
+
+
+
+
+  console.log('reportedQuizzesList', reportedQuizzesList);
 
   return (
     <Container>
       Reported Quizzes
-      <div>
+
         {reportedQuizzesList.map((eachReportedQuiz) => (
-          <ReportedQuiz eachReportedQuiz={eachReportedQuiz} />
+          <ReportedQuiz eachReportedQuiz={eachReportedQuiz} deleteQuiz={deleteQuiz}/>
         ))}
-      </div>
+
     </Container>
   );
 };
