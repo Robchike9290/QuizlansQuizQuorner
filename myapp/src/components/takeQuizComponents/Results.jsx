@@ -19,8 +19,12 @@ const Header = styled.div`
   background-color: var(--blue);
   display: grid;
   flex-direction: row;
+<<<<<<< HEAD
    //fixed width until I can figure out issue with justify-content
+=======
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
   margin: var(--standard-margin);
+  font-size: large;
 `;
 
 const Body = styled.div`
@@ -50,11 +54,22 @@ const FloatLeft = styled.div`
   float: left;
 `;
 
+<<<<<<< HEAD
 const Results = ({ score, changeStatusForward, changeStatusBackward }) => {
+=======
+const BigDiv = styled.div`
+  margin: var(--standard-margin);
+  justify-content: center;
+  font-size: x-large;
+`;
+
+const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQuizzes }) => {
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
 
   return (
     <Container>
     <Header>Quiz Results</Header>
+<<<<<<< HEAD
     <Body> / 10</Body>
     <Footer>
       <span>
@@ -63,6 +78,20 @@ const Results = ({ score, changeStatusForward, changeStatusBackward }) => {
         </FloatLeft>
         <FloatRight>
           <button>Exit</button>
+=======
+    <Body>
+      <BigDiv>{score} / 10</BigDiv>
+      <div></div>
+      </Body>
+    <Footer>
+      <span>
+        <FloatLeft>
+          <button onClick={changeStatusForward}>Retake quiz</button>
+        </FloatLeft>
+        <button>Report Quiz</button>
+        <FloatRight>
+          <button onClick={() => window.location.href = 'http://localhost:8080/#/home'}>Exit</button>
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
         </FloatRight>
       </span>
     </Footer>

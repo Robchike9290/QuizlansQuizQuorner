@@ -41,7 +41,20 @@ const Footer = styled.div`
   margin-top: 30px; //necessary until I fix the quiz body extending into the footer
 `;
 
+<<<<<<< HEAD
 const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStatusBackward, chooseQuiz, chosenQuiz }) => {
+=======
+const Button = styled.button`
+  border-radius: var(--standard-border-radius);
+  height: 30px;
+  margin: var(--standard-margin);
+  background-color: var(--purple);
+  border: none;
+  //add click styling
+`;
+
+const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStatusBackward, chooseQuiz, chosenQuiz, imFeelingLucky }) => {
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
 
  if (!quizSelected) {
   // get all quiz data from db
@@ -51,12 +64,19 @@ const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStat
     <Header>Start</Header>
     <Body>
       <h2>Select a quiz to start playing!</h2>
+<<<<<<< HEAD
+=======
+      <Button onClick={imFeelingLucky}>I'm feeling lucky</Button>
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
       <div>
       {allQuizzes.map((quiz, idx) => {
           return <QuizFeedItem quiz={quiz} changeStatusForward={changeStatusForward} chooseQuiz={chooseQuiz} key={idx}/>
         })}
       </div>
+<<<<<<< HEAD
       <div>{console.log('QUIZZES, DO THEY EXIST?', allQuizzes)}</div>
+=======
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
     </Body>
     <Footer>
       <span>
@@ -78,8 +98,13 @@ const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStat
     <p>Quiz category</p> */}
     <Footer>
       <span>
+<<<<<<< HEAD
       <button onClick={changeStatusBackward}>Back</button>
       <button onClick={changeStatusForward}>Play!</button>
+=======
+      <button onClick={changeStatusBackward}>Select another Quiz</button>
+      <button onClick={changeStatusForward}>Play this one!</button>
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
       </span>
     </Footer>
   </div>

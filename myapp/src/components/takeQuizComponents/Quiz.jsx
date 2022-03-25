@@ -49,13 +49,19 @@ const FloatLeft = styled.div`
   float: left;
 `;
 
+<<<<<<< HEAD
 const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) => {
+=======
+const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, score, keepScore }) => {
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [counter, setCounter] = useState(0);
-  const [score, setScore] = useState(0);
 
   const getQuiz = () => {
+<<<<<<< HEAD
     console.log('WE ARE HERE')
+=======
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
     for (let i = 0; i < allQuizzes.length; i++) {
       if (allQuizzes[i].quizName === quiz) {
         console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i])
@@ -65,9 +71,13 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
   }
 
   useEffect(() => {
+<<<<<<< HEAD
     console.log('inside useEffect right now')
     getQuiz();
 
+=======
+    getQuiz();
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
   }, [])
 
   const previousQuestion = () => {
@@ -77,19 +87,26 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
   const nextQuestion = () => {
     setCounter(counter + 1);
   }
+<<<<<<< HEAD
 
   const keepScore = () => {
     setScore(score + 1);
   }
 
   // console.log('selectedQuiz.quizQuestions --', selectedQuiz.quizQuestions)
+=======
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
 
   return (
     <Container>
     <Header>{selectedQuiz ? (
     <span>
     <FloatLeft>{selectedQuiz.quizName}</FloatLeft>
+<<<<<<< HEAD
     <FloatRight>{score}/{selectedQuiz.quizQuestions.length}</FloatRight>
+=======
+    <FloatRight>{score} / {selectedQuiz.quizQuestions.length}</FloatRight>
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
     </span>
     ) : null}</Header>
     <Body>
@@ -106,6 +123,7 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
     <Footer>
       <span>
         <FloatLeft>
+<<<<<<< HEAD
           <button onClick={previousQuestion}>Previous</button>
         </FloatLeft>
           <button onClick={changeStatusBackward}>Exit quiz</button>
@@ -115,6 +133,21 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
            <button onClick={changeStatusForward}>Finish Quiz</button> :
            <button onClick={nextQuestion}>Next</button>
           } */}
+=======
+        {selectedQuiz ? ((counter !== 0) ?
+            <button onClick={previousQuestion}>Previous</button> :
+            null
+          ) : null}
+        </FloatLeft>
+          <button>Report</button>
+          <button onClick={changeStatusBackward}>Exit</button>
+        <FloatRight>
+        {/* <button onClick={nextQuestion}>Next</button> */}
+          {selectedQuiz ? ((counter !== selectedQuiz.quizQuestions.length - 1) ?
+            <button onClick={nextQuestion}>Next</button> :
+            <button onClick={changeStatusForward}>Finish Quiz</button>
+          ) : null}
+>>>>>>> 499616d178f2b02b84a51bc0f4a24a3799b81e8f
         </FloatRight>
       </span>
     </Footer>
