@@ -103,7 +103,7 @@ const FirstNesting = styled.div`
 `;
 
 const LeftText = styled.div`
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   text-color: var(--text-color);
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
@@ -123,7 +123,7 @@ const LeftPhoto = styled.div`
 `;
 
 const RightText = styled.div`
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   text-color: var(--text-color);
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
@@ -155,7 +155,7 @@ const InlineTrio = styled.span`
 `;
 
 const StyledButton = styled.button`
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
   border-width: 0;
@@ -166,7 +166,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledH1 = styled.h1`
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
@@ -179,7 +179,7 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledH2 = styled.h2`
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
@@ -192,7 +192,7 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledH3 = styled.h3`
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
@@ -205,7 +205,7 @@ const StyledH3 = styled.h3`
 `;
 
 const Testimonial = styled.div`
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   text-color: var(--text-color);
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
