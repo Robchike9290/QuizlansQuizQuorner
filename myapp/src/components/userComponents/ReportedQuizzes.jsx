@@ -35,7 +35,6 @@ const ReportedQuizzes = () => {
   })
 
    useEffect(()=> {
-    //  ReportedQuizzes()
   }, [])
 
 

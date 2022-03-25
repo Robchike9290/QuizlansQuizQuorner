@@ -18,8 +18,8 @@ const Header = styled.div`
   background-color: var(--blue);
   display: grid;
   flex-direction: row;
-  //fixed width until I can figure out issue with justify-content
   margin: var(--standard-margin);
+  font-size: large;
 `;
 
 const Body = styled.div`
@@ -49,21 +49,41 @@ const FloatLeft = styled.div`
   float: left;
 `;
 
-const Results = ({ score, changeStatusForward, changeStatusBackward }) => {
+const BigDiv = styled.div`
+  margin: var(--standard-margin);
+  justify-content: center;
+  font-size: x-large;
+`;
+
+const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQuizzes }) => {
+
+  const getQuiz = () => {
+    for (let i = 0; i < allQuizzes.length; i++) {
+      if (allQuizzes[i].quizName === quiz) {
+        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i])
+        setSelectedQuiz(allQuizzes[i]);
+      }
+    }
+  }
+
   return (
     <Container>
-      <Header>Quiz Results</Header>
-      <Body> / 10</Body>
-      <Footer>
-        <span>
-          <FloatLeft>
-            <button>Retake quiz</button>
-          </FloatLeft>
-          <FloatRight>
-            <button>Exit</button>
-          </FloatRight>
-        </span>
-      </Footer>
+    <Header>Quiz Results</Header>
+    <Body>
+      <BigDiv>{score} / 10</BigDiv>
+      <div></div>
+      </Body>
+    <Footer>
+      <span>
+        <FloatLeft>
+          <button onClick={changeStatusForward}>Retake quiz</button>
+        </FloatLeft>
+        <button>Report Quiz</button>
+        <FloatRight>
+          <button onClick={() => window.location.href = 'http://localhost:8080/#/home'}>Exit</button>
+        </FloatRight>
+      </span>
+    </Footer>
     </Container>
   );
 };
