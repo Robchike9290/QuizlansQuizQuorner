@@ -33,11 +33,12 @@ const Body = styled.div`
   background-color: var(--blue);
   display: grid;
   flex-direction: row;
-  height: 500px; //fixed until later
+  height: 550px; //fixed until later
   margin: var(--standard-margin);
   maxheight: 500px;
   overflow: scroll;
-  margin-top: 30px;
+  margin-top: 25px;
+  margin-bottom: -30px;
   box-shadow: inset 4px 2px 10px rgba(0, 0, 0, 0.4);
 `;
 
@@ -46,7 +47,6 @@ const Footer = styled.div`
   display: grid;
   flex-direction: row;
   margin: var(--standard-margin);
-  margin-top: 30px; //necessary until I fix the quiz body extending into the footer
 `;
 
 const QuizH1 = styled.h1`
@@ -85,8 +85,9 @@ const Start = ({
           <Button
             style={{
               borderRadius: 'var(--standard-border-radius)',
-              backgroundColor: 'var(--accent-color)',
-              color: 'black',
+              backgroundColor: '#FFD700',
+              color: "black",
+              margin: "0% 40% 10% 40%",
             }}
             variant='contained'
             onClick={imFeelingLucky}

@@ -269,7 +269,7 @@ const App = () => {
             />
           </Route>
           <Route exact path='/takequiz'>
-            <TakeQuiz selectedQuiz={selectedQuiz} />
+            <TakeQuiz selectedQuiz={selectedQuiz} report={report}/>
           </Route>
           <Route exact path='/createquiz'>
             <CreateQuiz userName={userName} />
