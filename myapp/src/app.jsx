@@ -259,7 +259,7 @@ const App = () => {
           )}
           {stringifiedUser !== '{}' && (
             <NavBarForm>
-              <Select options={allQuizzes} onChange={handleSearchSubmit}>
+              <Select style="color: black" options={allQuizzes} onChange={handleSearchSubmit}>
                 Search for a Quiz to Take!
               </Select>
             </NavBarForm>
