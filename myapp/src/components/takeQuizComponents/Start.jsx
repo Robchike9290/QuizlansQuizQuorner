@@ -41,7 +41,16 @@ const Footer = styled.div`
   margin-top: 30px; //necessary until I fix the quiz body extending into the footer
 `;
 
-const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStatusBackward, chooseQuiz, chosenQuiz }) => {
+const Button = styled.button`
+  border-radius: var(--standard-border-radius);
+  height: 30px;
+  margin: var(--standard-margin);
+  background-color: var(--purple);
+  border: none;
+  //add click styling
+`;
+
+const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStatusBackward, chooseQuiz, chosenQuiz, imFeelingLucky }) => {
 
  if (!quizSelected) {
   // get all quiz data from db
@@ -51,12 +60,12 @@ const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStat
     <Header>Start</Header>
     <Body>
       <h2>Select a quiz to start playing!</h2>
+      <Button onClick={imFeelingLucky}>I'm feeling lucky</Button>
       <div>
       {allQuizzes.map((quiz, idx) => {
           return <QuizFeedItem quiz={quiz} changeStatusForward={changeStatusForward} chooseQuiz={chooseQuiz} key={idx}/>
         })}
       </div>
-      <div>{console.log('QUIZZES, DO THEY EXIST?', allQuizzes)}</div>
     </Body>
     <Footer>
       <span>
@@ -78,8 +87,8 @@ const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStat
     <p>Quiz category</p> */}
     <Footer>
       <span>
-      <button onClick={changeStatusBackward}>Back</button>
-      <button onClick={changeStatusForward}>Play!</button>
+      <button onClick={changeStatusBackward}>Select another Quiz</button>
+      <button onClick={changeStatusForward}>Play this one!</button>
       </span>
     </Footer>
   </div>
