@@ -325,7 +325,7 @@ const NavBarHeading = styled.span`
 
 const NavBarForm = styled.form`
   background-color: var(--blue);
-  color: var(--text-color);
+  color: black;
   padding: var(--standard-padding);
 `;
 
