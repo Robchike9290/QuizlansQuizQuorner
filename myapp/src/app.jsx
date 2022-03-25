@@ -251,6 +251,7 @@ const App = () => {
               fullQuizList={fullQuizList}
               selectedQuiz={selectedQuiz}
               setSelectedQuiz={setSelectedQuiz}
+              friends={friends}
               setFullQuizList={setFullQuizList}
             />
           </Route>
