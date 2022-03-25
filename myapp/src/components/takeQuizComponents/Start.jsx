@@ -3,16 +3,19 @@ import styled from 'styled-components';
 import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 import axios from 'axios';
 import QuizFeedItem from './takeQuizSubcomponents/QuizFeedItem.jsx';
+import { Button } from '@mui/material';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
-  background-color: var(--background-color);
+  // background-color: var(--accent-color);
   text-align: center;
   // justify-content: center; //wont allow me to center any other way, but justify also shrinks content
   margin: var(--standard-margin);
   display: grid;
   flex-direction: row;
   grid-template-rows: 20% 70% 10%;
+  margin-left: 5%;
+  margin-right: 5%;
 `;
 
 const Header = styled.div`
@@ -22,6 +25,7 @@ const Header = styled.div`
   flex-direction: row;
   // width: 1000px; //fixed width until I can figure out issue with justify-content
   margin: var(--standard-margin);
+  box-shadow: inset 4px 2px 10px rgba(0, 0, 0, 0.4);
 `;
 
 const Body = styled.div`
@@ -31,6 +35,10 @@ const Body = styled.div`
   flex-direction: row;
   height: 500px; //fixed until later
   margin: var(--standard-margin);
+  maxheight: 500px;
+  overflow: scroll;
+  margin-top: 30px;
+  box-shadow: inset 4px 2px 10px rgba(0, 0, 0, 0.4);
 `;
 
 const Footer = styled.div`
@@ -41,14 +49,21 @@ const Footer = styled.div`
   margin-top: 30px; //necessary until I fix the quiz body extending into the footer
 `;
 
-const Button = styled.button`
-  border-radius: var(--standard-border-radius);
-  height: 30px;
-  margin: var(--standard-margin);
-  background-color: var(--purple);
-  border: none;
-  //add click styling
+const QuizH1 = styled.h1`
+  font-size: 46px;
 `;
+
+// const Button = styled.button`
+//   border-radius: var(--standard-border-radius);
+//   height: 30px;
+//   margin: var(--standard-margin);
+//   background-color: var(--accent-color);
+//   border: none;
+//   //add click styling
+//   // box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2), 0 2px 5px 0 rgba(0,0,0,0.19);
+//   box-shadow: 0 2px 5px 0 black;
+//   margin-bottom: 30px;
+// `;
 
 const Start = ({
   allQuizzes,
@@ -65,10 +80,21 @@ const Start = ({
     // use that quiz data to populate the feed
     return (
       <Container>
-        <Header>Start</Header>
-        <Body>
+        <Header>
           <h2>Select a quiz to start playing!</h2>
-          <Button onClick={imFeelingLucky}>I'm feeling lucky</Button>
+          <Button
+            style={{
+              borderRadius: 'var(--standard-border-radius)',
+              backgroundColor: 'var(--accent-color)',
+              color: 'black',
+            }}
+            variant='contained'
+            onClick={imFeelingLucky}
+          >
+            I'm feeling lucky
+          </Button>
+        </Header>
+        <Body>
           <div>
             {allQuizzes.map((quiz, idx) => {
               return (
@@ -84,7 +110,17 @@ const Start = ({
         </Body>
         <Footer>
           <span>
-            <button onClick={chosenQuiz}>Next</button>
+            <Button
+              style={{
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--accent-color)',
+                color: 'black',
+              }}
+              variant='contained'
+              onClick={chosenQuiz}
+            >
+              Next
+            </Button>
           </span>
         </Footer>
       </Container>
@@ -96,14 +132,42 @@ const Start = ({
       <div>
         <br />
         <br />
-        <p>You've selected:</p>
-        <h1>{quiz}</h1>
+        <br />
+        <br />
+        <h3>You've selected:</h3>
+        <br />
+        <QuizH1>{quiz}</QuizH1>
+        <br />
         {/* <p>Quiz author</p>
     <p>Quiz category</p> */}
         <Footer>
           <span>
-            <button onClick={changeStatusBackward}>Select another Quiz</button>
-            <button onClick={changeStatusForward}>Play this one!</button>
+            <Button
+              style={{
+                height: 40,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--accent-color)',
+                color: 'black',
+              }}
+              variant='contained'
+              onClick={changeStatusBackward}
+            >
+              Select another Quiz
+            </Button>
+            <Button
+              style={{
+                height: 40,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--accent-color)',
+                color: 'black',
+              }}
+              variant='contained'
+              onClick={changeStatusForward}
+            >
+              Play this one!
+            </Button>
           </span>
         </Footer>
       </div>

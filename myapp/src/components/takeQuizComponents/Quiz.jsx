@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
+import { Button } from '@mui/material';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
@@ -29,6 +30,11 @@ const Body = styled.div`
   flex-direction: row;
   height: 500px; //fixed until later
   margin: var(--standard-margin);
+  font-size: x-large;
+`;
+
+const QuestionDiv = styled.div`
+  margin-top: 5%;
 `;
 
 const Footer = styled.div`
@@ -42,11 +48,17 @@ const Footer = styled.div`
 const FloatRight = styled.div`
   margin: var(--standard-margin);
   float: right;
+  font-size: x-large;
+  margin-top: 1%;
+  margin-right: 2%;
 `;
 
 const FloatLeft = styled.div`
   margin: var(--standard-margin);
   float: left;
+  font-size: x-large;
+  margin-top: 1%;
+  margin-left: 2%;
 `;
 
 const Quiz = ({
@@ -95,24 +107,61 @@ const Quiz = ({
       </Header>
       <Body>
         {selectedQuiz ? (
-          <div>
+          <QuestionDiv>
             {counter + 1}. {selectedQuiz.quizQuestions[counter].question}
-          </div>
+          </QuestionDiv>
         ) : null}
         {selectedQuiz ? (
           <span>
-            <button>
+            <Button
+              style={{
+                height: 50,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--background-color)',
+                color: 'black',
+              }}
+              variant='contained'
+            >
               {selectedQuiz.quizQuestions[counter].incorrectAnswers[0]}
-            </button>
-            <button>
+            </Button>
+            <Button
+              style={{
+                height: 50,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--background-color)',
+                color: 'black',
+              }}
+              variant='contained'
+            >
               {selectedQuiz.quizQuestions[counter].incorrectAnswers[1]}
-            </button>
-            <button onClick={keepScore}>
+            </Button>
+            <Button
+              style={{
+                height: 50,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--background-color)',
+                color: 'black',
+              }}
+              variant='contained'
+              onClick={keepScore}
+            >
               {selectedQuiz.quizQuestions[counter].correctAnswer}
-            </button>
-            <button>
+            </Button>
+            <Button
+              style={{
+                height: 50,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--background-color)',
+                color: 'black',
+              }}
+              variant='contained'
+            >
               {selectedQuiz.quizQuestions[counter].incorrectAnswers[2]}
-            </button>
+            </Button>
           </span>
         ) : null}
       </Body>
@@ -121,19 +170,74 @@ const Quiz = ({
           <FloatLeft>
             {selectedQuiz ? (
               counter !== 0 ? (
-                <button onClick={previousQuestion}>Previous</button>
+                <Button
+                  style={{
+                    height: 40,
+                    margin: 'var(--standard-margin)',
+                    borderRadius: 'var(--standard-border-radius)',
+                    backgroundColor: 'var(--accent-color)',
+                    color: 'black',
+                  }}
+                  variant='contained'
+                  onClick={previousQuestion}
+                >
+                  Back
+                </Button>
               ) : null
             ) : null}
           </FloatLeft>
-          <button>Report</button>
-          <button onClick={changeStatusBackward}>Exit</button>
+          <Button
+            style={{
+              height: 40,
+              borderRadius: 'var(--standard-border-radius)',
+              backgroundColor: 'var(--accent-color)',
+              color: 'black',
+            }}
+            variant='contained'
+          >
+            Report
+          </Button>
+          <Button
+            style={{
+              height: 40,
+              margin: 'var(--standard-margin)',
+              borderRadius: 'var(--standard-border-radius)',
+              backgroundColor: 'var(--accent-color)',
+              color: 'black',
+            }}
+            variant='contained'
+            onClick={changeStatusBackward}
+          >
+            Exit
+          </Button>
           <FloatRight>
-            {/* <button onClick={nextQuestion}>Next</button> */}
             {selectedQuiz ? (
               counter !== selectedQuiz.quizQuestions.length - 1 ? (
-                <button onClick={nextQuestion}>Next</button>
+                <Button
+                  style={{
+                    height: 40,
+                    borderRadius: 'var(--standard-border-radius)',
+                    backgroundColor: 'var(--accent-color)',
+                    color: 'black',
+                  }}
+                  variant='contained'
+                  onClick={nextQuestion}
+                >
+                  Next
+                </Button>
               ) : (
-                <button onClick={changeStatusForward}>Finish Quiz</button>
+                <Button
+                  style={{
+                    height: 40,
+                    borderRadius: 'var(--standard-border-radius)',
+                    backgroundColor: 'var(--blue)',
+                    color: 'black',
+                  }}
+                  variant='contained'
+                  onClick={changeStatusForward}
+                >
+                  Finish Quiz
+                </Button>
               )
             ) : null}
           </FloatRight>
