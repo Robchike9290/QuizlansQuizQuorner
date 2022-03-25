@@ -35,9 +35,9 @@ const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   //console.log('👄👄👄👄👄', currentUser);
-  onAuthStateChanged(auth, (loggedInUser) => {
-    setCurrentUser(loggedInUser);
-  });
+  // onAuthStateChanged(auth, (loggedInUser) => {
+  //   setCurrentUser(loggedInUser);
+  // });
   const stringifiedUser = JSON.stringify(currentUser);
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DON'T REFRESH!!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
