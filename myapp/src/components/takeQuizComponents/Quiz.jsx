@@ -4,7 +4,7 @@ import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
-  background-color: var(--yellow);
+  background-color: var(--background-color);
   text-align: center;
   // justify-content: center; //wont allow me to center any other way, but justify also shrinks content
   margin: var(--standard-margin);

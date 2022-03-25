@@ -4,7 +4,7 @@ import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
-  background-color: var(--yellow);
+  background-color: var(--background-color);
   text-align: center;
   // justify-content: center; //wont allow me to center any other way, but justify also shrinks content
   margin: var(--standard-margin);
@@ -62,6 +62,15 @@ const Results = ({
   quiz,
   allQuizzes,
 }) => {
+  const getQuiz = () => {
+    for (let i = 0; i < allQuizzes.length; i++) {
+      if (allQuizzes[i].quizName === quiz) {
+        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i]);
+        setSelectedQuiz(allQuizzes[i]);
+      }
+    }
+  };
+
   return (
     <Container>
       <Header>Quiz Results</Header>
