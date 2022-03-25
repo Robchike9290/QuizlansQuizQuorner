@@ -7,7 +7,7 @@ const Container = styled.div`
   border-radius: var(--standard-border-radius)
   height: 500px;
   text-align: center;
-  
+
 `;
 
 const QuizFeed = ({ fullQuizList, selectedQuiz, setSelectedQuiz }) => {
