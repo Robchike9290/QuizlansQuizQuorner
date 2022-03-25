@@ -96,6 +96,7 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
     <FloatRight>
     <Stack>
       <CircularProgress variant="determinate" value={(counter + 1) * 10} />
+      {/* <CircularProgress variant="determinate" value={(selectedQuiz.quizQuestions.length / counter + 1) * 10 } /> */}
     </Stack>
     {/* <div>
     {score} / {selectedQuiz.quizQuestions.length}
@@ -148,7 +149,6 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
         {selectedQuiz ? ((counter !== 0) ?
             <Button style={{
               height: 40,
-              margin: "var(--standard-margin)",
               borderRadius: "var(--standard-border-radius)",
               backgroundColor: "var(--accent-color)",
               color: "black"
