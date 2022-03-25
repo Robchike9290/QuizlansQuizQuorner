@@ -13,6 +13,7 @@ const Container = styled.div`
   margin: var(--standard-margin);
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 // nothing will show unless the currently logged in user (Nic's firebase)
@@ -32,6 +33,22 @@ const ReportedQuizzes = (props) => {
   }, [])
 
   const [reportedQuizzesList, setReportedQuizzesList] = useState([]);
+
+  const deleteQuiz = (quizId) => {
+
+    //const [isDeleted, setIsDeleted] = useState(false);
+
+    axios.post(`http://52.90.8.77:4444/removeQuiz`, {quizId: quizId})
+    .then((results) => {
+    // document.getElementByID(quizId).style.visiblity='hidden'
+      console.log('success')
+      getReportedQuizzes()
+
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
 
 
   const getReportedQuizzes = () => {
@@ -61,11 +78,11 @@ const ReportedQuizzes = (props) => {
   return (
     <Container>
       Reported Quizzes
-      <div>
+
         {reportedQuizzesList.map((eachReportedQuiz) => (
-          <ReportedQuiz eachReportedQuiz={eachReportedQuiz} />
+          <ReportedQuiz eachReportedQuiz={eachReportedQuiz} deleteQuiz={deleteQuiz}/>
         ))}
-      </div>
+
     </Container>
   );
 };
