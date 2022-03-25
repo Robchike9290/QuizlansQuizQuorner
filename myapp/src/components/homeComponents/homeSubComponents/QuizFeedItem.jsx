@@ -11,11 +11,29 @@ const Container = styled.div`
   font-size: var(--standard-text-size);
   font-weight: var(--standard-text-weight);
   display: grid;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 40% 60%;
+`;
+
+const Icon = styled.i`
+  margin: 5px;
+  &:hover {
+    cursor: pointer;
+    color: var(--background-color);
+  }
+`;
+
+const Report = styled.i`
+  margin: 5px;
+  &:hover {
+    cursor: pointer;
+    color: var(--background-color);
+  }
+  grid-column: 3;
+  grid-row: 3;
 `;
 
 const Banner = styled.div`
-  height: 100px;
+  height: 200px;
   overflow: hidden;
   border-top-left-radius: var(--standard-border-radius);
   border-top-right-radius: var(--standard-border-radius);
@@ -39,25 +57,59 @@ const QuizFeedItem = ({
   banner,
   upvotes,
   downvotes,
-  score
+  score,
+  selectedQuiz,
+  setSelectedQuiz,
+  fullQuizList,
+  setFullQuizList,
 }) => {
   //QuizFeed ->
   // map over quizzes and sort by recently made (what other sorting criteria?)
 
-  const handleRating = (voteType) => {
+  const [up, setUp] = useState(upvotes);
+  const [down, setDown] = useState(downvotes);
+  const upvote = () => {
+    setUp(up + 1);
     axios
-      .post('/FillMeIn')
+      .post('http://52.90.8.77:4444/upvote')
       .then((response) => {
-        console.log('rating handled');
+        console.log(response.data);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const downvote = () => {
+    setDown(down + 1);
+    axios
+      .post('http://52.90.8.77:4444/downvote')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.error(err);
       });
   };
 
   const handleQuizSelect = () => {
     console.log(event.target.value);
     //need to link here!!!
+  };
+
+  const report = () => {
+    window.alert(`You have reported ${quizName}`);
+    //find that quiz in the allQuizzes list and remove it
+    for (let i = 0; i < fullQuizList.length; i++) {
+      console.log('isequal', fullQuizList[i]['quizName'] === quizName);
+      if (fullQuizList[i]['quizName'] === quizName) {
+        let newArray = fullQuizList;
+        newArray.shift();
+        setFullQuizList((fullQuizList) => newArray);
+      }
+    }
+    //redirect user to start page to select a quiz to play
+    //window.location.href = 'http://localhost:8080/#/home';
   };
 
   const handleReport = () => {
@@ -83,16 +135,19 @@ const QuizFeedItem = ({
         <TimesTaken>{timesTaken} people have taken this quiz</TimesTaken>
         <Description>{description}</Description>
         <Votes>
-          <div>{upvotes} upvotes</div>
-          <div>{downvotes} downvotes</div>
+          <span>
+            {up}
+            <Icon className='fa-solid fa-angle-up' onClick={upvote}></Icon>
+          </span>
+          <span>
+            {down}
+            <Icon className='fa-solid fa-angle-down' onClick={downvote}></Icon>
+          </span>
         </Votes>
-        {score % timesTaken === 0 ||
-          (score % timesTaken && (
-            <Score>{score % timesTaken}% average score</Score>
-          ))}
-        {/* UPVOTE <FontAwesomeIcon icon="fa-solid fa-caret-up" name="upvote" onClick={()=>handleRating(event.target.name}/> */}
-        {/* DOWNVOTE <FontAwesomeIcon icon="fa-solid fa-caret-down" name="downvote" onClick={()=>handleRating(event.target.name}/>/> */}
-        {/* REPORT <FontAwesomeIcon icon="fa-solid fa-flag" /> */}
+        {score % timesTaken === 0 || score % timesTaken ? (
+          <Score>{score % timesTaken}% average score</Score>
+        ) : null}
+        <Report className='fa-solid fa-flag' onClick={report}></Report>
       </TextData>
     </Container>
   );
@@ -135,17 +190,17 @@ const Votes = styled.div`
 `;
 const Score = styled.div`
   grid-row: 2 / span 1;
-  grid-column: 3 / span 1;
+  grid-column: 3;
 `;
 const Description = styled.div`
   background-color: var(--accent-color);
   width: 50%;
-  box-shadow: var(--standard-shadow);
+  //box-shadow: var(--standard-shadow);
   border-radius: var(--standard-border-radius);
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
   margin: auto;
-  height: 70%;
+  height: 80%;
   width: 100%;
   display: flex;
   align-items: center;
