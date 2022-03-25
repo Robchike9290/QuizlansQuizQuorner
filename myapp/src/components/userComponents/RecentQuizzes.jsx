@@ -23,16 +23,16 @@ const RecentQuizzes = (props) => {
   const [showNumber, setShowNumber] = useState(6);
 
 
-  // const getRecentQuizzes = () => {
-  //   axios.get('/quizzes')
-  //     .then((response)=> {
-  //       //console.log('💋💋💋💋💋', response.data)
-  //       setRecentQuizzes(response.data)
-  //     })
-  //     .catch((error)=> {
-  //       console.error(error)
-  //     })
-  // }
+  const getRecentQuizzes = () => {
+    axios.get('/quizzes/superuser')
+      .then((response)=> {
+        console.log('💋💋💋💋💋', response.data)
+        setRecentQuizzes(response.data)
+      })
+      .catch((error)=> {
+        console.error(error)
+      })
+  }
 
 
 
@@ -41,9 +41,9 @@ const RecentQuizzes = (props) => {
 
 
   //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
-  //useEffect(()=> {
-  //  getRecentQuizzes()
-  //}, [])
+  useEffect(()=> {
+   getRecentQuizzes()
+  }, [])
 
   //
 
