@@ -34,9 +34,33 @@ const TakeQuiz = (props) => {
     });
   };
 
+  const report = () => {
+    // axios
+    //   .post('http://52.90.8.77:4444/reportQuiz')
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
+
+    //REPORT THIS QUIZ BY REMOVING IT FROM LIST AND ADDING IT TO ADMIN REPORTED LIST
+    window.alert(`You have reported ${quiz}`);
+    //find that quiz in the allQuizzes list and remove it
+    for (let i = 0; i < allQuizzes.length; i++) {
+      if (allQuizzes[i].quizName === quiz) {
+        let newArray = allQuizzes;
+        newArray.splice(i, 1);
+        setAllQuizzes(newArray);
+      }
+    }
+    //redirect user to start page to select a quiz to play
+    window.location.href = 'http://localhost:8080/#/takeQuiz'
+
+  };
+
   useEffect(() => {
     getQuizzes()
-
 
     if (props.selectedQuiz) {
       setQuiz(props.selectedQuiz)
@@ -100,8 +124,8 @@ const TakeQuiz = (props) => {
   return (
   <BaseLayout>
   {pageStatus === 'start' ? <Start allQuizzes={allQuizzes} quiz={quiz} quizSelected={quizSelected} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} chooseQuiz={chooseQuiz} chosenQuiz={chosenQuiz} imFeelingLucky={imFeelingLucky}/> :
-  pageStatus === 'quiz' ? <Quiz quiz={quiz} allQuizzes={allQuizzes} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} score={score} keepScore={keepScore}/> :
-  pageStatus === 'results' ? <Results changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} score={score} quiz={quiz} allQuizzes={allQuizzes}/> : null }
+  pageStatus === 'quiz' ? <Quiz quiz={quiz} allQuizzes={allQuizzes} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} score={score} keepScore={keepScore} report={report}/> :
+  pageStatus === 'results' ? <Results changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} score={score} quiz={quiz} allQuizzes={allQuizzes} report={report}/> : null }
 
   </BaseLayout>);
 };

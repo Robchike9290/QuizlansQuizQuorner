@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 import { Button } from '@mui/material'
-
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
@@ -12,7 +13,7 @@ const Container = styled.div`
   margin: var(--standard-margin);
   display: grid;
   flex-direction: row;
-  grid-template-rows: 20% 70% 10%;
+  grid-template-rows: 12% 83% 5%;
 `;
 
 const Header = styled.div`
@@ -43,7 +44,7 @@ const Footer = styled.div`
   display: grid;
   flex-direction: row;
   margin: var(--standard-margin);
-  margin-top: 30px; //necessary until I fix the quiz body extending into the footer
+  // margin-top: 30px; //necessary until I fix the quiz body extending into the footer
 `;
 
 const FloatRight = styled.div`
@@ -62,7 +63,7 @@ const FloatLeft = styled.div`
   margin-left: 2%;
 `;
 
-const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, score, keepScore }) => {
+const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, score, keepScore, report }) => {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [counter, setCounter] = useState(0);
 
@@ -92,7 +93,14 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
     <Header>{selectedQuiz ? (
     <span>
     <FloatLeft>{selectedQuiz.quizName}</FloatLeft>
-    <FloatRight>{score} / {selectedQuiz.quizQuestions.length}</FloatRight>
+    <FloatRight>
+    <Stack>
+      <CircularProgress variant="determinate" value={(counter + 1) * 10} />
+    </Stack>
+    {/* <div>
+    {score} / {selectedQuiz.quizQuestions.length}
+    </div> */}
+    </FloatRight>
     </span>
     ) : null}</Header>
     <Body>
@@ -155,7 +163,7 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
         backgroundColor: "var(--accent-color)",
         color: "black"
         }}
-        variant="contained">Report</Button>
+        variant="contained" onClick={report}>Report</Button>
           <Button style={{
         height: 40,
         margin: "var(--standard-margin)",
