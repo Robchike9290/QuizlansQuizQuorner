@@ -88,18 +88,22 @@ const Login = ({
     <FormBox>
       <Heading>Please enter in your username, email, and password.</Heading>
       <div>
-        <FormLine>
+        {/* <FormLine>
           <label>Username:</label>
           <Input type='text' required={true} onChange={createUserHandler}/>
-        </FormLine>
+        </FormLine> */}
+        <div>
         <FormLine>
           <label>Email:</label>
           <Input type='email' required={true} onChange={createEmailHandler} />
         </FormLine>
-        <FormLine>
-          <label>Password:</label>
-          <Input type='password' required={true} onChange={createPasswordHandler}/>
-        </FormLine>
+        </div>
+        <div>
+          <FormLine>
+            <label>Password:</label>
+            <Input type='password' required={true} onChange={createPasswordHandler}/>
+          </FormLine>
+        </div>
       </div>
       <FormLine>
         <span>
@@ -122,15 +126,14 @@ const FormBox = styled.form`
   box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
   font-size: 36px;
-  width: 20%;
-  margin-top: 50%
+  width: 25%;
   margin-left: auto;
   margin-right: auto;
-  transform: translate(175%, 20%);
+  transform: translate(0%, 20%);
 `
 
 const StyledButton = styled.button`
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
   border-width: 0;
@@ -145,23 +148,18 @@ const StyledButton = styled.button`
 
 const FormLine = styled.div`
   background-color: var(--blue);
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin-top: 1%;
+  margin-bottom: 1%;
   font-size: 24px;
 `
 
 const Input = styled.input`
   float: right;
-`
-
-const FormLabel = styled.input`
-  float: left;
+  margin-right: 5%;
 `
 
 const Heading = styled.h1`
   background-color: var(--blue);
-  margin-top: 2%;
-  margin-bottom: 2%;
   font-size: 36px;
   text-align: center;
 `
