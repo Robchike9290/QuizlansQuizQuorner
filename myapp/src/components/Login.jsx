@@ -39,10 +39,12 @@ const Login = ({
   });
 
   const createEmailHandler = (event) => {
+    console.log('email handler', event.target.value)
     setRegisterEmail(event.target.value);
   };
 
   const createPasswordHandler = (event) => {
+    console.log('password handler', event.target.value)
     setRegisterPassword(event.target.value);
   };
 
@@ -96,12 +98,14 @@ const Login = ({
       auth,
       registerEmail,
       registerPassword
-    )
+      )
       .then((user) => {
+        console.log('INSIDE signInWithEmailAndPassword:', user)
         console.log(user);
         document.location.href = 'http://localhost:8080/#/home';
       })
       .catch((error) => {
+        console.log('INSIDE signInWithEmailAndPassword:', error)
         console.log(error.message);
       });
 

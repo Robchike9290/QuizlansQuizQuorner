@@ -38,9 +38,7 @@ const QuizFeedItem = ({
   banner,
   upvotes,
   downvotes,
-  score,
-  selectedQuiz,
-  setSelectedQuiz,
+  score
 }) => {
   //QuizFeed ->
   // map over quizzes and sort by recently made (what other sorting criteria?)

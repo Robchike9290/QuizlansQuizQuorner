@@ -26,7 +26,7 @@ const App = () => {
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
-  const [userName, setUserName] = useState('superuser');
+  const [userName, setUserName] = useState('Admin');
   // const [userEmail, setUserEmail] = useState('');
   const [fullQuizList, setFullQuizList] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -267,6 +267,7 @@ const App = () => {
               fullQuizList={fullQuizList}
               selectedQuiz={selectedQuiz}
               setSelectedQuiz={setSelectedQuiz}
+              friends={friends}
             />
           </Route>
           <Route exact path='/user'>

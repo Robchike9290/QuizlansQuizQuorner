@@ -17,6 +17,7 @@ const Container = styled.div`
   align-items: center;
   vh: 400 px;
   overflow: scroll;
+  box-shadow: var(--standard-shadow);
 `;
 
 const UserQuizzes = (props) => {
