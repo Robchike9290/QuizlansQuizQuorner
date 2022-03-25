@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
+import { Button } from '@mui/material'
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
@@ -76,11 +77,26 @@ const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQu
     <Footer>
       <span>
         <FloatLeft>
-          <button onClick={changeStatusForward}>Retake quiz</button>
+        <Button style={{
+        borderRadius: "var(--standard-border-radius)",
+        backgroundColor: "var(--accent-color)",
+        color: "black"
+        }}
+        variant="contained" onClick={changeStatusForward}>Retake quiz</Button>
         </FloatLeft>
-        <button>Report Quiz</button>
+        <Button style={{
+        borderRadius: "var(--standard-border-radius)",
+        backgroundColor: "var(--accent-color)",
+        color: "black"
+        }}
+        variant="contained">Report Quiz</Button>
         <FloatRight>
-          <button onClick={() => window.location.href = 'http://localhost:8080/#/home'}>Exit</button>
+        <Button style={{
+        borderRadius: "var(--standard-border-radius)",
+        backgroundColor: "var(--accent-color)",
+        color: "black"
+        }}
+        variant="contained"onClick={() => window.location.href = 'http://localhost:8080/#/home'}>Exit</Button>
         </FloatRight>
       </span>
     </Footer>
