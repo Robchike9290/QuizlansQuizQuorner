@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 import axios from 'axios';
 import QuizFeedItem from './takeQuizSubcomponents/QuizFeedItem.jsx';
-import { Button } from '@mui/material'
+import { Button } from '@mui/material';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
@@ -35,7 +35,7 @@ const Body = styled.div`
   flex-direction: row;
   height: 500px; //fixed until later
   margin: var(--standard-margin);
-  maxHeight: 500px;
+  maxheight: 500px;
   overflow: scroll;
   margin-top: 30px;
   box-shadow: inset 4px 2px 10px rgba(0, 0, 0, 0.4);
@@ -48,7 +48,6 @@ const Footer = styled.div`
   margin: var(--standard-margin);
   margin-top: 30px; //necessary until I fix the quiz body extending into the footer
 `;
-
 
 const QuizH1 = styled.h1`
   font-size: 46px;
@@ -66,79 +65,114 @@ const QuizH1 = styled.h1`
 //   margin-bottom: 30px;
 // `;
 
-const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStatusBackward, chooseQuiz, chosenQuiz, imFeelingLucky }) => {
-
- if (!quizSelected) {
-  // get all quiz data from db
-  // use that quiz data to populate the feed
-  return (
-    <Container>
-    <Header>
-    <h2>Select a quiz to start playing!</h2>
-    <Button style={{
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--accent-color)",
-        color: "black",
-      }}
-      variant="contained" onClick={imFeelingLucky}>I'm feeling lucky</Button>
-    </Header>
-    <Body>
+const Start = ({
+  allQuizzes,
+  quiz,
+  quizSelected,
+  changeStatusForward,
+  changeStatusBackward,
+  chooseQuiz,
+  chosenQuiz,
+  imFeelingLucky,
+}) => {
+  if (!quizSelected) {
+    // get all quiz data from db
+    // use that quiz data to populate the feed
+    return (
+      <Container>
+        <Header>
+          <h2>Select a quiz to start playing!</h2>
+          <Button
+            style={{
+              borderRadius: 'var(--standard-border-radius)',
+              backgroundColor: 'var(--accent-color)',
+              color: 'black',
+            }}
+            variant='contained'
+            onClick={imFeelingLucky}
+          >
+            I'm feeling lucky
+          </Button>
+        </Header>
+        <Body>
+          <div>
+            {allQuizzes.map((quiz, idx) => {
+              return (
+                <QuizFeedItem
+                  quiz={quiz}
+                  changeStatusForward={changeStatusForward}
+                  chooseQuiz={chooseQuiz}
+                  key={idx}
+                />
+              );
+            })}
+          </div>
+        </Body>
+        <Footer>
+          <span>
+            <Button
+              style={{
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--accent-color)',
+                color: 'black',
+              }}
+              variant='contained'
+              onClick={chosenQuiz}
+            >
+              Next
+            </Button>
+          </span>
+        </Footer>
+      </Container>
+    );
+  } else if (quizSelected) {
+    // get selected quiz data from db
+    //render the page that gives user the option to return home or start quiz
+    return (
       <div>
-      {allQuizzes.map((quiz, idx) => {
-          return <QuizFeedItem quiz={quiz} changeStatusForward={changeStatusForward} chooseQuiz={chooseQuiz} key={idx}/>
-        })}
-      </div>
-    </Body>
-    <Footer>
-      <span>
-      <Button style={{
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--accent-color)",
-        color: "black"
-      }}
-      variant="contained" onClick={chosenQuiz}>Next</Button>
-      </span>
-    </Footer>
-    </Container>
-  )
- } else if (quizSelected) {
-  // get selected quiz data from db
-  //render the page that gives user the option to return home or start quiz
-  return (
-  <div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <h3>You've selected:</h3>
-    <br/>
-    <QuizH1>{quiz}</QuizH1>
-    <br/>
-    {/* <p>Quiz author</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>You've selected:</h3>
+        <br />
+        <QuizH1>{quiz}</QuizH1>
+        <br />
+        {/* <p>Quiz author</p>
     <p>Quiz category</p> */}
-    <Footer>
-      <span>
-      <Button style={{
-        height: 40,
-        margin: "var(--standard-margin)",
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--accent-color)",
-        color: "black"
-        }}
-        variant="contained" onClick={changeStatusBackward}>Select another Quiz</Button>
-      <Button style={{
-        height: 40,
-        margin: "var(--standard-margin)",
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--accent-color)",
-        color: "black"
-        }}
-        variant="contained" onClick={changeStatusForward}>Play this one!</Button>
-      </span>
-    </Footer>
-  </div>
-  )
- }
+        <Footer>
+          <span>
+            <Button
+              style={{
+                height: 40,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--accent-color)',
+                color: 'black',
+              }}
+              variant='contained'
+              onClick={changeStatusBackward}
+            >
+              Select another Quiz
+            </Button>
+            <Button
+              style={{
+                height: 40,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--accent-color)',
+                color: 'black',
+              }}
+              variant='contained'
+              onClick={changeStatusForward}
+            >
+              Play this one!
+            </Button>
+          </span>
+        </Footer>
+      </div>
+    );
+  }
 };
 
 export default Start;
