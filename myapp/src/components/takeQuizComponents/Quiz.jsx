@@ -31,6 +31,11 @@ const Body = styled.div`
   flex-direction: row;
   height: 500px; //fixed until later
   margin: var(--standard-margin);
+  font-size: x-large;
+`;
+
+const QuestionDiv = styled.div`
+  margin-top: 5%;
 `;
 
 const Footer = styled.div`
@@ -44,11 +49,17 @@ const Footer = styled.div`
 const FloatRight = styled.div`
   margin: var(--standard-margin);
   float: right;
+  font-size: x-large;
+  margin-top: 1%;
+  margin-right: 2%;
 `;
 
 const FloatLeft = styled.div`
   margin: var(--standard-margin);
   float: left;
+  font-size: x-large;
+  margin-top: 1%;
+  margin-left: 2%;
 `;
 
 const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, score, keepScore }) => {
@@ -85,28 +96,36 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
     </span>
     ) : null}</Header>
     <Body>
-      {selectedQuiz ? <div>{counter + 1}. {selectedQuiz.quizQuestions[counter].question}</div> : null}
+      {selectedQuiz ? <QuestionDiv>{counter + 1}. {selectedQuiz.quizQuestions[counter].question}</QuestionDiv> : null}
      {selectedQuiz ?
      (<span>
       <Button style={{
+        height: 50,
+        margin: "var(--standard-margin)",
         borderRadius: "var(--standard-border-radius)",
         backgroundColor: "var(--background-color)",
         color: "black"
         }}
         variant="contained">{selectedQuiz.quizQuestions[counter].incorrectAnswers[0]}</Button>
       <Button style={{
+         height: 50,
+         margin: "var(--standard-margin)",
         borderRadius: "var(--standard-border-radius)",
         backgroundColor: "var(--background-color)",
         color: "black"
         }}
         variant="contained">{selectedQuiz.quizQuestions[counter].incorrectAnswers[1]}</Button>
       <Button style={{
+        height: 50,
+        margin: "var(--standard-margin)",
         borderRadius: "var(--standard-border-radius)",
         backgroundColor: "var(--background-color)",
         color: "black"
         }}
         variant="contained" onClick={keepScore}>{selectedQuiz.quizQuestions[counter].correctAnswer}</Button>
       <Button style={{
+        height: 50,
+        margin: "var(--standard-margin)",
         borderRadius: "var(--standard-border-radius)",
         backgroundColor: "var(--background-color)",
         color: "black"
@@ -119,32 +138,43 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
       <span>
         <FloatLeft>
         {selectedQuiz ? ((counter !== 0) ?
-            <button onClick={previousQuestion}>Previous</button> :
+            <Button style={{
+              height: 40,
+              margin: "var(--standard-margin)",
+              borderRadius: "var(--standard-border-radius)",
+              backgroundColor: "var(--accent-color)",
+              color: "black"
+              }}
+              variant="contained" onClick={previousQuestion}>Back</Button> :
             null
           ) : null}
         </FloatLeft>
         <Button style={{
+        height: 40,
         borderRadius: "var(--standard-border-radius)",
         backgroundColor: "var(--accent-color)",
         color: "black"
         }}
         variant="contained">Report</Button>
           <Button style={{
+        height: 40,
+        margin: "var(--standard-margin)",
         borderRadius: "var(--standard-border-radius)",
         backgroundColor: "var(--accent-color)",
         color: "black"
         }}
         variant="contained" onClick={changeStatusBackward}>Exit</Button>
         <FloatRight>
-        {/* <button onClick={nextQuestion}>Next</button> */}
           {selectedQuiz ? ((counter !== selectedQuiz.quizQuestions.length - 1) ?
             <Button style={{
+              height: 40,
               borderRadius: "var(--standard-border-radius)",
               backgroundColor: "var(--accent-color)",
               color: "black"
               }}
               variant="contained" onClick={nextQuestion}>Next</Button> :
               <Button style={{
+                height: 40,
                 borderRadius: "var(--standard-border-radius)",
                 backgroundColor: "var(--blue)",
                 color: "black"

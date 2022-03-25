@@ -14,6 +14,8 @@ const Container = styled.div`
   display: grid;
   flex-direction: row;
   grid-template-rows: 20% 70% 10%;
+  margin-left: 5%;
+  margin-right: 5%;
 `;
 
 const Header = styled.div`
@@ -47,6 +49,11 @@ const Footer = styled.div`
   margin-top: 30px; //necessary until I fix the quiz body extending into the footer
 `;
 
+
+const QuizH1 = styled.h1`
+  font-size: 46px;
+`;
+
 // const Button = styled.button`
 //   border-radius: var(--standard-border-radius);
 //   height: 30px;
@@ -71,7 +78,7 @@ const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStat
     <Button style={{
         borderRadius: "var(--standard-border-radius)",
         backgroundColor: "var(--accent-color)",
-        color: "black"
+        color: "black",
       }}
       variant="contained" onClick={imFeelingLucky}>I'm feeling lucky</Button>
     </Header>
@@ -101,19 +108,27 @@ const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStat
   <div>
     <br/>
     <br/>
-    <p>You've selected:</p>
-    <h1>{quiz}</h1>
+    <br/>
+    <br/>
+    <h3>You've selected:</h3>
+    <br/>
+    <QuizH1>{quiz}</QuizH1>
+    <br/>
     {/* <p>Quiz author</p>
     <p>Quiz category</p> */}
     <Footer>
       <span>
       <Button style={{
+        height: 40,
+        margin: "var(--standard-margin)",
         borderRadius: "var(--standard-border-radius)",
         backgroundColor: "var(--accent-color)",
         color: "black"
         }}
         variant="contained" onClick={changeStatusBackward}>Select another Quiz</Button>
       <Button style={{
+        height: 40,
+        margin: "var(--standard-margin)",
         borderRadius: "var(--standard-border-radius)",
         backgroundColor: "var(--accent-color)",
         color: "black"

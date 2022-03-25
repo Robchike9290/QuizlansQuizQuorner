@@ -8,6 +8,8 @@ const Container = styled.div`
   margin: var(--standard-margin);
   box-shadow: 0 2px 5px 0 black;
   height: 30px;
+  margin-left: 20%;
+  margin-right: 20%;
   &:hover {
     box-shadow: 0 5px 7px 0 black;
   }
