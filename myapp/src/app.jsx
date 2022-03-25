@@ -42,6 +42,10 @@ const App = () => {
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DON'T REFRESH!!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
+  const admins = {
+    buggy: 'buggy@gmail.com'
+  }
+
   useEffect(() => {
     getData();
 
@@ -256,17 +260,7 @@ const App = () => {
             />
           </Route>
           <Route exact path='/user'>
-            <User
-              currentUser={currentUser}
-              userName={userName}
-              registerEmail={registerEmail}
-              isAdmin={isAdmin}
-              getUser={getUser}
-              friends={friends}
-              setFriends={setFriends}
-              removeQuiz={removeQuiz}
-              quizHistory={quizHistory}
-            />
+            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz} quizHistory={quizHistory}admins={admins}/>
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} report={report}/>
