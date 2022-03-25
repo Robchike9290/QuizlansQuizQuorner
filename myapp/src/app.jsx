@@ -209,7 +209,7 @@ const App = () => {
               <Link style={linkStyle} to='/'></Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {stringifiedUser !== '{}'  && (
             <NavBarHeading>
               <Link style={linkStyle} to='/home'>
                 Home
@@ -341,4 +341,5 @@ const NavBar = styled.span`
 
 const linkStyle = {
   'text-decoration': 'none',
+  'color': 'var(--text-color)',
 };

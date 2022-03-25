@@ -135,7 +135,7 @@ const Login = ({
         </span>
       </FormLine>
       <Note>If you do not have an account yet, sign up in this form with the same credentials!</Note>
-      <Note>All user emails must be in a valid format, and all user passwords must be at least six characters in length</Note>
+      <Note>All user emails must be in a valid format, and all user passwords must be at least six characters in length.</Note>
     </FormBox>
   );
 };
