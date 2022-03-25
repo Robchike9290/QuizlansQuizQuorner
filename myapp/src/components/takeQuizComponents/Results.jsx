@@ -63,11 +63,15 @@ const StyledH2 = styled.h1`
 
 const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQuizzes, report }) => {
 
+  const [selectedQuiz, setSelectedQuiz] = useState(null);
+
   const getQuiz = () => {
     for (let i = 0; i < allQuizzes.length; i++) {
       if (allQuizzes[i].quizName === quiz) {
         console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i]);
         setSelectedQuiz(allQuizzes[i]);
+        // setCurrentQuiz(allQuizzes[i].quizQuestions)
+        // console.log('current quiz!!!', allQuizzes[i])
       }
     }
   };
@@ -84,7 +88,7 @@ const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQu
     <Header>Quiz Results</Header>
     <Body>
       <BigDiv>
-        {score} / 10
+        {score} / {selectedQuiz ? (selectedQuiz.quizQuestions.length - 1) : 10}
       </BigDiv>
       {(score > 5) ? <StyledH2>Nice work, you scored higher than {randomUserAvg()}% of takers!</StyledH2> : <StyledH2>You're as smart as my assistant, Patrick... Study up and try again!</StyledH2>}
       </Body>
