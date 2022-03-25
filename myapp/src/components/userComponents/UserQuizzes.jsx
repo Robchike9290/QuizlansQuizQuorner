@@ -21,12 +21,12 @@ const Container = styled.div`
 
 const UserQuizzes = (props) => {
 
-  const [userQuizzes, setUserQuizzes] = useState(exampleQuizzes)
+  const [userQuizzes, setUserQuizzes] = useState(exampleQuizzes);
   const [showQuizzes, setShowQuizzes] = useState(4);
   const [userQuizList, setUserQuizList] = useState([]);
 
   const getUserQuizzes = () => {
-    console.log(props.userName)
+    console.log('adsfasdfgadsfasdfsd', props.userName)
     const username = 'superuser';
     const categoryName = null;
     const isReported = null;

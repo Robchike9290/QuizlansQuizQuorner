@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const QuizDiv = styled.div`
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   height: 50px;
   font-size: 15px;
   width: 85%;
