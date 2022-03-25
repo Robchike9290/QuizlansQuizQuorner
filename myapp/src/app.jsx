@@ -34,11 +34,11 @@ const App = () => {
   const [quizHistory, setQuizHistory] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const stringifiedUser = JSON.stringify(currentUser);
   //console.log('👄👄👄👄👄', currentUser);
   // onAuthStateChanged(auth, (loggedInUser) => {
   //   setCurrentUser(loggedInUser);
   // });
+  const stringifiedUser = JSON.stringify(currentUser);
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DON'T REFRESH!!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
@@ -278,7 +278,7 @@ const App = () => {
             />
           </Route>
           <Route exact path='/user'>
-            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} quizHistory={quizHistory} />
+            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz} quizHistory={quizHistory}/>
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} />
