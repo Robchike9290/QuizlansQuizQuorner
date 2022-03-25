@@ -28,11 +28,11 @@ const ReportedQuizzes = () => {
 
   const [reportedQuizzesList, setReportedQuizzes] = useState(reportedQuizzesMock);
 
-  axios.get('/reportedQuizzes')
-  .then((results) => {
-    setReportedQuizzes(results);
-    console.log('Reported👀👀👀👀: ', reportedQuizzesList);
-  })
+  // axios.get('/reportedQuizzes')
+  // .then((results) => {
+  //   setReportedQuizzes(results);
+  //   console.log('Reported👀👀👀👀: ', reportedQuizzesList);
+  // })
 
    useEffect(()=> {
   }, [])
