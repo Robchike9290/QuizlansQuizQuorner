@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
-import { Button } from '@mui/material'
-
+import { Button } from '@mui/material';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
@@ -62,7 +61,14 @@ const FloatLeft = styled.div`
   margin-left: 2%;
 `;
 
-const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, score, keepScore }) => {
+const Quiz = ({
+  quiz,
+  changeStatusForward,
+  changeStatusBackward,
+  allQuizzes,
+  score,
+  keepScore,
+}) => {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [counter, setCounter] = useState(0);
 
@@ -77,7 +83,7 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
 
   useEffect(() => {
     getQuiz();
-  }, [])
+  }, []);
 
   const previousQuestion = () => {
     setCounter(counter - 1);
@@ -89,101 +95,154 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
 
   return (
     <Container>
-    <Header>{selectedQuiz ? (
-    <span>
-    <FloatLeft>{selectedQuiz.quizName}</FloatLeft>
-    <FloatRight>{score} / {selectedQuiz.quizQuestions.length}</FloatRight>
-    </span>
-    ) : null}</Header>
-    <Body>
-      {selectedQuiz ? <QuestionDiv>{counter + 1}. {selectedQuiz.quizQuestions[counter].question}</QuestionDiv> : null}
-     {selectedQuiz ?
-     (<span>
-      <Button style={{
-        height: 50,
-        margin: "var(--standard-margin)",
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--background-color)",
-        color: "black"
-        }}
-        variant="contained">{selectedQuiz.quizQuestions[counter].incorrectAnswers[0]}</Button>
-      <Button style={{
-         height: 50,
-         margin: "var(--standard-margin)",
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--background-color)",
-        color: "black"
-        }}
-        variant="contained">{selectedQuiz.quizQuestions[counter].incorrectAnswers[1]}</Button>
-      <Button style={{
-        height: 50,
-        margin: "var(--standard-margin)",
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--background-color)",
-        color: "black"
-        }}
-        variant="contained" onClick={keepScore}>{selectedQuiz.quizQuestions[counter].correctAnswer}</Button>
-      <Button style={{
-        height: 50,
-        margin: "var(--standard-margin)",
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--background-color)",
-        color: "black"
-        }}
-        variant="contained">{selectedQuiz.quizQuestions[counter].incorrectAnswers[2]}</Button>
-      </span>)
-      : null}
-    </Body>
-    <Footer>
-      <span>
-        <FloatLeft>
-        {selectedQuiz ? ((counter !== 0) ?
-            <Button style={{
-              height: 40,
-              margin: "var(--standard-margin)",
-              borderRadius: "var(--standard-border-radius)",
-              backgroundColor: "var(--accent-color)",
-              color: "black"
+      <Header>
+        {selectedQuiz ? (
+          <span>
+            <FloatLeft>{selectedQuiz.quizName}</FloatLeft>
+            <FloatRight>
+              {score} / {selectedQuiz.quizQuestions.length}
+            </FloatRight>
+          </span>
+        ) : null}
+      </Header>
+      <Body>
+        {selectedQuiz ? (
+          <QuestionDiv>
+            {counter + 1}. {selectedQuiz.quizQuestions[counter].question}
+          </QuestionDiv>
+        ) : null}
+        {selectedQuiz ? (
+          <span>
+            <Button
+              style={{
+                height: 50,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--background-color)',
+                color: 'black',
               }}
-              variant="contained" onClick={previousQuestion}>Back</Button> :
-            null
-          ) : null}
-        </FloatLeft>
-        <Button style={{
-        height: 40,
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--accent-color)",
-        color: "black"
-        }}
-        variant="contained">Report</Button>
-          <Button style={{
-        height: 40,
-        margin: "var(--standard-margin)",
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--accent-color)",
-        color: "black"
-        }}
-        variant="contained" onClick={changeStatusBackward}>Exit</Button>
-        <FloatRight>
-          {selectedQuiz ? ((counter !== selectedQuiz.quizQuestions.length - 1) ?
-            <Button style={{
-              height: 40,
-              borderRadius: "var(--standard-border-radius)",
-              backgroundColor: "var(--accent-color)",
-              color: "black"
+              variant='contained'
+            >
+              {selectedQuiz.quizQuestions[counter].incorrectAnswers[0]}
+            </Button>
+            <Button
+              style={{
+                height: 50,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--background-color)',
+                color: 'black',
               }}
-              variant="contained" onClick={nextQuestion}>Next</Button> :
-              <Button style={{
-                height: 40,
-                borderRadius: "var(--standard-border-radius)",
-                backgroundColor: "var(--blue)",
-                color: "black"
-                }}
-                variant="contained" onClick={changeStatusForward}>Finish Quiz</Button>
-          ) : null}
-        </FloatRight>
-      </span>
-    </Footer>
+              variant='contained'
+            >
+              {selectedQuiz.quizQuestions[counter].incorrectAnswers[1]}
+            </Button>
+            <Button
+              style={{
+                height: 50,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--background-color)',
+                color: 'black',
+              }}
+              variant='contained'
+              onClick={keepScore}
+            >
+              {selectedQuiz.quizQuestions[counter].correctAnswer}
+            </Button>
+            <Button
+              style={{
+                height: 50,
+                margin: 'var(--standard-margin)',
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--background-color)',
+                color: 'black',
+              }}
+              variant='contained'
+            >
+              {selectedQuiz.quizQuestions[counter].incorrectAnswers[2]}
+            </Button>
+          </span>
+        ) : null}
+      </Body>
+      <Footer>
+        <span>
+          <FloatLeft>
+            {selectedQuiz ? (
+              counter !== 0 ? (
+                <Button
+                  style={{
+                    height: 40,
+                    margin: 'var(--standard-margin)',
+                    borderRadius: 'var(--standard-border-radius)',
+                    backgroundColor: 'var(--accent-color)',
+                    color: 'black',
+                  }}
+                  variant='contained'
+                  onClick={previousQuestion}
+                >
+                  Back
+                </Button>
+              ) : null
+            ) : null}
+          </FloatLeft>
+          <Button
+            style={{
+              height: 40,
+              borderRadius: 'var(--standard-border-radius)',
+              backgroundColor: 'var(--accent-color)',
+              color: 'black',
+            }}
+            variant='contained'
+          >
+            Report
+          </Button>
+          <Button
+            style={{
+              height: 40,
+              margin: 'var(--standard-margin)',
+              borderRadius: 'var(--standard-border-radius)',
+              backgroundColor: 'var(--accent-color)',
+              color: 'black',
+            }}
+            variant='contained'
+            onClick={changeStatusBackward}
+          >
+            Exit
+          </Button>
+          <FloatRight>
+            {selectedQuiz ? (
+              counter !== selectedQuiz.quizQuestions.length - 1 ? (
+                <Button
+                  style={{
+                    height: 40,
+                    borderRadius: 'var(--standard-border-radius)',
+                    backgroundColor: 'var(--accent-color)',
+                    color: 'black',
+                  }}
+                  variant='contained'
+                  onClick={nextQuestion}
+                >
+                  Next
+                </Button>
+              ) : (
+                <Button
+                  style={{
+                    height: 40,
+                    borderRadius: 'var(--standard-border-radius)',
+                    backgroundColor: 'var(--blue)',
+                    color: 'black',
+                  }}
+                  variant='contained'
+                  onClick={changeStatusForward}
+                >
+                  Finish Quiz
+                </Button>
+              )
+            ) : null}
+          </FloatRight>
+        </span>
+      </Footer>
     </Container>
   );
 };

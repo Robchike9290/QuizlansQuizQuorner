@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
-import { Button } from '@mui/material'
+import { Button } from '@mui/material';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
@@ -56,50 +56,71 @@ const BigDiv = styled.div`
   font-size: x-large;
 `;
 
-const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQuizzes }) => {
-
+const Results = ({
+  score,
+  changeStatusForward,
+  changeStatusBackward,
+  quiz,
+  allQuizzes,
+}) => {
   const getQuiz = () => {
     for (let i = 0; i < allQuizzes.length; i++) {
       if (allQuizzes[i].quizName === quiz) {
-        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i])
+        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i]);
         setSelectedQuiz(allQuizzes[i]);
       }
     }
-  }
+  };
 
   return (
     <Container>
-    <Header>Quiz Results</Header>
-    <Body>
-      <BigDiv>{score} / 10</BigDiv>
-      <div></div>
+      <Header>Quiz Results</Header>
+      <Body>
+        <BigDiv>{score} / 10</BigDiv>
+        <div></div>
       </Body>
-    <Footer>
-      <span>
-        <FloatLeft>
-        <Button style={{
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--accent-color)",
-        color: "black"
-        }}
-        variant="contained" onClick={changeStatusForward}>Retake quiz</Button>
-        </FloatLeft>
-        <Button style={{
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--accent-color)",
-        color: "black"
-        }}
-        variant="contained">Report Quiz</Button>
-        <FloatRight>
-        <Button style={{
-        borderRadius: "var(--standard-border-radius)",
-        backgroundColor: "var(--accent-color)",
-        color: "black"
-        }}
-        variant="contained"onClick={() => window.location.href = 'http://localhost:8080/#/home'}>Exit</Button>
-        </FloatRight>
-      </span>
-    </Footer>
+      <Footer>
+        <span>
+          <FloatLeft>
+            <Button
+              style={{
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--accent-color)',
+                color: 'black',
+              }}
+              variant='contained'
+              onClick={changeStatusForward}
+            >
+              Retake quiz
+            </Button>
+          </FloatLeft>
+          <Button
+            style={{
+              borderRadius: 'var(--standard-border-radius)',
+              backgroundColor: 'var(--accent-color)',
+              color: 'black',
+            }}
+            variant='contained'
+          >
+            Report Quiz
+          </Button>
+          <FloatRight>
+            <Button
+              style={{
+                borderRadius: 'var(--standard-border-radius)',
+                backgroundColor: 'var(--accent-color)',
+                color: 'black',
+              }}
+              variant='contained'
+              onClick={() =>
+                (window.location.href = 'http://localhost:8080/#/home')
+              }
+            >
+              Exit
+            </Button>
+          </FloatRight>
+        </span>
+      </Footer>
     </Container>
   );
 };
