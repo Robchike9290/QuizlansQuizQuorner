@@ -11,7 +11,9 @@ import UserBox from './homeComponents/UserBox.jsx';
 //I can explain this after my tapout!! But it should be work-on-able now
 const HomeLayout = styled.div`
   display: grid;
-  grid-template-columns: 25% 55% 20%;
+  grid-template-columns: 30% 50% 20%;
+  font-size: var(--major-heading-size);
+  font-weight: var(--major-heading-weight);
 `;
 
 //elements to add (aka add to subcomponents folder and then plug into HomeLayout Div):
@@ -19,15 +21,22 @@ const HomeLayout = styled.div`
 //right sidebar (friend's list)
 //left sidebar (popular quizzes)
 
-const Home = ({ fullQuizList }) => {
+const Home = ({ fullQuizList, selectedQuiz, setSelectedQuiz }) => {
   return (
     <HomeLayout>
       <div>
         <UserBox />
         <FriendsList />
       </div>
-      <QuizFeed fullQuizList={fullQuizList} />
-      <PopularQuizzes />
+      <QuizFeed
+        fullQuizList={fullQuizList}
+        selectedQuiz={selectedQuiz}
+        setSelectedQuiz={setSelectedQuiz}
+      />
+      <PopularQuizzes
+        selectedQuiz={selectedQuiz}
+        setSelectedQuiz={setSelectedQuiz}
+      />
       {/*<FilterByCategory {if we have time} />*/}
     </HomeLayout>
   );

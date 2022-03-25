@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {exampleQuizzes} from './../../../mockData/exampleQuizzes.js'
+import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
-  background-color: var(--yellow);
+  background-color: var(--background-color);
   text-align: center;
   // justify-content: center; //wont allow me to center any other way, but justify also shrinks content
   margin: var(--standard-margin);
@@ -18,7 +18,7 @@ const Header = styled.div`
   background-color: var(--blue);
   display: grid;
   flex-direction: row;
-   //fixed width until I can figure out issue with justify-content
+  //fixed width until I can figure out issue with justify-content
   margin: var(--standard-margin);
 `;
 
@@ -49,47 +49,37 @@ const FloatLeft = styled.div`
   float: left;
 `;
 
-const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) => {
+const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, score, keepScore }) => {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [counter, setCounter] = useState(0);
-  const [score, setScore] = useState(0);
 
   const getQuiz = () => {
-    console.log('WE ARE HERE')
     for (let i = 0; i < allQuizzes.length; i++) {
       if (allQuizzes[i].quizName === quiz) {
-        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i])
+        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i]);
         setSelectedQuiz(allQuizzes[i]);
       }
     }
-  }
+  };
 
   useEffect(() => {
-    console.log('inside useEffect right now')
     getQuiz();
-
   }, [])
 
   const previousQuestion = () => {
     setCounter(counter - 1);
-  }
+  };
 
   const nextQuestion = () => {
     setCounter(counter + 1);
-  }
-
-  const keepScore = () => {
-    setScore(score + 1);
-  }
-
-  // console.log('selectedQuiz.quizQuestions --', selectedQuiz.quizQuestions)
+  };
 
   return (
     <Container>
     <Header>{selectedQuiz ? (
     <span>
     <FloatLeft>{selectedQuiz.quizName}</FloatLeft>
-    <FloatRight>{score}/{selectedQuiz.quizQuestions.length}</FloatRight>
+    <FloatRight>{score} / {selectedQuiz.quizQuestions.length}</FloatRight>
     </span>
     ) : null}</Header>
     <Body>
@@ -106,15 +96,19 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
     <Footer>
       <span>
         <FloatLeft>
-          <button onClick={previousQuestion}>Previous</button>
+        {selectedQuiz ? ((counter !== 0) ?
+            <button onClick={previousQuestion}>Previous</button> :
+            null
+          ) : null}
         </FloatLeft>
-          <button onClick={changeStatusBackward}>Exit quiz</button>
+          <button>Report</button>
+          <button onClick={changeStatusBackward}>Exit</button>
         <FloatRight>
-          <button onClick={nextQuestion}>Next</button>
-          {/* {(counter === selectedQuiz.quizQuestions.length - 1) ?
-           <button onClick={changeStatusForward}>Finish Quiz</button> :
-           <button onClick={nextQuestion}>Next</button>
-          } */}
+        {/* <button onClick={nextQuestion}>Next</button> */}
+          {selectedQuiz ? ((counter !== selectedQuiz.quizQuestions.length - 1) ?
+            <button onClick={nextQuestion}>Next</button> :
+            <button onClick={changeStatusForward}>Finish Quiz</button>
+          ) : null}
         </FloatRight>
       </span>
     </Footer>
@@ -123,4 +117,3 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes }) =
 };
 
 export default Quiz;
-

@@ -16,6 +16,7 @@ import styled from 'styled-components';
 import { signOut } from 'firebase/auth';
 import {onAuthStateChanged} from 'firebase/auth';
 import {reactLocalStorage} from 'reactjs-localstorage';
+import { Switch as SwitchMode } from '@mui/material/';
 
 const App = () => {
   const [docData, setDocData] = useState(null);
@@ -30,6 +31,7 @@ const App = () => {
   const [fullQuizList, setFullQuizList] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const [friends, setFriends] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const stringifiedUser = JSON.stringify(currentUser);
   //console.log('👄👄👄👄👄', currentUser);
@@ -55,6 +57,15 @@ const App = () => {
     // super.setState(userName);
     // super.setState(registerEmail);
   }
+
+  const switchTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    if (!isDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  };
 
   const handleSearchSubmit = (opt) => {
     console.log("you've selected:", opt.label);
@@ -193,27 +204,28 @@ const App = () => {
           <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
           {stringifiedUser === '{ALWAYSFALSE}' && (
             <NavBarHeading>
-              <Link to='/'></Link>
+              <Link style={linkStyle} to='/'></Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/home'>Home</Link>
+              <Link style={linkStyle} to='/home'>Home</Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/user'>User</Link>
+              <Link style={linkStyle} to='/user'>User</Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/createquiz'>Create Quiz</Link>
+              <Link style={linkStyle} to='/createquiz'>Create Quiz</Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
               <Link
+                style={linkStyle}
                 to={{
                   pathname: '/takequiz',
                   state: { quizSelected: selectedQuiz },
@@ -225,12 +237,12 @@ const App = () => {
           )}
           {stringifiedUser === '{}' && (
             <NavBarHeading>
-              <Link to='/login'>Log In</Link>
+              <Link style={linkStyle} to='/login'>Log In</Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/' onClick={logOut}>
+              <Link style={linkStyle} to='/' onClick={logOut}>
                 Log Out
               </Link>
             </NavBarHeading>
@@ -242,13 +254,18 @@ const App = () => {
               </Select>
             </NavBarForm>
           )}
+          <SwitchMode onClick={switchTheme} />
         </NavBar>
         <Switch>
           <Route exact path='/'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
-            <Home fullQuizList={fullQuizList} />
+            <Home
+              fullQuizList={fullQuizList}
+              selectedQuiz={selectedQuiz}
+              setSelectedQuiz={setSelectedQuiz}
+            />
           </Route>
           <Route exact path='/user'>
             <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz}/>
@@ -274,46 +291,43 @@ export default hot(App);
 
 const NavBarTitle = styled.span`
   background-color: var(--blue);
-  text-color: var(--text-color);
-  border-radius: var(--standard-border-radius);
-  box-shadow: var(--standard-shadow);
+  color: var(--text-color);
   padding: var(--standard-padding);
-  font-family: arial;
-  font-size: 48px;
+  font-size: 60px;
+  font-family: 'Tourney', cursive;
+  font-weight: 400;
 `;
 
 const NavBarLogo = styled.img`
   background-color: var(--blue);
-  text-color: var(--text-color);
-  border-radius: var(--standard-border-radius);
-  box-shadow: var(--standard-shadow);
+  color: var(--text-color);
   padding: var(--standard-padding);
 `;
 
 const NavBarHeading = styled.span`
   background-color: var(--blue);
-  text-color: var(--text-color);
-  border-radius: var(--standard-border-radius);
-  box-shadow: var(--standard-shadow);
+  color: var(--text-color);
   padding: var(--standard-padding);
-  font-family: arial;
-  font-size: 24px;
+  font-family: var(--font-family)
+  font-size: 32px;
 `;
 
 const NavBarForm = styled.form`
   background-color: var(--blue);
-  text-color: var(--text-color);
-  border-radius: var(--standard-border-radius);
-  box-shadow: var(--standard-shadow);
+  color: var(--text-color);
   padding: var(--standard-padding);
 `;
 
 const NavBar = styled.span`
-  background-color: var(--yellow);
-  text-color: var(--text-color);
+  background-color: var(--blue);
+  color: var(--text-color);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 `;
+
+const linkStyle = {
+  'text-decoration': 'none',
+};

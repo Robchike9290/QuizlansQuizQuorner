@@ -14,20 +14,21 @@ const Modal = styled.div`
 `;
 
 const Form = styled.div`
-  background-color: var(--purple);
+  background-color: var(--accent-color);
   width: 40%;
   height: 50%;
   display: grid;
-  grid-template-columns: 80% 20%
+  grid-template-columns: 80% 20%;
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   grid-template-rows: 10% 70% 20%;
+  padding: var(--standard-padding);
 `;
 
 const Radios = styled.div`
   grid-column-start: 2;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-content: center;
   flex-direction: column;
   grid-row: 2 / span 1;
@@ -113,8 +114,8 @@ const AddQuestionModal = ({
         >
           x
         </CloseButton>
+        <div>Select Correct Answer</div>
         <Radios>
-          Correct Answer
           <input
             type='radio'
             name='choice'

@@ -13,6 +13,8 @@ import { auth } from '../index.js';
 import { getFirestore } from 'firebase/firestore';
 import {reactLocalStorage} from 'reactjs-localstorage';
 import firebaseConfig from "../../config.js";
+import styled from 'styled-components';
+// import firebaseConfig from "../index.js";
 
 const Login = ({
   registerEmail,
@@ -106,30 +108,92 @@ const Login = ({
   };
 
   return (
-    <div>
-      username/email/TBD
+    <FormBox>
+      <Heading>Please enter in your username, email, and password.</Heading>
       <div>
-        user
-        <input type='text' required={true} onChange={createUserHandler}/>
-        email
-        <input type='email' required={true} onChange={createEmailHandler} />
-        password
-        <input
-          type='password'
-          required={true}
-          onChange={createPasswordHandler}
-        />
-
-
+        <FormLine>
+          <label>Username:</label>
+          <Input type='text' required={true} onChange={createUserHandler}/>
+        </FormLine>
+        <FormLine>
+          <label>Email:</label>
+          <Input type='email' required={true} onChange={createEmailHandler} />
+        </FormLine>
+        <FormLine>
+          <label>Password:</label>
+          <Input type='password' required={true} onChange={createPasswordHandler}/>
+        </FormLine>
       </div>
-      <div>
+      <FormLine>
         <span>
-          <button onClick={registerUser}>Create Account</button>
-          <button onClick={LoginUser} >Login</button>
+          <StyledButton onClick={registerUser}>Create Account</StyledButton>
+          <StyledButton onClick={LoginUser} >Login</StyledButton>
         </span>
-      </div>
-    </div>
+      </FormLine>
+      <Note>If you do not have an account yet, sign up in this form with the same credentials!</Note>
+      <Note>All user emails must be in a valid format, and all user passwords must be at least six characters in length</Note>
+    </FormBox>
   );
 };
 
 export default Login;
+
+const FormBox = styled.form`
+  background-color: var(--blue);
+  color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--standard-shadow);
+  padding: var(--standard-padding);
+  font-size: 36px;
+  width: 20%;
+  margin-top: 50%
+  margin-left: auto;
+  margin-right: auto;
+  transform: translate(175%, 20%);
+`
+
+const StyledButton = styled.button`
+  background-color: var(--purple);
+  text-color: var(--text-color);
+  border-radius: var(--standard-border-radius);
+  border-width: 0;
+  box-shadow: var(--standard-shadow);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 40%;
+  font-size: 24px;
+`
+
+const FormLine = styled.div`
+  background-color: var(--blue);
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 24px;
+`
+
+const Input = styled.input`
+  float: right;
+`
+
+const FormLabel = styled.input`
+  float: left;
+`
+
+const Heading = styled.h1`
+  background-color: var(--blue);
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 36px;
+  text-align: center;
+`
+
+const Note = styled.li`
+  font-size: 18px;
+  text-indent: -20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`

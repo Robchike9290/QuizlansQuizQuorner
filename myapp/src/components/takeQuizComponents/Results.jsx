@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {exampleQuizzes} from './../../../mockData/exampleQuizzes.js'
-
+import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
-  background-color: var(--yellow);
+  background-color: var(--background-color);
   text-align: center;
   // justify-content: center; //wont allow me to center any other way, but justify also shrinks content
   margin: var(--standard-margin);
@@ -19,8 +18,8 @@ const Header = styled.div`
   background-color: var(--blue);
   display: grid;
   flex-direction: row;
-   //fixed width until I can figure out issue with justify-content
   margin: var(--standard-margin);
+  font-size: large;
 `;
 
 const Body = styled.div`
@@ -50,19 +49,38 @@ const FloatLeft = styled.div`
   float: left;
 `;
 
-const Results = ({ score, changeStatusForward, changeStatusBackward }) => {
+const BigDiv = styled.div`
+  margin: var(--standard-margin);
+  justify-content: center;
+  font-size: x-large;
+`;
+
+const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQuizzes }) => {
+
+  const getQuiz = () => {
+    for (let i = 0; i < allQuizzes.length; i++) {
+      if (allQuizzes[i].quizName === quiz) {
+        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i])
+        setSelectedQuiz(allQuizzes[i]);
+      }
+    }
+  }
 
   return (
     <Container>
     <Header>Quiz Results</Header>
-    <Body> / 10</Body>
+    <Body>
+      <BigDiv>{score} / 10</BigDiv>
+      <div></div>
+      </Body>
     <Footer>
       <span>
         <FloatLeft>
-          <button>Retake quiz</button>
+          <button onClick={changeStatusForward}>Retake quiz</button>
         </FloatLeft>
+        <button>Report Quiz</button>
         <FloatRight>
-          <button>Exit</button>
+          <button onClick={() => window.location.href = 'http://localhost:8080/#/home'}>Exit</button>
         </FloatRight>
       </span>
     </Footer>
