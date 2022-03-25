@@ -14,66 +14,34 @@ const Container = styled.div`
   margin: var(--standard-margin);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  vh: 400 px;
+  overflow: scroll;
 `;
 
 const UserQuizzes = (props) => {
 
-  const [userQuizzes, setUserQuizzes] = useState(exampleQuizzes)
+  const [userQuizzes, setUserQuizzes] = useState(exampleQuizzes);
   const [showQuizzes, setShowQuizzes] = useState(4);
+  const [userQuizList, setUserQuizList] = useState([]);
 
   const getUserQuizzes = () => {
-    var data = {
-      createdBy: 'Nic'
-    };
-
-    var config = {
-      method: 'get',
-      url: 'http://52.90.8.77:4444/quizzes',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data : data
-    };
-
-    axios(config)
-    .then(function (response) {
-      console.log('user quizzes', JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log('user quiz error', error);
-    });
+    console.log('adsfasdfgadsfasdfsd', props.userName)
+    const username = 'superuser';
+    const categoryName = null;
+    const isReported = null;
+    axios.get(`http://52.90.8.77:4444/quizzes/${username}&${categoryName}&${isReported}`)
+      .then((response) => {
+        console.log('USER QUIZZES!!! YAYAYAYAYYA:', response.data);
+        setUserQuizList(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
-  // var config = {
-  //   method: 'get',
-  //   url: '52.90.8.77:4444/user',
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   },
-  //   data : data
-  // };
-
-  // axios(config)
-  // .then(function (response) {
-  //   console.log('👄👄👄👄', JSON.stringify(response.data));
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
-
-
-
-
-
-
-
-
-
-
-
-
-  console.log('👅👅👅👅👅', userQuizzes);
-  console.log('💄💄💄💄💄👁👁', props.currentUser);
+  //console.log('👅👅👅👅👅', userQuizzes);
+ //console.log('💄💄💄💄💄👁👁', props.currentUser);
   //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
   useEffect(()=> {
     getUserQuizzes()
@@ -83,8 +51,8 @@ const UserQuizzes = (props) => {
   return (
     <Container>
       User Quizzes
-      {userQuizzes.filter(userQuiz => userQuiz.createdBy === props.currentUser.email).slice(0, showQuizzes).map((userQuiz) => {
-        return <UserGeneratedQuiz userQuiz={userQuiz} userQuizzes={userQuizzes} key={userQuiz.quizID}/>
+      {userQuizList.map((userQuiz, i) => {
+        return <UserGeneratedQuiz userQuiz={userQuiz} userQuizList={userQuizList} key={i}/>
         // <ReportedQuizzes/>
       })}
     </Container>
