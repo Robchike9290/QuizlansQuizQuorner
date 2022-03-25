@@ -123,6 +123,7 @@ const CreateQuiz = ({ userName }) => {
       .then((response) => {
         //console.log(response.data);
         resetInputs();
+        alert('Quiz successfully created!');
       })
       .catch((err) => {
         console.error(err);
@@ -192,6 +193,7 @@ const CreateQuiz = ({ userName }) => {
         <QuizName
           type='text'
           placeholder='Quiz Name'
+          value={newQuizTitle}
           onChange={() => {
             setNewQuizTitle(event.target.value);
           }}
@@ -213,6 +215,7 @@ const CreateQuiz = ({ userName }) => {
           name='DescriptionInput'
           cols='40'
           rows='5'
+          value={newQuizDescription}
           onChange={() => {
             setNewQuizDescription(event.target.value);
           }}

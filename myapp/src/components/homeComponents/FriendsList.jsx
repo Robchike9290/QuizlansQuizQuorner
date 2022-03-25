@@ -9,8 +9,6 @@ import { mockUserList } from '../../../mockData/mockUsers.js';
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
   background-color: var(--blue);
-  //height: 300px;
-  //need to look up how to adjust height of box based on content rather than px
   text-align: center;
   margin: var(--standard-margin);
   box-shadow: var(--standard-shadow);
