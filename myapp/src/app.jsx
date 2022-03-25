@@ -211,17 +211,23 @@ const App = () => {
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link style={linkStyle} to='/home'>Home</Link>
+              <Link style={linkStyle} to='/home'>
+                Home
+              </Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link style={linkStyle} to='/user'>User</Link>
+              <Link style={linkStyle} to='/user'>
+                User
+              </Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link style={linkStyle} to='/createquiz'>Create Quiz</Link>
+              <Link style={linkStyle} to='/createquiz'>
+                Create Quiz
+              </Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
@@ -239,7 +245,9 @@ const App = () => {
           )}
           {stringifiedUser === '{}' && (
             <NavBarHeading>
-              <Link style={linkStyle} to='/login'>Log In</Link>
+              <Link style={linkStyle} to='/login'>
+                Log In
+              </Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
@@ -304,6 +312,7 @@ const NavBarLogo = styled.img`
   background-color: var(--blue);
   color: var(--text-color);
   padding: var(--standard-padding);
+  height: 100px;
 `;
 
 const NavBarHeading = styled.span`
