@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {exampleQuizzes} from './../../../mockData/exampleQuizzes.js'
+import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 import axios from 'axios';
-import QuizFeedItem from './takeQuizSubcomponents/QuizFeedItem.jsx'
+import QuizFeedItem from './takeQuizSubcomponents/QuizFeedItem.jsx';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
-  background-color: var(--yellow);
+  background-color: var(--background-color);
   text-align: center;
   // justify-content: center; //wont allow me to center any other way, but justify also shrinks content
   margin: var(--standard-margin);
