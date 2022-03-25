@@ -26,24 +26,6 @@ const UserQuizzes = (props) => {
   const [userQuizList, setUserQuizList] = useState([]);
 
   const getUserQuizzes = () => {
-    // var data = {
-    //   createdBy: 'stand-in-user'
-    // };
-
-    // var config = {
-    //   method: 'get',
-    //   url: 'http://52.90.8.77:4444/quizzes',
-    //   data : data
-    // };
-
-  //   axios.get('http://52.90.8.77:4444/quizzes', { createdBy: props.userName })
-  //   .then(function (response) {
-  //     console.log('user quizzes', response.data);
-  //     setUserQuizzes(response.data);
-  //   })
-  //   .catch(function (error) {
-  //     console.log('user quiz error', error);
-  //   });
     console.log(props.userName)
     const username = props.userName;
     const categoryName = null;
@@ -57,34 +39,6 @@ const UserQuizzes = (props) => {
         console.log(err);
       })
   }
-
-  // var config = {
-  //   method: 'get',
-  //   url: '52.90.8.77:4444/user',
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   },
-  //   data : data
-  // };
-
-  // axios(config)
-  // .then(function (response) {
-  //   console.log('👄👄👄👄', JSON.stringify(response.data));
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
-
-
-
-
-
-
-
-
-
-
-
 
   //console.log('👅👅👅👅👅', userQuizzes);
  //console.log('💄💄💄💄💄👁👁', props.currentUser);

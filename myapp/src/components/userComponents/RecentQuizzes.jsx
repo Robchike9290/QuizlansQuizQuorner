@@ -23,16 +23,16 @@ const RecentQuizzes = (props) => {
   const [showNumber, setShowNumber] = useState(6);
 
 
-  const getRecentQuizzes = () => {
-    axios.get('/quizzes')
-      .then((response)=> {
-        //console.log('💋💋💋💋💋', response.data)
-        setRecentQuizzes(response.data)
-      })
-      .catch((error)=> {
-        console.error(error)
-      })
-  }
+  // const getRecentQuizzes = () => {
+  //   axios.get('/quizzes')
+  //     .then((response)=> {
+  //       //console.log('💋💋💋💋💋', response.data)
+  //       setRecentQuizzes(response.data)
+  //     })
+  //     .catch((error)=> {
+  //       console.error(error)
+  //     })
+  // }
 
 
 

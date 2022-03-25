@@ -43,7 +43,7 @@ const LandingPage = () => {
       </InlineDuo>
       <InlineDuo>
         <RightText>
-          Create a quiz to challenge your friends to see how well they know you.
+          Enjoy a personally-tailored quizzing home page, made just for you!
         </RightText>
       </InlineDuo>
     </div>
@@ -86,7 +86,7 @@ const LandingPage = () => {
 };
 
 const FirstNesting = styled.div`
-  background-color: var(--yellow);
+  background-color: var(--blue);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
@@ -95,7 +95,7 @@ const FirstNesting = styled.div`
 `
 
 const LeftText = styled.div`
-  background-color: var(--blue);
+  background-color: var(--purple);
   text-color: var(--text-color);
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
@@ -107,18 +107,15 @@ const LeftText = styled.div`
 `
 
 const LeftPhoto = styled.div`
-  background-color: var(--blue);
   text-color: var(--text-color);
   margin: var(--standard-margin);
-  border-radius: var(--standard-border-radius);
-  box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
   margin-left: 30%;
   float: left;
 `
 
 const RightText = styled.div`
-  background-color: var(--blue);
+  background-color: var(--purple);
   text-color: var(--text-color);
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
@@ -130,11 +127,7 @@ const RightText = styled.div`
 `
 
 const RightPhoto = styled.div`
-  background-color: var(--blue);
-  text-color: var(--text-color);
   margin: var(--standard-margin);
-  border-radius: var(--standard-border-radius);
-  box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
   margin-right: 30%;
   float: right;
@@ -154,7 +147,7 @@ const InlineTrio = styled.span`
 `
 
 const StyledButton = styled.button`
-  background-color: var(--blue);
+  background-color: var(--purple);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
   border-width: 0;
@@ -163,10 +156,10 @@ const StyledButton = styled.button`
   width: 25%;
   font-size: 24px;
 `
+
 const StyledH1 = styled.h1`
-  background-color: var(--blue);
+  background-color: var(--purple);
   text-color: var(--text-color);
-  margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   padding: var(--standard-padding);
@@ -178,7 +171,7 @@ const StyledH1 = styled.h1`
 `
 
 const StyledH2 = styled.h2`
-  background-color: var(--blue);
+  background-color: var(--purple);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
@@ -191,7 +184,7 @@ const StyledH2 = styled.h2`
 `
 
 const StyledH3 = styled.h3`
-  background-color: var(--blue);
+  background-color: var(--purple);
   text-color: var(--text-color);
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
@@ -204,7 +197,7 @@ const StyledH3 = styled.h3`
 `
 
   const Testimonial = styled.div`
-  background-color: var(--blue);
+  background-color: var(--purple);
   text-color: var(--text-color);
   margin: var(--standard-margin);
   border-radius: var(--standard-border-radius);
