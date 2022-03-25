@@ -10,9 +10,10 @@ const Container = styled.div`
   
 `;
 
-const QuizFeed = ({ fullQuizList, selectedQuiz, setSelectedQuiz }) => {
+const QuizFeed = ({ fullQuizList }) => {
   return (
     <Container>
+      <h4>QuizFeed</h4>
       {fullQuizList?.length > 0 &&
         fullQuizList.map((listItem, index) => {
           return (
@@ -27,8 +28,6 @@ const QuizFeed = ({ fullQuizList, selectedQuiz, setSelectedQuiz }) => {
               downvotes={listItem.quizDownvotes}
               score={listItem.aggregateScore}
               key={index}
-              selectedQuiz={selectedQuiz}
-              setSelectedQuiz={setSelectedQuiz}
             />
           );
         })}
