@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const ReportedQuiz = (props) => {
   return (
-    <div>test</div>
+    <div>{props.eachReportedQuiz.quizName}</div>
   )
 }
 

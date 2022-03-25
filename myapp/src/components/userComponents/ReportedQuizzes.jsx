@@ -26,7 +26,12 @@ const ReportedQuizzes = (props) => {
   //   });
   // };
 
-  const [reportedQuizzesList, setReportedQuizzesList] = useState('');
+  useEffect(()=> {
+    getReportedQuizzes()
+
+  }, [])
+
+  const [reportedQuizzesList, setReportedQuizzesList] = useState([]);
 
 
   const getReportedQuizzes = () => {
@@ -37,8 +42,9 @@ const ReportedQuizzes = (props) => {
     axios.get(`http://52.90.8.77:4444/quizzes/${createdBy}&${category}&${isReported}`)
     //console.log()
     .then((results) => {
-      setReportedQuizzesList(results);
+      setReportedQuizzesList(results.data);
       console.log('ReportedQuizzes👀👀👀👀:', results);
+      console.log('reportedQuizzesList', reportedQuizzesList);
     })
     .catch((error) => {
       console.log(error);
@@ -47,21 +53,18 @@ const ReportedQuizzes = (props) => {
   };
   //console.log(`🔥🔥🔥🔥🔥🔥`);
 
-  useEffect(()=> {
-    getReportedQuizzes()
-
-  }, [])
 
 
 
+  console.log('reportedQuizzesList', reportedQuizzesList);
 
   return (
     <Container>
       Reported Quizzes
       <div>
-        {/* {reportedQuizzesList.map((eachReportedQuiz) => (
-          <ReportedQuiz eachReportedQuiz={eachReportedQuiz} removeQuiz={removeQuiz}/>
-        ))} */}
+        {reportedQuizzesList.map((eachReportedQuiz) => (
+          <ReportedQuiz eachReportedQuiz={eachReportedQuiz} />
+        ))}
       </div>
     </Container>
   );
