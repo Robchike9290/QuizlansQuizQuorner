@@ -154,7 +154,7 @@ const InlineTrio = styled.span`
 
 const StyledButton = styled.button`
   background-color: var(--accent-color);
-  text-color: var(--text-color);
+  color: var(--text-color);
   border-radius: var(--standard-border-radius);
   border-width: 0;
   box-shadow: var(--standard-shadow);
