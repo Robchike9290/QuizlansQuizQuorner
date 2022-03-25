@@ -123,7 +123,7 @@ const TakeQuiz = (props) => {
   <BaseLayout>
   {pageStatus === 'start' ? <Start allQuizzes={allQuizzes} quiz={quiz} quizSelected={quizSelected} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} chooseQuiz={chooseQuiz} chosenQuiz={chosenQuiz} imFeelingLucky={imFeelingLucky}/> :
   pageStatus === 'quiz' ? <Quiz quiz={quiz} allQuizzes={allQuizzes} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} score={score} keepScore={keepScore} report={report}/> :
-  pageStatus === 'results' ? <Results changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} score={score} quiz={quiz} allQuizzes={allQuizzes} report={report}/> : null }
+  pageStatus === 'results' ? <Results changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} score={score} quiz={quiz} allQuizzes={allQuizzes} report={report} /> : null }
 
   </BaseLayout>);
 };
