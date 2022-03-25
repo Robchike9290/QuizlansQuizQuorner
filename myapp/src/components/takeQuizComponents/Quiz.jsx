@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {exampleQuizzes} from './../../../mockData/exampleQuizzes.js'
+import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
-  background-color: var(--yellow);
+  background-color: var(--background-color);
   text-align: center;
   // justify-content: center; //wont allow me to center any other way, but justify also shrinks content
   margin: var(--standard-margin);
@@ -18,7 +18,7 @@ const Header = styled.div`
   background-color: var(--blue);
   display: grid;
   flex-direction: row;
-   //fixed width until I can figure out issue with justify-content
+  //fixed width until I can figure out issue with justify-content
   margin: var(--standard-margin);
 `;
 
@@ -56,11 +56,11 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
   const getQuiz = () => {
     for (let i = 0; i < allQuizzes.length; i++) {
       if (allQuizzes[i].quizName === quiz) {
-        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i])
+        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i]);
         setSelectedQuiz(allQuizzes[i]);
       }
     }
-  }
+  };
 
   useEffect(() => {
     getQuiz();
@@ -68,11 +68,11 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
 
   const previousQuestion = () => {
     setCounter(counter - 1);
-  }
+  };
 
   const nextQuestion = () => {
     setCounter(counter + 1);
-  }
+  };
 
   return (
     <Container>
@@ -117,4 +117,3 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
 };
 
 export default Quiz;
-
