@@ -43,7 +43,7 @@ app.use((req, res, next) => {
 
 app.get('/quizzes/:createdBy&:category&:reported', (req, res) => { // works
   console.log('Hello from the server!')
-  getQuizzes(req.params.createdBy, req.body.category, req.body.reported)
+  getQuizzes(req.params.createdBy, req.params.category, req.params.reported)
     .then((results) => {
       res.status(200).send('Server response!');
     })

@@ -33,11 +33,11 @@ const App = () => {
   const [friends, setFriends] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const stringifiedUser = JSON.stringify(currentUser);
   //console.log('👄👄👄👄👄', currentUser);
   // onAuthStateChanged(auth, (loggedInUser) => {
   //   setCurrentUser(loggedInUser);
   // });
+  const stringifiedUser = JSON.stringify(currentUser);
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DON'T REFRESH!!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 

@@ -28,16 +28,26 @@ const ReportedQuizzes = (props) => {
 
   const [reportedQuizzesList, setReportedQuizzes] = useState(reportedQuizzesMock);
 
-  axios.get(`/quizzes/:${null}&:${null}&:${true}`)
-  .then((results) => {
-    setReportedQuizzes(results);
-    console.log('Reported👀👀👀👀: ', reportedQuizzesList);
-  })
 
-  //  useEffect(()=> {
+  const getReportedQuizzes = () => {
+    const createdBy = null;
+    const category = null;
+    const report = true;
 
-  // }, [])
-  // '/reportQuiz'
+    axios.get(`/quizzes/${createdBy}&${category}&${true}`)
+    .then((results) => {
+      setReportedQuizzes(results);
+      console.log('Reported👀👀👀👀: ', reportedQuizzesList);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+
+  useEffect(()=> {
+    getReportedQuizzes()
+  }, [])
+
 
 
 
