@@ -86,7 +86,7 @@ const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQu
       <BigDiv>
         {score} / 10
       </BigDiv>
-      {(score > 5) ? <StyledH2>Nice work, you scored higher than {randomUserAvg()}% of takers!</StyledH2> : <StyledH2>You may be my assistant Patrick... Study up and try again!</StyledH2>}
+      {(score > 5) ? <StyledH2>Nice work, you scored higher than {randomUserAvg()}% of takers!</StyledH2> : <StyledH2>You're as smart as my assistant, Patrick... Study up and try again!</StyledH2>}
       </Body>
       <br/>
     <Footer>
