@@ -20,12 +20,13 @@ const Banner = styled.div`
   border-top-left-radius: var(--standard-border-radius);
   border-top-right-radius: var(--standard-border-radius);
   grid-row: 1 / span 1;
+  margin-bottom: 30px;
 `;
 
 const TextData = styled.div`
   grid-row: 2 / span 1;
   display: grid;
-  grid-template-rows: 80px 200px 80px;
+  grid-template-rows: 100px 150px 80px;
   grid-template-columns: 30% 40% 30%;
 `;
 
@@ -56,6 +57,11 @@ const QuizFeedItem = ({
       });
   };
 
+  const handleQuizSelect = () => {
+    console.log(event.target.value);
+    //need to link here!!!
+  };
+
   const handleReport = () => {
     axios
       .post('/FillMeIn')
@@ -82,7 +88,10 @@ const QuizFeedItem = ({
           <div>{upvotes} upvotes</div>
           <div>{downvotes} downvotes</div>
         </Votes>
-        <Score>{score % timesTaken}% average score</Score>
+        {score % timesTaken === 0 ||
+          (score % timesTaken && (
+            <Score>{score % timesTaken}% average score</Score>
+          ))}
         {/* UPVOTE <FontAwesomeIcon icon="fa-solid fa-caret-up" name="upvote" onClick={()=>handleRating(event.target.name}/> */}
         {/* DOWNVOTE <FontAwesomeIcon icon="fa-solid fa-caret-down" name="downvote" onClick={()=>handleRating(event.target.name}/>/> */}
         {/* REPORT <FontAwesomeIcon icon="fa-solid fa-flag" /> */}
@@ -102,18 +111,21 @@ const Name = styled.div`
   &:hover {
     color: var(--background-color);
     cursor: pointer;
-    text-decoration: underline;
+    textdecoration: underline;
   }
+  padding: 10px;
 `;
 const Category = styled.div`
   grid-row: 1 / span 1;
   grid-column: 1 / span 1;
   //word-wrap: break-word;
+  padding: 10px;
 `;
 const Author = styled.div`
   grid-row: 1 / span 1;
   grid-column: 3 / span 1;
   word-break: break-all;
+  padding: 10px;
 `;
 const TimesTaken = styled.div`
   grid-row: 3 / span 1;
@@ -135,4 +147,9 @@ const Description = styled.div`
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
   margin: auto;
+  height: 70%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

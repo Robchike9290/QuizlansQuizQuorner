@@ -55,8 +55,8 @@ const TakeQuiz = (props) => {
       }
     }
     //redirect user to start page to select a quiz to play
-    window.location.href = 'http://localhost:8080/#/takeQuiz'
-
+    setPageStatus('start')
+    setQuizSelected(null);
   };
 
   useEffect(() => {
@@ -80,12 +80,10 @@ const TakeQuiz = (props) => {
 
   const changeStatusBackward = () => {
     if (pageStatus === 'start') {
-      //redirect to homepage
       setQuizSelected(null);
     } else if (pageStatus === 'quiz') {
       setPageStatus('start');
       setQuizSelected(null);
-      //set quiz to entire quiz object including question from mock data
     } else if (pageStatus === 'results') {
       setPageStatus('quiz') //display options to start new quiz
     }

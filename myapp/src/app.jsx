@@ -34,11 +34,11 @@ const App = () => {
   const [quizHistory, setQuizHistory] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const stringifiedUser = JSON.stringify(currentUser);
   //console.log('👄👄👄👄👄', currentUser);
   // onAuthStateChanged(auth, (loggedInUser) => {
   //   setCurrentUser(loggedInUser);
   // });
+  const stringifiedUser = JSON.stringify(currentUser);
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DON'T REFRESH!!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
@@ -211,17 +211,23 @@ const App = () => {
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link style={linkStyle} to='/home'>Home</Link>
+              <Link style={linkStyle} to='/home'>
+                Home
+              </Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link style={linkStyle} to='/user'>User</Link>
+              <Link style={linkStyle} to='/user'>
+                User
+              </Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link style={linkStyle} to='/createquiz'>Create Quiz</Link>
+              <Link style={linkStyle} to='/createquiz'>
+                Create Quiz
+              </Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
@@ -239,7 +245,9 @@ const App = () => {
           )}
           {stringifiedUser === '{}' && (
             <NavBarHeading>
-              <Link style={linkStyle} to='/login'>Log In</Link>
+              <Link style={linkStyle} to='/login'>
+                Log In
+              </Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
@@ -270,7 +278,7 @@ const App = () => {
             />
           </Route>
           <Route exact path='/user'>
-            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} quizHistory={quizHistory} />
+            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz} quizHistory={quizHistory}/>
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} report={report}/>
@@ -304,6 +312,7 @@ const NavBarLogo = styled.img`
   background-color: var(--blue);
   color: var(--text-color);
   padding: var(--standard-padding);
+  height: 100px;
 `;
 
 const NavBarHeading = styled.span`

@@ -8,7 +8,7 @@ import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
   background-color: var(--blue);
-  //height: 500px;
+  height: 500px;
   text-align: center;
   margin: var(--standard-margin);
   display: flex;

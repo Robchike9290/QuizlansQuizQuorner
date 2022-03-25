@@ -78,7 +78,7 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
 
   useEffect(() => {
     getQuiz();
-  }, [])
+  }, []);
 
   const previousQuestion = () => {
     setCounter(counter - 1);
@@ -104,7 +104,7 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
     </span>
     ) : null}</Header>
     <Body>
-      {selectedQuiz ? <QuestionDiv>{counter + 1}. {selectedQuiz.quizQuestions[counter].question}</QuestionDiv> : null}
+     {selectedQuiz ? <QuestionDiv>{counter + 1}. {selectedQuiz.quizQuestions[counter].question}</QuestionDiv> : null}
      {selectedQuiz ?
      (<span>
       <Button style={{
@@ -195,5 +195,4 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
     </Container>
   );
 };
-
 export default Quiz;

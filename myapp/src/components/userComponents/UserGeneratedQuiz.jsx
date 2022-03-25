@@ -15,7 +15,7 @@ const QuizDiv = styled.div`
 `
 
 const UserGeneratedQuiz = (props) => {
-  //console.log('💄💄💄💄', props);
+
 
   return (
     <QuizDiv>

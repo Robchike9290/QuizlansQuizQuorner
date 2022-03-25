@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
-import { Button } from '@mui/material'
+import { Button } from '@mui/material';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
@@ -66,11 +66,11 @@ const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQu
   const getQuiz = () => {
     for (let i = 0; i < allQuizzes.length; i++) {
       if (allQuizzes[i].quizName === quiz) {
-        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i])
+        console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i]);
         setSelectedQuiz(allQuizzes[i]);
       }
     }
-  }
+  };
 
   const randomUserAvg = () => {
     const min = 5;
