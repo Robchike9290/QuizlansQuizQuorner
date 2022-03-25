@@ -65,7 +65,7 @@ const ReportedQuizzes = (props) => {
     })
     .catch((error) => {
       console.log(error);
-      console.log('Caught👀👀👀👀: ', error);
+      //console.log('Caught👀👀👀👀: ', error);
     });
   };
   //console.log(`🔥🔥🔥🔥🔥🔥`);
