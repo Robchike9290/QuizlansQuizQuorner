@@ -57,6 +57,11 @@ const QuizFeedItem = ({
       });
   };
 
+  const handleQuizSelect = () => {
+    console.log(event.target.value);
+    //need to link here!!!
+  };
+
   const handleReport = () => {
     axios
       .post('/FillMeIn')
@@ -106,7 +111,7 @@ const Name = styled.div`
   &:hover {
     color: var(--background-color);
     cursor: pointer;
-    text-decoration: underline;
+    textdecoration: underline;
   }
   padding: 10px;
 `;
