@@ -585,3 +585,87 @@ let exampleQuizzes = [
 module.exports = {
   exampleQuizzes: exampleQuizzes,
 };
+
+// {
+//   quizName: 'General one',
+//   quizQuestions: [
+//     {
+//       question: 'What does DNA stand for?',
+//       correctAnswer: 'Deoxyribonucleic Acid',
+//       incorrectAnswers: [
+//         'Deoxyribogenetic Acid',
+//         'Deoxyribogenetic Atoms',
+//         'Detoxic Acid',
+//       ],
+//     },
+//     {
+//       question:
+//         'Which game did &quot;Sonic The Hedgehog&quot; make his first appearance in?',
+//       correctAnswer: 'Rad Mobile',
+//       incorrectAnswers: ['Sonic The Hedgehog', 'Super Mario 64', 'Mega Man'],
+//     },
+//     {
+//       question:
+//         'Which animal features on the logo for Abarth, the motorsport division of Fiat?',
+//       correctAnswer: 'Scorpion',
+//       incorrectAnswers: ['Snake', 'Bull', 'Horse'],
+//     },
+//     {
+//       question:
+//         'Who had a 1976 hit with the song You Make Me Feel Like Dancing?',
+//       correctAnswer: 'Leo Sayer',
+//       incorrectAnswers: ['Elton John', 'Billy Joel', 'Andy Gibb'],
+//     },
+//     {
+//       question:
+//         'What does AD stand for in relation to Windows Operating Systems? ',
+//       correctAnswer: 'Active Directory',
+//       incorrectAnswers: [
+//         'Alternative Drive',
+//         'Automated Database',
+//         'Active Department',
+//       ],
+//     },
+//     {
+//       question: 'On which continent is the country of Angola located?',
+//       correctAnswer: 'Africa',
+//       incorrectAnswers: ['South America', 'Europe', 'Asia'],
+//     },
+//     {
+//       question: 'Who is the true moon princess in Sailor Moon?',
+//       correctAnswer: 'Sailor Moon',
+//       incorrectAnswers: ['Sailor Venus', 'Sailor Mars', 'Sailor Jupiter'],
+//     },
+//     {
+//       question: 'What is the nickname of the US state of California?',
+//       correctAnswer: 'Golden State',
+//       incorrectAnswers: ['Sunshine State', 'Bay State', 'Treasure State'],
+//     },
+//     {
+//       question: 'In which Mario game did the Mega Mushroom make its debut?',
+//       correctAnswer: 'Mario Party 4',
+//       incorrectAnswers: [
+//         'New Super Mario Bros.',
+//         'Mario Kart Wii',
+//         'Super Mario 3D World',
+//       ],
+//     },
+//     {
+//       question:
+//         'Gordon Freeman is said to have burnt and destroyed what food in the break room microwave?',
+//       correctAnswer: 'Casserole',
+//       incorrectAnswers: ['Sub Sandwich', 'Chicken Soup', 'Pepperoni Pizza'],
+//     },
+//   ],
+//   timesTaken: 12,
+//   category: 'general',
+//   quizDescription: 'General knowledge quiz number 1',
+//   quizBanner:
+//     'https://pgcpsmess.files.wordpress.com/2013/08/imagescae8o2el.jpg',
+//   quizUpvotes: 5,
+//   quizDownvotes: 1,
+//   reported: false,
+//   reportedTimes: 0,
+//   createdBy: 'PatrickTheAssistant',
+//   aggregateScore: 84,
+// }

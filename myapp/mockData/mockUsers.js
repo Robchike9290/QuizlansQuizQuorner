@@ -205,3 +205,48 @@ const mockUserList = [
 ]
 
 module.exports = { mockUserList };
+
+
+// {
+// 	"_id" : ObjectId("623cfee5d5c9ec0828f3d097"),
+// 	"userName" : "superuser",
+// 	"email" : "su@gmail.com",
+// 	"quizHistory" : [
+// 		{
+// 			"quizId" : "623b4f3193deed525907e16b",
+// 			"quizName" : "Science and Nature quiz one",
+// 			"userScores" : 7,
+// 			"_id" : ObjectId("623d039ce76964fc2da07c16")
+// 		},
+// 		{
+// 			"quizId" : "623b4f3193deed525907e176",
+// 			"quizName" : "Science and Nature quiz two",
+// 			"userScores" : 10,
+// 			"_id" : ObjectId("623d03bbe76964fc2da07c18")
+// 		},
+// 		{
+// 			"quizId" : "623b4f3193deed525907e181",
+// 			"quizName" : "Animal quiz one",
+// 			"userScores" : 19,
+// 			"_id" : ObjectId("623d03dfe76964fc2da07c1b")
+// 		},
+// 		{
+// 			"quizId" : "623b4f3193deed525907e18c",
+// 			"quizName" : "Animal quiz number two",
+// 			"userScores" : 1,
+// 			"_id" : ObjectId("623d0402e76964fc2da07c1f")
+// 		},
+// 		{
+// 			"quizId" : "623b4f3193deed525907e197",
+// 			"quizName" : "Animal Quiz Number 3",
+// 			"userScores" : 7,
+// 			"_id" : ObjectId("623d0417e76964fc2da07c22")
+// 		}
+// 	],
+// 	"friends" : [
+// 		"ImActuallyASupercomputerWearingClothes@gmail.com",
+// 		"fourPointOhLiz@yahoo.com",
+// 		"tenOutOfTenAllDayLong@hotmail.com",
+// 		"pat@gmail.com"
+// 	]
+// }
