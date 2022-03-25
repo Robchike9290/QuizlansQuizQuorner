@@ -18,7 +18,7 @@ const Container = styled.div`
 // nothing will show unless the currently logged in user (Nic's firebase)
 // has quizzes, currently using mockdata.
 
-const ReportedQuizzes = () => {
+const ReportedQuizzes = (props) => {
 
   const reportedQuizzesMock = () => {
     return exampleQuizzes.filter(exampleQuiz => {
@@ -28,15 +28,17 @@ const ReportedQuizzes = () => {
 
   const [reportedQuizzesList, setReportedQuizzes] = useState(reportedQuizzesMock);
 
-  axios.get('/reportedQuizzes')
+  axios.get(`/quizzes/:${null}&:${null}&:${true}`)
   .then((results) => {
     setReportedQuizzes(results);
     console.log('Reported👀👀👀👀: ', reportedQuizzesList);
   })
 
   //  useEffect(()=> {
-  //    ReportedQuizzes()
+
   // }, [])
+  // '/reportQuiz'
+
 
 
   return (
@@ -44,7 +46,7 @@ const ReportedQuizzes = () => {
       Reported Quizzes
       <div>
         {reportedQuizzesList.map((eachReportedQuiz) => (
-          <ReportedQuiz eachReportedQuiz={eachReportedQuiz} />
+          <ReportedQuiz eachReportedQuiz={eachReportedQuiz} removeQuiz={removeQuiz}/>
         ))}
       </div>
     </Container>

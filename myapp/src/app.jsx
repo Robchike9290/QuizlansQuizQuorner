@@ -14,8 +14,8 @@ import axios from 'axios';
 import logo from './images/QuestionMark.png';
 import styled from 'styled-components';
 import { signOut } from 'firebase/auth';
-
-const exampleQuizzes = require('.././mockData/exampleQuizzes.js');
+import {onAuthStateChanged} from 'firebase/auth';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 const App = () => {
   const [docData, setDocData] = useState(null);
@@ -26,13 +26,35 @@ const App = () => {
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
   const [userName, setUserName] = useState('');
+  // const [userEmail, setUserEmail] = useState('');
   const [fullQuizList, setFullQuizList] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [friends, setFriends] = useState([]);
 
   const stringifiedUser = JSON.stringify(currentUser);
+  //console.log('👄👄👄👄👄', currentUser);
+  // onAuthStateChanged(auth, (loggedInUser) => {
+  //   setCurrentUser(loggedInUser);
+  // });
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DON'T REFRESH!!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+
 
   useEffect(() => {
     getData();
-  }, []);
+    // getUser();
+    // console.log('app use effect username:', userName);
+    // console.log('app use effect email:', userEmail);
+  }, [currentUser]);
+
+
+  function populateStorage() {
+    localStorage.setItem('userName', userName);
+    localStorage.setItem('email', registerEmail);
+    // super.setState(userName);
+    // super.setState(registerEmail);
+  }
 
   const handleSearchSubmit = (opt) => {
     console.log("you've selected:", opt.label);
@@ -62,6 +84,7 @@ const App = () => {
   const logOut = () => {
     const signedOut = signOut(auth)
       .then((data) => {
+        setCurrentUser({});
         console.log(data);
       })
       .catch((error) => {
@@ -124,11 +147,14 @@ const App = () => {
       });
   };
 
-  const getUser = () => {
-    axios
-      .get('http://52.90.8.77:4444/user')
+  const getUser = (userEmail) => {
+    const email = userEmail;
+    axios.get(`http://52.90.8.77:4444/user/${email}`)
       .then((response) => {
-        console.log(response.data);
+        // setUserName(response.data.userName);
+        // setUserEmail(response.data.email);
+        setFriends(response.data[0].friends)
+        console.log('USER DATA:', response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -167,7 +193,7 @@ const App = () => {
           <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
           {stringifiedUser === '{ALWAYSFALSE}' && (
             <NavBarHeading>
-              <Link to='/landingpage'></Link>
+              <Link to='/'></Link>
             </NavBarHeading>
           )}
           {stringifiedUser !== '{}' && (
@@ -204,7 +230,7 @@ const App = () => {
           )}
           {stringifiedUser !== '{}' && (
             <NavBarHeading>
-              <Link to='/landingpage' onClick={logOut}>
+              <Link to='/' onClick={logOut}>
                 Log Out
               </Link>
             </NavBarHeading>
@@ -218,14 +244,14 @@ const App = () => {
           )}
         </NavBar>
         <Switch>
-          <Route exact path='/landingpage'>
+          <Route exact path='/'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
             <Home fullQuizList={fullQuizList} />
           </Route>
           <Route exact path='/user'>
-            <User currentUser={currentUser} userName={userName}/>
+            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz}/>
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} />
@@ -234,7 +260,7 @@ const App = () => {
             <CreateQuiz />
           </Route>
           <Route exact path='/login'>
-            <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} setUserName={setUserName} userName={userName}/>
+            <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} setUserName={setUserName} userName={userName} setIsAdmin={setIsAdmin} isAdmin={isAdmin} />
           </Route>
         </Switch>
         {docData ? <h1>Hello {docData.quizName}</h1> : null}
@@ -288,6 +314,6 @@ const NavBar = styled.span`
   border-radius: var(--standard-border-radius);
   box-shadow: var(--standard-shadow);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 `;

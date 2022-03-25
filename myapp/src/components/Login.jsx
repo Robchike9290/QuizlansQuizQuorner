@@ -11,7 +11,8 @@ import {
 } from 'firebase/auth';
 import { auth } from '../index.js';
 import { getFirestore } from 'firebase/firestore';
-// import firebaseConfig from "../index.js";
+import {reactLocalStorage} from 'reactjs-localstorage';
+import firebaseConfig from "../../config.js";
 
 const Login = ({
   registerEmail,
@@ -21,7 +22,9 @@ const Login = ({
   currentUser,
   setCurrentUser,
   userName,
-  setUserName
+  setUserName,
+  isAdmin,
+  setIsAdmin
 }) => {
 
 
@@ -61,13 +64,32 @@ const Login = ({
     )
       .then((user) => {
         console.log(user);
+        document.location.href = 'http://localhost:8080/#/home';
       })
       .catch((error) => {
         console.log(error.message);
       });
+      // setUserName(userName);
+      // setUserEmail(registerEmail);
+
   };
 
   const LoginUser = () => {
+    // setUserName(userName);
+    // setUserEmail(registerEmail);
+
+    const getUser = () => {
+      axios.get(`http://52.90.8.77:4444/user/${registerEmail}`)
+        .then((response) => {
+          setUserName(response.data.userName);
+          setUserEmail(response.data.email);
+          console.log('USER DATA:', response.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+
     const user = signInWithEmailAndPassword(
       auth,
       registerEmail,
@@ -75,20 +97,12 @@ const Login = ({
     )
       .then((user) => {
         console.log(user);
+        document.location.href = 'http://localhost:8080/#/home';
       })
       .catch((error) => {
         console.log(error.message);
       });
-  };
 
-  const logOut = () => {
-    const signedOut = signOut(auth)
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
   };
 
   return (
