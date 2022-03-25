@@ -20,17 +20,18 @@ import { Switch as SwitchMode } from '@mui/material/';
 
 const App = () => {
   const [docData, setDocData] = useState(null);
-  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerEmail, setRegisterEmail] = useState('su@gmail.com');
   const [registerPassword, setRegisterPassword] = useState('');
   const [currentUser, setCurrentUser] = useState({});
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState('superuser');
   // const [userEmail, setUserEmail] = useState('');
   const [fullQuizList, setFullQuizList] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const [friends, setFriends] = useState([]);
+  const [quizHistory, setQuizHistory] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   //console.log('👄👄👄👄👄', currentUser);
@@ -45,7 +46,7 @@ const App = () => {
 
   useEffect(() => {
     getData();
-    // getUser();
+
     // console.log('app use effect username:', userName);
     // console.log('app use effect email:', userEmail);
   }, [currentUser]);
@@ -165,6 +166,7 @@ const App = () => {
         // setUserName(response.data.userName);
         // setUserEmail(response.data.email);
         setFriends(response.data[0].friends)
+        setQuizHistory(response.data[0].quizHistory)
         console.log('USER DATA:', response.data);
       })
       .catch((err) => {
@@ -268,13 +270,13 @@ const App = () => {
             />
           </Route>
           <Route exact path='/user'>
-            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz}/>
+            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz} quizHistory={quizHistory}/>
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} />
           </Route>
           <Route exact path='/createquiz'>
-            <CreateQuiz />
+            <CreateQuiz userName={userName} />
           </Route>
           <Route exact path='/login'>
             <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} setUserName={setUserName} userName={userName} setIsAdmin={setIsAdmin} isAdmin={isAdmin} />

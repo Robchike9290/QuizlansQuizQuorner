@@ -46,6 +46,7 @@ const ReportedQuizzes = (props) => {
 
   useEffect(()=> {
     getReportedQuizzes()
+
   }, [])
 
 

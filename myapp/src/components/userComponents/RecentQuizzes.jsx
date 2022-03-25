@@ -8,10 +8,13 @@ const Container = styled.div`
   border-radius: var(--standard-border-radius);
   background-color: var(--blue);
   height: 250px;
-  text-align: center;
-  margin: var(--standard-margin);
   display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: var(--standard-margin);
   flex-direction: column;
+  overflow: scroll;
 `;
 
 // nothing will show unless the currently logged in user (Nic's firebase)
@@ -24,9 +27,9 @@ const RecentQuizzes = (props) => {
 
 
   const getRecentQuizzes = () => {
-    axios.get('/quizzes')
+    axios.get('/quizzes/')
       .then((response)=> {
-        //console.log('💋💋💋💋💋', response.data)
+        console.log('💋💋💋💋💋', response.data)
         setRecentQuizzes(response.data)
       })
       .catch((error)=> {
@@ -41,9 +44,9 @@ const RecentQuizzes = (props) => {
 
 
   //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
-  //useEffect(()=> {
-  //  getRecentQuizzes()
-  //}, [])
+  useEffect(()=> {
+   getRecentQuizzes()
+  }, [])
 
   //
 
@@ -51,13 +54,9 @@ const RecentQuizzes = (props) => {
   return (
     <Container>
       Recent Quizzes
-      <div>
-        {recentQuizzes.filter(recentQuiz =>
-          recentQuiz.createdBy === 'PatrickTheAssistant' && recentQuiz.timesTaken > 0)
-         .slice(0, showNumber).map((eachQuiz, key) => (
-          <RecentQuiz eachQuiz={eachQuiz} key={key}/>
+        {props.quizHistory.map((quiz, key) => (
+          <RecentQuiz quiz={quiz} key={key}/>
         ))}
-      </div>
     </Container>
   );
 };

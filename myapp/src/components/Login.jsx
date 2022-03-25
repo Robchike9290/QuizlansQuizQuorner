@@ -46,9 +46,9 @@ const Login = ({
     setRegisterPassword(event.target.value);
   };
 
-  const createUserHandler = (event) => {
-    setUserName(event.target.value);
-  }
+  // const createUserHandler = (event) => {
+  //   setUserName(event.target.value);
+  // }
 
   const registerUser = () => {
     axios.post('http://52.90.8.77:4444/addUser', {userName: userName, email: registerEmail})
@@ -113,7 +113,7 @@ const Login = ({
       <div>
         <FormLine>
           <label>Username:</label>
-          <Input type='text' required={true} onChange={createUserHandler}/>
+          <Input type='text' />
         </FormLine>
         <FormLine>
           <label>Email:</label>

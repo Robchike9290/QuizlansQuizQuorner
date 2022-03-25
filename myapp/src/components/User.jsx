@@ -18,7 +18,6 @@ const User = (props) => {
 
   useEffect(() => {
     props.getUser(props.registerEmail);
-
     console.log(props.userName)
     console.log(props.registerEmail)
   }, [])
@@ -27,7 +26,7 @@ const User = (props) => {
   return (<HomeLayout>
   <FriendsList currentUser={props.currentUser} userName={props.userName} registerEmail={props.registerEmail} getUser={props.getUser} friends={props.friends} />
   <div>
-  <RecentQuizzes currentUser={props.currentUser} registerEmail={props.registerEmail} />
+  <RecentQuizzes currentUser={props.currentUser} registerEmail={props.registerEmail} quizHistory={props.quizHistory}/>
   {/* { props.isAdmin === false ? <UserQuizzes currentUser={props.currentUser} userName={props.userName} registerEmail={props.registerEmail} /> :  */}
   {
   <ReportedQuizzes currentUser={props.currentUser} userName={props.userName} registerEmail={props.registerEmail} removeQuiz={props.removeQuiz}/>
