@@ -14,6 +14,7 @@ const Container = styled.div`
   margin: var(--standard-margin);
   display: flex;
   flex-direction: column;
+  align-items: center;
   vh: 400 px;
   overflow: scroll;
 `;
@@ -22,6 +23,7 @@ const UserQuizzes = (props) => {
 
   const [userQuizzes, setUserQuizzes] = useState(exampleQuizzes)
   const [showQuizzes, setShowQuizzes] = useState(4);
+  const [userQuizList, setUserQuizList] = useState([]);
 
   const getUserQuizzes = () => {
     // var data = {
@@ -48,7 +50,8 @@ const UserQuizzes = (props) => {
     const isReported = null;
     axios.get(`http://52.90.8.77:4444/quizzes/${username}&${categoryName}&${isReported}`)
       .then((response) => {
-        console.log(response.data);
+        console.log('USER QUIZZES!!! YAYAYAYAYYA:', response.data);
+        setUserQuizList(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -94,8 +97,8 @@ const UserQuizzes = (props) => {
   return (
     <Container>
       User Quizzes
-      {userQuizzes.map((userQuiz) => {
-        return <UserGeneratedQuiz userQuiz={userQuiz} userQuizzes={userQuizzes} key={userQuiz.quizID}/>
+      {userQuizList.map((userQuiz, i) => {
+        return <UserGeneratedQuiz userQuiz={userQuiz} userQuizList={userQuizList} key={i}/>
         // <ReportedQuizzes/>
       })}
     </Container>

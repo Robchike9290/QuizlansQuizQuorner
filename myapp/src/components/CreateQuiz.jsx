@@ -96,7 +96,7 @@ const SubmitBtn = styled.button`
   border-radius: var(--standard-border-radius);
 `;
 
-const CreateQuiz = () => {
+const CreateQuiz = ({ userName }) => {
   const [toggleModal, setToggleModal] = useState(false);
   const [newQuizTitle, setNewQuizTitle] = useState('');
   const [newQuizDescription, setNewQuizDescription] = useState('');
@@ -122,7 +122,7 @@ const CreateQuiz = () => {
     category: newQuizCategory,
     quizDescription: newQuizDescription,
     quizBanner: newQuizBanner,
-    createdBy: 'stand-in-user',
+    createdBy: userName,
   };
   const handleQuizSubmission = () => {
     addQuiz(quizToPost);

@@ -52,10 +52,8 @@ const RecentQuizzes = (props) => {
     <Container>
       Recent Quizzes
       <div>
-        {recentQuizzes.filter(recentQuiz =>
-          recentQuiz.createdBy === 'PatrickTheAssistant' && recentQuiz.timesTaken > 0)
-         .slice(0, showNumber).map((eachQuiz, key) => (
-          <RecentQuiz eachQuiz={eachQuiz} key={key}/>
+        {props.quizHistory.map((quiz, key) => (
+          <RecentQuiz quiz={quiz} key={key}/>
         ))}
       </div>
     </Container>

@@ -30,7 +30,7 @@ const App = () => {
   const [fullQuizList, setFullQuizList] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const [friends, setFriends] = useState([]);
-
+  const [quizHistory, setQuizHistory] = useState([]);
   const stringifiedUser = JSON.stringify(currentUser);
   //console.log('👄👄👄👄👄', currentUser);
   // onAuthStateChanged(auth, (loggedInUser) => {
@@ -154,6 +154,7 @@ const App = () => {
         // setUserName(response.data.userName);
         // setUserEmail(response.data.email);
         setFriends(response.data[0].friends)
+        setQuizHistory(response.data[0].quizHistory)
         console.log('USER DATA:', response.data);
       })
       .catch((err) => {
@@ -251,13 +252,13 @@ const App = () => {
             <Home fullQuizList={fullQuizList} />
           </Route>
           <Route exact path='/user'>
-            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} />
+            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} quizHistory={quizHistory} />
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} />
           </Route>
           <Route exact path='/createquiz'>
-            <CreateQuiz />
+            <CreateQuiz userName={userName} />
           </Route>
           <Route exact path='/login'>
             <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} setUserName={setUserName} userName={userName} setIsAdmin={setIsAdmin} isAdmin={isAdmin} />
