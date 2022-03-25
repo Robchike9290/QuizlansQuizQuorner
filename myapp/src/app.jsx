@@ -14,25 +14,50 @@ import axios from 'axios';
 import logo from './images/QuestionMark.png';
 import styled from 'styled-components';
 import { signOut } from 'firebase/auth';
+import {onAuthStateChanged} from 'firebase/auth';
+import {reactLocalStorage} from 'reactjs-localstorage';
 import { Switch as SwitchMode } from '@mui/material/';
 
 const App = () => {
   const [docData, setDocData] = useState(null);
-  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerEmail, setRegisterEmail] = useState('su@gmail.com');
   const [registerPassword, setRegisterPassword] = useState('');
   const [currentUser, setCurrentUser] = useState({});
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState('superuser');
+  // const [userEmail, setUserEmail] = useState('');
   const [fullQuizList, setFullQuizList] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [friends, setFriends] = useState([]);
+  const [quizHistory, setQuizHistory] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const stringifiedUser = JSON.stringify(currentUser);
+  //console.log('👄👄👄👄👄', currentUser);
+  // onAuthStateChanged(auth, (loggedInUser) => {
+  //   setCurrentUser(loggedInUser);
+  // });
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DON'T REFRESH!!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+
 
   useEffect(() => {
     getData();
-  }, []);
+
+    // console.log('app use effect username:', userName);
+    // console.log('app use effect email:', userEmail);
+  }, [currentUser]);
+
+
+  function populateStorage() {
+    localStorage.setItem('userName', userName);
+    localStorage.setItem('email', registerEmail);
+    // super.setState(userName);
+    // super.setState(registerEmail);
+  }
 
   const switchTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -134,11 +159,15 @@ const App = () => {
       });
   };
 
-  const getUser = () => {
-    axios
-      .get('http://52.90.8.77:4444/user')
+  const getUser = (userEmail) => {
+    const email = userEmail;
+    axios.get(`http://52.90.8.77:4444/user/${email}`)
       .then((response) => {
-        console.log(response.data);
+        // setUserName(response.data.userName);
+        // setUserEmail(response.data.email);
+        setFriends(response.data[0].friends)
+        setQuizHistory(response.data[0].quizHistory)
+        console.log('USER DATA:', response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -241,25 +270,16 @@ const App = () => {
             />
           </Route>
           <Route exact path='/user'>
-            <User currentUser={currentUser} userName={userName} />
+            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} quizHistory={quizHistory} />
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} />
           </Route>
           <Route exact path='/createquiz'>
-            <CreateQuiz />
+            <CreateQuiz userName={userName} />
           </Route>
           <Route exact path='/login'>
-            <Login
-              registerEmail={registerEmail}
-              setRegisterEmail={setRegisterEmail}
-              registerPassword={registerPassword}
-              setRegisterPassword={setRegisterPassword}
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-              setUserName={setUserName}
-              userName={userName}
-            />
+            <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} setUserName={setUserName} userName={userName} setIsAdmin={setIsAdmin} isAdmin={isAdmin} />
           </Route>
         </Switch>
         {docData ? <h1>Hello {docData.quizName}</h1> : null}

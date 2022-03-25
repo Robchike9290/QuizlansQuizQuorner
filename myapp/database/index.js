@@ -32,10 +32,11 @@ const quizSchema = mongoose.Schema({
 const userSchema = mongoose.Schema({
   userName: { type: String, required: true, index: { unique: true }}, // user - based on userName
   email: { type: String, required: true, index: { unique: true }}, // user - based on email
+  admin: Boolean,
   quizHistory: [
     {
-      quizId: { type: Number, required: true }, // based on quizId after completion
-      quizName: { type: String, required: true }, // based on quizName after completion
+      quizId: Number, // based on quizId after completion
+      quizName: String, // based on quizName after completion
       userScores: Number // add score to array after completion
     }
   ],
