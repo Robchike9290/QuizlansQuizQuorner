@@ -1,29 +1,27 @@
 const exampleQuizTemplate = {
-  quizId: 1,
-  quizName: 'General one',
-  quizQuestions: [
-    {
-      question: '',
-      correctAnswer: '',
-      incorrectAnswers: [],
-    },
-  ],
-  timesTaken: 12,
-  category: 'general',
-  quizDescription: 'General knowledge quiz number 1',
-  quizBanner: 'photo url',
-  quizUpvotes: 5,
-  quizDownvotes: 1,
-  reported: false,
-  reportedTimes: 0,
-  createdBy: 'PatrickTheAssistant',
-  aggregateScore: 84,
+//   quizName: 'Just for fun one',
+//   quizQuestions: [
+//     {
+//       question: '',
+//       correctAnswer: '',
+//       incorrectAnswers: [],
+//     },
+//   ],
+//   timesTaken: 12,
+//   category: 'Just for Fun',
+//   quizDescription: 'Just for Fun quiz number 1',
+//   quizBanner: 'https://i.imgur.com/Xwv08Qv.jpg',
+//   quizUpvotes: 5,
+//   quizDownvotes: 1,
+//   reported: false,
+//   reportedTimes: 0,
+//   createdBy: 'PatrickTheAssistant',
+//   aggregateScore: 84,
 };
 
-let exampleQuizzes = [
+let exampleQuizzesFinal = [
   {
-    quizId: 1,
-    quizName: 'General one',
+    quizName: 'Just for fun one',
     quizQuestions: [
       {
         question: 'What does DNA stand for?',
@@ -94,10 +92,10 @@ let exampleQuizzes = [
       },
     ],
     timesTaken: 12,
-    category: 'general',
-    quizDescription: 'General knowledge quiz number 1',
+    category: 'Just for Fun',
+    quizDescription: 'Just for Fun quiz number 1',
     quizBanner:
-      'https://pgcpsmess.files.wordpress.com/2013/08/imagescae8o2el.jpg',
+      'https://i.imgur.com/Xwv08Qv.jpg',
     quizUpvotes: 5,
     quizDownvotes: 1,
     reported: false,
@@ -106,92 +104,338 @@ let exampleQuizzes = [
     aggregateScore: 84,
   },
   {
-    quizId: 2,
-    quizName: 'General Two',
+    quizName: 'Just for fun two',
     quizQuestions: [
       {
-        question:
-          'Which of these was the name of a bug found in April 2014 in the publicly available OpenSSL cryptography library',
-        correctAnswer: 'Heartbleed',
-        incorrectAnswers: ['Shellshock', 'Corrupted Blood', 'Shellscript'],
-      },
-      {
-        question:
-          'What is the name of the formerly rich fishing grounds off the island of Newfoundland, Canada?',
-        correctAnswer: 'Grand Banks',
+        question: 'What does DNA stand for?',
+        correctAnswer: 'Deoxyribonucleic Acid',
         incorrectAnswers: [
-          'Great Barrier Reef',
-          'Mariana Trench',
-          'Hudson Bay',
+          'Deoxyribogenetic Acid',
+          'Deoxyribogenetic Atoms',
+          'Detoxic Acid',
         ],
       },
       {
         question:
-          'Which one of these cartoon characters is NOT voiced by Rob Paulsen?',
-        correctAnswer: 'Max Tennyson (Ben 10)',
+          'Which game did &quot;Sonic The Hedgehog&quot; make his first appearance in?',
+        correctAnswer: 'Rad Mobile',
+        incorrectAnswers: ['Sonic The Hedgehog', 'Super Mario 64', 'Mega Man'],
+      },
+      {
+        question:
+          'Which animal features on the logo for Abarth, the motorsport division of Fiat?',
+        correctAnswer: 'Scorpion',
+        incorrectAnswers: ['Snake', 'Bull', 'Horse'],
+      },
+      {
+        question:
+          'Who had a 1976 hit with the song You Make Me Feel Like Dancing?',
+        correctAnswer: 'Leo Sayer',
+        incorrectAnswers: ['Elton John', 'Billy Joel', 'Andy Gibb'],
+      },
+      {
+        question:
+          'What does AD stand for in relation to Windows Operating Systems? ',
+        correctAnswer: 'Active Directory',
         incorrectAnswers: [
-          'Carl Wheezer (Jimmy Neutron)',
-          'Yakko Warner (Animaniacs)',
-          'The Mask (The Mask, TV Series)',
+          'Alternative Drive',
+          'Automated Database',
+          'Active Department',
+        ],
+      },
+      {
+        question: 'On which continent is the country of Angola located?',
+        correctAnswer: 'Africa',
+        incorrectAnswers: ['South America', 'Europe', 'Asia'],
+      },
+      {
+        question: 'Who is the true moon princess in Sailor Moon?',
+        correctAnswer: 'Sailor Moon',
+        incorrectAnswers: ['Sailor Venus', 'Sailor Mars', 'Sailor Jupiter'],
+      },
+      {
+        question: 'What is the nickname of the US state of California?',
+        correctAnswer: 'Golden State',
+        incorrectAnswers: ['Sunshine State', 'Bay State', 'Treasure State'],
+      },
+      {
+        question: 'In which Mario game did the Mega Mushroom make its debut?',
+        correctAnswer: 'Mario Party 4',
+        incorrectAnswers: [
+          'New Super Mario Bros.',
+          'Mario Kart Wii',
+          'Super Mario 3D World',
         ],
       },
       {
         question:
-          'African-American performer Sammy Davis Jr. was known for losing which part of his body in a car accident?',
-        correctAnswer: 'Left Eye',
-        incorrectAnswers: ['Right Ear', 'Right Middle Finger', 'Nose'],
-      },
-      {
-        question: 'Who out of these actresses is the youngest?',
-        correctAnswer: 'Kiernan Shipka',
-        incorrectAnswers: ['Ariel Winter', 'Emma Watson', 'Bonnie Wright'],
-      },
-      {
-        question:
-          'What is former United States President Bill Clinton full name?',
-        correctAnswer: 'William Jefferson Clinton',
-        incorrectAnswers: [
-          'William Roosevelt Clinton',
-          'William Truman Clinton',
-          'William Lincoln Clinton',
-        ],
-      },
-      {
-        question:
-          'In Battlestar Galactica (2004), what is the name of the President of the Twelve Colonies?',
-        correctAnswer: 'Laura Roslin',
-        incorrectAnswers: ['William Adama', 'Tricia Helfer', 'Harry Stills'],
-      },
-      {
-        question: 'In which year was League of Legends released?',
-        correctAnswer: '2009',
-        incorrectAnswers: ['2010', '2003', '2001'],
-      },
-      {
-        question: 'Which of the following is the longest river in Europe?',
-        correctAnswer: 'Volga',
-        incorrectAnswers: ['Danube', 'Ural', 'Dnieper'],
-      },
-      {
-        question: 'Which country drives on the left side of the road?',
-        correctAnswer: 'Japan',
-        incorrectAnswers: ['Germany', 'Russia', 'China'],
+          'Gordon Freeman is said to have burnt and destroyed what food in the break room microwave?',
+        correctAnswer: 'Casserole',
+        incorrectAnswers: ['Sub Sandwich', 'Chicken Soup', 'Pepperoni Pizza'],
       },
     ],
     timesTaken: 22,
-    category: 'general',
-    quizDescription: 'General knowledge quiz number 2',
+    category: 'Just for Fun',
+    quizDescription: 'Just for Fun quiz number 2',
     quizBanner:
-      'https://image.shutterstock.com/image-vector/illustration-cartoon-military-general-saluting-260nw-260686511.jpg',
-    quizUpvotes: 12,
-    quizDownvotes: 8,
+      'https://i.imgur.com/Xwv08Qv.jpg',
+    quizUpvotes: 15,
+    quizDownvotes: 1,
     reported: false,
     reportedTimes: 0,
     createdBy: 'PatrickTheAssistant',
-    aggregateScore: 132,
+    aggregateScore: 120,
   },
   {
-    quizId: 3,
+    quizName: 'Just for fun three',
+    quizQuestions: [
+      {
+        question: 'What does DNA stand for?',
+        correctAnswer: 'Deoxyribonucleic Acid',
+        incorrectAnswers: [
+          'Deoxyribogenetic Acid',
+          'Deoxyribogenetic Atoms',
+          'Detoxic Acid',
+        ],
+      },
+      {
+        question:
+          'Which game did &quot;Sonic The Hedgehog&quot; make his first appearance in?',
+        correctAnswer: 'Rad Mobile',
+        incorrectAnswers: ['Sonic The Hedgehog', 'Super Mario 64', 'Mega Man'],
+      },
+      {
+        question:
+          'Which animal features on the logo for Abarth, the motorsport division of Fiat?',
+        correctAnswer: 'Scorpion',
+        incorrectAnswers: ['Snake', 'Bull', 'Horse'],
+      },
+      {
+        question:
+          'Who had a 1976 hit with the song You Make Me Feel Like Dancing?',
+        correctAnswer: 'Leo Sayer',
+        incorrectAnswers: ['Elton John', 'Billy Joel', 'Andy Gibb'],
+      },
+      {
+        question:
+          'What does AD stand for in relation to Windows Operating Systems? ',
+        correctAnswer: 'Active Directory',
+        incorrectAnswers: [
+          'Alternative Drive',
+          'Automated Database',
+          'Active Department',
+        ],
+      },
+      {
+        question: 'On which continent is the country of Angola located?',
+        correctAnswer: 'Africa',
+        incorrectAnswers: ['South America', 'Europe', 'Asia'],
+      },
+      {
+        question: 'Who is the true moon princess in Sailor Moon?',
+        correctAnswer: 'Sailor Moon',
+        incorrectAnswers: ['Sailor Venus', 'Sailor Mars', 'Sailor Jupiter'],
+      },
+      {
+        question: 'What is the nickname of the US state of California?',
+        correctAnswer: 'Golden State',
+        incorrectAnswers: ['Sunshine State', 'Bay State', 'Treasure State'],
+      },
+      {
+        question: 'In which Mario game did the Mega Mushroom make its debut?',
+        correctAnswer: 'Mario Party 4',
+        incorrectAnswers: [
+          'New Super Mario Bros.',
+          'Mario Kart Wii',
+          'Super Mario 3D World',
+        ],
+      },
+      {
+        question:
+          'Gordon Freeman is said to have burnt and destroyed what food in the break room microwave?',
+        correctAnswer: 'Casserole',
+        incorrectAnswers: ['Sub Sandwich', 'Chicken Soup', 'Pepperoni Pizza'],
+      },
+    ],
+    timesTaken: 32,
+    category: 'Just for Fun',
+    quizDescription: 'Just for Fun quiz number 3',
+    quizBanner:
+      'https://i.imgur.com/Xwv08Qv.jpg',
+    quizUpvotes: 35,
+    quizDownvotes: 11,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'PatrickTheAssistant',
+    aggregateScore: 260,
+  },
+  {
+    quizName: 'Just for fun four',
+    quizQuestions: [
+      {
+        question: 'What does DNA stand for?',
+        correctAnswer: 'Deoxyribonucleic Acid',
+        incorrectAnswers: [
+          'Deoxyribogenetic Acid',
+          'Deoxyribogenetic Atoms',
+          'Detoxic Acid',
+        ],
+      },
+      {
+        question:
+          'Which game did &quot;Sonic The Hedgehog&quot; make his first appearance in?',
+        correctAnswer: 'Rad Mobile',
+        incorrectAnswers: ['Sonic The Hedgehog', 'Super Mario 64', 'Mega Man'],
+      },
+      {
+        question:
+          'Which animal features on the logo for Abarth, the motorsport division of Fiat?',
+        correctAnswer: 'Scorpion',
+        incorrectAnswers: ['Snake', 'Bull', 'Horse'],
+      },
+      {
+        question:
+          'Who had a 1976 hit with the song You Make Me Feel Like Dancing?',
+        correctAnswer: 'Leo Sayer',
+        incorrectAnswers: ['Elton John', 'Billy Joel', 'Andy Gibb'],
+      },
+      {
+        question:
+          'What does AD stand for in relation to Windows Operating Systems? ',
+        correctAnswer: 'Active Directory',
+        incorrectAnswers: [
+          'Alternative Drive',
+          'Automated Database',
+          'Active Department',
+        ],
+      },
+      {
+        question: 'On which continent is the country of Angola located?',
+        correctAnswer: 'Africa',
+        incorrectAnswers: ['South America', 'Europe', 'Asia'],
+      },
+      {
+        question: 'Who is the true moon princess in Sailor Moon?',
+        correctAnswer: 'Sailor Moon',
+        incorrectAnswers: ['Sailor Venus', 'Sailor Mars', 'Sailor Jupiter'],
+      },
+      {
+        question: 'What is the nickname of the US state of California?',
+        correctAnswer: 'Golden State',
+        incorrectAnswers: ['Sunshine State', 'Bay State', 'Treasure State'],
+      },
+      {
+        question: 'In which Mario game did the Mega Mushroom make its debut?',
+        correctAnswer: 'Mario Party 4',
+        incorrectAnswers: [
+          'New Super Mario Bros.',
+          'Mario Kart Wii',
+          'Super Mario 3D World',
+        ],
+      },
+      {
+        question:
+          'Gordon Freeman is said to have burnt and destroyed what food in the break room microwave?',
+        correctAnswer: 'Casserole',
+        incorrectAnswers: ['Sub Sandwich', 'Chicken Soup', 'Pepperoni Pizza'],
+      },
+    ],
+    timesTaken: 42,
+    category: 'Just for Fun',
+    quizDescription: 'Just for Fun quiz number 4',
+    quizBanner:
+      'https://i.imgur.com/Xwv08Qv.jpg',
+    quizUpvotes: 25,
+    quizDownvotes: 10,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'PatrickTheAssistant',
+    aggregateScore: 360,
+  },
+  {
+    quizName: 'Just for fun five',
+    quizQuestions: [
+      {
+        question: 'What does DNA stand for?',
+        correctAnswer: 'Deoxyribonucleic Acid',
+        incorrectAnswers: [
+          'Deoxyribogenetic Acid',
+          'Deoxyribogenetic Atoms',
+          'Detoxic Acid',
+        ],
+      },
+      {
+        question:
+          'Which game did &quot;Sonic The Hedgehog&quot; make his first appearance in?',
+        correctAnswer: 'Rad Mobile',
+        incorrectAnswers: ['Sonic The Hedgehog', 'Super Mario 64', 'Mega Man'],
+      },
+      {
+        question:
+          'Which animal features on the logo for Abarth, the motorsport division of Fiat?',
+        correctAnswer: 'Scorpion',
+        incorrectAnswers: ['Snake', 'Bull', 'Horse'],
+      },
+      {
+        question:
+          'Who had a 1976 hit with the song You Make Me Feel Like Dancing?',
+        correctAnswer: 'Leo Sayer',
+        incorrectAnswers: ['Elton John', 'Billy Joel', 'Andy Gibb'],
+      },
+      {
+        question:
+          'What does AD stand for in relation to Windows Operating Systems? ',
+        correctAnswer: 'Active Directory',
+        incorrectAnswers: [
+          'Alternative Drive',
+          'Automated Database',
+          'Active Department',
+        ],
+      },
+      {
+        question: 'On which continent is the country of Angola located?',
+        correctAnswer: 'Africa',
+        incorrectAnswers: ['South America', 'Europe', 'Asia'],
+      },
+      {
+        question: 'Who is the true moon princess in Sailor Moon?',
+        correctAnswer: 'Sailor Moon',
+        incorrectAnswers: ['Sailor Venus', 'Sailor Mars', 'Sailor Jupiter'],
+      },
+      {
+        question: 'What is the nickname of the US state of California?',
+        correctAnswer: 'Golden State',
+        incorrectAnswers: ['Sunshine State', 'Bay State', 'Treasure State'],
+      },
+      {
+        question: 'In which Mario game did the Mega Mushroom make its debut?',
+        correctAnswer: 'Mario Party 4',
+        incorrectAnswers: [
+          'New Super Mario Bros.',
+          'Mario Kart Wii',
+          'Super Mario 3D World',
+        ],
+      },
+      {
+        question:
+          'Gordon Freeman is said to have burnt and destroyed what food in the break room microwave?',
+        correctAnswer: 'Casserole',
+        incorrectAnswers: ['Sub Sandwich', 'Chicken Soup', 'Pepperoni Pizza'],
+      },
+    ],
+    timesTaken: 50,
+    category: 'Just for Fun',
+    quizDescription: 'Just for Fun quiz number 5',
+    quizBanner:
+      'https://i.imgur.com/Xwv08Qv.jpg',
+    quizUpvotes: 25,
+    quizDownvotes: 11,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'PatrickTheAssistant',
+    aggregateScore: 450,
+  },
+  {
     quizName: 'Science and Nature quiz one',
     quizQuestions: [
       {
@@ -258,7 +502,7 @@ let exampleQuizzes = [
     category: 'Science&Nature',
     quizDescription: 'Science and Nature quiz number 1',
     quizBanner:
-      'https://epi-rsc.rsc-cdn.org/globalassets/05-journals-books-databases/our-journals/00-journal-pages-heros/Biomaterials-Science-HERO.jpg?version=9e7110e4',
+      'https://i.imgur.com/542Jxv9.jpg',
     quizUpvotes: 9,
     quizDownvotes: 1,
     reported: false,
@@ -267,84 +511,306 @@ let exampleQuizzes = [
     aggregateScore: 50,
   },
   {
-    quizId: 4,
     quizName: 'Science and Nature quiz two',
     quizQuestions: [
       {
-        question: 'The human heart has how many chambers?',
-        correctAnswer: '4',
-        incorrectAnswers: ['2', '6', '3'],
+        question: 'Which of these bones is hardest to break?',
+        correctAnswer: 'Femur',
+        incorrectAnswers: ['Cranium', 'Humerus', 'Tibia'],
       },
       {
-        question: 'The human right lung has how many lobes?',
-        correctAnswer: '3',
-        incorrectAnswers: ['4', '2', '1'],
+        question:
+          'Rhinoplasty is a surgical procedure on what part of the human body?',
+        correctAnswer: 'Nose',
+        incorrectAnswers: ['Ears', 'Chin', 'Neck'],
       },
       {
-        question: 'Human cells typically have how many copies of each gene?',
+        question:
+          'To the nearest minute, how long does it take for light to travel from the Sun to the Earth?',
+        correctAnswer: '8 Minutes',
+        incorrectAnswers: ['6 Minutes', '2 Minutes', '12 Minutes'],
+      },
+      {
+        question: 'Which chemical element has the lowest boiling point?',
+        correctAnswer: 'Helium',
+        incorrectAnswers: ['Hydrogen', 'Neon', 'Nitrogen'],
+      },
+      {
+        question:
+          'An organic compound is considered an alcohol if it has what functional group?',
+        correctAnswer: 'Hydroxyl',
+        incorrectAnswers: ['Carbonyl', 'Alkyl', 'Aldehyde'],
+      },
+      {
+        question: 'Au on the Periodic Table refers to which element?',
+        correctAnswer: 'Gold',
+        incorrectAnswers: ['Silver', 'Oxygen', 'Nickel'],
+      },
+      {
+        question:
+          'All the following metal elements are liquids at or near room temperature EXCEPT:',
+        correctAnswer: 'Beryllium',
+        incorrectAnswers: ['Gallium', 'Caesium', 'Mercury'],
+      },
+      {
+        question:
+          'How many officially recognized dwarf planets in the solar system are named after Polynesian deities?',
         correctAnswer: '2',
-        incorrectAnswers: ['1', '4', '3'],
+        incorrectAnswers: ['0', '1', '5'],
       },
       {
-        question: 'Who made the discovery of X-rays?',
-        correctAnswer: 'Wilhelm Conrad Roentgen',
+        question: 'Folic acid is the synthetic form of which vitamin?',
+        correctAnswer: 'Vitamin B',
+        incorrectAnswers: ['Vitamin A', 'Vitamin C', 'Vitamin D'],
+      },
+      {
+        question: 'What term is best associated with Sigmund Freud?',
+        correctAnswer: 'Psychoanalysis',
         incorrectAnswers: [
-          'Thomas Alva Edison',
-          'James Watt',
-          'Albert Einstein',
+          'Cognitive-Behavioral Therapy',
+          'Theory of Gravity',
+          'Dialectical Behavior Therapy',
         ],
       },
+    ],
+    timesTaken: 20,
+    category: 'Science&Nature',
+    quizDescription: 'Science and Nature quiz number 2',
+    quizBanner:
+      'https://i.imgur.com/542Jxv9.jpg',
+    quizUpvotes: 9,
+    quizDownvotes: 1,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'SteveTheQwizard',
+    aggregateScore: 150,
+  },
+  {
+    quizName: 'Science and Nature quiz three',
+    quizQuestions: [
       {
-        question: 'Botanically speaking, which of these fruits is NOT a berry?',
-        correctAnswer: 'Strawberry',
-        incorrectAnswers: ['Blueberry', 'Banana', 'Concord Grape'],
+        question: 'Which of these bones is hardest to break?',
+        correctAnswer: 'Femur',
+        incorrectAnswers: ['Cranium', 'Humerus', 'Tibia'],
       },
       {
-        question: 'An average human can go how many weeks without water.',
+        question:
+          'Rhinoplasty is a surgical procedure on what part of the human body?',
+        correctAnswer: 'Nose',
+        incorrectAnswers: ['Ears', 'Chin', 'Neck'],
+      },
+      {
+        question:
+          'To the nearest minute, how long does it take for light to travel from the Sun to the Earth?',
+        correctAnswer: '8 Minutes',
+        incorrectAnswers: ['6 Minutes', '2 Minutes', '12 Minutes'],
+      },
+      {
+        question: 'Which chemical element has the lowest boiling point?',
+        correctAnswer: 'Helium',
+        incorrectAnswers: ['Hydrogen', 'Neon', 'Nitrogen'],
+      },
+      {
+        question:
+          'An organic compound is considered an alcohol if it has what functional group?',
+        correctAnswer: 'Hydroxyl',
+        incorrectAnswers: ['Carbonyl', 'Alkyl', 'Aldehyde'],
+      },
+      {
+        question: 'Au on the Periodic Table refers to which element?',
+        correctAnswer: 'Gold',
+        incorrectAnswers: ['Silver', 'Oxygen', 'Nickel'],
+      },
+      {
+        question:
+          'All the following metal elements are liquids at or near room temperature EXCEPT:',
+        correctAnswer: 'Beryllium',
+        incorrectAnswers: ['Gallium', 'Caesium', 'Mercury'],
+      },
+      {
+        question:
+          'How many officially recognized dwarf planets in the solar system are named after Polynesian deities?',
         correctAnswer: '2',
-        incorrectAnswers: ['1', '4', '3'],
+        incorrectAnswers: ['0', '1', '5'],
       },
       {
-        question:
-          'Burning which of these metals will produce a bright white flame?',
-        correctAnswer: 'Magnesium',
-        incorrectAnswers: ['Copper', 'Lithium', 'Lead'],
+        question: 'Folic acid is the synthetic form of which vitamin?',
+        correctAnswer: 'Vitamin B',
+        incorrectAnswers: ['Vitamin A', 'Vitamin C', 'Vitamin D'],
       },
       {
-        question: 'Which chemical element was originally known as Alabamine?',
-        correctAnswer: 'Astatine',
-        incorrectAnswers: ['Selenium', 'Antimony', 'Molybdenum'],
-      },
-      {
-        question:
-          'Which of the following men does not have a chemical element named after him?',
-        correctAnswer: 'Sir Isaac Newton',
-        incorrectAnswers: ['Albert Einstein', 'Niels Bohr', 'Enrico Fermi'],
-      },
-      {
-        question: 'What is the half-life of Uranium-235?',
-        correctAnswer: '703,800,000 years',
+        question: 'What term is best associated with Sigmund Freud?',
+        correctAnswer: 'Psychoanalysis',
         incorrectAnswers: [
-          '4,300,400,000 years',
-          '1,260,900,000 years',
-          'Uranium-235 is a stable isotope',
+          'Cognitive-Behavioral Therapy',
+          'Theory of Gravity',
+          'Dialectical Behavior Therapy',
+        ],
+      },
+    ],
+    timesTaken: 30,
+    category: 'Science&Nature',
+    quizDescription: 'Science and Nature quiz number 3',
+    quizBanner:
+      'https://i.imgur.com/542Jxv9.jpg',
+    quizUpvotes: 19,
+    quizDownvotes: 11,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'SteveTheQwizard',
+    aggregateScore: 270,
+  },
+  {
+    quizName: 'Science and Nature quiz four',
+    quizQuestions: [
+      {
+        question: 'Which of these bones is hardest to break?',
+        correctAnswer: 'Femur',
+        incorrectAnswers: ['Cranium', 'Humerus', 'Tibia'],
+      },
+      {
+        question:
+          'Rhinoplasty is a surgical procedure on what part of the human body?',
+        correctAnswer: 'Nose',
+        incorrectAnswers: ['Ears', 'Chin', 'Neck'],
+      },
+      {
+        question:
+          'To the nearest minute, how long does it take for light to travel from the Sun to the Earth?',
+        correctAnswer: '8 Minutes',
+        incorrectAnswers: ['6 Minutes', '2 Minutes', '12 Minutes'],
+      },
+      {
+        question: 'Which chemical element has the lowest boiling point?',
+        correctAnswer: 'Helium',
+        incorrectAnswers: ['Hydrogen', 'Neon', 'Nitrogen'],
+      },
+      {
+        question:
+          'An organic compound is considered an alcohol if it has what functional group?',
+        correctAnswer: 'Hydroxyl',
+        incorrectAnswers: ['Carbonyl', 'Alkyl', 'Aldehyde'],
+      },
+      {
+        question: 'Au on the Periodic Table refers to which element?',
+        correctAnswer: 'Gold',
+        incorrectAnswers: ['Silver', 'Oxygen', 'Nickel'],
+      },
+      {
+        question:
+          'All the following metal elements are liquids at or near room temperature EXCEPT:',
+        correctAnswer: 'Beryllium',
+        incorrectAnswers: ['Gallium', 'Caesium', 'Mercury'],
+      },
+      {
+        question:
+          'How many officially recognized dwarf planets in the solar system are named after Polynesian deities?',
+        correctAnswer: '2',
+        incorrectAnswers: ['0', '1', '5'],
+      },
+      {
+        question: 'Folic acid is the synthetic form of which vitamin?',
+        correctAnswer: 'Vitamin B',
+        incorrectAnswers: ['Vitamin A', 'Vitamin C', 'Vitamin D'],
+      },
+      {
+        question: 'What term is best associated with Sigmund Freud?',
+        correctAnswer: 'Psychoanalysis',
+        incorrectAnswers: [
+          'Cognitive-Behavioral Therapy',
+          'Theory of Gravity',
+          'Dialectical Behavior Therapy',
+        ],
+      },
+    ],
+    timesTaken: 40,
+    category: 'Science&Nature',
+    quizDescription: 'Science and Nature quiz number 4',
+    quizBanner:
+      'https://i.imgur.com/542Jxv9.jpg',
+    quizUpvotes: 29,
+    quizDownvotes: 1,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'SteveTheQwizard',
+    aggregateScore: 420,
+  },
+  {
+    quizName: 'Science and Nature quiz five',
+    quizQuestions: [
+      {
+        question: 'Which of these bones is hardest to break?',
+        correctAnswer: 'Femur',
+        incorrectAnswers: ['Cranium', 'Humerus', 'Tibia'],
+      },
+      {
+        question:
+          'Rhinoplasty is a surgical procedure on what part of the human body?',
+        correctAnswer: 'Nose',
+        incorrectAnswers: ['Ears', 'Chin', 'Neck'],
+      },
+      {
+        question:
+          'To the nearest minute, how long does it take for light to travel from the Sun to the Earth?',
+        correctAnswer: '8 Minutes',
+        incorrectAnswers: ['6 Minutes', '2 Minutes', '12 Minutes'],
+      },
+      {
+        question: 'Which chemical element has the lowest boiling point?',
+        correctAnswer: 'Helium',
+        incorrectAnswers: ['Hydrogen', 'Neon', 'Nitrogen'],
+      },
+      {
+        question:
+          'An organic compound is considered an alcohol if it has what functional group?',
+        correctAnswer: 'Hydroxyl',
+        incorrectAnswers: ['Carbonyl', 'Alkyl', 'Aldehyde'],
+      },
+      {
+        question: 'Au on the Periodic Table refers to which element?',
+        correctAnswer: 'Gold',
+        incorrectAnswers: ['Silver', 'Oxygen', 'Nickel'],
+      },
+      {
+        question:
+          'All the following metal elements are liquids at or near room temperature EXCEPT:',
+        correctAnswer: 'Beryllium',
+        incorrectAnswers: ['Gallium', 'Caesium', 'Mercury'],
+      },
+      {
+        question:
+          'How many officially recognized dwarf planets in the solar system are named after Polynesian deities?',
+        correctAnswer: '2',
+        incorrectAnswers: ['0', '1', '5'],
+      },
+      {
+        question: 'Folic acid is the synthetic form of which vitamin?',
+        correctAnswer: 'Vitamin B',
+        incorrectAnswers: ['Vitamin A', 'Vitamin C', 'Vitamin D'],
+      },
+      {
+        question: 'What term is best associated with Sigmund Freud?',
+        correctAnswer: 'Psychoanalysis',
+        incorrectAnswers: [
+          'Cognitive-Behavioral Therapy',
+          'Theory of Gravity',
+          'Dialectical Behavior Therapy',
         ],
       },
     ],
     timesTaken: 50,
-    category: 'general',
-    quizDescription: 'Science and Nature quiz number 2',
+    category: 'Science&Nature',
+    quizDescription: 'Science and Nature quiz number 5',
     quizBanner:
-      'https://ccweb.imgix.net/https%3A%2F%2Fwww.classcentral.com%2Fimages%2Fsubjects%2Fscience.svg?auto=format&blur=200&h=60&ixlib=php-3.3.1&px=16&s=5fee1b02e6968787222f2efe752bb399',
-    quizUpvotes: 26,
-    quizDownvotes: 8,
+      'https://i.imgur.com/542Jxv9.jpg',
+    quizUpvotes: 29,
+    quizDownvotes: 16,
     reported: false,
     reportedTimes: 0,
     createdBy: 'SteveTheQwizard',
-    aggregateScore: 375,
+    aggregateScore: 350,
   },
   {
-    quizId: 5,
     quizName: 'Animal quiz one',
     quizQuestions: [
       {
@@ -422,7 +888,7 @@ let exampleQuizzes = [
     category: 'Animals',
     quizDescription: 'Animal quiz number 1',
     quizBanner:
-      'https://www.iata.org/contentassets/d7c512eb9a704ba2a8056e3186a31921/cargo_live_animals_parrot.jpg?w=330&h=200&mode=crop&scale=both&v=20191213012337',
+      'https://i.imgur.com/4wZslIx.png',
     quizUpvotes: 12,
     quizDownvotes: 4,
     reported: false,
@@ -431,241 +897,2073 @@ let exampleQuizzes = [
     aggregateScore: 130,
   },
   {
-    quizId: 6,
-    quizName: 'Animal quiz number two',
+    quizName: 'Animal quiz two',
     quizQuestions: [
       {
-        question: 'Which of these animals is NOT a lizard?',
-        correctAnswer: 'Tuatara',
-        incorrectAnswers: ['Komodo Dragon', 'Gila Monster', 'Green Iguana'],
-      },
-      {
-        question: 'Unlike on most salamanders, this part of a newt is flat?',
-        correctAnswer: 'Tail',
-        incorrectAnswers: ['Head', 'Teeth', 'Feet'],
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
       },
       {
         question:
-          'What is the name of the family that the domestic cat is a member of?',
-        correctAnswer: 'Felidae',
-        incorrectAnswers: ['Felinae', 'Felis', 'Cat'],
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
       },
       {
         question:
-          'What dog bread is one of the oldest breeds of dog and has flourished since before 400 BCE.',
-        correctAnswer: 'Pugs',
-        incorrectAnswers: ['Bulldogs', 'Boxers', 'Chihuahua'],
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
       },
       {
         question:
-          'What is the name of the copper-rich protein that creates the blue blood in the Antarctic octopus?',
-        correctAnswer: 'Hemocyanin',
-        incorrectAnswers: ['Cytochrome', 'Iron', 'Methionine'],
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
       },
       {
-        question: 'The dish Fugu, is made from what family of fish?',
-        correctAnswer: 'Pufferfish',
-        incorrectAnswers: ['Bass', 'Salmon', 'Mackerel'],
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
       },
       {
-        question: 'What is the collective noun for a group of crows?',
-        correctAnswer: 'Murder',
-        incorrectAnswers: ['Pack', 'Gaggle', 'Herd'],
-      },
-      {
-        question: 'What is the scientific name of the Common Chimpanzee?',
-        correctAnswer: 'Pan troglodytes',
-        incorrectAnswers: ['Gorilla gorilla', 'Pan paniscus', 'Panthera leo'],
-      },
-      {
-        question: 'Which of these is a colony of polyps and not a jellyfish?',
-        correctAnswer: 'Portuguese Man-of-War',
-        incorrectAnswers: ['Sea Wasp', 'Irukandji', 'Sea Nettle'],
-      },
-      {
-        question: 'What colour is the female blackbird?',
-        correctAnswer: 'Brown',
-        incorrectAnswers: ['Black', 'White', 'Yellow'],
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
       },
     ],
-    timesTaken: 3,
+    timesTaken: 20,
     category: 'Animals',
     quizDescription: 'Animal quiz number 2',
     quizBanner:
-      'https://www.rd.com/wp-content/uploads/2020/05/GettyImages-109433950-scaled.jpg',
-    quizUpvotes: 0,
-    quizDownvotes: 3,
-    reported: true,
-    reportedTimes: 3,
-    createdBy: 'ZeroOutOfTen',
-    aggregateScore: 15,
+      'https://i.imgur.com/4wZslIx.png',
+    quizUpvotes: 12,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 130,
   },
   {
-    quizId: 7,
-    quizName: 'Animal Quiz Number 3',
+    quizName: 'Animal quiz three',
     quizQuestions: [
       {
         question:
-          'To which biological phylum do all mammals, birds and reptiles belong?',
-        correctAnswer: 'Chordata',
-        incorrectAnswers: ['Echinodermata', 'Annelida', 'Placazoa'],
-      },
-      {
-        question: 'What bird is born with claws on its wing digits?',
-        correctAnswer: 'Hoatzin',
-        incorrectAnswers: ['Cormorant', 'Cassowary', 'Secretary bird'],
-      },
-      {
-        question: 'What is the collective noun for rats?',
-        correctAnswer: 'Mischief',
-        incorrectAnswers: ['Pack', 'Race', 'Drift'],
-      },
-      {
-        question: 'What is the collective noun for bears?',
-        correctAnswer: 'Sloth',
-        incorrectAnswers: ['Drove', 'Tribe', 'Husk'],
-      },
-      {
-        question:
-          'What is the name for a male bee that comes from an unfertilized egg?',
-        correctAnswer: 'Drone',
-        incorrectAnswers: ['Soldier', 'Worker', 'Male'],
-      },
-      {
-        question: 'How many teeth does an adult rabbit have?',
-        correctAnswer: '28',
-        incorrectAnswers: ['30', '26', '24'],
-      },
-      {
-        question:
-          'What is the common term for bovine spongiform encephalopathy (BSE)?',
-        correctAnswer: 'Mad Cow disease',
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
         incorrectAnswers: [
-          'Weils disease',
-          'Milk fever',
-          'Foot-and-mouth disease',
-        ],
-      },
-      {
-        question: 'What is the worlds longest venomous snake?',
-        correctAnswer: 'King Cobra',
-        incorrectAnswers: [
-          'Green Anaconda',
-          'Inland Taipan',
-          'Yellow Bellied Sea Snake',
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
         ],
       },
       {
         question:
-          'To which biological phylum do all mammals, birds and reptiles belong?',
-        correctAnswer: 'Chordata',
-        incorrectAnswers: ['Echinodermata', 'Annelida', 'Placazoa'],
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
       },
       {
         question:
-          'Decapods are an order of ten-footed crustaceans.  Which of these are NOT decapods?',
-        correctAnswer: 'Krill',
-        incorrectAnswers: ['Lobsters', 'Shrimp', 'Crabs'],
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
       },
     ],
-    timesTaken: 17,
+    timesTaken: 30,
     category: 'Animals',
     quizDescription: 'Animal quiz number 3',
     quizBanner:
-      'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/hippopotamus-extreme-animals-social-1642555668.jpg',
-    quizUpvotes: 16,
-    quizDownvotes: 0,
+      'https://i.imgur.com/4wZslIx.png',
+    quizUpvotes: 20,
+    quizDownvotes: 4,
     reported: false,
     reportedTimes: 0,
-    createdBy: 'KenJennings',
-    aggregateScore: 136,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 250,
   },
+  {
+    quizName: 'Animal quiz four',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 40,
+    category: 'Animals',
+    quizDescription: 'Animal quiz number 4',
+    quizBanner:
+      'https://i.imgur.com/4wZslIx.png',
+    quizUpvotes: 25,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 320,
+  },
+  {
+    quizName: 'Animal quiz five',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 50,
+    category: 'Animals',
+    quizDescription: 'Animal quiz number 5',
+    quizBanner:
+      'https://i.imgur.com/4wZslIx.png',
+    quizUpvotes: 36,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 480,
+  },
+  {
+    quizName: 'Pop Culture quiz one',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 10,
+    category: 'Pop Culture',
+    quizDescription: 'Pop Culture quiz number 1',
+    quizBanner:
+      'https://i.imgur.com/ASQMn4Y.jpg',
+    quizUpvotes: 12,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 130,
+  },
+  {
+    quizName: 'Pop Culture quiz two',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 20,
+    category: 'Pop Culture',
+    quizDescription: 'Pop Culture quiz number 2',
+    quizBanner:
+      'https://i.imgur.com/ASQMn4Y.jpg',
+    quizUpvotes: 10,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 130,
+  },
+  {
+    quizName: 'Pop Culture quiz three',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 30,
+    category: 'Pop Culture',
+    quizDescription: 'Pop Culture quiz number 3',
+    quizBanner:
+      'https://i.imgur.com/ASQMn4Y.jpg',
+    quizUpvotes: 12,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 240,
+  },
+  {
+    quizName: 'Pop Culture quiz four',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 40,
+    category: 'Pop Culture',
+    quizDescription: 'Pop Culture quiz number 4',
+    quizBanner:
+      'https://i.imgur.com/ASQMn4Y.jpg',
+    quizUpvotes: 22,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 360,
+  },
+  {
+    quizName: 'Pop Culture quiz five',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 50,
+    category: 'Pop Culture',
+    quizDescription: 'Pop Culture quiz number 5',
+    quizBanner:
+      'https://i.imgur.com/ASQMn4Y.jpg',
+    quizUpvotes: 12,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 420,
+  },
+  {
+    quizName: 'History quiz one',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 10,
+    category: 'History',
+    quizDescription: 'History quiz number 1',
+    quizBanner:
+      'https://i.imgur.com/vW2wWam.jpg',
+    quizUpvotes: 2,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 75,
+  },
+  {
+    quizName: 'History quiz two',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 20,
+    category: 'History',
+    quizDescription: 'History quiz number 2',
+    quizBanner:
+      'https://i.imgur.com/vW2wWam.jpg',
+    quizUpvotes: 12,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 160,
+  },
+  {
+    quizName: 'History quiz three',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 30,
+    category: 'History',
+    quizDescription: 'History quiz number 3',
+    quizBanner:
+      'https://i.imgur.com/vW2wWam.jpg',
+    quizUpvotes: 22,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 220,
+  },
+  {
+    quizName: 'History quiz four',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 40,
+    category: 'History',
+    quizDescription: 'History quiz number 4',
+    quizBanner:
+      'https://i.imgur.com/vW2wWam.jpg',
+    quizUpvotes: 32,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 300,
+  },
+  {
+    quizName: 'History quiz five',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 50,
+    category: 'History',
+    quizDescription: 'History quiz number 5',
+    quizBanner:
+      'https://i.imgur.com/vW2wWam.jpg',
+    quizUpvotes: 35,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 370,
+  },
+  {
+    quizName: 'Literature quiz one',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 10,
+    category: 'Literature',
+    quizDescription: 'Literature quiz number 1',
+    quizBanner:
+      'https://i.imgur.com/8o0Mo3R.jpg',
+    quizUpvotes: 5,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 60,
+  },
+  {
+    quizName: 'Literature quiz two',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 20,
+    category: 'Literature',
+    quizDescription: 'Literature quiz number 1',
+    quizBanner:
+      'https://i.imgur.com/8o0Mo3R.jpg',
+    quizUpvotes: 15,
+    quizDownvotes: 4,
+    reported: true,
+    reportedTimes: 2,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 100,
+  },
+  {
+    quizName: 'Literature quiz three',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 30,
+    category: 'Literature',
+    quizDescription: 'Literature quiz number 3',
+    quizBanner:
+      'https://i.imgur.com/8o0Mo3R.jpg',
+    quizUpvotes: 5,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 60,
+  },
+  {
+    quizName: 'Literature quiz four',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 140,
+    category: 'Literature',
+    quizDescription: 'Literature quiz number 4',
+    quizBanner:
+      'https://i.imgur.com/8o0Mo3R.jpg',
+    quizUpvotes: 5,
+    quizDownvotes: 24,
+    reported: true,
+    reportedTimes: 19,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 100,
+  },
+  {
+    quizName: 'Literature quiz five',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 50,
+    category: 'Literature',
+    quizDescription: 'Literature quiz number 1',
+    quizBanner:
+      'https://i.imgur.com/8o0Mo3R.jpg',
+    quizUpvotes: 45,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 450,
+  },
+  {
+    quizName: 'TV and Movies quiz one',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 10,
+    category: 'TV and Movies',
+    quizDescription: 'TV and Movies quiz number 1',
+    quizBanner:
+      'https://i.imgur.com/FSIPzwE.jpg',
+    quizUpvotes: 5,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 60,
+  },
+  {
+    quizName: 'TV and Movies quiz two',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 20,
+    category: 'TV and Movies',
+    quizDescription: 'TV and Movies quiz number 2',
+    quizBanner:
+      'https://i.imgur.com/FSIPzwE.jpg',
+    quizUpvotes: 15,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 150,
+  },
+  {
+    quizName: 'TV and Movies quiz three',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 30,
+    category: 'TV and Movies',
+    quizDescription: 'TV and Movies quiz number 3',
+    quizBanner:
+      'https://i.imgur.com/FSIPzwE.jpg',
+    quizUpvotes: 5,
+    quizDownvotes: 24,
+    reported: true,
+    reportedTimes: 11,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 60,
+  },
+  {
+    quizName: 'TV and Movies quiz four',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 40,
+    category: 'TV and Movies',
+    quizDescription: 'TV and Movies quiz number 4',
+    quizBanner:
+      'https://i.imgur.com/FSIPzwE.jpg',
+    quizUpvotes: 25,
+    quizDownvotes: 14,
+    reported: true,
+    reportedTimes: 6,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 300,
+  },
+  {
+    quizName: 'TV and Movies quiz five',
+    quizQuestions: [
+      {
+        question:
+          'What was the name of the Ethiopian Wolf before they knew it was related to wolves?',
+        correctAnswer: 'Simien Jackel',
+        incorrectAnswers: [
+          'Ethiopian Coyote',
+          'Amharic Fox',
+          'Canis Simiensis',
+        ],
+      },
+      {
+        question:
+          'A carnivorous animal eats flesh, what does a nucivorous animal eat?',
+        correctAnswer: 'Nuts',
+        incorrectAnswers: ['Nothing', 'Fruit', 'Seaweed'],
+      },
+      {
+        question: 'What is the fastest land animal?',
+        correctAnswer: 'Cheetah',
+        incorrectAnswers: [
+          'Lion',
+          'Thomson&rsquo;s Gazelle',
+          'Pronghorn Antelope',
+        ],
+      },
+      {
+        question: 'What is the scientific name for modern day humans?',
+        correctAnswer: 'Homo Sapiens',
+        incorrectAnswers: [
+          'Homo Ergaster',
+          'Homo Erectus',
+          'Homo Neanderthalensis',
+        ],
+      },
+      {
+        question:
+          'The Kākāpō is a large, flightless, nocturnal parrot native to which country?',
+        correctAnswer: 'New Zealand',
+        incorrectAnswers: ['South Africa', 'Australia', 'Madagascar'],
+      },
+      {
+        question: 'Hippocampus is the Latin name for which marine creature?',
+        correctAnswer: 'Seahorse',
+        incorrectAnswers: ['Dolphin', 'Whale', 'Octopus'],
+      },
+      {
+        question: 'Cashmere is the wool from which kind of animal?',
+        correctAnswer: 'Goat',
+        incorrectAnswers: ['Sheep', 'Camel', 'Llama'],
+      },
+      {
+        question:
+          'What scientific suborder does the family Hyaenidae belong to?',
+        correctAnswer: 'Feliformia',
+        incorrectAnswers: ['Haplorhini', 'Caniformia', 'Ciconiiformes'],
+      },
+      {
+        question: 'What is the scientific name of the cheetah?',
+        correctAnswer: 'Acinonyx jubatus',
+        incorrectAnswers: ['Panthera onca', 'Lynx rufus', 'Felis catus'],
+      },
+      {
+        question: 'What is the scientific name of the Budgerigar?',
+        correctAnswer: 'Melopsittacus undulatus',
+        incorrectAnswers: [
+          'Nymphicus hollandicus',
+          'Pyrrhura molinae',
+          'Ara macao',
+        ],
+      },
+    ],
+    timesTaken: 50,
+    category: 'TV and Movies',
+    quizDescription: 'TV and Movies quiz number 5',
+    quizBanner:
+      'https://i.imgur.com/FSIPzwE.jpg',
+    quizUpvotes: 45,
+    quizDownvotes: 4,
+    reported: false,
+    reportedTimes: 0,
+    createdBy: 'LizTheQuizWiz',
+    aggregateScore: 400,
+  }
+
 ];
 
 module.exports = {
-  exampleQuizzes: exampleQuizzes,
+  exampleQuizzesFinal: exampleQuizzesFinal,
 };
 
-// {
-//   quizName: 'General one',
-//   quizQuestions: [
-//     {
-//       question: 'What does DNA stand for?',
-//       correctAnswer: 'Deoxyribonucleic Acid',
-//       incorrectAnswers: [
-//         'Deoxyribogenetic Acid',
-//         'Deoxyribogenetic Atoms',
-//         'Detoxic Acid',
-//       ],
-//     },
-//     {
-//       question:
-//         'Which game did &quot;Sonic The Hedgehog&quot; make his first appearance in?',
-//       correctAnswer: 'Rad Mobile',
-//       incorrectAnswers: ['Sonic The Hedgehog', 'Super Mario 64', 'Mega Man'],
-//     },
-//     {
-//       question:
-//         'Which animal features on the logo for Abarth, the motorsport division of Fiat?',
-//       correctAnswer: 'Scorpion',
-//       incorrectAnswers: ['Snake', 'Bull', 'Horse'],
-//     },
-//     {
-//       question:
-//         'Who had a 1976 hit with the song You Make Me Feel Like Dancing?',
-//       correctAnswer: 'Leo Sayer',
-//       incorrectAnswers: ['Elton John', 'Billy Joel', 'Andy Gibb'],
-//     },
-//     {
-//       question:
-//         'What does AD stand for in relation to Windows Operating Systems? ',
-//       correctAnswer: 'Active Directory',
-//       incorrectAnswers: [
-//         'Alternative Drive',
-//         'Automated Database',
-//         'Active Department',
-//       ],
-//     },
-//     {
-//       question: 'On which continent is the country of Angola located?',
-//       correctAnswer: 'Africa',
-//       incorrectAnswers: ['South America', 'Europe', 'Asia'],
-//     },
-//     {
-//       question: 'Who is the true moon princess in Sailor Moon?',
-//       correctAnswer: 'Sailor Moon',
-//       incorrectAnswers: ['Sailor Venus', 'Sailor Mars', 'Sailor Jupiter'],
-//     },
-//     {
-//       question: 'What is the nickname of the US state of California?',
-//       correctAnswer: 'Golden State',
-//       incorrectAnswers: ['Sunshine State', 'Bay State', 'Treasure State'],
-//     },
-//     {
-//       question: 'In which Mario game did the Mega Mushroom make its debut?',
-//       correctAnswer: 'Mario Party 4',
-//       incorrectAnswers: [
-//         'New Super Mario Bros.',
-//         'Mario Kart Wii',
-//         'Super Mario 3D World',
-//       ],
-//     },
-//     {
-//       question:
-//         'Gordon Freeman is said to have burnt and destroyed what food in the break room microwave?',
-//       correctAnswer: 'Casserole',
-//       incorrectAnswers: ['Sub Sandwich', 'Chicken Soup', 'Pepperoni Pizza'],
-//     },
-//   ],
-//   timesTaken: 12,
-//   category: 'general',
-//   quizDescription: 'General knowledge quiz number 1',
-//   quizBanner:
-//     'https://pgcpsmess.files.wordpress.com/2013/08/imagescae8o2el.jpg',
-//   quizUpvotes: 5,
-//   quizDownvotes: 1,
-//   reported: false,
-//   reportedTimes: 0,
-//   createdBy: 'PatrickTheAssistant',
-//   aggregateScore: 84,
-// }
