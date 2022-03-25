@@ -9,11 +9,10 @@ const Container = styled.div`
   box-shadow: 0 2px 5px 0 black;
   height: 30px;
   &:hover {
-    transition: 0.2s;
-    background-color: var(--background-color);
+    box-shadow: 0 5px 7px 0 black;
   }
   &:active {
-  background-color: green;
+  background-color: var(--background-color);
   }
 `;
 

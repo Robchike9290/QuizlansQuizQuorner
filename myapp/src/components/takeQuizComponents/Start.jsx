@@ -107,8 +107,18 @@ const Start = ({ allQuizzes, quiz, quizSelected, changeStatusForward, changeStat
     <p>Quiz category</p> */}
     <Footer>
       <span>
-      <button onClick={changeStatusBackward}>Select another Quiz</button>
-      <button onClick={changeStatusForward}>Play this one!</button>
+      <Button style={{
+        borderRadius: "var(--standard-border-radius)",
+        backgroundColor: "var(--accent-color)",
+        color: "black"
+        }}
+        variant="contained" onClick={changeStatusBackward}>Select another Quiz</Button>
+      <Button style={{
+        borderRadius: "var(--standard-border-radius)",
+        backgroundColor: "var(--accent-color)",
+        color: "black"
+        }}
+        variant="contained" onClick={changeStatusForward}>Play this one!</Button>
       </span>
     </Footer>
   </div>
