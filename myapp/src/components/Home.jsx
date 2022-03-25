@@ -21,7 +21,12 @@ const HomeLayout = styled.div`
 //right sidebar (friend's list)
 //left sidebar (popular quizzes)
 
-const Home = ({ fullQuizList, selectedQuiz, setSelectedQuiz }) => {
+const Home = ({
+  fullQuizList,
+  selectedQuiz,
+  setSelectedQuiz,
+  setFullQuizList,
+}) => {
   return (
     <HomeLayout>
       <div>
@@ -32,6 +37,7 @@ const Home = ({ fullQuizList, selectedQuiz, setSelectedQuiz }) => {
         fullQuizList={fullQuizList}
         selectedQuiz={selectedQuiz}
         setSelectedQuiz={setSelectedQuiz}
+        setFullQuizList={setFullQuizList}
       />
       <PopularQuizzes
         selectedQuiz={selectedQuiz}
