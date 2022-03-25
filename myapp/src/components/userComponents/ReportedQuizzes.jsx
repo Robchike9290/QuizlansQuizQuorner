@@ -20,29 +20,32 @@ const Container = styled.div`
 
 const ReportedQuizzes = (props) => {
 
-  const reportedQuizzesMock = () => {
-    return exampleQuizzes.filter(exampleQuiz => {
-      exampleQuiz.reported === true;
-    });
-  };
+  // const reportedQuizzesMock = () => {
+  //   return exampleQuizzes.filter(exampleQuiz => {
+  //     exampleQuiz.reported === true;
+  //   });
+  // };
 
-  const [reportedQuizzesList, setReportedQuizzes] = useState(reportedQuizzesMock);
+  const [reportedQuizzesList, setReportedQuizzesList] = useState('');
 
 
   const getReportedQuizzes = () => {
     const createdBy = null;
     const category = null;
-    const report = true;
+    const isReported = true;
 
-    axios.get(`/quizzes/${createdBy}&${category}&${true}`)
+    axios.get(`http://52.90.8.77:4444/quizzes/${createdBy}&${category}&${isReported}`)
+    //console.log()
     .then((results) => {
-      setReportedQuizzes(results);
-      console.log('Reported👀👀👀👀: ', reportedQuizzesList);
+      setReportedQuizzesList(results);
+      console.log('ReportedQuizzes👀👀👀👀:', results);
     })
     .catch((error) => {
       console.log(error);
+      console.log('Caught👀👀👀👀: ', error);
     });
   };
+  //console.log(`🔥🔥🔥🔥🔥🔥`);
 
   useEffect(()=> {
     getReportedQuizzes()
@@ -56,9 +59,9 @@ const ReportedQuizzes = (props) => {
     <Container>
       Reported Quizzes
       <div>
-        {reportedQuizzesList.map((eachReportedQuiz) => (
+        {/* {reportedQuizzesList.map((eachReportedQuiz) => (
           <ReportedQuiz eachReportedQuiz={eachReportedQuiz} removeQuiz={removeQuiz}/>
-        ))}
+        ))} */}
       </div>
     </Container>
   );

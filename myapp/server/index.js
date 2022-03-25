@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/quizzes/:createdBy&:category&:reported', (req, res) => { // works
-  console.log('Hello from the server!')
+  console.log('Params☄️☄️☄️☄️☄️☄️', req.params)
   getQuizzes(req.params.createdBy, req.params.category, req.params.reported)
     .then((results) => {
       res.status(200).send('Server response!');
