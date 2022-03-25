@@ -16,6 +16,7 @@ import styled from 'styled-components';
 import { signOut } from 'firebase/auth';
 import {onAuthStateChanged} from 'firebase/auth';
 import {reactLocalStorage} from 'reactjs-localstorage';
+import { Switch as SwitchMode } from '@mui/material/';
 
 const App = () => {
   const [docData, setDocData] = useState(null);
@@ -31,6 +32,8 @@ const App = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [friends, setFriends] = useState([]);
   const [quizHistory, setQuizHistory] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   const stringifiedUser = JSON.stringify(currentUser);
   //console.log('👄👄👄👄👄', currentUser);
   // onAuthStateChanged(auth, (loggedInUser) => {
@@ -55,6 +58,15 @@ const App = () => {
     // super.setState(userName);
     // super.setState(registerEmail);
   }
+
+  const switchTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    if (!isDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  };
 
   const handleSearchSubmit = (opt) => {
     console.log("you've selected:", opt.label);
@@ -244,13 +256,18 @@ const App = () => {
               </Select>
             </NavBarForm>
           )}
+          <SwitchMode onClick={switchTheme} />
         </NavBar>
         <Switch>
           <Route exact path='/'>
             <LandingPage />
           </Route>
           <Route exact path='/home'>
-            <Home fullQuizList={fullQuizList} />
+            <Home
+              fullQuizList={fullQuizList}
+              selectedQuiz={selectedQuiz}
+              setSelectedQuiz={setSelectedQuiz}
+            />
           </Route>
           <Route exact path='/user'>
             <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} quizHistory={quizHistory} />
@@ -278,8 +295,9 @@ const NavBarTitle = styled.span`
   background-color: var(--blue);
   color: var(--text-color);
   padding: var(--standard-padding);
-  font-family: arial;
-  font-size: 48px;
+  font-size: 60px;
+  font-family: 'Tourney', cursive;
+  font-weight: 400;
 `;
 
 const NavBarLogo = styled.img`
@@ -292,8 +310,8 @@ const NavBarHeading = styled.span`
   background-color: var(--blue);
   color: var(--text-color);
   padding: var(--standard-padding);
-  font-family: arial;
-  font-size: 24px;
+  font-family: var(--font-family)
+  font-size: 32px;
 `;
 
 const NavBarForm = styled.form`
