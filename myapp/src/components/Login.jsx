@@ -12,9 +12,9 @@ import {
 import { auth } from '../index.js';
 import { getFirestore } from 'firebase/firestore';
 import {reactLocalStorage} from 'reactjs-localstorage';
-// import firebaseConfig from "../../config.js";
+import firebaseConfig from "../../config.js";
 import styled from 'styled-components';
-
+// import firebaseConfig from "../index.js";
 
 const Login = ({
   registerEmail,
