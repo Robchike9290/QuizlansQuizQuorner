@@ -26,7 +26,8 @@ const Login = ({
   userName,
   setUserName,
   isAdmin,
-  setIsAdmin
+  setIsAdmin,
+  getUser
 }) => {
 
 
@@ -34,9 +35,9 @@ const Login = ({
   // const [registerPassword, setRegisterPassword] = useState("");
   // const [currentUser, setCurrentUser] = useState({});
 
-  onAuthStateChanged(auth, (loggedInUser) => {
-    setCurrentUser(loggedInUser);
-  });
+  // onAuthStateChanged(auth, (loggedInUser) => {
+  //   setCurrentUser(loggedInUser);
+  // });
 
   const createEmailHandler = (event) => {
     console.log('email handler', event.target.value)
@@ -48,9 +49,9 @@ const Login = ({
     setRegisterPassword(event.target.value);
   };
 
-  // const createUserHandler = (event) => {
-  //   setUserName(event.target.value);
-  // }
+  const createUserHandler = (event) => {
+    setUserName(event.target.value);
+  }
 
   const registerUser = () => {
     axios.post('http://52.90.8.77:4444/addUser', {userName: userName, email: registerEmail})
@@ -82,17 +83,18 @@ const Login = ({
     // setUserName(userName);
     // setUserEmail(registerEmail);
 
-    const getUser = () => {
-      axios.get(`http://52.90.8.77:4444/user/${registerEmail}`)
-        .then((response) => {
-          setUserName(response.data.userName);
-          setUserEmail(response.data.email);
-          console.log('USER DATA:', response.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    };
+    getUser(registerEmail);
+    // const getUser = () => {
+    //   axios.get(`http://52.90.8.77:4444/user/${registerEmail}`)
+    //     .then((response) => {
+    //       setUserName(response.data.userName);
+    //       setUserEmail(response.data.email);
+    //       console.log('USER DATA:', response.data);
+    //     })
+    //     .catch((err) => {
+    //       console.error(err);
+    //     });
+    // };
 
     const user = signInWithEmailAndPassword(
       auth,
@@ -101,8 +103,7 @@ const Login = ({
       )
       .then((user) => {
         console.log('INSIDE signInWithEmailAndPassword:', user)
-        console.log(user);
-        document.location.href = 'http://localhost:8080/#/home';
+        window.location.href = 'http://localhost:8080/#/home';
       })
       .catch((error) => {
         console.log('INSIDE signInWithEmailAndPassword:', error)
@@ -115,10 +116,10 @@ const Login = ({
     <FormBox>
       <Heading>Please enter in your username, email, and password.</Heading>
       <div>
-        {/* <FormLine>
+        <FormLine>
           <label>Username:</label>
           <Input type='text' required={true} onChange={createUserHandler}/>
-        </FormLine> */}
+        </FormLine>
         <div>
         <FormLine>
           <label>Email:</label>

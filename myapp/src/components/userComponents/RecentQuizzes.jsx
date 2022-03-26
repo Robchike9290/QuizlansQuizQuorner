@@ -32,13 +32,13 @@ const RecentQuizzes = (props) => {
 
 
   const getRecentQuizzes = () => {
-    console.log('adsfasdfgadsfasdfsd', props.userName)
+    console.log('USERNAME RECENT QUIZZES', props.userName);
     const username = 'superuser';
     const categoryName = null;
     const isReported = null;
     axios.get(`http://52.90.8.77:4444/quizzes/${username}&${categoryName}&${isReported}`)
       .then((response) => {
-        console.log('USER QUIZZES!!! YAYAYAYAYYA:', response.data);
+        // console.log('USER QUIZZES!!! YAYAYAYAYYA:', response.data);
         setRecentQuizzes(response.data);
       })
       .catch((err) => {
@@ -55,7 +55,7 @@ const RecentQuizzes = (props) => {
   //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
   useEffect(()=> {
    getRecentQuizzes()
-   console.log('user qquiz history:', recentQuizzes)
+  //  console.log('user qquiz history:', recentQuizzes)
   }, [])
 
   //
