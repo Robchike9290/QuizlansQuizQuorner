@@ -10,8 +10,8 @@ Quizlin's Quiz Quorner is an interactive quiz site where users can see, make, an
 
 #### Create a Quiz
 ![Text input fields](http://g.recordit.co/xUzhnzFfPE.gif)
-![Add Question](http://g.recordit.co/xUzhnzFfPE.gif)
-![Add Banner and Question Area](http://g.recordit.co/xUzhnzFfPE.gif)
+![Add Question](http://g.recordit.co/wPQl4S0axS.gif)
+![Add Banner and Question Area](http://g.recordit.co/7L9lUx0gSp.gif)
 
 
 #### Question & Answers
