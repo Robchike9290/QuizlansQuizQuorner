@@ -4,7 +4,7 @@
 2. [Demo](#✨-Demo)
 3. [Technologies](#🧪-Technologies)
 4. [Installation](#🚀-Installation)
-5. [Contributors](#🤝-Contributors)
+5. [Contributors](#Contributors)
 
 
 ### General Info
@@ -50,7 +50,7 @@ $ npm start
 ```
 
 
-### 🤝 Contributors
+### Contributors
 - [Robert "Bo" Czajka](https://www.linkedin.com/in/robert-czajka2/)
 - [Jenny Giri](https://www.linkedin.com/in/jgiri/)
 - [Nicholas Ledermann](https://www.linkedin.com/in/nicholas-ledermann/)
