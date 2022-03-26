@@ -21,19 +21,26 @@ After logging in, the user has the option to select either the "Create a Quiz", 
 ![Add Banner and Question Area](http://g.recordit.co/DMtwi12gjS.gif)
 
 ### 🧪 Technologies
-* Axios : Version 0.25.0,
-* Babel : Version 7.17.2,
-* Babel/preset-env : Version 7.16.11,
-* Babel/preset-react : Version 7.16.7,
-* CSS-loader : 6.6.0,
-* Express : Version 4.17.2,
-* Nodemon: Version 2.0.15,
+* @emotion/react : Version 11.8.2,
+* @emotion/styled : Version 11.8.1,
+* @material-ui/core : Version 4.12.3,
+* @material-ui/icons : Version 4.11.2,
+* @mui/material : Version 5.5.2,
+* @mui/styled-engine-sc : Version 5.5.2,
+* Axios : Version 0.26.1,
+* Cors : Version 2.8.5
+* Express : Version 4.17.3,
+* Firebase : Version 9.6.9,
+* Fontsource-roboto : Version 4.0.0,
+* Moment : Version 2.29.1,
+* Mongoose : Version 6.2.7,
 * React : Version 17.0.2,
 * React-dom : Version 17.0.2,
-* React-highlight-words : Version 0.17.0,
-* Style-loader : Version 3.3.1,
-* Webpack : Version 5.68.0,
-* Webpack-cli/generators : Version 2.4.2,
+* React-hot-loader : Version 4.13.0,
+* React-router-dom : Version 5.3.0,
+* React-select : Version 5.2.2,
+* Reactjs-localstorage : Version 1.0.1,
+* Styled-components: Version 5.3.5 
 
 
 
