@@ -1,24 +1,24 @@
 # QuizlansQuizQuorner
 
 ### General Info
-Quizlin's Quiz Quorner is an interactive quiz site where users can see, make, and take quizzes
+Quizlin's Quiz Quorner is an interactive quiz site where users can see, make, and take quizzes.
 
 ### ✨ Demo
 
 #### Themes
 ![](https://imgur.com/a/ekBo8ZP.gif)
 
+#### Landing Page and Navigation Bar
+
+![Landing Page]https://i.imgur.com/bO3RAdT.gif
+The user arrives at this page upon loading the site.  It shows a few testimonials until the bottom of the screen is reached via scroll.  There is then a button directing the user to either sign up or log in.  The user also has the option to log in using the navigation bar, which only displays this option on the landing page.
+![Navigation Bar]https://i.imgur.com/NPKAUvi.gif
+After logging in, the user has the option to select either the "Create a Quiz", "Take a Quiz", "Home", or "User" pages, while also having the option to log out.  They can also select a particular quiz in the database, which will route them directly to the page to take this particular quiz.
+
 #### Create a Quiz
 ![Text input fields](http://g.recordit.co/xUzhnzFfPE.gif)
 ![Add Question](http://g.recordit.co/wPQl4S0axS.gif)
 ![Add Banner and Question Area](http://g.recordit.co/DMtwi12gjS.gif)
-
-
-#### Question & Answers
-![](http://g.recordit.co/vhddGmVNAz.gif)
-
-#### Rating & Reviews
-![](https://i.imgur.com/fMTMZKa.gif)
 
 ### 🧪 Technologies
 * Axios : Version 0.25.0,
