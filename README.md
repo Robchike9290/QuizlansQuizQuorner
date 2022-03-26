@@ -4,8 +4,7 @@
 2. [Demo](#✨-Demo)
 3. [Technologies](#🧪-Technologies)
 4. [Installation](#🚀-Installation)
-5. [FAQs](#FAQS)
-6. [Contributors](#🤝-Contributors)
+5. [Contributors](#🤝-Contributors)
 
 
 ### General Info
@@ -32,7 +31,6 @@ Quizlin's Quiz Quorner is an interactive quiz site where users can see, make, an
 * Babel/preset-react : Version 7.16.7,
 * CSS-loader : 6.6.0,
 * Express : Version 4.17.2,
-* Moment : 2.29.1,
 * Nodemon: Version 2.0.15,
 * React : Version 17.0.2,
 * React-dom : Version 17.0.2,
@@ -50,8 +48,6 @@ $ npm install
 $ npm start
 
 ```
-
-### FAQs
 
 
 ### 🤝 Contributors
