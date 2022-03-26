@@ -18,7 +18,7 @@ const User = (props) => {
   useEffect(() => {
     props.getUser(props.registerEmail);
     // console.log(props.userName);
-    // console.log(props.registerEmail);
+    console.log(props.registerEmail);
   }, [])
 
   //console.log('🧠🧠🧠🧠', props.currentUser.email)adsads

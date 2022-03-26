@@ -82,6 +82,7 @@ const Login = ({
   const LoginUser = () => {
     // setUserName(userName);
     // setUserEmail(registerEmail);
+
     getUser(registerEmail);
     // const getUser = () => {
     //   axios.get(`http://52.90.8.77:4444/user/${registerEmail}`)

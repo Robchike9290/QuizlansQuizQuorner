@@ -32,7 +32,8 @@ const RecentQuizzes = (props) => {
 
 
   const getRecentQuizzes = () => {
-    const username = props.userName;
+    console.log('USERNAME RECENT QUIZZES', props.userName);
+    const username = 'superuser';
     const categoryName = null;
     const isReported = null;
     axios.get(`http://52.90.8.77:4444/quizzes/${username}&${categoryName}&${isReported}`)
