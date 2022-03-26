@@ -53,6 +53,8 @@ const App = () => {
     // console.log('app use effect email:', userEmail);
   }, [currentUser]);
 
+
+
   function populateStorage() {
     localStorage.setItem('userName', userName);
     localStorage.setItem('email', registerEmail);
