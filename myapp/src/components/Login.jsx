@@ -26,7 +26,8 @@ const Login = ({
   userName,
   setUserName,
   isAdmin,
-  setIsAdmin
+  setIsAdmin,
+  getUser
 }) => {
 
 
@@ -48,9 +49,9 @@ const Login = ({
     setRegisterPassword(event.target.value);
   };
 
-  // const createUserHandler = (event) => {
-  //   setUserName(event.target.value);
-  // }
+  const createUserHandler = (event) => {
+    setUserName(event.target.value);
+  }
 
   const registerUser = () => {
     axios.post('http://52.90.8.77:4444/addUser', {userName: userName, email: registerEmail})
@@ -81,7 +82,7 @@ const Login = ({
   const LoginUser = () => {
     // setUserName(userName);
     // setUserEmail(registerEmail);
-
+    getUser(registerEmail);
     // const getUser = () => {
     //   axios.get(`http://52.90.8.77:4444/user/${registerEmail}`)
     //     .then((response) => {
@@ -114,10 +115,10 @@ const Login = ({
     <FormBox>
       <Heading>Please enter in your username, email, and password.</Heading>
       <div>
-        {/* <FormLine>
+        <FormLine>
           <label>Username:</label>
           <Input type='text' required={true} onChange={createUserHandler}/>
-        </FormLine> */}
+        </FormLine>
         <div>
         <FormLine>
           <label>Email:</label>

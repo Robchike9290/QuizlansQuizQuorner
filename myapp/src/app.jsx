@@ -26,7 +26,7 @@ const App = () => {
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
-  const [userName, setUserName] = useState('superuser');
+  const [userName, setUserName] = useState('');
   // const [userEmail, setUserEmail] = useState('');
   const [fullQuizList, setFullQuizList] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -142,8 +142,7 @@ const App = () => {
     axios
       .get(`http://52.90.8.77:4444/user/${email}`)
       .then((response) => {
-        // setUserName(response.data.userName);
-        // setUserEmail(response.data.email);
+        setUserName(response.data.userName);
         setFriends(response.data[0].friends);
 
         setQuizHistory(response.data[0].quizHistory);
@@ -278,6 +277,7 @@ const App = () => {
               setCurrentUser={setCurrentUser}
               setUserName={setUserName}
               userName={userName}
+              getUser={getUser}
             />
           </Route>
         </Switch>
