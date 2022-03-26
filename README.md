@@ -55,6 +55,10 @@ $ npm start
 
 
 ### 🤝 Contributors
-- [BJ White](https://www.linkedin.com/in/bj-white/)
+- [Robert "Bo" Czajka](https://www.linkedin.com/in/robert-czajka2/)
 - [Jenny Giri](https://www.linkedin.com/in/jgiri/)
-- [Amy Shi](https://www.linkedin.com/in/amy-shi218/)
+- [Nicholas Ledermann](https://www.linkedin.com/in/nicholas-ledermann/)
+- [Katie Gross](https://www.linkedin.com/in/kathleen-gross/)
+- [Kenneth James](https://www.linkedin.com/in/kjames7421/)
+- [Jesse Kovash](https://www.linkedin.com/in/jessekovash/)
+
