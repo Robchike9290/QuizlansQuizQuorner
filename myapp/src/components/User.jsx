@@ -16,9 +16,9 @@ const HomeLayout = styled.div`
 const User = (props) => {
 
   useEffect(() => {
-    props.getUser(props.registerEmail);
-    console.log(props.userName);
-    console.log(props.registerEmail);
+    props.getUser('su@gmail.com');
+    // console.log(props.userName);
+    // console.log(props.registerEmail);
   }, [])
 
   //console.log('🧠🧠🧠🧠', props.currentUser.email)adsads

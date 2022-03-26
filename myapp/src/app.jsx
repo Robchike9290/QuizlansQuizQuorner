@@ -20,9 +20,9 @@ import { Switch as SwitchMode } from '@mui/material/';
 
 const App = () => {
   const [docData, setDocData] = useState(null);
-  const [registerEmail, setRegisterEmail] = useState('su@gmail.com');
+  const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
@@ -34,31 +34,30 @@ const App = () => {
   const [quizHistory, setQuizHistory] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  //console.log('👄👄👄👄👄', currentUser);
-  // onAuthStateChanged(auth, (loggedInUser) => {
-  //   setCurrentUser(loggedInUser);
-  // });
-  const stringifiedUser = JSON.stringify(currentUser);
 
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DON'T REFRESH!!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+  onAuthStateChanged(auth, (loggedInUser) => {
+    // console.log('logged in user on app', loggedInUser);
+    setCurrentUser(loggedInUser);
+  });
 
-  const admins = {
-    buggy: 'buggy@gmail.com'
-  }
+
+
+
 
   useEffect(() => {
     getData();
+    // console.log('current user on app', currentUser);
 
     // console.log('app use effect username:', userName);
     // console.log('app use effect email:', userEmail);
   }, [currentUser]);
 
-  function populateStorage() {
-    localStorage.setItem('userName', userName);
-    localStorage.setItem('email', registerEmail);
-    // super.setState(userName);
-    // super.setState(registerEmail);
-  }
+  // function populateStorage() {
+  //   localStorage.setItem('userName', userName);
+  //   localStorage.setItem('email', registerEmail);
+  //   // super.setState(userName);
+  //   // super.setState(registerEmail);
+  // }
 
   const switchTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -79,7 +78,7 @@ const App = () => {
     axios
       .get('http://52.90.8.77:4444/getAllQuizzes')
       .then((response) => {
-        console.log('Here are your quizzes: ', response.data);
+        // console.log('Here are your quizzes: ', response.data);
         const quizIds = [];
         for (let i = 0; i < response.data.length; i++) {
           let quiz = response.data[i];
@@ -97,7 +96,7 @@ const App = () => {
   const logOut = () => {
     const signedOut = signOut(auth)
       .then((data) => {
-        setCurrentUser({});
+        // setCurrentUser(null);
         console.log(data);
       })
       .catch((error) => {
@@ -146,8 +145,9 @@ const App = () => {
         // setUserName(response.data.userName);
         // setUserEmail(response.data.email);
         setFriends(response.data[0].friends);
+
         setQuizHistory(response.data[0].quizHistory);
-        console.log('USER DATA:', response.data);
+        console.log('USER DATA:', response.data[0]);
       })
       .catch((err) => {
         console.error(err);
@@ -184,33 +184,33 @@ const App = () => {
         <NavBar>
           <NavBarLogo alt='Page logo' src={logo}></NavBarLogo>
           <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
-          {stringifiedUser === '{ALWAYSFALSE}' && (
+          {currentUser === '{ALWAYSFALSE}' && (
             <NavBarHeading>
               <Link style={linkStyle} to='/'></Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}'  && (
+          {currentUser !== null && (
             <NavBarHeading>
               <Link style={linkStyle} to='/home'>
                 Home
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {currentUser !== null && (
             <NavBarHeading>
               <Link style={linkStyle} to='/user'>
                 User
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {currentUser !== null && (
             <NavBarHeading>
               <Link style={linkStyle} to='/createquiz'>
                 Create Quiz
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {currentUser !== null && (
             <NavBarHeading>
               <Link
                 style={linkStyle}
@@ -223,21 +223,21 @@ const App = () => {
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser === '{}' && (
+          {currentUser === null && (
             <NavBarHeading>
               <Link style={linkStyle} to='/login'>
                 Log In
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {currentUser !== null && (
             <NavBarHeading>
               <Link style={linkStyle} to='/' onClick={logOut}>
                 Log Out
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {currentUser !== null && (
             <NavBarForm>
               <Select style="color: black" options={allQuizzes} onChange={handleSearchSubmit}>
                 Search for a Quiz to Take!
@@ -260,7 +260,7 @@ const App = () => {
             />
           </Route>
           <Route exact path='/user'>
-            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz} quizHistory={quizHistory}admins={admins}/>
+            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz} quizHistory={quizHistory}/>
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} report={report}/>
@@ -278,8 +278,6 @@ const App = () => {
               setCurrentUser={setCurrentUser}
               setUserName={setUserName}
               userName={userName}
-              setIsAdmin={setIsAdmin}
-              isAdmin={isAdmin}
             />
           </Route>
         </Switch>

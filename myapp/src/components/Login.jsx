@@ -34,9 +34,9 @@ const Login = ({
   // const [registerPassword, setRegisterPassword] = useState("");
   // const [currentUser, setCurrentUser] = useState({});
 
-  onAuthStateChanged(auth, (loggedInUser) => {
-    setCurrentUser(loggedInUser);
-  });
+  // onAuthStateChanged(auth, (loggedInUser) => {
+  //   setCurrentUser(loggedInUser);
+  // });
 
   const createEmailHandler = (event) => {
     console.log('email handler', event.target.value)
@@ -82,17 +82,17 @@ const Login = ({
     // setUserName(userName);
     // setUserEmail(registerEmail);
 
-    const getUser = () => {
-      axios.get(`http://52.90.8.77:4444/user/${registerEmail}`)
-        .then((response) => {
-          setUserName(response.data.userName);
-          setUserEmail(response.data.email);
-          console.log('USER DATA:', response.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    };
+    // const getUser = () => {
+    //   axios.get(`http://52.90.8.77:4444/user/${registerEmail}`)
+    //     .then((response) => {
+    //       setUserName(response.data.userName);
+    //       setUserEmail(response.data.email);
+    //       console.log('USER DATA:', response.data);
+    //     })
+    //     .catch((err) => {
+    //       console.error(err);
+    //     });
+    // };
 
     const user = signInWithEmailAndPassword(
       auth,
@@ -101,8 +101,7 @@ const Login = ({
       )
       .then((user) => {
         console.log('INSIDE signInWithEmailAndPassword:', user)
-        console.log(user);
-        document.location.href = 'http://localhost:8080/#/home';
+        window.location.href = 'http://localhost:8080/#/home';
       })
       .catch((error) => {
         console.log('INSIDE signInWithEmailAndPassword:', error)
