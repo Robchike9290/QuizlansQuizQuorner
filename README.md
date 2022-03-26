@@ -12,6 +12,8 @@ Quizlin's Quiz Quorner is an interactive quiz site where users can see, make, an
 
 ![Landing Page](https://i.imgur.com/th8qJJy.gif)
 The user arrives at this page upon loading the site.  It shows a few testimonials until the bottom of the screen is reached via scroll.  There is then a button directing the user to either sign up or log in.  The user also has the option to log in using the navigation bar, which only displays this option on the landing page.
+![Login Page](https://recordit.co/4lgHIJnm8B)
+The login page presents users with the options of creating an account or signing in. All user authentication is managed by firebase.
 ![Navigation Bar](https://i.imgur.com/FrY1GE7.gif)
 After logging in, the user has the option to select either the "Create a Quiz", "Take a Quiz", "Home", or "User" pages, while also having the option to log out.  They can also select a particular quiz in the database, which will route them directly to the page to take this particular quiz.
 
