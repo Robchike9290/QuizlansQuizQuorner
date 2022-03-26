@@ -47,14 +47,9 @@ Quizlin's Quiz Quorner is an interactive quiz site where users can see, make, an
 ```
 $ git clone https://github.com/HR-Team-Birch/FEC-project-catwalk
 $ npm install
-$ npm run build
 $ npm start
-$ npm run watch
+
 ```
-Set up a config.js with the following:
-
-* TOKEN (from GitHub):
-
 
 ### FAQs
 
