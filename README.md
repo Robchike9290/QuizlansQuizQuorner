@@ -8,11 +8,12 @@ Quizlin's Quiz Quorner is an interactive quiz site where users can see, make, an
 #### Themes
 ![](https://imgur.com/a/ekBo8ZP.gif)
 
-#### Overview
+#### Create a Quiz
 ![](http://g.recordit.co/xUzhnzFfPE.gif)
+![](http://g.recordit.co/vhddGmVNAz.gif)
 
 #### Question & Answers
-![](https://imgur.com/jZcttxB.gif)
+![](http://g.recordit.co/vhddGmVNAz.gif)
 
 #### Rating & Reviews
 ![](https://i.imgur.com/fMTMZKa.gif)
