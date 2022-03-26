@@ -43,7 +43,7 @@ Quizlin's Quiz Quorner is an interactive quiz site where users can see, make, an
 
 ### 🚀 Installation and Setup
 ```
-$ git clone https://github.com/HR-Team-Birch/FEC-project-catwalk
+$ git clone https://github.com/Coriander-Crew/QuizlansQuizQuorner.git
 $ npm install
 $ npm start
 
