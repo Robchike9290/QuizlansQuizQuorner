@@ -1,11 +1,4 @@
 # QuizlansQuizQuorner
-### Table of Contents
-1. [General Info](#🌳-General-Info)
-2. [Demo](#✨-Demo)
-3. [Technologies](#🧪-Technologies)
-4. [Installation](#🚀-Installation)
-5. [Contributors](#Contributors)
-
 
 ### General Info
 Quizlin's Quiz Quorner is an interactive quiz site where users can see, make, and take quizzes
@@ -16,7 +9,7 @@ Quizlin's Quiz Quorner is an interactive quiz site where users can see, make, an
 ![](https://imgur.com/a/ekBo8ZP.gif)
 
 #### Overview
-![](https://imgur.com/X19DaZR.gif)
+![](http://g.recordit.co/xUzhnzFfPE.gif)
 
 #### Question & Answers
 ![](https://imgur.com/jZcttxB.gif)
