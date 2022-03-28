@@ -17,14 +17,26 @@ The login page presents users with the options of creating an account or signing
 ![Navigation Bar](https://i.imgur.com/FrY1GE7.gif)
 After logging in, the user has the option to select either the "Create a Quiz", "Take a Quiz", "Home", or "User" pages, while also having the option to log out.  They can also select a particular quiz in the database, which will route them directly to the page to take this particular quiz.
 
+#### Home Page
+
 #### Create a Quiz
 
 ![Text input fields](http://g.recordit.co/xUzhnzFfPE.gif)
+
 The user is able to start creating a fully personalizable quiz with inputs for a title, category, and description.
+
 ![Add Question](http://g.recordit.co/wPQl4S0axS.gif)
+
 The user has the ability to add any number of questions they'd like, and easily select the correct answer for future quiz-takers.
+
 ![Add Banner and Question Area](http://g.recordit.co/DMtwi12gjS.gif)
+
 The user can choose a banner image to grab the attention of other users.  They can also view all of the questions they've created thus far.
+
+#### User Page
+
+#### Take a Quiz
+
 
 ### 🧪 Technologies
 * @emotion/react : Version 11.8.2,
