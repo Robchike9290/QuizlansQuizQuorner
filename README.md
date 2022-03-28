@@ -20,11 +20,11 @@ After logging in, the user has the option to select either the "Create a Quiz", 
 #### Create a Quiz
 
 ![Text input fields](http://g.recordit.co/xUzhnzFfPE.gif)
-Here the user is able to start creating a fully personalizable quiz with inputs for a title, category, and description.
+The user is able to start creating a fully personalizable quiz with inputs for a title, category, and description.
 ![Add Question](http://g.recordit.co/wPQl4S0axS.gif)
 The user has the ability to add any number of questions they'd like, and easily select the correct answer for future quiz-takers.
 ![Add Banner and Question Area](http://g.recordit.co/DMtwi12gjS.gif)
-Here the user can choose a banner image to grab the attention of other users.  They can also view all of the questions they've created thus far.
+The user can choose a banner image to grab the attention of other users.  They can also view all of the questions they've created thus far.
 
 ### 🧪 Technologies
 * @emotion/react : Version 11.8.2,
