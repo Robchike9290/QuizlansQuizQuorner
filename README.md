@@ -19,6 +19,9 @@ The login page presents users with the options of creating an account or signing
 After logging in, the user has the option to select either the "Create a Quiz", "Take a Quiz", "Home", or "User" pages, while also having the option to log out.  They can also select a particular quiz in the database, which will route them directly to the page to take this particular quiz.
 
 #### Home Page
+The home page renders a quiz feed that is updated with any new quiz creations (sorted by most to least recently added).  The user is able to scroll through the feed while their friend's list and a list of popular quizzes stay locked on the left and right.
+
+Each quiz is rendered with its banner image, title, description, author, as well as percentage of successful takes, and the ability to rate or report each quiz.
 
 #### Create a Quiz
 
