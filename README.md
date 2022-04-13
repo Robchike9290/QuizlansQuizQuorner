@@ -7,6 +7,7 @@ Quizlin's Quiz Quorner is an interactive quiz site where users can see, make, an
 
 #### Themes
 ![](https://imgur.com/a/ekBo8ZP.gif)
+![Dark and Light Mode](https://i.imgur.com/m4rfBZf.mp4)
 
 #### Landing Page and Navigation Bar
 
