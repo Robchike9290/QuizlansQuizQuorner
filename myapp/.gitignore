@@ -5,6 +5,9 @@ dist/*
 !dist/index.html
 node_modules/
 *.log
+config.js
+package-lock.json
+my.test.js
 
 # OS generated files
 .DS_Store
