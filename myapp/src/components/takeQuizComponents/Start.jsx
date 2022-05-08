@@ -7,9 +7,9 @@ import { Button } from '@mui/material';
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
-  // background-color: var(--accent-color);
+  background-color: var(--accent-color);
   text-align: center;
-  // justify-content: center; //wont allow me to center any other way, but justify also shrinks content
+  justify-content: center;
   margin: var(--standard-margin);
   display: grid;
   flex-direction: row;
@@ -23,7 +23,7 @@ const Header = styled.div`
   background-color: var(--blue);
   display: grid;
   flex-direction: row;
-  // width: 1000px; //fixed width until I can figure out issue with justify-content
+  width: 1000px;
   margin: var(--standard-margin);
   box-shadow: inset 4px 2px 10px rgba(0, 0, 0, 0.4);
 `;
@@ -33,7 +33,7 @@ const Body = styled.div`
   background-color: var(--blue);
   display: grid;
   flex-direction: row;
-  height: 550px; //fixed until later
+  height: 550px;
   margin: var(--standard-margin);
   maxheight: 500px;
   overflow: scroll;
@@ -53,18 +53,6 @@ const QuizH1 = styled.h1`
   font-size: 46px;
 `;
 
-// const Button = styled.button`
-//   border-radius: var(--standard-border-radius);
-//   height: 30px;
-//   margin: var(--standard-margin);
-//   background-color: var(--accent-color);
-//   border: none;
-//   //add click styling
-//   // box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2), 0 2px 5px 0 rgba(0,0,0,0.19);
-//   box-shadow: 0 2px 5px 0 black;
-//   margin-bottom: 30px;
-// `;
-
 const Start = ({
   allQuizzes,
   quiz,
@@ -76,8 +64,6 @@ const Start = ({
   imFeelingLucky,
 }) => {
   if (!quizSelected) {
-    // get all quiz data from db
-    // use that quiz data to populate the feed
     return (
       <Container>
         <Header>
@@ -127,8 +113,6 @@ const Start = ({
       </Container>
     );
   } else if (quizSelected) {
-    // get selected quiz data from db
-    //render the page that gives user the option to return home or start quiz
     return (
       <div>
         <br />
@@ -139,8 +123,6 @@ const Start = ({
         <br />
         <QuizH1>{quiz}</QuizH1>
         <br />
-        {/* <p>Quiz author</p>
-    <p>Quiz category</p> */}
         <Footer>
           <span>
             <Button

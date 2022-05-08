@@ -9,7 +9,7 @@ const Container = styled.div`
   border-radius: var(--standard-border-radius);
   background-color: var(--background-color);
   text-align: center;
-  // justify-content: center; //wont allow me to center any other way, but justify also shrinks content
+  justify-content: center;
   margin: var(--standard-margin);
   display: grid;
   flex-direction: row;
@@ -21,7 +21,6 @@ const Header = styled.div`
   background-color: var(--blue);
   display: grid;
   flex-direction: row;
-  //fixed width until I can figure out issue with justify-content
   margin: var(--standard-margin);
 `;
 
@@ -44,7 +43,7 @@ const Footer = styled.div`
   display: grid;
   flex-direction: row;
   margin: var(--standard-margin);
-  // margin-top: 30px; //necessary until I fix the quiz body extending into the footer
+  margin-top: 30px;
 `;
 
 const FloatRight = styled.div`
@@ -97,9 +96,6 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
     <Stack>
       <CircularProgress variant="determinate" value={(counter + 1) * 10} />
     </Stack>
-    {/* <div>
-    {score} / {selectedQuiz.quizQuestions.length}
-    </div> */}
     </FloatRight>
     </span>
     ) : null}</Header>
@@ -148,7 +144,6 @@ const Quiz = ({ quiz, changeStatusForward, changeStatusBackward, allQuizzes, sco
         {selectedQuiz ? ((counter !== 0) ?
             <Button style={{
               height: 40,
-              margin: "var(--standard-margin)",
               borderRadius: "var(--standard-border-radius)",
               backgroundColor: "var(--accent-color)",
               color: "black"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 
 const QuizDiv = styled.div`
@@ -47,7 +47,6 @@ const Name = styled.div`
   grid-column: 2 / span 1;
   font-size: var(--minor-heading-size);
   font-weight: var(--minor-heading-weight);
-  //word-wrap: break-word;
   &:hover {
     color: var(--background-color);
     cursor: pointer;
@@ -57,7 +56,7 @@ const Name = styled.div`
 const Category = styled.div`
   grid-row: 1 / span 1;
   grid-column: 1 / span 1;
-  //word-wrap: break-word;
+  word-wrap: break-word;
 `;
 
 const TimesTaken = styled.div`
@@ -74,7 +73,7 @@ const Score = styled.div`
 `;
 const Description = styled.div`
   background-color: var(--accent-color);
-  width: 50%;
+  width: 90%;
   box-shadow: var(--standard-shadow);
   border-radius: var(--standard-border-radius);
   grid-row: 2 / span 1;
@@ -92,26 +91,16 @@ const RecentQuiz = ({
   downvotes,
   score
 }) => {
-  //console.log(props);
-  // const quizName = props.eachQuiz.quizName;
   return (
-    // <QuizDiv>
-    //   <div>{props.quiz.quizName}</div>
-    //   <div>Score: {props.quiz.userScores}</div>
-    // </QuizDiv>
     <Container>
       <Banner>
-        <img src={`${banner}`} />
+        <img src={`${banner}`}></img>
       </Banner>
       <TextData>
         <Name onClick={() => handleQuizSelect(event)}>{quizName}</Name>
         <Category>{category}</Category>
-        {/* <TimesTaken>{timesTaken} people have taken this quiz</TimesTaken> */}
         <Description>{description}</Description>
         <Score>You scored {score}</Score>
-        {/* UPVOTE <FontAwesomeIcon icon="fa-solid fa-caret-up" name="upvote" onClick={()=>handleRating(event.target.name}/> */}
-        {/* DOWNVOTE <FontAwesomeIcon icon="fa-solid fa-caret-down" name="downvote" onClick={()=>handleRating(event.target.name}/>/> */}
-        {/* REPORT <FontAwesomeIcon icon="fa-solid fa-flag" /> */}
       </TextData>
     </Container>
   )

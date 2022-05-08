@@ -22,43 +22,24 @@ const App = () => {
   const [docData, setDocData] = useState(null);
   const [registerEmail, setRegisterEmail] = useState('su@gmail.com');
   const [registerPassword, setRegisterPassword] = useState('');
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
   const [currentSearch, setCurrentSearch] = useState('');
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
   const [userName, setUserName] = useState('superuser');
-  // const [userEmail, setUserEmail] = useState('');
   const [fullQuizList, setFullQuizList] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const [friends, setFriends] = useState([]);
   const [quizHistory, setQuizHistory] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  //console.log('👄👄👄👄👄', currentUser);
-  // onAuthStateChanged(auth, (loggedInUser) => {
-  //   setCurrentUser(loggedInUser);
-  // });
-  const stringifiedUser = JSON.stringify(currentUser);
-
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DON'T REFRESH!!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
-  const admins = {
-    buggy: 'buggy@gmail.com'
-  }
+  onAuthStateChanged(auth, (loggedInUser) => {
+    setCurrentUser(loggedInUser);
+  });
 
   useEffect(() => {
     getData();
-
-    // console.log('app use effect username:', userName);
-    // console.log('app use effect email:', userEmail);
   }, [currentUser]);
-
-  function populateStorage() {
-    localStorage.setItem('userName', userName);
-    localStorage.setItem('email', registerEmail);
-    // super.setState(userName);
-    // super.setState(registerEmail);
-  }
 
   const switchTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -70,7 +51,6 @@ const App = () => {
   };
 
   const handleSearchSubmit = (opt) => {
-    console.log("you've selected:", opt.label);
     window.location.href = 'http://localhost:8080/#/takequiz';
     setSelectedQuiz(opt.label);
   };
@@ -79,7 +59,6 @@ const App = () => {
     axios
       .get('http://52.90.8.77:4444/getAllQuizzes')
       .then((response) => {
-        console.log('Here are your quizzes: ', response.data);
         const quizIds = [];
         for (let i = 0; i < response.data.length; i++) {
           let quiz = response.data[i];
@@ -97,8 +76,6 @@ const App = () => {
   const logOut = () => {
     const signedOut = signOut(auth)
       .then((data) => {
-        setCurrentUser({});
-        console.log(data);
       })
       .catch((error) => {
         console.log(error.message);
@@ -109,7 +86,6 @@ const App = () => {
     axios
       .post('http://52.90.8.77:4444/reportQuiz')
       .then((response) => {
-        console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -120,7 +96,6 @@ const App = () => {
     axios
       .post('http://52.90.8.77:4444/addQuiz')
       .then((response) => {
-        console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -131,7 +106,6 @@ const App = () => {
     axios
       .post('http://52.90.8.77:4444/removeQuiz')
       .then((response) => {
-        console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -143,11 +117,9 @@ const App = () => {
     axios
       .get(`http://52.90.8.77:4444/user/${email}`)
       .then((response) => {
-        // setUserName(response.data.userName);
-        // setUserEmail(response.data.email);
+        setUserName(response.data[0].userName);
         setFriends(response.data[0].friends);
         setQuizHistory(response.data[0].quizHistory);
-        console.log('USER DATA:', response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -158,7 +130,6 @@ const App = () => {
     axios
       .post('http://52.90.8.77:4444/addFriend')
       .then((response) => {
-        console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -169,7 +140,6 @@ const App = () => {
     axios
       .post('http://52.90.8.77:4444/removeFriend')
       .then((response) => {
-        console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -178,39 +148,38 @@ const App = () => {
 
   return (
     <Router>
-      {/*<Button onClick={upvote}>Upvote</Button>*/}
       {docData ? <div></div> : null}
       <div>
         <NavBar>
           <NavBarLogo alt='Page logo' src={logo}></NavBarLogo>
           <NavBarTitle>Quizlin's Quiz Quorner</NavBarTitle>
-          {stringifiedUser === '{ALWAYSFALSE}' && (
+          {currentUser === '{ALWAYSFALSE}' && (
             <NavBarHeading>
               <Link style={linkStyle} to='/'></Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}'  && (
+          {currentUser !== null && (
             <NavBarHeading>
               <Link style={linkStyle} to='/home'>
                 Home
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {currentUser !== null && (
             <NavBarHeading>
               <Link style={linkStyle} to='/user'>
                 User
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {currentUser !== null && (
             <NavBarHeading>
               <Link style={linkStyle} to='/createquiz'>
                 Create Quiz
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {currentUser !== null && (
             <NavBarHeading>
               <Link
                 style={linkStyle}
@@ -223,21 +192,21 @@ const App = () => {
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser === '{}' && (
+          {currentUser === null && (
             <NavBarHeading>
               <Link style={linkStyle} to='/login'>
                 Log In
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {currentUser !== null && (
             <NavBarHeading>
               <Link style={linkStyle} to='/' onClick={logOut}>
                 Log Out
               </Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {currentUser !== null && (
             <NavBarForm>
               <Select style="color: black" options={allQuizzes} onChange={handleSearchSubmit}>
                 Search for a Quiz to Take!
@@ -260,7 +229,7 @@ const App = () => {
             />
           </Route>
           <Route exact path='/user'>
-            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz} quizHistory={quizHistory}admins={admins}/>
+            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz} quizHistory={quizHistory}/>
           </Route>
           <Route exact path='/takequiz'>
             <TakeQuiz selectedQuiz={selectedQuiz} report={report}/>
@@ -278,13 +247,11 @@ const App = () => {
               setCurrentUser={setCurrentUser}
               setUserName={setUserName}
               userName={userName}
-              setIsAdmin={setIsAdmin}
-              isAdmin={isAdmin}
+              getUser={getUser}
             />
           </Route>
         </Switch>
         {docData ? <h1>Hello {docData.quizName}</h1> : null}
-        {/*<Button variant="contained">this is a material UI button</Button>*/}
       </div>
     </Router>
   );

@@ -15,44 +15,8 @@ const Container = styled.div`
   padding: var(--standard-padding);
 `;
 
-// Pass loggedIn users and use to display online status
-// maybe add in a toggle for showing loggedin friends
 
 const FriendsList = (props) => {
-  // const [showFriends, setShowFriends] = useState(10);
-  // const [users, setUsers] = useState(mockUserList);
-  // //console.log('🥶🥶🥶🥶', users[0].email);
-  // const presentUser = users.filter(user => user.email === 'pat@gmail.com');
-  // console.log(presentUser[0].friends);
-
-  // const userEmailRequest = props.friends.map((friend) => {
-  //   return props.getUser(friend);
-  // })
-
-  // useEffect(() => {
-  //   console.log('', props.friends)
-  //   axios.all(userEmailRequest)
-  //     .then((response) => {
-  //       console.log('FRIENDSSSSSSS', response)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  // }, [])
-
-
-    //   axios.spread((...responses) => {
-    //   // const responseOne = responses[0]
-    //   // const responseTwo = responses[1]
-    // })).catch((errors) => {
-    //   console.log(errors);
-    // })
-
-
-  // for (let i = 0; i < props.friends.length; i++) {
-  //   let friend = props.friends[i];
-  //   props.getUser(friend);
-  // }
 
   return (
     <Container>

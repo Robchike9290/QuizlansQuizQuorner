@@ -12,7 +12,6 @@ const PopularQuizItem = ({ quizName, selectedQuiz, setSelectedQuiz }) => {
   return (
     <Container>
       {quizName}
-      {/*eventually link to individual quiz page*/}
     </Container>
   );
 };

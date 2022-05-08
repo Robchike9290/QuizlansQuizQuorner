@@ -170,7 +170,6 @@ const AddQuestionModal = ({
               setAnswer1(event.target.value);
             }}
           ></input>
-          {/*<input type='radio'></input>*/}
 
           <br></br>
           <input
@@ -180,7 +179,6 @@ const AddQuestionModal = ({
               setAnswer2(event.target.value);
             }}
           ></input>
-          {/*<input type='radio'></input>*/}
 
           <br></br>
           <input
@@ -199,7 +197,6 @@ const AddQuestionModal = ({
               setAnswer4(event.target.value);
             }}
           ></input>
-          {/*<input type='radio'></input>*/}
         </TextInputs>
         <SubmitButton onClick={handleQuestionSubmit}>Add Question</SubmitButton>
       </Form>

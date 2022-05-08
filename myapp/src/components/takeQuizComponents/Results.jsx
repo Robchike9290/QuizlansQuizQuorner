@@ -7,7 +7,7 @@ const Container = styled.div`
   border-radius: var(--standard-border-radius);
   background-color: var(--background-color);
   text-align: center;
-  // justify-content: center; //wont allow me to center any other way, but justify also shrinks content
+  justify-content: center;
   margin: var(--standard-margin);
   display: grid;
   flex-direction: row;
@@ -63,6 +63,8 @@ const StyledH2 = styled.h1`
 
 const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQuizzes, report }) => {
 
+  const [selectedQuiz, setSelectedQuiz] = useState(null);
+
   const getQuiz = () => {
     for (let i = 0; i < allQuizzes.length; i++) {
       if (allQuizzes[i].quizName === quiz) {
@@ -84,7 +86,7 @@ const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQu
     <Header>Quiz Results</Header>
     <Body>
       <BigDiv>
-        {score} / 10
+        {score} / {selectedQuiz ? (selectedQuiz.quizQuestions.length - 1) : 10}
       </BigDiv>
       {(score > 5) ? <StyledH2>Nice work, you scored higher than {randomUserAvg()}% of takers!</StyledH2> : <StyledH2>You're as smart as my assistant, Patrick... Study up and try again!</StyledH2>}
       </Body>

@@ -9,7 +9,6 @@ const Container = styled.div`
   text-align: center;
   max-height: 1000px;
   overflow: scroll;
-
 `;
 
 const QuizFeed = ({

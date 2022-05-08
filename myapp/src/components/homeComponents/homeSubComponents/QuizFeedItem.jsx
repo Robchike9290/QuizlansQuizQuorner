@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
-
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
   text-align: center;
@@ -65,8 +64,6 @@ const QuizFeedItem = ({
   fullQuizList,
   setFullQuizList,
 }) => {
-  //QuizFeed ->
-  // map over quizzes and sort by recently made (what other sorting criteria?)
 
   const [up, setUp] = useState(upvotes);
   const [down, setDown] = useState(downvotes);
@@ -102,7 +99,6 @@ const QuizFeedItem = ({
 
   const report = () => {
     window.alert(`You have reported ${quizName}`);
-    //find that quiz in the allQuizzes list and remove it
     for (let i = 0; i < fullQuizList.length; i++) {
       console.log('isequal', fullQuizList[i]['quizName'] === quizName);
       if (fullQuizList[i]['quizName'] === quizName) {
@@ -111,8 +107,6 @@ const QuizFeedItem = ({
         setFullQuizList((fullQuizList) => newArray);
       }
     }
-    //redirect user to start page to select a quiz to play
-    //window.location.href = 'http://localhost:8080/#/home';
   };
 
   const handleReport = () => {
@@ -142,7 +136,6 @@ const QuizFeedItem = ({
               >
                 {quizName}
         </Link>
-        {/*<Name value={quizName} onClick={() => handleQuizSelect(event)}>{quizName}</Name>*/}
         <Category>{category}</Category>
         <Author>Author: {createdBy}</Author>
         <TimesTaken>{timesTaken} people have taken this quiz</TimesTaken>
@@ -173,7 +166,7 @@ const Name = styled.div`
   grid-column: 2 / span 1;
   font-size: var(--minor-heading-size);
   font-weight: var(--minor-heading-weight);
-  //word-wrap: break-word;
+  word-wrap: break-word;
   &:hover {
     color: var(--background-color);
     cursor: pointer;
@@ -184,7 +177,7 @@ const Name = styled.div`
 const Category = styled.div`
   grid-row: 1 / span 1;
   grid-column: 1 / span 1;
-  //word-wrap: break-word;
+  word-wrap: break-word;
   padding: 10px;
 `;
 const Author = styled.div`
@@ -208,7 +201,7 @@ const Score = styled.div`
 const Description = styled.div`
   background-color: var(--accent-color);
   width: 50%;
-  //box-shadow: var(--standard-shadow);
+  box-shadow: var(--standard-shadow);
   border-radius: var(--standard-border-radius);
   grid-row: 2 / span 1;
   grid-column: 2 / span 1;
@@ -225,13 +218,7 @@ const linkStyle = {
   'grid-row': '1 / span 1',
   'grid-column': '2 / span 1',
   'font-size': 'var(--minor-heading-size)',
- ' font-weight': 'var(--minor-heading-weight)',
-    'color': 'var(--text-color)',
-  //word-wrap: break-word;
-  //&:hover {
-  //  'color': var(--background-color);
-  //  cursor: pointer;
-  //  textdecoration: underline;
-  //}
+  'font-weight': 'var(--minor-heading-weight)',
+  'color': 'var(--text-color)',
   'padding': '10px'
 };

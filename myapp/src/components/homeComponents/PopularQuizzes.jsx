@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PopularQuizItem from './homeSubComponents/PopularQuizItem.jsx';
 import axios from 'axios';
 import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
-//import sample data
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
@@ -34,11 +33,6 @@ const PopularQuizzes = ({ selectedQuiz, setSelectedQuiz }) => {
         console.error(error);
       });
   };
-
-  //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
-  //useEffect(()=> {
-  //  getPopularQuizzes()
-  //}, [])
 
   return (
     <Container>

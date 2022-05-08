@@ -5,7 +5,7 @@ import { mockUserList } from '../../../mockData/mockUsers.js';
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
   background-color: var(--blue);
-  //height: 100px;
+  height: 100px;
   text-align: center;
   margin: var(--standard-margin);
   display: grid;
@@ -24,7 +24,6 @@ const Contents = styled.div`
 const IMG = styled.img`
   height: 100%;
   width: 100%;
-
   border-radius: 50%;
 `;
 
