@@ -1,8 +1,7 @@
 
 .cache/
 coverage/
-dist/*
-!dist/index.html
+dist/bundle.js
 node_modules/
 *.log
 config.js
@@ -17,3 +16,4 @@ my.test.js
 .Trashes
 ehthumbs.db
 Thumbs.db
+firebase.js
