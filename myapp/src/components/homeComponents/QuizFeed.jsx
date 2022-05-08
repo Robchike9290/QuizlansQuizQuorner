@@ -7,14 +7,23 @@ const Container = styled.div`
   border-radius: var(--standard-border-radius)
   height: 500px;
   text-align: center;
+  max-height: 1000px;
+  overflow: scroll;
 
 `;
 
-const QuizFeed = ({ fullQuizList, selectedQuiz, setSelectedQuiz }) => {
+const QuizFeed = ({
+  selectedQuiz,
+  setSelectedQuiz,
+  fullQuizList,
+  setFullQuizList,
+}) => {
+  let reversedList = fullQuizList.reverse();
+
   return (
     <Container>
-      {fullQuizList?.length > 0 &&
-        fullQuizList.map((listItem, index) => {
+      {reversedList?.length > 0 &&
+        reversedList.map((listItem, index) => {
           return (
             <QuizFeedItem
               quizName={listItem.quizName}
@@ -29,6 +38,8 @@ const QuizFeed = ({ fullQuizList, selectedQuiz, setSelectedQuiz }) => {
               key={index}
               selectedQuiz={selectedQuiz}
               setSelectedQuiz={setSelectedQuiz}
+              fullQuizList={fullQuizList}
+              setFullQuizList={setFullQuizList}
             />
           );
         })}

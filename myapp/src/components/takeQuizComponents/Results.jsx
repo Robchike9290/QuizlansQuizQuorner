@@ -53,16 +53,16 @@ const FloatLeft = styled.div`
 const BigDiv = styled.div`
   margin: var(--standard-margin);
   justify-content: center;
-  font-size: x-large;
+  font-size: 75px;
 `;
 
-const Results = ({
-  score,
-  changeStatusForward,
-  changeStatusBackward,
-  quiz,
-  allQuizzes,
-}) => {
+const StyledH2 = styled.h1`
+  margin-top: 0px;
+  margin-bottom: 130px;
+`;
+
+const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQuizzes, report }) => {
+
   const getQuiz = () => {
     for (let i = 0; i < allQuizzes.length; i++) {
       if (allQuizzes[i].quizName === quiz) {
@@ -72,55 +72,49 @@ const Results = ({
     }
   };
 
+  const randomUserAvg = () => {
+    const min = 5;
+    const max = 10;
+    const randomUserAvg = Math.floor(Math.random() * (max - min) + min);
+    return randomUserAvg * 10;
+  }
+
   return (
     <Container>
-      <Header>Quiz Results</Header>
-      <Body>
-        <BigDiv>{score} / 10</BigDiv>
-        <div></div>
+    <Header>Quiz Results</Header>
+    <Body>
+      <BigDiv>
+        {score} / 10
+      </BigDiv>
+      {(score > 5) ? <StyledH2>Nice work, you scored higher than {randomUserAvg()}% of takers!</StyledH2> : <StyledH2>You're as smart as my assistant, Patrick... Study up and try again!</StyledH2>}
       </Body>
-      <Footer>
-        <span>
-          <FloatLeft>
-            <Button
-              style={{
-                borderRadius: 'var(--standard-border-radius)',
-                backgroundColor: 'var(--accent-color)',
-                color: 'black',
-              }}
-              variant='contained'
-              onClick={changeStatusForward}
-            >
-              Retake quiz
-            </Button>
-          </FloatLeft>
-          <Button
-            style={{
-              borderRadius: 'var(--standard-border-radius)',
-              backgroundColor: 'var(--accent-color)',
-              color: 'black',
-            }}
-            variant='contained'
-          >
-            Report Quiz
-          </Button>
-          <FloatRight>
-            <Button
-              style={{
-                borderRadius: 'var(--standard-border-radius)',
-                backgroundColor: 'var(--accent-color)',
-                color: 'black',
-              }}
-              variant='contained'
-              onClick={() =>
-                (window.location.href = 'http://localhost:8080/#/home')
-              }
-            >
-              Exit
-            </Button>
-          </FloatRight>
-        </span>
-      </Footer>
+      <br/>
+    <Footer>
+      <span>
+        <FloatLeft>
+        <Button style={{
+        borderRadius: "var(--standard-border-radius)",
+        backgroundColor: "var(--accent-color)",
+        color: "black"
+        }}
+        variant="contained" onClick={changeStatusForward}>Retake quiz</Button>
+        </FloatLeft>
+        <Button style={{
+        borderRadius: "var(--standard-border-radius)",
+        backgroundColor: "var(--accent-color)",
+        color: "black"
+        }}
+        variant="contained" onClick={report}>Report Quiz</Button>
+        <FloatRight>
+        <Button style={{
+        borderRadius: "var(--standard-border-radius)",
+        backgroundColor: "var(--accent-color)",
+        color: "black"
+        }}
+        variant="contained" onClick={() => window.location.href = 'http://localhost:8080/#/home'}>Exit</Button>
+        </FloatRight>
+      </span>
+    </Footer>
     </Container>
   );
 };

@@ -56,9 +56,9 @@ const FriendsList = (props) => {
 
   return (
     <Container>
-      test
+      Friends
     {props.friends.map((friend) => {
-      return <EachFriend friend={friend} />
+      return <EachFriend friend={friend} key={friend}/>
     })}
     </Container>
   )

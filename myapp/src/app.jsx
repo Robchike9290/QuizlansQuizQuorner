@@ -14,8 +14,8 @@ import axios from 'axios';
 import logo from './images/QuestionMark.png';
 import styled from 'styled-components';
 import { signOut } from 'firebase/auth';
-import {onAuthStateChanged} from 'firebase/auth';
-import {reactLocalStorage} from 'reactjs-localstorage';
+import { onAuthStateChanged } from 'firebase/auth';
+import { reactLocalStorage } from 'reactjs-localstorage';
 import { Switch as SwitchMode } from '@mui/material/';
 
 const App = () => {
@@ -34,15 +34,17 @@ const App = () => {
   const [quizHistory, setQuizHistory] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const stringifiedUser = JSON.stringify(currentUser);
   //console.log('👄👄👄👄👄', currentUser);
   // onAuthStateChanged(auth, (loggedInUser) => {
   //   setCurrentUser(loggedInUser);
   // });
+  const stringifiedUser = JSON.stringify(currentUser);
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DON'T REFRESH!!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-
+  const admins = {
+    buggy: 'buggy@gmail.com'
+  }
 
   useEffect(() => {
     getData();
@@ -50,7 +52,6 @@ const App = () => {
     // console.log('app use effect username:', userName);
     // console.log('app use effect email:', userEmail);
   }, [currentUser]);
-
 
   function populateStorage() {
     localStorage.setItem('userName', userName);
@@ -115,28 +116,6 @@ const App = () => {
       });
   };
 
-  const upvote = () => {
-    axios
-      .post('http://52.90.8.77:4444/upvote')
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
-  const downvote = () => {
-    axios
-      .post('http://52.90.8.77:4444/downvote')
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
   const addQuiz = () => {
     axios
       .post('http://52.90.8.77:4444/addQuiz')
@@ -161,12 +140,13 @@ const App = () => {
 
   const getUser = (userEmail) => {
     const email = userEmail;
-    axios.get(`http://52.90.8.77:4444/user/${email}`)
+    axios
+      .get(`http://52.90.8.77:4444/user/${email}`)
       .then((response) => {
         // setUserName(response.data.userName);
         // setUserEmail(response.data.email);
-        setFriends(response.data[0].friends)
-        setQuizHistory(response.data[0].quizHistory)
+        setFriends(response.data[0].friends);
+        setQuizHistory(response.data[0].quizHistory);
         console.log('USER DATA:', response.data);
       })
       .catch((err) => {
@@ -209,7 +189,7 @@ const App = () => {
               <Link style={linkStyle} to='/'></Link>
             </NavBarHeading>
           )}
-          {stringifiedUser !== '{}' && (
+          {stringifiedUser !== '{}'  && (
             <NavBarHeading>
               <Link style={linkStyle} to='/home'>
                 Home
@@ -259,7 +239,7 @@ const App = () => {
           )}
           {stringifiedUser !== '{}' && (
             <NavBarForm>
-              <Select options={allQuizzes} onChange={handleSearchSubmit}>
+              <Select style="color: black" options={allQuizzes} onChange={handleSearchSubmit}>
                 Search for a Quiz to Take!
               </Select>
             </NavBarForm>
@@ -275,19 +255,32 @@ const App = () => {
               fullQuizList={fullQuizList}
               selectedQuiz={selectedQuiz}
               setSelectedQuiz={setSelectedQuiz}
+              friends={friends}
+              setFullQuizList={setFullQuizList}
             />
           </Route>
           <Route exact path='/user'>
-            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} quizHistory={quizHistory} />
+            <User currentUser={currentUser} userName={userName} registerEmail={registerEmail} isAdmin={isAdmin} getUser={getUser} friends={friends} setFriends={setFriends} removeQuiz={removeQuiz} quizHistory={quizHistory}admins={admins}/>
           </Route>
           <Route exact path='/takequiz'>
-            <TakeQuiz selectedQuiz={selectedQuiz} />
+            <TakeQuiz selectedQuiz={selectedQuiz} report={report}/>
           </Route>
           <Route exact path='/createquiz'>
             <CreateQuiz userName={userName} />
           </Route>
           <Route exact path='/login'>
-            <Login registerEmail={registerEmail} setRegisterEmail={setRegisterEmail} registerPassword={registerPassword} setRegisterPassword={setRegisterPassword} currentUser={currentUser} setCurrentUser={setCurrentUser} setUserName={setUserName} userName={userName} setIsAdmin={setIsAdmin} isAdmin={isAdmin} />
+            <Login
+              registerEmail={registerEmail}
+              setRegisterEmail={setRegisterEmail}
+              registerPassword={registerPassword}
+              setRegisterPassword={setRegisterPassword}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+              setUserName={setUserName}
+              userName={userName}
+              setIsAdmin={setIsAdmin}
+              isAdmin={isAdmin}
+            />
           </Route>
         </Switch>
         {docData ? <h1>Hello {docData.quizName}</h1> : null}
@@ -325,7 +318,7 @@ const NavBarHeading = styled.span`
 
 const NavBarForm = styled.form`
   background-color: var(--blue);
-  color: var(--text-color);
+  color: black;
   padding: var(--standard-padding);
 `;
 
@@ -341,4 +334,5 @@ const NavBar = styled.span`
 
 const linkStyle = {
   'text-decoration': 'none',
+  'color': 'var(--text-color)',
 };
