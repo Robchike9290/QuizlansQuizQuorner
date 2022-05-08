@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PopularQuizItem from './homeSubComponents/PopularQuizItem.jsx';
 import axios from 'axios';
 import { exampleQuizzes } from './../../../mockData/exampleQuizzes.js';
-//import sample data
 
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
