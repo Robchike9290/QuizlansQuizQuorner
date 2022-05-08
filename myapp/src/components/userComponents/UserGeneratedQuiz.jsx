@@ -15,8 +15,6 @@ const QuizDiv = styled.div`
 `
 
 const UserGeneratedQuiz = (props) => {
-
-
   return (
     <QuizDiv>
       <span>{props.userQuiz.quizName}</span>

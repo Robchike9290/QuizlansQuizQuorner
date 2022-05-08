@@ -13,17 +13,14 @@ const FriendDiv = styled.div`
   align-items: center;
   justify-content: center;
   overflow: scroll;
-
 `
 
 const EachFriend = (props) => {
   const friendID = props.friend;
-  //console.log('👅👅👅friend', props.friend);
 
   return(
     <FriendDiv>
       {props.friend}
-      {/* {mockUsers.friend} */}
     </FriendDiv>
   )
 }

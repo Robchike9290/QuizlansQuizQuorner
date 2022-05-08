@@ -6,7 +6,7 @@ import QuizQuestion from './takeQuizSubcomponents/QuizQuestion.jsx';
 const Container = styled.div`
   border-radius: var(--standard-border-radius);
   background-color: var(--background-color);
-  // text-align: center;
+  text-align: center;
   justify-content: center;
   margin: var(--standard-margin);
   display: flex;
@@ -26,19 +26,6 @@ const QuizBody = () => {
         console.error(error);
       });
   };
-
-  //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
-  //useEffect(()=> {
-  //  getQuizQuestion()
-  //}, [])
-
-  //TODO
-
-  //map over quiz data
-  //render data in respective places (notes in quiz question component)
-  //set up a carousel that replaces current question with next question when next is clicked
-  //add previous button
-  //add exit button?
 
   return (
     <Container>

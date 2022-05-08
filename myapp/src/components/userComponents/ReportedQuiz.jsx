@@ -15,26 +15,6 @@ const QuizDiv = styled.div`
   justify-content: center;
 `
 
-// const deleteQuiz = (quizId) => {
-
-//   //const [isDeleted, setIsDeleted] = useState(false);
-
-//   axios.post(`http://52.90.8.77:4444/removeQuiz`, {quizId: quizId})
-//   .then((results) => {
-//   document.getElementByID(quizId).style.visiblity='hidden'
-//     console.log('success')
-
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   })
-
-
-// }
-
-
-
-
 const ReportedQuiz = (props) => {
   return (
     <QuizDiv id={props.eachReportedQuiz._id} onClick={() => props.deleteQuiz(props.eachReportedQuiz._id)}>{props.eachReportedQuiz.quizName}

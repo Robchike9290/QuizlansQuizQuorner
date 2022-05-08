@@ -29,8 +29,8 @@ const StyledBanner = styled.img`
 `;
 
 const StyledText = styled.div`
-  // margin-left: 100px;
-  // float: left;
+  margin-left: 100px;
+  float: left;
 `;
 
 const QuizFeedItem = ({ quiz, changeStatusForward, chooseQuiz }) => {
@@ -38,7 +38,6 @@ const QuizFeedItem = ({ quiz, changeStatusForward, chooseQuiz }) => {
     <Container  onClick={(e) => chooseQuiz(e.target.outerText)}>
       <StyledBanner src={`${quiz.quizBanner}`}></StyledBanner>
       <StyledText>{quiz.quizName}</StyledText>
-      {/* {console.log('!!!!!quiz.quizBanner', quiz.quizBanner)} */}
     </Container>
   );
 };

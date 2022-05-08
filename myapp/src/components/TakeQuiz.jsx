@@ -14,8 +14,8 @@ const BaseLayout = styled.div`
 `;
 
 const TakeQuiz = (props) => {
-  const [pageStatus, setPageStatus] = useState('start'); //start, quiz, results
-  const [quiz, setQuiz] = useState(null); //will change to quiz id (ex: 623b4f3193deed525907e16b) when a user selects a quiz to play
+  const [pageStatus, setPageStatus] = useState('start');
+  const [quiz, setQuiz] = useState(null);
   const [allQuizzes, setAllQuizzes] = useState(exampleQuizzes);
   const [quizSelected, setQuizSelected] = useState(false);
   const [score, setScore] = useState(0);
@@ -35,18 +35,7 @@ const TakeQuiz = (props) => {
   };
 
   const report = () => {
-    // axios
-    //   .post('http://52.90.8.77:4444/reportQuiz')
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
-
-    //REPORT THIS QUIZ BY REMOVING IT FROM LIST AND ADDING IT TO ADMIN REPORTED LIST
     window.alert(`You have reported ${quiz}`);
-    //find that quiz in the allQuizzes list and remove it
     for (let i = 0; i < allQuizzes.length; i++) {
       if (allQuizzes[i].quizName === quiz) {
         let newArray = allQuizzes;
@@ -54,14 +43,12 @@ const TakeQuiz = (props) => {
         setAllQuizzes(newArray);
       }
     }
-    //redirect user to start page to select a quiz to play
     setPageStatus('start')
     setQuizSelected(null);
   };
 
   useEffect(() => {
-    getQuizzes()
-
+    getQuizzes();
     if (props.selectedQuiz) {
       setQuiz(props.selectedQuiz)
       chosenQuiz();
@@ -74,7 +61,7 @@ const TakeQuiz = (props) => {
     } else if (pageStatus === 'quiz') {
       setPageStatus('results');
     } else if (pageStatus === 'results') {
-      setPageStatus('start') //display options to start new quiz
+      setPageStatus('start');
     }
   }
 
@@ -85,12 +72,11 @@ const TakeQuiz = (props) => {
       setPageStatus('start');
       setQuizSelected(null);
     } else if (pageStatus === 'results') {
-      setPageStatus('quiz') //display options to start new quiz
+      setPageStatus('quiz');
     }
   }
 
-  const chooseQuiz = (quizName) => { //change to quizId later
-    // setQuiz(quizId);
+  const chooseQuiz = (quizName) => {
     setQuiz(quizName);
   }
 
@@ -103,8 +89,6 @@ const TakeQuiz = (props) => {
   }
 
   const imFeelingLucky = () => {
-    // setQuiz to random quiz from allQuizzes
-    // invoke chosenQuiz
     const min = 0;
     const max = allQuizzes.length - 1;
     const randomQuiz = allQuizzes[Math.floor(Math.random() * (max - min) + min)];
@@ -112,28 +96,47 @@ const TakeQuiz = (props) => {
     setQuiz(randomQuizName);
     chosenQuiz();
   }
-  //TODO
-  //CONDITIONAL RENDERING (either Header, StartPage and Footer or QuizBody)
-  //if isPlaying === false (defualt)
-    //page should display *quizname* stats and start button
-  //button click should setIsPlaying to true
-    //and display modal/page with questions in order
 
   return (
   <BaseLayout>
-  {pageStatus === 'start' ? <Start allQuizzes={allQuizzes} quiz={quiz} quizSelected={quizSelected} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} chooseQuiz={chooseQuiz} chosenQuiz={chosenQuiz} imFeelingLucky={imFeelingLucky}/> :
-  pageStatus === 'quiz' ? <Quiz quiz={quiz} allQuizzes={allQuizzes} changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} score={score} keepScore={keepScore} report={report}/> :
-  pageStatus === 'results' ? <Results changeStatusForward={changeStatusForward} changeStatusBackward={changeStatusBackward} score={score} quiz={quiz} allQuizzes={allQuizzes} report={report} /> : null }
-
+    {pageStatus === 'start'
+    ?
+    <Start
+      allQuizzes={allQuizzes}
+      quiz={quiz}
+      quizSelected={quizSelected}
+      changeStatusForward={changeStatusForward}
+      changeStatusBackward={changeStatusBackward}
+      chooseQuiz={chooseQuiz}
+      chosenQuiz={chosenQuiz}
+      imFeelingLucky={imFeelingLucky}
+    />
+    :
+    pageStatus === 'quiz'
+    ?
+    <Quiz
+      quiz={quiz}
+      allQuizzes={allQuizzes}
+      changeStatusForward={changeStatusForward}
+      changeStatusBackward={changeStatusBackward}
+      score={score}
+      keepScore={keepScore}
+      report={report}
+    />
+    :
+    pageStatus === 'results'
+    ?
+    <Results
+      changeStatusForward={changeStatusForward}
+      changeStatusBackward={changeStatusBackward}
+      score={score}
+      quiz={quiz}
+      allQuizzes={allQuizzes}
+      report={report}
+    />
+    :
+    null }
   </BaseLayout>);
 };
 
 export default TakeQuiz;
-
-/*
-
-Header
-QuizBody
-Footer
-
-*/

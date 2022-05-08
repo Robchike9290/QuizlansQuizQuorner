@@ -121,7 +121,6 @@ const CreateQuiz = ({ userName }) => {
     axios
       .post('http://52.90.8.77:4444/addQuiz', quizObj)
       .then((response) => {
-        //console.log(response.data);
         resetInputs();
         alert('Quiz successfully created!');
       })

@@ -35,11 +35,6 @@ const PopularQuizzes = ({ selectedQuiz, setSelectedQuiz }) => {
       });
   };
 
-  //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
-  //useEffect(()=> {
-  //  getPopularQuizzes()
-  //}, [])
-
   return (
     <Container>
       <ListTitle>Popular Quizzes</ListTitle>

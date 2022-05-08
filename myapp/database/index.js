@@ -67,7 +67,6 @@ const removeQuiz = (quizId) => {
   return Quiz.deleteOne({ "_id": quizId })
 }
 
-//what are we searching by? user/category. one has to be null
 const getQuizzes = (createdBy, category, reported) => {
   if (createdBy) {
     return Quiz.find({ "createdBy": createdBy})
@@ -108,14 +107,6 @@ const newQuizHistory = (userId, quizHistory) => {
   return User.updateOne({ "userId": userId}, {$push: {quizHistory: quizHistory}})
 }
 
-// const takenQuizAgain = (userId) => {
-//   return User.updateOne({ "userId": userId}, {$inc: {"quizHistory.timesUserHasTaken": 1}})
-// }
-
-// const newQuizScore = (userId, userScore) => {
-//   return User.updateOne({ "userId": userId}, {$push: {"quizHistory.userScores": userScore}})
-// }
-
 const getAllQuizzes = () => {
   return Quiz.find({})
 }
@@ -133,12 +124,5 @@ module.exports = {
   addFriend: addFriend,
   removeFriend: removeFriend,
   newQuizHistory: newQuizHistory,
-  // takenQuizAgain: takenQuizAgain,
-  // newQuizScore: newQuizScore,
   getAllQuizzes: getAllQuizzes
 };
-
-// TODO:
-// GET for user quizHistory
-// GET for user created quizzes
-// GET for admin, reported quizzes, display by timesReported

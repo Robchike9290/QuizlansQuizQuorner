@@ -15,8 +15,6 @@ const {
   addFriend,
   removeFriend,
   newQuizHistory,
-  // takenQuizAgain,
-  // newQuizScore,
   getAllQuizzes
 } = require('../database/index.js');
 
@@ -24,24 +22,12 @@ app.use(express.static(__dirname + './../dist/bundle.js'));
 app.use(express.json());
 app.use(cors());
 
-// onAuthStateChanged(auth, (loggedInUser) => {
-//   setCurrentUser(loggedInUser);
-// });
-
-// app.get('*', function (req, res) {
-//   res.sendFile(path.join(__dirname, '../dist/index.html'), function (err) {
-//     if (err) {
-//       res.status(500).send(err);
-//     }
-//   });
-// });
-
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
   next();
 });
 
-app.get('/quizzes/:createdBy&:category&:reported', (req, res) => { // works
+app.get('/quizzes/:createdBy&:category&:reported', (req, res) => {
   console.log('Params☄️☄️☄️☄️☄️☄️', req.params)
   getQuizzes(req.params.createdBy, req.params.category, req.params.reported)
     .then((results) => {
@@ -52,7 +38,7 @@ app.get('/quizzes/:createdBy&:category&:reported', (req, res) => { // works
     });
 });
 
-app.post('/upvote', (req, res) => { // works
+app.post('/upvote', (req, res) => {
   upVote(req.body.quizId)
     .then((results) => {
       res.status(201).send('upvoted!');
@@ -62,7 +48,7 @@ app.post('/upvote', (req, res) => { // works
     });
 });
 
-app.post('/downvote', (req, res) => { // works
+app.post('/downvote', (req, res) => {
   downVote(req.body.quizId)
     .then((results) => {
       res.status(201).send('downvoted!');
@@ -72,17 +58,7 @@ app.post('/downvote', (req, res) => { // works
     });
 });
 
-// app.get('/reportedQuizzes', (req, res) => {
-//   getQuizzes(req.body.reported)
-//   .then((results) => {
-//     res.status(200).send('Reported items retrieved');
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-// });
-
-app.post('/reportQuiz', (req, res) => { // works
+app.post('/reportQuiz', (req, res) => {
   reportQuiz(req.body.quizId)
     .then((results) => {
       res.status(201).send('reported!');
@@ -92,7 +68,7 @@ app.post('/reportQuiz', (req, res) => { // works
     });
 });
 
-app.post('/removeQuiz', (req, res) => { // works
+app.post('/removeQuiz', (req, res) => {
   removeQuiz(req.body.quizId)
     .then((results) => {
       res.status(201).send('removed!');
@@ -102,7 +78,7 @@ app.post('/removeQuiz', (req, res) => { // works
     });
 });
 
-app.post('/addQuiz', (req, res) => { // works
+app.post('/addQuiz', (req, res) => {
   const newQuiz = {
     quizName: req.body.quizName,
     quizQuestions: req.body.quizQuestions,
@@ -128,7 +104,7 @@ app.post('/addQuiz', (req, res) => { // works
     });
 });
 
-app.get('/user/:email', (req, res) => { // works
+app.get('/user/:email', (req, res) => {
   getUser(req.params.email)
     .then((results) => {
       res.status(200).send(results);
@@ -138,7 +114,7 @@ app.get('/user/:email', (req, res) => { // works
     });
 });
 
-app.post('/addFriend', (req, res) => { // works
+app.post('/addFriend', (req, res) => {
   addFriend(req.body.email, req.body.friendEmail)
     .then((results) => {
       res.status(201).send('Friend added!');
@@ -148,7 +124,7 @@ app.post('/addFriend', (req, res) => { // works
     });
 });
 
-app.post('/removeFriend', (req, res) => { // works
+app.post('/removeFriend', (req, res) => {
   removeFriend(req.body.email, req.body.friendEmail)
     .then((results) => {
       res.status(201).send('Friend removed!');
@@ -158,7 +134,7 @@ app.post('/removeFriend', (req, res) => { // works
     });
 });
 
-app.post('/addUser', (req, res) => { // works
+app.post('/addUser', (req, res) => {
   const newUser =  {
     userName: req.body.userName,
     email: req.body.email,
@@ -175,7 +151,7 @@ app.post('/addUser', (req, res) => { // works
     });
 });
 
-app.post('/newQuizHistory', (req, res) => { // works
+app.post('/newQuizHistory', (req, res) => {
   const newHistory = {
       _id: req.body.quizId,
       userScores: req.body.score
@@ -192,23 +168,7 @@ app.post('/newQuizHistory', (req, res) => { // works
     });
 });
 
-// app.post('/updateQuizHistory', (req, res) => {
-//   takenQuizAgain(req.body.email)
-//     .then((results) => {
-//       newQuizScore(req.body.email, req.body.score)
-//         .then((results) => {
-//           res.status(201).send("Quiz history updated!");
-//         })
-//         .catch((err) => {
-//           console.error(err);
-//         })
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//     })
-// })
-
-app.get('/getAllQuizzes', (req, res) => { // works
+app.get('/getAllQuizzes', (req, res) => {
   getAllQuizzes()
     .then((results) => {
       res.status(200).send(results);
@@ -223,13 +183,3 @@ const PORT = 4444;
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}...`);
 });
-// upvote
-// downvote
-// reportQuiz
-// removeQuiz
-// getQuizzes
-// addQuiz
-// user
-// addFriend
-// removeFriend
-// search?

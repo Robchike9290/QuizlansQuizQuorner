@@ -14,7 +14,6 @@ import { getFirestore } from 'firebase/firestore';
 import {reactLocalStorage} from 'reactjs-localstorage';
 import firebaseConfig from "../../config.js";
 import styled from 'styled-components';
-// import firebaseConfig from "../index.js";
 
 const Login = ({
   registerEmail,
@@ -29,15 +28,6 @@ const Login = ({
   setIsAdmin,
   getUser
 }) => {
-
-
-  // const [registerEmail, setRegisterEmail] = useState("");
-  // const [registerPassword, setRegisterPassword] = useState("");
-  // const [currentUser, setCurrentUser] = useState({});
-
-  // onAuthStateChanged(auth, (loggedInUser) => {
-  //   setCurrentUser(loggedInUser);
-  // });
 
   const createEmailHandler = (event) => {
     console.log('email handler', event.target.value)
@@ -74,27 +64,11 @@ const Login = ({
       .catch((error) => {
         console.log(error.message);
       });
-      // setUserName(userName);
-      // setUserEmail(registerEmail);
-
   };
 
   const LoginUser = () => {
-    // setUserName(userName);
-    // setUserEmail(registerEmail);
 
     getUser(registerEmail);
-    // const getUser = () => {
-    //   axios.get(`http://52.90.8.77:4444/user/${registerEmail}`)
-    //     .then((response) => {
-    //       setUserName(response.data.userName);
-    //       setUserEmail(response.data.email);
-    //       console.log('USER DATA:', response.data);
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    // };
 
     const user = signInWithEmailAndPassword(
       auth,

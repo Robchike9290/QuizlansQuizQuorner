@@ -27,37 +27,19 @@ const App = () => {
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(undefined);
   const [userName, setUserName] = useState('superuser');
-  // const [userEmail, setUserEmail] = useState('');
   const [fullQuizList, setFullQuizList] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const [friends, setFriends] = useState([]);
   const [quizHistory, setQuizHistory] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-
   onAuthStateChanged(auth, (loggedInUser) => {
-    // console.log('logged in user on app', loggedInUser);
     setCurrentUser(loggedInUser);
   });
 
-
-
-
-
   useEffect(() => {
     getData();
-    // console.log('current user on app', currentUser);
-
-    // console.log('app use effect username:', userName);
-    // console.log('app use effect email:', userEmail);
   }, [currentUser]);
-
-  // function populateStorage() {
-  //   localStorage.setItem('userName', userName);
-  //   localStorage.setItem('email', registerEmail);
-  //   // super.setState(userName);
-  //   // super.setState(registerEmail);
-  // }
 
   const switchTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -69,7 +51,6 @@ const App = () => {
   };
 
   const handleSearchSubmit = (opt) => {
-    console.log("you've selected:", opt.label);
     window.location.href = 'http://localhost:8080/#/takequiz';
     setSelectedQuiz(opt.label);
   };
@@ -78,7 +59,6 @@ const App = () => {
     axios
       .get('http://52.90.8.77:4444/getAllQuizzes')
       .then((response) => {
-        // console.log('Here are your quizzes: ', response.data);
         const quizIds = [];
         for (let i = 0; i < response.data.length; i++) {
           let quiz = response.data[i];
@@ -96,8 +76,6 @@ const App = () => {
   const logOut = () => {
     const signedOut = signOut(auth)
       .then((data) => {
-        // setCurrentUser(null);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error.message);
@@ -108,7 +86,6 @@ const App = () => {
     axios
       .post('http://52.90.8.77:4444/reportQuiz')
       .then((response) => {
-        console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -119,7 +96,6 @@ const App = () => {
     axios
       .post('http://52.90.8.77:4444/addQuiz')
       .then((response) => {
-        console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -130,7 +106,6 @@ const App = () => {
     axios
       .post('http://52.90.8.77:4444/removeQuiz')
       .then((response) => {
-        console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -144,9 +119,7 @@ const App = () => {
       .then((response) => {
         setUserName(response.data[0].userName);
         setFriends(response.data[0].friends);
-
         setQuizHistory(response.data[0].quizHistory);
-        console.log('USER DATA:', response.data[0]);
       })
       .catch((err) => {
         console.error(err);
@@ -157,7 +130,6 @@ const App = () => {
     axios
       .post('http://52.90.8.77:4444/addFriend')
       .then((response) => {
-        console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -168,7 +140,6 @@ const App = () => {
     axios
       .post('http://52.90.8.77:4444/removeFriend')
       .then((response) => {
-        console.log(response.data);
       })
       .catch((err) => {
         console.error(err);
@@ -177,7 +148,6 @@ const App = () => {
 
   return (
     <Router>
-      {/*<Button onClick={upvote}>Upvote</Button>*/}
       {docData ? <div></div> : null}
       <div>
         <NavBar>
@@ -282,7 +252,6 @@ const App = () => {
           </Route>
         </Switch>
         {docData ? <h1>Hello {docData.quizName}</h1> : null}
-        {/*<Button variant="contained">this is a material UI button</Button>*/}
       </div>
     </Router>
   );

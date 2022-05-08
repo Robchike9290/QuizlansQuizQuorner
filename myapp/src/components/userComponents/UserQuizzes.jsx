@@ -27,13 +27,11 @@ const UserQuizzes = (props) => {
   const [userQuizList, setUserQuizList] = useState([]);
 
   const getUserQuizzes = () => {
-    console.log('USERNAME USER QUIZZES', props.userName)
     const username = 'superuser';
     const categoryName = null;
     const isReported = null;
     axios.get(`http://52.90.8.77:4444/quizzes/${username}&${categoryName}&${isReported}`)
       .then((response) => {
-        // console.log('USER QUIZZES!!! YAYAYAYAYYA:', response.data);
         setUserQuizList(response.data);
       })
       .catch((err) => {
@@ -41,24 +39,18 @@ const UserQuizzes = (props) => {
       })
   }
 
-  //console.log('👅👅👅👅👅', userQuizzes);
- //console.log('💄💄💄💄💄👁👁', props.currentUser);
-  //! Commenting this out rn because the request is going to nowhere, but does need to go back in:::::::
   useEffect(()=> {
     getUserQuizzes()
   }, [])
-
 
   return (
     <Container>
       User Quizzes
       {userQuizList.map((userQuiz, i) => {
         return <UserGeneratedQuiz userQuiz={userQuiz} userQuizList={userQuizList} key={i}/>
-        // <ReportedQuizzes/>
       })}
     </Container>
   );
 };
-//userQuiz.createBy
 
 export default UserQuizzes;

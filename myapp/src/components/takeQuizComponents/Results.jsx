@@ -7,7 +7,7 @@ const Container = styled.div`
   border-radius: var(--standard-border-radius);
   background-color: var(--background-color);
   text-align: center;
-  // justify-content: center; //wont allow me to center any other way, but justify also shrinks content
+  justify-content: center;
   margin: var(--standard-margin);
   display: grid;
   flex-direction: row;
@@ -70,8 +70,6 @@ const Results = ({ score, changeStatusForward, changeStatusBackward, quiz, allQu
       if (allQuizzes[i].quizName === quiz) {
         console.log('QUIZ FOUND HERE IS THE OBJ', allQuizzes[i]);
         setSelectedQuiz(allQuizzes[i]);
-        // setCurrentQuiz(allQuizzes[i].quizQuestions)
-        // console.log('current quiz!!!', allQuizzes[i])
       }
     }
   };

@@ -56,7 +56,7 @@ const Name = styled.div`
 const Category = styled.div`
   grid-row: 1 / span 1;
   grid-column: 1 / span 1;
-  //word-wrap: break-word;
+  word-wrap: break-word;
 `;
 
 const TimesTaken = styled.div`
@@ -91,13 +91,7 @@ const RecentQuiz = ({
   downvotes,
   score
 }) => {
-  //console.log(props);
-  // const quizName = props.eachQuiz.quizName;
   return (
-    // <QuizDiv>
-    //   <div>{props.quiz.quizName}</div>
-    //   <div>Score: {props.quiz.userScores}</div>
-    // </QuizDiv>
     <Container>
       <Banner>
         <img src={`${banner}`}></img>
@@ -105,12 +99,8 @@ const RecentQuiz = ({
       <TextData>
         <Name onClick={() => handleQuizSelect(event)}>{quizName}</Name>
         <Category>{category}</Category>
-        {/* <TimesTaken>{timesTaken} people have taken this quiz</TimesTaken> */}
         <Description>{description}</Description>
         <Score>You scored {score}</Score>
-        {/* UPVOTE <FontAwesomeIcon icon="fa-solid fa-caret-up" name="upvote" onClick={()=>handleRating(event.target.name}/> */}
-        {/* DOWNVOTE <FontAwesomeIcon icon="fa-solid fa-caret-down" name="downvote" onClick={()=>handleRating(event.target.name}/>/> */}
-        {/* REPORT <FontAwesomeIcon icon="fa-solid fa-flag" /> */}
       </TextData>
     </Container>
   )
